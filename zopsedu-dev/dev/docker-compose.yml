@@ -1,0 +1,59 @@
+# Use postgres/example user/password credentials
+version: '3.7'
+networks:
+  zopsedu:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.24.0.0/24
+
+services:
+    redis:
+        image: redis
+        restart: unless-stopped
+        ports:
+          - "127.0.0.1:6379:6379"
+        networks:
+          zopsedu:
+            ipv4_address: 172.24.0.10
+
+    db:
+        image: postgres
+        restart: unless-stopped
+        ports:
+          - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: 'dombilililerle'
+            POSTGRES_USER: 'zopsedu'
+            POSTGRES_DB: 'zopsedu'
+        networks:
+          zopsedu:
+            ipv4_address: 172.24.0.11
+
+    zopsedu_db_operations:
+        image: zetaops/zopsedu
+        volumes:
+            - /home/zopsedu/zopsedu-demo/zopsedu:/zopsedu
+        environment:
+            FIRST_RUN: '1'
+            CRUD_LOG: 'False'
+            SERVER_NAME: 'demo.zopsedu.com'
+        #ports:
+        #  - "5001:5001"
+        networks:
+          zopsedu:
+            ipv4_address: 172.24.0.18
+
+    zopsedu:
+        image: zetaops/zopsedu
+        restart: unless-stopped
+        volumes:
+            - /home/zopsedu/zopsedu-demo/zopsedu:/zopsedu
+        environment:
+            FIRST_RUN: '0'
+            SERVER_NAME: 'demo.zopsedu.com'
+        ports:
+          - "5000:5000"
+        networks:
+          zopsedu:
+            ipv4_address: 172.24.0.13

@@ -1,0 +1,9 @@
+FROM python:3.6.6-alpine3.8
+
+#RUN apk add --update
+RUN apk add --update --no-cache gcc musl-dev wkhtmltopdf postgresql-dev git py3-virtualenv python3-dev libpq jpeg-dev zlib-dev libffi-dev libxml2-dev libxslt-dev \
+	&& virtualenv uv2
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
