@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% from 'macros/file_upload.html' import modal_file_upload %}
+
+{% block context %}
+    <div class="content">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel"
+             data-backdrop="static" data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><a class="tooltipstr" href="?lang=tr" title="dili Türkçe yap">tr</a>
+                            <a class="tooltipstr" href="?lang=en" title="make language English">en</a></p>
+                        <form method="post">
+                            {% for field in form %}
+                                {{ field.label }}
+                                {{ field }}
+                            {% endfor %}
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

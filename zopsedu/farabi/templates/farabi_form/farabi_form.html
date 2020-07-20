@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% from 'macros/form_wizard.html' import form_wizard with context %}
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list with context %}
+{% from 'macros/_formhelpers.html' import render_datetime_field, render_select_tag, render_text_field,
+                                          render_double_time_fields, link_to_somewhere, render_language_level_text,
+                                          render_checkbox, render_alert, render_title %}
+{% block context %}
+    <div class="content">
+        <div class="panel form-group p-15">
+            <img src="{{ url_for('farabi_form.static', filename = 'necmettin_erbakan_universitesi_logo.png') }}"
+                 class="media-object width-220 height-150" alt="Logo" align="left"/>
+            <div class="row justify-content-center">
+                <h2>NECMETTİN ERBAKAN ÜNİVERSİTESİ</h2>
+            </div>
+            <div class="row justify-content-center">
+                <h5>2018/2019 AKADEMİK YILI GÜZ+BAHAR DÖNEMİ</h5>
+            </div>
+            <div class="row justify-content-center">
+                <h3>FARABİ DEĞİŞİM PROGRAMI</h3>
+            </div>
+            <hr/>
+            <div class="row justify-content-center">
+                <h3>ÖĞRENCİ BAŞVURU FORMU</h3>
+            </div>
+            <hr/>
+            <div class="panel-body">
+                <form method="POST" action="/farabi_form/kaydet">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            {{ render_text_field(farabi_form.ad) }}
+                        </div>
+                        <div class="col-md-8 mt-4">
+                            {{ farabi_form.photo }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            {{ render_text_field(farabi_form.soyad) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            {{ render_text_field(farabi_form.tc, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            {{ render_text_field(farabi_form.bolum) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            {{ render_text_field(farabi_form.ogrenci_no, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_title("Gönderen Kurum") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_title("Kabul Eden Kurum") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.ad) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.ad) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.adres) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.adres) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.kurum_kordinatoru) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.kurum_kordinatoru) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.phone_number, type="number") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.phone_number, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.faks, type="number") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.faks, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.email, type="email") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.email, type="email") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.bolum_kordinatoru) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.bolum_kordinatoru) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.phone_number, type="number") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.phone_number, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.faks, type="number") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.faks, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.email, type="email") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.email, type="email") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        {{ render_title("ÖĞRENCİ BİLGİLERİ (Başvuran öğrenci tarafından doldurulacaktır.)") }}
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.ad) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.soyad) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-2">
+                            {{ render_select_tag(farabi_form.ogrenci_cinsiyet) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_datetime_field(farabi_form.ogrenci_dogum_tarihi) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.adres) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.dogum_yeri) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.ogrenci_uyruk) }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.phone_number, type="number") }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.email, type="email") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.ogrenim_durumu) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_text_field(farabi_form.sinifi, type="number") }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                    </div>
+                    <div class="row mt-2 justify-content-center">
+                        Ekteki not dökümümde öğrenciliğimin mevcut durumu hakkında ayrıntılı bilgiler görülebilir.
+                        Başvuru
+                        esnasında bilinmeyen hususlar daha sonra bildirilecektir.
+                    </div>
+                    <div class="row mt-2">
+                        {{ render_title("DİL YETERLİLİĞİ") }}
+                    </div>
+                    <div class="row mt-2">
+                        Öğrencisi olunan bölümde öğretim dili (Türkçeden başka bir dil ise):
+                        <hr/>
+                        {% set headers = ["Yabancı Dil", "Zayıf", "Orta", "İyi", "Mükemmel"] %}
+                        {% set contents = [
+                        farabi_form.bos_input,
+                        farabi_form.zayif,
+                        farabi_form.orta,
+                        farabi_form.iyi,
+                        farabi_form.mukemmel,
+                    ] %}
+                        {{ dynamic_field_list(headers, contents, 20) }}
+                    </div>
+                    <div class="row mt-2">
+                        <div class="input-group-append justify-content-end">
+                            <button class="btn btn-success">Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

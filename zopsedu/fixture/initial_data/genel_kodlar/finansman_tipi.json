@@ -1,0 +1,44 @@
+{
+  "finansman_tipi": [
+    {
+      "id": 1,
+      "kodu": 1,
+      "aciklama": "GENEL BÜTÇELİ İDARELER"
+    },
+    {
+      "id": 2,
+      "kodu": 2,
+      "aciklama": "ÖZEL BÜTÇELİ İDARELER"
+    },
+    {
+      "id": 3,
+      "kodu": 3,
+      "aciklama": "DÜZENLEYİCİ VE DENETLEYİCİ KURUMLAR"
+    },
+    {
+      "id": 4,
+      "kodu": 4,
+      "aciklama": "SOSYAL GÜVENLİK KURUMLARI"
+    },
+    {
+      "id": 5,
+      "kodu": 5,
+      "aciklama": "MAHALLİ İDARELER"
+    },
+    {
+      "id": 6,
+      "kodu": 6,
+      "aciklama": "ÖZEL ÖDENEKLER"
+    },
+    {
+      "id": 7,
+      "kodu": 7,
+      "aciklama": "DIŞ PROJE KREDİLERİ"
+    },
+    {
+      "id": 8,
+      "kodu": 8,
+      "aciklama": "ŞARTLI BAĞIŞ VE YARDIMLAR"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{% extends "profil_base.html" %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field %}
+{% from 'macros/profil_bilgileri.html' import harici_ogretim_elemani_view, akademik_personel_view,bap_memuru_view %}
+
+{% block profil %}
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        {% if personel %}
+                            {{ akademik_personel_view(user=user, person = user.person, personel=personel, odeme_bilgileri = user.person.odeme_bilgileri) }}
+                        {% endif %}
+                        {% if bap_memuru %}
+                            {{ bap_memuru_view(user=user, person = user.person, personel=personel, odeme_bilgileri = user.person.odeme_bilgileri) }}
+                        {% endif %}
+                        {% if harici_ogretim_elemani %}
+                            {{ harici_ogretim_elemani_view(form=form, args=args) }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

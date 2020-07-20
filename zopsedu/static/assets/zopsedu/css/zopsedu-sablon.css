@@ -1,0 +1,517 @@
+DIV.page-container {
+    padding-left: 43px;
+    padding-right: 35px;
+}
+
+TABLE.table-style {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+}
+
+TABLE.table-style TR.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.table-style TR.sablon-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.table-style TD.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.table-style TD {
+    border: 1px solid gray;
+    font: 12px Verdana, Arial, sans-serif;
+}
+
+TABLE.table-style TD.old-label {
+    font-weight: bold;
+}
+
+TABLE.header-style {
+    width: 100%;
+    padding: 3px;
+    border-spacing: 2px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.kenar4 {
+    border: 1px solid black;
+}
+
+TR.table-body TD {
+    text-align: center;
+}
+
+TABLE.fields TD {
+    font-size: 12px;
+    font-family: Verdana, Arial, sans-serif;
+    padding: 4px;
+}
+
+DIV.form-header {
+    display: block;
+    padding: 10px;
+    border: 1px solid gray;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+TABLE.table-style TD {
+    padding: 4px;
+    font: 12px Verdana, Arial, sans-serif;
+    overflow: hidden;
+}
+
+SPAN.old-label {
+    width: 280px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+TABLE.border-no {
+    border: 0;
+    font: 12px Verdana, Arial, sans-serif;
+    width: 100%;
+    margin: 20px 0;
+}
+
+TABLE.border-no TD {
+    border: 0;
+    font: 12px Verdana, Arial, sans-serif;
+}
+TABLE.border-no TR.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.border-no TR.sablon-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.border-no TD.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+DIV.top-header {
+    padding: 0 0 10px 0;
+    font-size: 12px;
+}
+
+DIV.top-header * {
+    font-size: 12px;
+}
+
+DIV.top-header TD {
+    overflow-x: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+DIV.top-header TD.old-label {
+    font-weight: bold;
+    width: 100px;
+}
+
+DIV.border-no TD.border-no {
+    border: 0;
+}
+
+TR.sum TD.mark {
+    text-align: center;
+    font-weight: bold;
+    background-color: lightgrey;
+}
+
+@media print {
+    .inline-editable-desc {
+        display: none;
+    }
+
+    .inline-editable-div {
+        background: white;
+    }
+
+    .unprintable {
+        display: none;
+    }
+}
+
+body {
+    line-height: normal;
+}
+
+DIV.sablon-space {
+    margin-top: 20px;
+}
+
+DIV.form-header-orj {
+    display: block;
+    padding: 0;
+    line-height: 1.25em;
+    border: 2px solid black;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 12px !important;
+    text-align: center;
+    min-height: 80px;
+    position: relative;
+}
+
+DIV.form-header-orj .logo {
+    font-size: 10pt;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    bottom: 5px;
+}
+
+ 
+
+@media print {
+
+    #content, #page {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+
+    @page {
+        margin: 2cm
+    }
+
+    body {
+        font: 13pt Georgia, "Times New Roman", Times, serif;
+        line-height: 1.3;
+        background: #fff !important;
+        color: #000;
+    }
+
+    h1 {
+        font-size: 24pt;
+    }
+
+    h2, h3, h4 {
+        font-size: 14pt;
+        margin-top: 25px;
+    }
+
+    a {
+        page-break-inside: avoid
+    }
+
+    blockquote {
+        page-break-inside: avoid;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid
+    }
+
+    img {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    table, pre {
+        page-break-inside: avoid
+    }
+
+    ul, ol, dl {
+        page-break-before: avoid
+    }
+
+    a:link, a:visited, a {
+        background: transparent;
+        color: #520;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: left;
+    }
+
+    a {
+        page-break-inside: avoid
+    }
+
+    a[href^=http]:after {
+        content: " <" attr(href) "> ";
+    }
+
+    article a[href^="#"]:after {
+        content: "";
+    }
+
+    .entry iframe, ins {
+        display: none;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        line-height: 0pt !important;
+        white-space: nowrap;
+    }
+
+    .embed-youtube, .embed-responsive {
+        position: absolute;
+        height: 0;
+        overflow: hidden;
+    }
+
+    #header-widgets, nav, aside.mashsb-container,
+    .sidebar, .mashshare-top, .mashshare-bottom,
+    .content-ads, .make-comment, .author-bio,
+    .heading, .related-posts, #decomments-form-add-comment,
+    #breadcrumbs, #footer, .post-byline, .meta-single,
+    .site-title img, .post-tags, .readability {
+        display: none;
+    }
+
+    .entry:after {
+        color: #999 !important;
+        font-size: 1em;
+        padding-top: 30px;
+    }
+
+    #header:before {
+        color: #777 !important;
+        font-size: 1em;
+        padding-top: 30px;
+        text-align: center !important;
+    }
+
+    p, address, li, dt, dd, blockquote {
+        font-size: 100%
+    }
+
+    ul, ol {
+        list-style: square;
+        margin-left: 18pt;
+        margin-bottom: 20pt;
+    }
+
+    li {
+        line-height: 1.6em;
+    }
+
+}
+
+.form-header-orj table td {
+    border: 0;
+
+}
+
+DIV.TABLE.sablon-text-style-bold TD {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+DIV.sablon-text-style-bold {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+TABLE.table-style TD.sablon-text-style-bold {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+TR.sablon-text-style-bold TD {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+
+}
+
+TR.text-style-bold TD {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+TABLE.urunler-text-bold {
+    font-weight: bold;
+}
+
+div.text-style text-style-bold {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.text-style {
+    font: 12px Verdana, Arial, sans-serif;
+
+}
+
+.text-style-small {
+    font-size: x-small;
+}
+
+.text-align-center {
+    text-align: center;
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.text-align-right {
+    text-align: right;
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+
+}
+
+.text-align-left {
+    text-align: left;
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.zopsedu-header {
+    border: 1px double #808080;
+    padding: 0.02in;
+    width: 15%;
+    height: 20%;
+    text-align: center;
+}
+
+.zopsedu-header-middle {
+    border: 1px double #808080;
+    padding: 0.02in;
+    width: 60%;
+    text-align: center;
+}
+
+.image-size {
+
+    max-width: 100%;
+    max-height: 20%;
+
+}
+
+TABLE.table-background {
+    background-color: #ffffc6;
+}
+
+TABLE.tarih-ip-table TD {
+    border-collapse: collapse;
+    border: 1px solid gray;
+    text-align: center;
+    font: 12px Verdana, Arial, sans-serif;
+    table-layout: fixed;
+}
+
+TABLE.sub-table {
+    margin: 10px 0 5px;
+    width: 99%;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    text-align: center;
+    font: 12px Verdana, Arial, sans-serif;
+    table-layout: auto;
+}
+
+.imza-tarih-isim {
+    line-height: 30px;
+    margin-right: 50px;
+    height: 100px;
+    margin-bottom: 10px
+}
+
+.tarih-isim-imza {
+    width: 170px;
+    text-align: center;
+    float: right;
+    white-space: nowrap
+}
+
+TABLE.tarih-isim-imza TR.sablon-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.tarih-isim-imza TD.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.tarih-ip-table TR.sablon-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.tarih-ip-table TD.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.table-style TD.vertical-write {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+
+}
+
+TABLE.toplam-table {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    width: 30%;
+    table-layout: auto;
+    margin-bottom: 20px;
+}
+
+TABLE.toplam-table TD {
+    border: 1px solid gray;
+    font: 12px Verdana, Arial, sans-serif;
+}
+
+TABLE.toplam-table TD {
+    border: 1px solid gray;
+    font: 12px Verdana, Arial, sans-serif;
+}
+
+TABLE.toplam-table TR.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.toplam-table TR.sablon-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+
+TABLE.toplam-table TD.sablon-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.rotate {
+
+    transform: rotate(-90.0deg);
+}
+
+p.sablon-text-style-bold {
+    font: 12px Verdana, Arial, sans-serif;
+    font-weight: bold;
+}
+p.text-style{
+    font: 12px Verdana, Arial, sans-serif;
+}
+
+TABLE.table-style td.zopsedu-input-color{
+    background-color: #a4ffb5;
+}
+
+TABLE.table-style input.zopsedu-input-color{
+    background-color: #a4ffb5;
+}
+

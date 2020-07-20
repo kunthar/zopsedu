@@ -1,0 +1,468 @@
+{% from 'macros/form_helpers/select2_fields.html' import render_select2field_with_tooltip %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+
+{% macro harici_ogretim_elemani_view(form, args) %}
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-items">
+                <a href="#default-tab-1" data-toggle="tab" class="nav-link show active"
+                   role="tab">
+                    <span class="d-sm-none">Temel Bilgiler</span>
+                    <span class="d-sm-block d-none">{{ _("Temel Bilgiler") }}</span>
+                </a>
+            </li>
+            <li class="nav-items">
+                <a href="#default-tab-2" data-toggle="tab"
+                   class="nav-link" role="tab">
+                    <span class="d-sm-none">Personel Bilgileri</span>
+                    <span class="d-sm-block d-none">{{ _("Personel Bilgileri") }}</span>
+                </a>
+            </li>
+            <li class="nav-items">
+                <a href="#default-tab-3" data-toggle="tab"
+                   class="nav-link" role="tab">
+                    <span class="d-sm-none">Ödeme Bilgileri</span>
+                    <span class="d-sm-block d-none">{{ _("Ödeme Bilgileri") }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+
+        <form method="POST" action="{{ url_for('kullanici_profil.profil_kaydet') }}">
+            {{ form.csrf_token }}
+            {% if args['success_msg'] %}
+                <div class="alert alert-success filled" role="alert">
+                    {{ args['success_msg'] }}
+                </div>
+            {% endif %}
+            <br>
+            {% if args['unknown_error'] %}
+                <div class="alert alert-danger filled" role="alert">
+                    {{ args['unknown_error'] }}
+                </div>
+            {% endif %}
+            <div class="tab-content">
+                <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.tckn,
+                            title=_('TC kimlik numaraınızı giriniz. Bu alan boş bırakılamaz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.ad,
+                                      title=_('Adınızı giriniz. Bu alan boş bırakılamaz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.birincil_eposta,
+                                      title=_('Eposta adresinizi giriniz. Bu alan boş bırakılamaz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.ev_tel_no,
+                                      title=_('Sabit telefon numarası giriniz.')) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.unvan,
+                                      title=_('Unvanınızı giriniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.soyad,
+                                       title=_('Soyadınızı giriniz. Bu alan boş bırakılamaz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.ikincil_eposta,
+                                        title=_('Eposta adresinize ulaşılamadığı takdirde kullanılmak üzere ikinci bir eposta adresi giriniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.cep_tel,
+                                      title=_('Cep telefonu numaranızı giriniz.')) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                             <span class="tooltipstr" title="{{ _('İkametgah adres bilginizi giriniz.') }}">
+                            {{ form.adres.label(class="control-label") }}
+                            <i class="fas fa-lg fa-fw m-r-10 fa-question-circle"></i>
+                            </span>
+                                {{ form.adres(class="form-control",rows=4) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                           <span class="tooltipstr" title="{{ _('İkincil adres bilginizi giriniz.') }}">
+                            {{ form.adres2.label(class="control-label") }}
+                            <i class="fas fa-lg fa-fw m-r-10 fa-question-circle"></i>
+                            </span>
+                                {{ form.adres2(class="form-control",rows=4) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="default-tab-2" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_select2field_with_tooltip(form.universite,
+                               title=_('Üniversite seçiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_select2field_with_tooltip(form.fakulte,
+                            title=_('Fakülteyi seçiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_select2field_with_tooltip(form.bolum,
+                            title=_('Bölüm seçiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ form.akademik_yayinlari.label }}
+                                {{ form.akademik_yayinlari(class="form-control",rows=3) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="default-tab-3" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.banka_adi,
+                                     title=_('Ödemeleriniz için kullanacağımız banka adınızı giriniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.sube_adi,
+                                     title=_('Ödemeleriniz için kullanacağımız şube adınızı giriniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.iban_no,
+                                     title=_('Ödemeleriniz için kullanacağımız iban numaranızı giriniz.')) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.sube_kod,
+                                     title=_('Ödemeleriniz için kullanacağımız şube kodunu giriniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.hesap_no,
+                                     title=_('Ödemeleriniz için kullanacağımız hesap numaranızı giriniz.')) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class='btn btn-success width-150 pull-right' onclick="profil_kaydet();">
+                    {{ _("Kaydet") }}
+                </a>
+            </div>
+            <script>
+                function profil_kaydet() {
+                    swal({
+                        title: "Profil bilgilerinizi kaydetmek istediğinize emin misiniz ?",
+                        icon: "warning",
+                        buttons: {
+                            cancel: {
+                                text: "Vazgeç",
+                                value: false,
+                                visible: true,
+                                closeModal: true,
+                            },
+                            confirm: {
+                                text: "Kabul Et",
+                                value: true,
+                                visible: true,
+                                closeModal: true
+                            }
+                        }
+                    })
+                        .then((willSave) => {
+                            if (willSave) {
+                                $('form').submit();
+                                swal("{{ _("Proje bilgileriniz başarıyla kaydedildi!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    button: false
+                                });
+
+                            } else {
+                                swal("{{ _("Proje bilgilerinizi kaydetmekten vazgeçtiniz!") }}", {
+                                    icon: "warning",
+                                    timer: 4000,
+                                    button: false
+
+
+                                });
+                            }
+                        });
+                }
+            </script>
+        </form>
+    </div>
+{% endmacro %}
+
+
+{% macro bap_memuru_view(user,person,personel,odeme_bilgileri) %}
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-items">
+                <a href="#default-tab-1" data-toggle="tab" class="nav-link show active"
+                   role="tab">
+                    <span class="d-sm-none">Temel Bilgiler</span>
+                    <span class="d-sm-block d-none">{{ _("Temel Bilgiler") }}</span>
+                </a>
+            </li>
+            <li class="nav-items">
+                <a href="#default-tab-3" data-toggle="tab"
+                   class="nav-link" role="tab">
+                    <span class="d-sm-none">Ödeme Bilgileri</span>
+                    <span class="d-sm-block d-none">{{ _("Ödeme Bilgileri") }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("TC Kimlik No") }}</label>
+                            <span class="form-control">{{ person.tckn }} </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Eposta") }}</label>
+                            <span class="form-control">{{ user.email }}</span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Telefon") }}</label>
+                            <span class="form-control">{{ "(%s)-%s-%s" |
+                                        format(person.ev_tel_no[0:3],
+                                        person.ev_tel_no[3:6],
+                                        person.ev_tel_no[6:11]) }} </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Ad Soyad") }}</label>
+                            <span class="form-control">{{ person.ad +" "+ person.soyad }} </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Cep Tel") }}</label>
+                            <span class="form-control">{{ "(%s)-%s-%s" |
+                                        format(person.cep_telefonu[0:3],
+                                        person.cep_telefonu[3:6],
+                                        person.cep_telefonu[6:11]) }} </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Adres") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto"> {{ person.ikametgah_adresi.adres+"\n"+
+                                        person.ikametgah_adresi.ilce+" / "+ person.ikametgah_adresi.il }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Adres2") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto"> {{ person.ikincil_adres.adres+"\n"+
+                                        person.ikincil_adres.ilce+" / "+person.ikincil_adres.il }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="default-tab-3" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Banka Adı") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].banka_adi }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Şube Adı") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].sube_adi }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("IBAN No") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].iban_no }}
+                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Hesap No") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].hesap_no }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Şube Kodu") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].sube_kod }}
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro akademik_personel_view(user,person, personel,odeme_bilgileri) %}
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-items">
+                <a href="#default-tab-1" data-toggle="tab" class="nav-link show active"
+                   role="tab">
+                    <span class="d-sm-none">Temel Bilgiler</span>
+                    <span class="d-sm-block d-none">{{ _("Temel Bilgiler") }}</span>
+                </a>
+            </li>
+            <li class="nav-items">
+                <a href="#default-tab-2" data-toggle="tab"
+                   class="nav-link" role="tab">
+                    <span class="d-sm-none">Personel Bilgileri</span>
+                    <span class="d-sm-block d-none">{{ _("Personel Bilgileri") }}</span>
+                </a>
+            </li>
+            <li class="nav-items">
+                <a href="#default-tab-3" data-toggle="tab"
+                   class="nav-link" role="tab">
+                    <span class="d-sm-none">Ödeme Bilgileri</span>
+                    <span class="d-sm-block d-none">{{ _("Ödeme Bilgileri") }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("TC Kimlik No") }}</label>
+                            <span class="form-control">{{ person.tckn }} </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Eposta") }}</label>
+                            <span class="form-control">{{ person.birincil_eposta }}</span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Telefon") }}</label>
+                            <span class="form-control">{{ "(%s)-%s-%s" |
+                                        format(person.ev_tel_no[0:3],
+                                        person.ev_tel_no[3:6],
+                                        person.ev_tel_no[6:11]) }} </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Unvan") }}</label>
+                            <span class="form-control">{{ personel.unvan }} </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Ad Soyad") }}</label>
+                            <span class="form-control">{{ person.ad +" "+ person.soyad }} </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Cep Tel") }}</label>
+                            <span class="form-control">{{ "(%s)-%s-%s" |
+                                        format(person.cep_telefonu[0:3],
+                                        person.cep_telefonu[3:6],
+                                        person.cep_telefonu[6:11]) }} </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Adres") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto"> {{ person.ikametgah_adresi.adres+"\n"+
+                                        person.ikametgah_adresi.ilce+" / "+ person.ikametgah_adresi.il }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Adres2") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto"> {{ person.ikincil_adres.adres+"\n"+
+                                        person.ikincil_adres.ilce+" / "+person.ikincil_adres.il }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="default-tab-2" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Üniversite") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto">
+                                {{ personel.birimi.uzun_ad }}
+                        </span>
+
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Fakülte") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto">
+                               {{ personel.birimi.uzun_ad }}
+                             </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Bölüm") }}</label>
+                            <span class="form-control" style="height:100%;display:block;overflow:auto">
+                               {{ personel.birimi.uzun_ad }}
+                         </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="default-tab-3" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Banka Adı") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].banka_adi }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Şube Adı") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].sube_adi }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("IBAN No") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].iban_no }}
+                    </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 form-group">
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Hesap No") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].hesap_no }}
+                    </span>
+                        </div>
+                        <div class="mt-2">
+                            <label class="col-form-label">{{ _("Şube Kodu") }}</label>
+                            <span class="form-control">
+                        {{ odeme_bilgileri[0].sube_kod }}
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

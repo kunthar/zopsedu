@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% from 'macros/content_element.html' import menu, navbar %}
+
+{% block extra_css %}
+    {% block extra_alt_css %}
+    {% endblock %}
+{% endblock %}
+{% block extra_scripts %}
+    {% block extra_alt_scripts %}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <body class="vertical-layout vertical-menu content-detached-right-sidebar fixed-navbar menu-expanded" data-open="click"
+      data-menu="vertical-menu" data-col="content-detached-right-sidebar">
+
+        {{ navbar() }}
+        {{ menu(current_menu) }}
+
+
+    <div class="app-content content">
+    <div class="content-wrapper">
+                {% block context %}
+                {% endblock %}
+    </div>
+    </div>
+
+    <footer class="footer footer-static footer-light navbar-border">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span
+                class="float-md-left d-block d-md-inline-block">&copy<a
+                class="text-bold-800 grey darken-2"
+                href="http://www.zopsedu.com/" target="_blank">  Zetaops  </a> Tüm hakları saklıdır.</span>
+
+        </p>
+    </footer>
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+{% macro pdf_download_button(selectorToExport, endpoint=url_for('ExportView:export_pdf'), as_attachment=True) %}
+    {% set form_uuid = uuid() %}
+    <button class="btn btn-info btn-block" onclick="exportPdf_{{ form_uuid }}();">
+        <i class="fa fa-file-pdf-o"></i>
+        {{ _("PDF olarak indir") }}</button>
+    <form {% if not as_attachment %}target="_blank" {% endif %}style="display: none" action="{{ endpoint }}"
+          method="post" id="exportPdf_form_{{ form_uuid }}">
+        <input type="hidden" id="exportPdf_form_template_input_{{ form_uuid }}" name="template">
+        <input type="hidden" id="csrf_token_{{ form_uuid }}" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% if not as_attachment %}
+            <input id="attachment_{{ form_uuid }}" name="attachment" type="hidden" value="false"/>{% endif %}
+    </form>
+    <script>
+        function exportPdf_{{ form_uuid }}() {
+            let template = $("{{ selectorToExport }}").html();
+            $("#exportPdf_form_template_input_{{ form_uuid }}").val(template);
+            $("#exportPdf_form_{{ form_uuid }}").submit();
+        }
+    </script>
+{% endmacro %}

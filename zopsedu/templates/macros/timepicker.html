@@ -1,0 +1,29 @@
+{% macro timepicker(field, disable_older_dates=True, disable_further_dates=False) %}
+    {% set id = uuid() %}
+    <div class="input-group">
+        <input type="text" class="form-control singledate" placeholder="{{ field.placeholder }}" id="{{ id }}"
+               name="{{ field.name }}" value="{{ field.data }}">
+        <label for="{{ id }}"></label>
+        <div class="input-group-append">
+            <span class="input-group-text">
+                <span class="fa fa-calendar"></span>
+            </span>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function () {
+        $("#{{ id }}").bootstrapMaterialDatePicker({
+            lang: 'tr',
+            todayHighlight: true,
+            weekStart: 1,
+            autoclose: true,
+            date: false,
+            cancelText: "Kapat",
+            okText: "Seç",
+            clearText: "Temizle",
+            nowText: "Şimdi"
+        });
+    });
+    </script>
+{% endmacro %}

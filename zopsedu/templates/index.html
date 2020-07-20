@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+    <title id="page-title">ZOPSEDU</title>
+
+    <!-- ========================= FAV ICONS ======================================== -->
+
+    <link rel="apple-touch-icon" sizes="57x57"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="{{ url_for('static', filename = 'assets/img/fav/apple-icon-180x180.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="{{ url_for('static', filename = 'assets/img/fav/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="{{ url_for('static', filename = 'assets/img/fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="{{ url_for('static', filename = 'assets/img/fav/favicon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="{{ url_for('static', filename = 'assets/img/fav/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename = 'assets/img/fav/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage"
+          content="{{ url_for('static', filename = 'assets/img/fav/ms-icon-144x144.png') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- ================== BEGIN BASE CSS STYLE ================== -->
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/css/bootstrap-extended.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/css/colors.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/css/components.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/css/core/menu/menu-types/vertical-menu.min.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/css/core/colors/palette-tooltip.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/vendors/css/tables/datatable/datatables.min.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/fonts/feather/style.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/fonts/font-awesome/css/font-awesome.min.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/vendors/css/extensions/pace.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/vendors/css/editors/summernote.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/select2/css/select2.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/css/abc-checkbox/abc-checkbox.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/material-datepicker/css/bootstrap-material-datetimepicker.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/css/blueimp-gallery.min.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/css/jquery.fileupload.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/css/jquery.fileupload-ui.css' ) }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/gritter/css/jquery.gritter.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/vendors/css/editors/theme/monokai.css') }}?version={{ get_app_version() }}"
+          rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/plugins/jquery-steps/css/wizard.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/vendors/css/editors/codemirror.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/fonts/icon8/css/styles.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/fonts/icon8/css/styles.min.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/css/parsley/parsley.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/css/zopsedu-sablon.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename = 'assets/zopsedu/css/zopsedu.css') }}?version={{ get_app_version() }}" rel="stylesheet"/>
+
+
+    <script src="{{ url_for('static', filename = 'assets/js/core/libraries/jquery.min.js') }}?version={{ get_app_version() }}"></script>
+
+    <script src="{{ url_for('static', filename = 'assets/vendors/js/ui/popper.min.js') }}?version={{ get_app_version() }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/plugins/jquery-steps/js/jquery.steps.min.js') }}?version={{ get_app_version() }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/zopsedu/js/form-wizard/form-wizard.js') }}?version={{ get_app_version() }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendors/js/tables/datatable/datatables.min.js') }}?version={{ get_app_version() }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendors/js/tables/datatable/dataTables.rowReorder.min.js') }}?version={{ get_app_version() }}"></script>
+    <script src="{{ url_for('static', filename = 'assets/zopsedu/js/dataTables/db-buttons.js') }}?version={{ get_app_version() }}"></script>
+
+    {% block extra_css %}
+    {% endblock %}
+    {% block extra_scripts %}
+    {% endblock %}
+
+</head>
+
+{% block body %}
+{% endblock %}
+<script>
+
+    let csrf_token = "{{ csrf_token() }}";
+
+    $(document).ajaxSend(function (e, xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrf_token);
+        }
+    });
+    $(document).ajaxError(function (e, data) {
+        if (data.status === 401) {
+            swal("{{ _('Uyarı') }}",
+                "{{ _('Oturumunuz zaman aşımına uğramış. Lütfen giriş yapınız.') }}",
+                "warning",
+                {
+                    button: "{{ _('Devam') }}"
+                })
+                .then(() => {
+                    get_login_modal();
+                });
+        }
+        else if (data.status === 400 && (data.responseText.search('CSRF session token is missing') != -1)) {
+            swal("{{ _('Hata') }}",
+                "{{ _('Oturum Hatası. Yeniden giriş yapmanız gerekmektedir. Giriş sayfasına yönlendiriliyorsunuz...') }}",
+                "error",
+                {
+                    button: "{{ _('Tamam') }}",
+                    dangerMode: true,
+                })
+                .then(() => {
+                    window.location.href = "{{ url_for('auth.login') }}";
+                });
+            setTimeout(function () {
+                window.location.href = "{{ url_for('auth.login') }}";
+            }, 5000);
+        }
+    });
+
+    $(document).ready(function () {
+
+        $('.money').mask("#.##0,00", {reverse: true});
+        $('.percent').mask('000,00', {reverse: true});
+        $('.iban-mask').mask('SS0000000000000000000000',
+            {"clearIfNotMatch": true}
+        );
+        $('.vergi-kimlik-no-mask').mask('0000000000',
+            {"clearIfNotMatch": true}
+        );
+        moment.locale('tr');
+    });
+</script>
+
+</body>
+
+<!-- ================= BEGIN BASE JS ====================== -->
+
+
+<script src="{{ url_for('static', filename = 'assets/js/core/libraries/bootstrap.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/editors/summernote/summernote.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/select2/js/select2.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/extensions/pace.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/ui/unison.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/ui/perfect-scrollbar.jquery.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/ui/jquery-sliding-menu.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/ui/headroom.min.js') }}?version={{ get_app_version() }}"></script>
+
+
+<script src="{{ url_for('static', filename = 'assets/plugins/js-cookie/js.cookie.js') }}?version={{ get_app_version() }}"></script>
+
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/datatable/dataTables.buttons.min.js')}}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/buttons.flash.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/jszip.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/pdfmake.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/vfs_fonts.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/buttons.html5.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/buttons.print.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/tables/buttons.colVis.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/editors/codemirror/lib/codemirror.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/js/core/libraries/jquery_ui/jquery-ui.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/editors/codemirror/mode/jinja2/jinja2.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/sweet-alert/js/sweetAlert.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/moment/moment.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/material-datepicker/js/bootstrap-material-datetimepicker.js') }}?version={{ get_app_version() }}"></script>
+
+<script src="{{ url_for('static', filename = 'assets/zopsedu/js/chart-js/Chart.bundle.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/vendor/jquery.ui.widget.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/vendor/tmpl.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/vendor/load-image.all.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/vendor/canvas-to-blob.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.iframe-transport.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/vendor/jquery.blueimp-gallery.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-process.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-image.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-audio.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-video.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-validate.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/jquery-file-upload/jquery.fileupload-ui.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/plugins/gritter/js/jquery.gritter.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/zopsedu/js/summernote/summernote-init.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/zopsedu/js/jquery-mask/jquery.mask.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/zopsedu/js/jquery-file-upload/jquery-file-upload-init.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/zopsedu/js/jquery-file-upload/notification.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/vendors/js/vendors.min.js') }}?version={{ get_app_version() }}"></script>
+
+
+<script src="{{ url_for('static', filename = 'assets/js/core/app-menu.min.js') }}?version={{ get_app_version() }}"></script>
+<script src="{{ url_for('static', filename = 'assets/js/core/app.min.js') }}?version={{ get_app_version() }}"></script>
+
+<!-- help zetaops io integration-->
+<script src="https://help.zetaops.io/assets/chat/chat.min.js"></script>
+<script>
+    $(function () {
+        new ZammadChat({
+            title: '<strong>Bize Ulaşın</strong>',
+            background: '#0a4c64',
+            fontSize: '12px',
+            chatId: 1
+        });
+    });
+</script>
+
+</html>

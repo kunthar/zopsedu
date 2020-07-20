@@ -1,0 +1,14 @@
+{
+  "cikti": [
+    {
+      "created_at": "2018-12-28 07:07:31",
+      "updated_at": "2018-12-28 07:07:31",
+      "id": 1,
+      "proje_turu_id": 1,
+      "adi": "",
+      "gorunurluk": "Sadece Y\u00f6netici",
+      "belge_ciktisi_alinacak_mi": false,
+      "sablon_id": 12
+    }
+  ]
+}

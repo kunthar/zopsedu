@@ -1,0 +1,145 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+
+
+{% macro is_data_exist(data) %}
+    {% if data %}
+        {{ data }}
+    {% else %}
+        -
+    {% endif %}
+{% endmacro %}
+
+{% macro print_column_data(data, header) %}
+    <div class="col-md-12">
+        <h5 class="text-green f-s-15">{{ header }}</h5>
+        <p> {{ is_data_exist(data) }} </p>
+    </div>
+{% endmacro %}
+
+
+
+{% macro print_form_information(information_list) %}
+    <div class="alert alert-info fadeIn">
+        <span class="close" data-dismiss="alert">×</span>
+        <div class="row">
+            <i class="fa fa-info-circle fa-2x pull-left m-l-10 m-r-10"></i>
+            <ul class="fa-ul m-l-20">
+                {% for descs in information_list %}
+                    <li>
+                        <span class="fa-li"><i class="fa fa-check-square"></i></span>
+                        {{ descs | safe }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro proje_bilgileri(form,proje_numarasi,proje_adi,durum) %}
+    <section id="satinalma_bilgileri-modal-card">
+        <div class="card border-left-warning border-left-2">
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Proje Numarası : ') }}</b></p>
+                        <p class="card-text">{{ proje_numarasi }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Proje Adı : ') }}</b></p>
+                        <p class="card-text">{{ proje_adi }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Güncellenecek Proje Durumu / Kodu') }}</b></p>
+                        <p class="card-text">{{ durum.aciklama }}  / {{ durum.kodu }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        {{ error(form.islem_tarihi) }}
+                        {{ form.islem_tarihi.label }}
+                        {{ form.islem_tarihi }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro satinalma_bilgileri(form,proje_numarasi,proje_adi,durum) %}
+    <section id="satinalma_bilgileri-modal-card">
+        <div class="card border-left-warning border-left-2">
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Proje Adı') }}</b></p>
+                        <p class="card-text">{{ proje_adi }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Proje Numarası') }}</b></p>
+                        <p class="card-text">{{ proje_numarasi }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        <p class="card-text"><b>{{ _('Güncellenecek Satınalma Durumu / Kodu') }}</b></p>
+                        <p class="card-text">{{ durum.aciklama }}  / {{ durum.kodu }}</p>
+                    </div>
+                    <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                        {{ error(form.islem_tarihi) }}
+                        {{ form.islem_tarihi.label }}
+                        {{ form.islem_tarihi }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+
+{% macro genel_islemler(form, uyari_mesajlari) %}
+    <div class="card border-left-danger border-left-2">
+        <div class="card-content collapse show">
+            <div class="card-body">
+                {% if uyari_mesajlari %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ render_alert_list(uyari_mesajlari) }}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ error(form.bap_admin_log) }}
+                        {{ form.bap_admin_log.label }}
+                        {{ form.bap_admin_log }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ error(form.yurutucu_log) }}
+                        {{ form.yurutucu_log.label }}
+                        {{ form.yurutucu_log }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro email_checker(form) %}
+    <div class="card border-left-info border-left-2">
+        <div class="card-content collapse show">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ render_checkbox(form.email) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+

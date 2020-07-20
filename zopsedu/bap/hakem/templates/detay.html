@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Hakem Detay") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('hakem.HakemView:hakem_listele') }}">
+                    <button class="btn btn-success">
+                        {{ _("Hakem Arama Sayfasina Git") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <section id="page-tabs" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link active show" id="active-tab" data-toggle="tab" href="#hakem-bilgileri"
+                               aria-controls="active"
+                               aria-expanded="true">{{ _("Hakem Bilgileri") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="link-tab" data-toggle="tab"
+                               href="#gonderilen-projeler"
+                               aria-controls="link"
+                               aria-expanded="false">{{ _("Gönderilen Projeler") }}</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="page-tab-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active show" id="hakem-bilgileri"
+                             aria-labelledby="base-hakem-bilgileri">
+                            <div class="form-body">
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Ünvan") }}</label>
+                                    <div class="col-md-6">
+                                     <span class="form-control m-b-5" }>
+                                         {{ hakem.hitap_unvan.ad }}
+                                    </span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Ad Soyad") }}</label>
+                                    <div class="col-md-6">
+                                    <span class="form-control m-b-5">
+                                    {% if hakem.person %}
+                                        <dd>
+                                            {{ hakem.person.ad }}
+                                            {{ hakem.person.soyad }}
+                                        </dd>
+                                    {% else %}
+                                        {{ hakem.personel.person.ad }}
+                                        {{ hakem.personel.person.soyad }}
+                                    {% endif %}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Hakem Turu") }}</label>
+                                    <div class="col-md-6">
+                                    <span class="form-control m-b-5">
+                                        {{ hakem.hakem_turu.value }}
+                                    </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Kurum / Üniversite") }}</label>
+                                    <div class="col-md-6">
+                                    <span class="form-control m-b-5">
+                                        {{ hakem.universite.ad or hakem.kurum}}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Fakülte / Daire") }}</label>
+                                    <div class="col-md-6">
+                                     <span class="form-control m-b-5">
+                                         {{ hakem.fakulte.ad or hakem.daire}}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Birim / Bölüm") }}</label>
+                                    <div class="col-md-6">
+                                   <span class="form-control m-b-5">
+                                       {{ hakem.bolum.ad or hakem.birim }}
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="gonderilen-projeler"
+                             aria-labelledby="base-gonderilen-projeler">
+                            <div class="card-content collapse show">
+                                <div class="card-body card-dashboard">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="data-table"
+                                                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                                                   role="grid" style="width: 100%">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th style="width: 40%">{{ _("Proje Numarası") }}</th>
+                                                    <th style="width: 40%;">{{ _("Proje") }}</th>
+                                                    <th class="all" style="width: 20%;">{{ _("Davet Durumu") }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for hakem_proje in hakem_projeleri %}
+                                                    <tr class="gradeA odd" role="row">
+                                                        <td>
+                                                            {{ hakem_proje.proje_no }}
+                                                        </td>
+                                                        <td>
+                                                            {{ hakem_proje.proje_basligi }}
+                                                        </td>
+                                                        <td>
+                                                            {{ hakem_proje[0].davet_durumu.value }}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search() }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}

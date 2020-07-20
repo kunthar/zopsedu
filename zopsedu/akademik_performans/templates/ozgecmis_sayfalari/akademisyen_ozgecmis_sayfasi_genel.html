@@ -1,0 +1,76 @@
+{% macro menu_item(url, aciklama, aktif_tab_index, tab_index, item_id="tab-bilgisi") %}
+    <li class="nav-item">
+        <a class="nav-link nav-link-fixed-size {{ "active" if aktif_tab_index == tab_index  else "" }}"
+           id="{{ item_id }}"
+           href="{{ url }}"
+           aria-expanded="false">{{ aciklama }}</a>
+    </li>
+{% endmacro %}
+
+{# aktif tab index nav tab a hangi itemin aktif olacagini belirler#}
+{% macro ozgecmis_sayfasi_genel(panel_header,
+                               panel_data_macro,
+                               ad_soyad,
+                               avatar,
+                               birim,
+                               email_prefix,
+                               aktif_tab_index=1) %}
+
+    <section class="card">
+        <div class="card profile-with-cover">
+            <div class="media profil-cover-details w-100">
+                <div class="media-right pl-2 pt-2">
+                    <a href="#" class="profile-image">
+                        <img src="{{ avatar | default(url_for('static', filename = 'assets/img/user-13.jpg'), true) }}"
+                             class="img-border height-100" alt="Card image">
+                    </a>
+                </div>
+                <div class="media-body pt-3 px-2">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="card-title">{{ ad_soyad }}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="card-title">{{ birim }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="arastirmaci-ozgecmis-bilgileri-genel">
+        <div class="card border-left-danger border-left-2">
+            <div class="card-header">
+                <h3 class="text-center">{{ panel_header }}</h3>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <div class="nav-vertical">
+                        <ul class="nav nav-tabs nav-left nav-border-left">
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_kimlik_iletisim", email=email_prefix), _("Kimlik & İletişim Bilgileri"), aktif_tab_index, 1) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_egitim_bilgileri", email=email_prefix), _("Eğitim Bilgileri"), aktif_tab_index, 2) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_mesleki_deneyim", email=email_prefix), _("Mesleki Deneyim"), aktif_tab_index, 3) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_yayin_bildiri_makele", email=email_prefix), _("Makale, Bildiri & Kitap"), aktif_tab_index, 4) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_proje_patent", email=email_prefix), _("Proje ve Patent"), aktif_tab_index, 5) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_bilimsel_faaliyetler", email=email_prefix), _("Bilimsel Faaliyetler"), aktif_tab_index, 6) }}
+                            {{ menu_item(url_for("akademik_performans.YoksisView:get_basari_taninirlik", email=email_prefix), _("Başarı & Tanınırlık"), aktif_tab_index, 7) }}
+                        </ul>
+                        <div class="tab-content px-1">
+                            <div role="tabpanel" class="tab-pane active show" id="tab-bilgisi"
+                                 aria-expanded="true" aria-labelledby="baseVerticalLeft1-tab1">
+                                    {{ panel_data_macro }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_menu() %}
+{% endmacro %}
+

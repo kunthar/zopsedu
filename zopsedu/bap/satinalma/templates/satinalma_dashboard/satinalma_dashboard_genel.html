@@ -1,0 +1,256 @@
+{# satinalma dashboard ile alakalı olan sayfaları render etmek icin burada olusturulan macro kullanılacaktır #}
+
+{% macro dashboard_menu_item(url, satinalma_id,aciklama, badges) %}
+    <a href="{{ url }}">
+        <li class="list-group-item">
+
+            <span class="badge badge-warning badge-pill float-right">{{ badges }}</span>
+            {{ aciklama }}
+        </li>
+    </a>
+{% endmacro %}
+
+{% macro satinalma_dashboard_genel(panel_header,
+                               panel_data_macro,
+                               satinalma,
+                               proje,
+                               satinalma_id,
+                               states_info,
+                               actions_info) %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">{{ panel_header }}</h3>
+            <div class="row breadcrumbs-top d-inline-block">
+                <div class="breadcrumb-wrapper col-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            {{ proje.proje_yurutucu.personel.person.ad }}
+                            {{ _(' ') }}
+                            {{ proje.proje_yurutucu.personel.person.soyad }}
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <a href="{{ url_for('proje.proje_dashboard', proje_id=proje.id) }}">
+                                {{ proje.proje_no }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <form>
+                <input type="hidden" id="action_code" value=""/>
+                <div class="btn-group float-md-right">
+                    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><i class="ft-settings"></i>
+                        {{ _("İşlemler") }}
+                    </button>
+                    <div class="dropdown-menu arrow">
+                        <h6 class="dropdown-header"><b>{{ _('Satınalma Durum Değişimleri') }}</b></h6>
+                        {% if states_info | length == 0 %}
+                            <h8 class="dropdown-header">{{ _('Uygun durum bulunmamaktadır') }}</h8>
+                        {% endif %}
+                        {% for state in states_info %}
+                            <button id="{{ state.state_code }}"
+                                    class="dropdown-item" type="button"
+                                    style=" cursor:pointer;"
+                                    onclick="satinalma_islemleri_get(id);">
+                                {{ state.state_code + " - " + state.description }}
+                            </button>
+                        {% endfor %}
+                        <h6 class="dropdown-header"><b>{{ _('Satınalma İşlemleri') }}</b></h6>
+                        {% if actions_info | length == 0 %}
+                            <h8 class="dropdown-header">{{ _('Uygun işlem bulunmamaktadır') }}</h8>
+                        {% endif %}
+                        {% for action in actions_info %}
+                            <button id="{{ action.action_code }}"
+                                    class="dropdown-item" type="button"
+                                    style=" cursor:pointer;"
+                                    onclick="satinalma_islemleri_get(id);">
+                                {{ action.action_code + " - " + action.description }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="modal fade text-left show" id="durum-degistir-modal" role="dialog">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">{{ _('Satınalma Durum Değişimleri ve İşlemler') }}</h4>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">
+                                    ×
+                                </button>
+                            </div>
+                            <div class="modal-body" id="durum_degisim_modal_body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn grey btn-outline-warning"
+                                        data-dismiss="modal">{{ _("Kapat") }}
+                                </button>
+                                <button type="button" class="btn btn-outline-success"
+                                        onclick="satinalma_islemleri_post();">
+                                    {{ _('Kaydet') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $(document).ready(function () {
+                        modalSelector = {
+                            'modal_body': $('#durum_degisim_modal_body'),
+                            'action_code': $('#action_code'),
+                        };
+
+                        function reset_modal() {
+                            modalSelector.modal_body.empty();
+                            modalSelector.action_code.val("");
+                        }
+
+                        satinalma_islemleri_get = function (btn_id) {
+                            $.ajax({
+                                url: "{{ url_for('satinalma.satinalma_durum_degistir', satinalma_id=satinalma_id ) }}",
+                                type: "POST",
+                                contentType: "application/json",
+                                dataType: "json",
+                                data: JSON.stringify({"action_code": btn_id}),
+                                success: function (response) {
+                                    reset_modal();
+                                    modalSelector.modal_body.append(response.template);
+                                    $('#durum-degistir-modal').modal('show');
+                                    modalSelector.action_code.val(btn_id);
+                                },
+                                error: function (err) {
+                                    $('#durum-degistir-modal').modal('hide');
+                                    swal({
+                                        title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                        icon: "error",
+                                        timer: 4000,
+                                        buttons: false
+                                    });
+                                }
+                            });
+                        };
+                        satinalma_islemleri_post = function () {
+                            swal({
+                                text: "{{ _("Değişiklikleri kaydetmek istedeğinize emin misiniz? ") }}",
+                                icon: "warning",
+                                buttons: {
+                                    cancel: {
+                                        text: "{{ _("Vazgeç") }}",
+                                        value: false,
+                                        visible: !0,
+                                        closeModal: !0
+                                    },
+                                    confirm: {
+                                        text: "{{ _("Kaydet") }}",
+                                        value: true,
+                                        visible: !0,
+                                        closeModal: false
+                                    }
+                                }
+                            }).then(function (willChange) {
+                                if (willChange) {
+                                    $.ajax({
+                                        url: "{{ url_for('satinalma.satinalma_durum_kaydet', satinalma_id=satinalma_id ) }}",
+                                        type: "POST",
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        data: JSON.stringify({
+                                            'form': $('#satinalma_durum_degistir').serializeArray(),
+                                            'action_code': modalSelector.action_code.val()
+                                        }),
+                                        success: function () {
+                                            $('#durum-degistir-modal').modal('hide');
+                                            swal({
+                                                title: "{{ _("İşleminiz başarıyla gerçekleştirildi..!") }}",
+                                                icon: "success",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                            window.location = "{{ url_for('satinalma.satinalma_dashboard', satinalma_id=satinalma_id) }}"
+                                        },
+                                        error: function (err) {
+                                            if (err.responseJSON.template) {
+                                                let errorMessage;
+                                                errorMessage = err.responseJSON.hata_mesaji;
+                                                swal({
+                                                    title: errorMessage || "{{ _("Lütfen doldurulması gereken alanları boş bırakmayınız.!") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                                reset_modal();
+                                                modalSelector.modal_body.append(err.responseJSON.template);
+                                                modalSelector.action_code.val(err.responseJSON.action_code);
+                                            }
+                                            else {
+                                                swal({
+                                                    title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            }
+                                        }
+
+                                    });
+                                }
+                                else {
+                                    swal("{{ _("Satınalma bilgilerini kaydetmekten vazgeçtiniz.!") }}",{
+                                        icon: "warning",
+                                        timer: 4000,
+                                        button:false
+                                        }
+                                    );
+                                }
+
+                            });
+                        }
+                    });
+                </script>
+                <script>
+                    $(document).ready(function () {
+                        $('#durum-degistir-modal').on('shown.bs.modal', function (e) {
+                            let tables = $.fn.dataTable.tables({visible: true, api: true});
+                            tables.columns.adjust();
+                        });
+                    });
+                </script>
+            </form>
+        </div>
+    </div>
+    <div class="content-detached content-left">
+        <div class="content-body">
+            {{ panel_data_macro }}
+        </div>
+    </div>
+    <div class="sidebar-detached sidebar-right">
+        <div class="sidebar">
+            <div class="sidebar-content card d-none d-lg-block">
+                <div class="card-body">
+                    <ul class="list-group">
+                        {{ dashboard_menu_item(url_for("satinalma.satinalma_dashboard", satinalma_id=satinalma_id),
+             aciklama=_("Satınalma Özeti") ) }}
+
+                        {{ dashboard_menu_item(url_for("satinalma.satinalma_urunler_listele", satinalma_id=satinalma_id),
+            aciklama=_("Ürünler") ) }}
+                        {{ dashboard_menu_item(url_for("satinalma.SatinalmaFirmalar:satinalma_firma_teklifleri_listele", satinalma_id=satinalma_id),
+            aciklama=_("Firmalar") ) }}
+                        {{ dashboard_menu_item(url_for("satinalma.satinalma_belgeler", satinalma_id=satinalma_id),
+            aciklama=_("Belgeler") ) }}
+                        {{ dashboard_menu_item(url_for("satinalma.satinalma_islem_gecmisi_listele", satinalma_id=satinalma_id),
+            aciklama=_("Yapılan İşlemler") ) }}
+                        {{ dashboard_menu_item(url_for("satinalma.SatinalmaMuhasebeFisleri:muhasebe_fisleri", satinalma_id=satinalma_id),
+            aciklama=_("Muhasebe Fişleri") ) }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}

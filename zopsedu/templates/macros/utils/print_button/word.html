@@ -1,0 +1,17 @@
+{% macro word_download_button(selectorToExport, endpoint=url_for('ExportView:export_word')) %}
+    {% set form_uuid = uuid() %}
+    <button class="btn btn-info btn-block" onclick="exportWord_{{ form_uuid }}();">
+        <i class="fa fa-file-word-o"></i>
+        {{ _("WORD olarak indir") }}</button>
+    <form style="display: none" action="{{ endpoint }}" method="post" id="exportWord_form_{{ form_uuid }}">
+        <input type="hidden" id="exportWord_form_template_input_{{ form_uuid }}" name="template">
+        <input type="hidden" id="csrf_token_{{ form_uuid }}" name="csrf_token" value="{{ csrf_token() }}"/>
+    </form>
+    <script>
+        function exportWord_{{ form_uuid }}() {
+            let template = $("{{ selectorToExport }}").html();
+            $("#exportWord_form_template_input_{{ form_uuid }}").val(template);
+            $("#exportWord_form_{{ form_uuid }}").submit();
+        }
+    </script>
+{% endmacro %}

@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from 'macros/durum_degisim.html' import proje_state, print_column_data, is_data_exist, boolean_to_text, gorevli_ad_soyad %}
+{% from "sablon_preview_modal.html" import render_sablon_with_values_modal %}
+
+{% set states_info = next_states_info %}
+{% set actions_info = actions_info %}
+
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{% set atanmis_hakem_mi = fullfills(atanmis_hakem) %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% macro render_proje_turu_sablonlari(proje_turu_sablonlari) %}
+
+    <section id="sablon-ekdosyalar-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <table id="data-table-1"
+                       class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ _("Şablon Tipi") }}
+                        </th>
+                        <th>{{ _("Şablon İsmi") }}
+                        </th>
+                        <th class="all">{{ _("Önizle") }}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sablon in proje_turu_sablonlari %}
+                        {% if sablon.sablon_tipi.id not in [8, 9, 5] %}
+                        <tr class="odd" role="row">
+                            <td class="sorting_1">{{ sablon.sablon_tipi.adi }}</td>
+                            <td>
+                                {{ sablon.adi }}
+                            </td>
+                            <td>
+                                {% if  sablon.ebys_icin_kullanilabilir_mi %}
+                                    <a href="#render-sablon-modal"
+                                       onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', sablon_id=sablon.id, proje_id=proje.id) }}',{{ sablon.sablon_tipi_id }},{{ proje.id }});">
+                                        <button type="button" class="btn btn-info">{{ _("Önizle") }}</button>
+                                    </a>
+                                {% else %}
+                                    <a href="#render-sablon-modal"
+                                       onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', sablon_id=sablon.id, proje_id=proje.id) }}');">
+                                        <button type="button" class="btn btn-info">{{ _("Önizle") }}</button>
+                                    </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                         {% endif %}
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endmacro %}
+
+{% macro proje_turu_ciktilar_datatable(proje_turu_ciktilari) %}
+
+    <section id="proje-turu-ciktilar-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <table id="data-table-2"
+                       class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ _("Çıktı Adı") }}</th>
+                        <th>{{ _("Belgenin Çıktısı Alınacak mı") }}</th>
+                        <th>{{ _("Şablon Belge") }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cikti in proje_turu_ciktilari %}
+                        {% if cikti.yurutucu_gorebilir_mi or yetkili_mi %}
+                            <tr class="odd" role="row">
+                                <td>{{ cikti.adi }}</td>
+                                <td>{{ _("Evet") if cikti.belgenin_ciktisi_alinacak_mi else _("Hayır") }}</td>
+                                <td>
+                                    {#                            todo: sablon indirme view acilacak   #}
+                                    <a href="#render-sablon-modal"
+                                       onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', sablon_id=cikti.sablon_id, proje_id=proje.id) }}');">
+                                        {{ cikti.sablon_adi }}
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endmacro %}
+
+{% macro proje_turu_ek_dosyalar_datatable(proje_ek_dosyalar) %}
+    <section id="ekdosyalar-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <table id="data-table-3"
+                       class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+
+                    <tr role="row">
+                        <th>{{ _("Proje Belgesi") }}</th>
+                        <th>{{ _("Örnek Dosya") }}</th>
+                        <th>{{ _("Proje İçerik Dosyası mı?") }}</th>
+                        <th>{{ _("Belgenin Çıktısı Alınacak mı?") }}</th>
+                        <th>{{ _("Zorunlu mu?") }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ek_dosya in proje_ek_dosyalar %}
+                        <tr class="odd" role="row">
+                            <td>
+                                {#                            todo: sablon indirme view acilacak   #}
+                                <a href="{{ url_for('FileView:file_download', file_id=ek_dosya.proje_belge_file_id) }}">
+                                    {{ ek_dosya.proje_belge_aciklama }}
+                                </a>
+                            </td>
+                            <td>
+                                {#                            todo: sablon indirme view acilacak   #}
+                                <a href="{{ url_for('FileView:file_download', file_id=ek_dosya.ornek_file_id) }}">
+                                    {{ ek_dosya.ornek_file_ad }}
+                                </a>
+                            </td>
+                            <td>{{ _("Evet") if ek_dosya.proje_icerik_dosyasi_mi else _("Hayır") }}</td>
+                            <td>{{ _("Evet") if ek_dosya.belgenin_ciktisi_alinacak_mi else _("Hayır") }}</td>
+                            <td>{{ _("Evet") if ek_dosya.zorunlu_mu else _("Hayır") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endmacro %}
+
+{% macro render_proje_diger_dosyalar(proje_diger_dosya) %}
+
+    <section id="diger-dosyalar-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <table id="data-table-4"
+                       class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ _("Açıklama") }}</th>
+                        <th>{{ _("Dosya") }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dosya in proje_diger_dosya %}
+                        <tr class="odd" role="row">
+                            <td>{{ dosya.aciklama }}</td>
+                            <td>
+                                {#                            todo: sablon indirme view acilacak   #}
+                                <a href="{{ url_for('FileView:file_download', file_id=dosya.file_id) }}">
+                                    {{ dosya.adi }}
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro proje_sablon_ve_ekler() %}
+    <section id="page-tabs" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    {% if proje_turu_sablonlari %}
+                        <li class="nav-item"><a href="#proje-turu-sablonlari"
+                                                data-toggle="tab"
+                                                class="nav-link active">{{ _("Proje Türü Şablonları") }}</a>
+                        </li>
+                    {% endif %}
+                    {% if ciktilar %}
+                        <li class="nav-item"><a href="#proje-ciktilar"
+                                                data-toggle="tab"
+                                                class="nav-link">{{ _("Çıktılar") }}</a>
+                        </li>
+                    {% endif %}
+                    {% if proje_ek_dosyalar %}
+                        <li class="nav-item"><a href="#proje-ek-dosyalar"
+                                                data-toggle="tab"
+                                                class="nav-link">{{ _("Ek Dosyalar") }}</a>
+                        </li>
+                    {% endif %}
+                    {% if proje_diger_dosyalar %}
+                        <li class="nav-item"><a href="#proje-diger-dosyalar"
+                                                data-toggle="tab"
+                                                class="nav-link"
+                                                role="tab">{{ _("Diğer Dosyalar") }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="page-tab-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="tab-content px-1">
+                    {% if proje_turu_sablonlari %}
+                        <div class="tab-pane fade active show"
+                             id="proje-turu-sablonlari">
+                            {{ render_proje_turu_sablonlari(proje_turu_sablonlari) }}
+                        </div>
+                    {% endif %}
+                    {% if ciktilar %}
+                        <div class="tab-pane"
+                             id="proje-ciktilar">
+                            {{ proje_turu_ciktilar_datatable(ciktilar) }}
+                        </div>
+                    {% endif %}
+                    {% if proje_ek_dosyalar %}
+                        <div class="tab-pane"
+                             id="proje-ek-dosyalar">
+                            {{ proje_turu_ek_dosyalar_datatable(proje_ek_dosyalar) }}
+                        </div>
+                    {% endif %}
+                    {% if proje_diger_dosyalar %}
+                        <div class="tab-pane"
+                             id="proje-diger-dosyalar">
+                            {{ render_proje_diger_dosyalar(proje_diger_dosyalar) }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ render_sablon_with_values_modal() }}
+
+    <script>
+        $(document).ready(function () {
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                $($.fn.dataTable.tables(true)).DataTable()
+                    .columns.adjust();
+            });
+        });
+    </script>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-1") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-2") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-3") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-4") }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endmacro %}
+
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Şablon/Ek Dosyalar"),
+           proje_sablon_ve_ekler(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu,
+           atanmis_hakem_mi=atanmis_hakem_mi) }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% from 'macros/durum_degisim.html' import proje_bilgileri,genel_islemler,email_checker %}
+
+<form id="proje_durum_degistir">
+    {{ form.csrf_token }}
+    <div>
+        {{ proje_bilgileri(
+        form,proje_numarasi,proje_adi,app_state_description) }}
+    </div>
+    {{ genel_islemler(form) }}
+    {{ email_checker(form) }}
+</form>

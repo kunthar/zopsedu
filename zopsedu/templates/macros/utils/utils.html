@@ -1,0 +1,48 @@
+{% macro pie_chart(chart_id, data, title=None) %}
+    <script>
+        $(document).ready(function () {
+            let {{ chart_id }}data = {
+                labels: [
+                    {% for key, value in data.items() %}
+                        "{{ key }}",
+                    {% endfor %}
+                ],
+                datasets: [{
+                    backgroundColor: [
+                        "#4D4D4D",
+                        "#5DA5DA",
+                        "#FAA43A",
+                        "#60BD68",
+                        "#F17CB0",
+                        "#B2912F",
+                        "#B276B2",
+                        "#DECF3F",
+                        "#F15854"
+                    ],
+                    data: [{{ data.values() | join(", ") }}]
+                }]
+            };
+            let {{ chart_id }}ctx = $("#{{ chart_id }}").get(0).getContext("2d");
+            new Chart({{ chart_id }}ctx, {
+                type: 'pie',
+                data: {{ chart_id }}data,
+                options: {
+                    maintainAspectRatio: false,
+                    legend: {position: 'bottom'},
+                    title: {
+                        display: true,
+                        {% if title != None %}
+                            text: '{{ title }}'
+                        {% endif %}
+                    }
+                }
+            });
+        });
+    </script>
+{% endmacro %}
+
+
+
+
+
+

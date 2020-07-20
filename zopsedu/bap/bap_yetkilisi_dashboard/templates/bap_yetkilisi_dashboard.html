@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+{% from 'macros/utils/utils.html' import pie_chart %}
+{% block context %}
+    <div class="content-body">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-12">
+                        <a href="{{ url_for("personel_yonetimi.AkademikPersonelView:liste") }}">
+                            <div class="card bg-danger bg-darken-3">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <i class="icons8-batch-assign" style="font-size: 50px; color:white;"></i>
+                                            <div class="media-body text-white text-right">
+                                                <h6 class="text-white">{{ personel_sayi }}</h6>
+                                                <h6 class="text-white">{{ _('Akademik Personel') }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12">
+                        <a href="{{ url_for("proje.ProjeAramaView:proje_listele") }}">
+                            <div class="card bg-info bg-darken-3">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <i class="icons8-add-property" style="font-size: 50px; color:white;"></i>
+                                            <div class="media-body text-white text-right">
+                                                <h6 class="text-white">{{ proje_sayi.values() | sum }}</h6>
+                                                <h6 class="text-white">{{ _('Proje') }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12">
+                        <a href="{{ url_for("hakem.HakemView:hakem_listele") }}">
+                            <div class="card bg-success bg-darken-3">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <i class="icons8-permanent-job" style="font-size: 50px; color:white;"></i>
+                                            <div class="media-body text-white text-right">
+                                                <h6 class="text-white">{{ hakem_sayi.values() | sum }}</h6>
+                                                <h6 class="text-white">{{ _('Hakem') }}</h6>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-12">
+                        <a href="{{ url_for("butce.GenelButceOzetiView:genel_butce_ozeti_listele") }}">
+                            <div class="card bg-warning bg-darken-3">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="media d-flex">
+                                            <i class="icons8-accounting" style="font-size: 50px; color:white;"></i>
+                                            <div class="media-body text-white text-right">
+                                                <h6 class="text-white">{{ butce_toplami | tr_currency }}</h6>
+                                                <h6 class="text-white">{{ _('Bütçe') }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div id="accordionWrap3" role="tablist" aria-multiselectable="true">
+                    <div class="card collapse-icon accordion-icon-rotate">
+                        <div id="heading31" class="card-header collapse-bg-color mt-1">
+                            <a data-toggle="collapse" data-parent="#accordionWrap3" href="#accordion31"
+                               aria-expanded="true"
+                               aria-controls="accordion31"
+                               class="card-title lead white">{{ _('Proje İstatistikleri') }}</a>
+                        </div>
+                        <div id="accordion31" role="tabpanel" aria-labelledby="heading31"
+                             class="card-collapse collapse show"
+                             aria-expanded="true" style="">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col" style="max-height: 100%">
+                                            {% if proje_sayi.values() | sum > 0 %}
+                                                <div>
+                                                    <canvas id="proje_devam_chart" width="100%" height="300px"></canvas>
+                                                </div>
+                                            {% else %}
+                                                <b>{{ _("Proje girdisi bulunmamaktadır.") }}</b>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col" style="max-height: 100%">
+                                            {% if proje_degerlendirmeleri.values() | sum > 0 %}
+                                                <div>
+                                                    <canvas id="proje_degerlendirme_chart" width="100%"
+                                                            height="300px"></canvas>
+                                                </div>
+                                                <div class="legend-con" id="proje_degerlendirme_chart_legend"></div>
+                                            {% else %}
+                                                <b>{{ _("Proje değerlendirme girdisi bulunmamaktadır.") }}</b>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="heading32" class="card-header collapse-bg-color mt-1">
+                            <a data-toggle="collapse" data-parent="#accordionWrap3" href="#accordion32"
+                               aria-expanded="true"
+                               aria-controls="accordion32"
+                               class="card-title lead white collapsed">{{ _('Personel İstatistikleri') }}</a>
+                        </div>
+                        <div id="accordion32" role="tabpanel" aria-labelledby="heading32"
+                             class="card-collapse collapse show"
+                             aria-expanded="true" style="">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col" style="max-height:100%">
+                                            {% if hakem_sayi.values() | sum > 0 %}
+                                                <div>
+                                                    <canvas id="hakem_chart" width="100%" height="300px"></canvas>
+                                                </div>
+                                            {% else %}
+                                                <b>{{ _("Hakem girdisi bulunmamaktadır.") }}</b>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="heading33" class="card-header collapse-bg-color mt-1">
+                            <a data-toggle="collapse" data-parent="#accordionWrap3" href="#accordion33"
+                               aria-expanded="true"
+                               aria-controls="accordion33"
+                               class="card-title lead white collapsed">{{ _('Bütçe İstatistikleri') }}</a>
+                        </div>
+                        <div id="accordion33" role="tabpanel" aria-labelledby="heading33"
+                             class="card-collapse collapse show"
+                             aria-expanded="true">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6" style="max-height:100%">
+                                            {% if butce_kasalari.values() | sum > 0 %}
+                                                <div>
+                                                    <canvas id="butce_chart" width="100%" height="300px"></canvas>
+                                                </div>
+                                            {% else %}
+                                                <b>{{ _("Bütçe girdisi bulunmamaktadır.") }}</b>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6" style="max-height:100%">
+                                            {% if butce_harcamalari.values() | sum > 0 %}
+                                                <div>
+                                                    <canvas id="butce_harcamalari_chart" width="100%"
+                                                            height="300px"></canvas>
+                                                </div>
+                                            {% else %}
+                                                <b>{{ _("Bütçe girdisi bulunmamaktadır.") }}</b>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if hakem_sayi.values() | sum > 0 %}
+            {{ pie_chart("hakem_chart", hakem_sayi) }}
+        {% endif %}
+        {% if proje_sayi.values() | sum > 0 %}
+            {{ pie_chart("proje_devam_chart", proje_sayi, title=_("Projelerin devam durumu")) }}
+        {% endif %}
+        {% if proje_degerlendirmeleri.values() | sum > 0 %}
+            {{ pie_chart("proje_degerlendirme_chart", proje_degerlendirmeleri, title=_("Proje değerlendirmeleri")) }}
+        {% endif %}
+        {% if butce_kasalari.values() | sum > 0 %}
+            {{ pie_chart("butce_chart", butce_kasalari) }}
+        {% endif %}
+        {% if butce_harcamalari.values() | sum > 0 %}
+            {{ pie_chart("butce_harcamalari_chart", butce_harcamalari) }}
+        {% endif %}
+
+    </div>
+
+{% endblock %}

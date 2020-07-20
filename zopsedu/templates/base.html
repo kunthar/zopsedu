@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% from 'macros/content_element.html' import menu, navbar %}
+
+{% block extra_css %}
+    {% block extra_alt_css %}
+    {% endblock %}
+{% endblock %}
+{% block extra_scripts %}
+    {% block extra_alt_scripts %}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+    <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
+
+    {{ navbar() }}
+    {{ menu(current_menu) }}
+
+    <div class="app-content content">
+        <div class="content-wrapper">
+            {% block context %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer class="footer footer-static footer-light navbar-border">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span
+                class="float-md-left d-block d-md-inline-block">&copy<a
+                class="text-bold-800 grey darken-2"
+                href="http://www.zopsedu.com/" target="_blank">  Zetaops  </a> Tüm hakları saklıdır. </span>
+        </p>
+    </footer>
+
+    {#    <!-- BEGIN VENDOR JS-->#}
+    {#    <script src="../../../app-assets/js/core/libraries/jquery.min.js"></script>#}
+    {#    <script src="../../../app-assets/vendors/js/ui/popper.min.js"></script>#}
+    {#    <script src="../../../app-assets/js/core/libraries/bootstrap.min.js"></script>#}
+    {#    <script src="../../../app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js"></script>#}
+    {#    <script src="../../../app-assets/vendors/js/ui/unison.min.js"></script>#}
+    {#    <script src="../../../app-assets/vendors/js/ui/blockUI.min.js"></script>#}
+    {#    <script src="../../../app-assets/vendors/js/ui/jquery-sliding-menu.js"></script>#}
+    {#    <!-- BEGIN VENDOR JS-->#}
+    {#    <!-- BEGIN PAGE VENDOR JS-->#}
+    {#    <script src="../../../app-assets/vendors/js/ui/headroom.min.js"></script>#}
+    {#    <!-- END PAGE VENDOR JS-->#}
+    {#    <!-- BEGIN ROBUST JS-->#}
+    {#    <script src="../../../app-assets/js/core/app-menu.js"></script>#}
+    {#    <script src="../../../app-assets/js/core/app.js"></script>#}
+    {#    <!-- END ROBUST JS-->#}
+    {#    <!-- BEGIN PAGE LEVEL JS-->#}
+    {#    <!-- END PAGE LEVEL JS-->#}
+
+{% endblock %}
+
+
+
+
+
+

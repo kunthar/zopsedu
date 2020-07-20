@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">   {{ bap_duyuru.baslik }} </h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('anasayfa.BapAnasayfaView:bap_satinalma_listele') }}">
+                    <button class="btn btn-success">
+                        {{ _("Satinalma Duyuru Sayfası") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <table class="table table-bordered mb-5">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <strong>{{ _("Başlama Tarihi") }}</strong>
+                            </td>
+                            <td>
+                                {{ date_to_string(bap_duyuru.baslangic_tarihi) if bap_duyuru.baslangic_tarihi else "-" }}
+                            </td>
+                            <td>
+                                <strong>{{ _("Bitis Tarihi") }}</strong>
+                            </td>
+                            <td>
+                                {{ date_to_string(bap_duyuru.bitis_tarihi) if bap_duyuru.bitis_tarihi else "-" }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="col-md-12 text-center">
+                        <strong><h4>{{ _("Duyuru Detay") }}</h4></strong>
+                        <hr>
+                    </div>
+                    <div class="col-md-12" style="height: auto">
+                        {{ bap_duyuru.icerik | safe }}
+                        <div class="d-flex justify-content-end">
+                            <h5 class="mt-5 mr-5">
+                                {{ _("Ekleyen: ") }}
+                                {{ bap_duyuru.ekleyen_ad + " " + bap_duyuru.ekleyen_soyad if bap_duyuru.ekleyen_ad else "-" }}</h5>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

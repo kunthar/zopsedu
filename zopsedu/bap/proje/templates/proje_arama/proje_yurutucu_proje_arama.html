@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% from 'macros/proje_yurutucu_projelerim.html' import proje_table %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">  {{ _("Proje Listesi") }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="page-tabs" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a href="#default-tab-1" data-toggle="tab"
+                               class="nav-link show active"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Tümü') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Tüm Projelerimi Göster") + " ( "+tum_projelerim | length | string + " )" }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-2" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Başvuru/Kabul') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Başvuru/Kabul") + " ( "+basvuru_kabul | length | string + " )" }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-3" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Sürmekte Olan') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Sürmekte Olan") + " ( "+devam_eden | length | string + " )" }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-4" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Sonlandırılmış') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Sonlandırılmış") + " ( "+sonlandirilmis | length | string + " )" }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-5" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Revizyon Bekleyenler') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Revizyon Bekleyen") + " ( " + revizyon_beklenenler | length | string + " )" }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-6" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span class="d-sm-none">{{ _('Sonlandırılmış') }}</span>
+                                <span class="d-sm-block d-none">{{ _("Taslaklar" + " ( "+ taslak_olan_projeler | length | string + " )") }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <div class="tab-content px-1 pt-1">
+                            <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                                {{ proje_table(data=tum_projelerim, data_table="data-table-tum") }}
+                            </div>
+                            <div class="tab-pane" id="default-tab-2" role="tabpanel">
+                                {{ proje_table(data=basvuru_kabul, data_table="data-table-basvuru") }}
+                            </div>
+                            <div class="tab-pane" id="default-tab-3" role="tabpanel">
+                                {{ proje_table(data=devam_eden, data_table="data-table-devam") }}
+                            </div>
+                            <div class="tab-pane" id="default-tab-4" role="tabpanel">
+                                {{ proje_table(data=sonlandirilmis, data_table="data-table-son") }}
+                            </div>
+                            <div class="tab-pane" id="default-tab-5" role="tabpanel">
+                                <div id="data-table_wrapper"
+                                     class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="data-table-revizyon"
+                                                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                                                   role="grid" style="width: 100%">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1" aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending">
+                                                        {{ _("Proje Numarası") }}
+
+                                                    </th>
+                                                    <th class="sorting_asc" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1" aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending">
+                                                        {{ _("Proje Adı") }}
+                                                    </th>
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending">
+                                                        {{ _("Proje Durumu") }}
+                                                    </th>
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Browser: activate to sort column ascending">
+                                                        {{ _("Proje Durum Açıklaması") }}
+                                                    </th>
+                                                    <th class="sorting all" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Engine version: activate to sort column ascending">
+                                                        {{ _("İşlemler") }}
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for revizyon_proje in revizyon_beklenenler %}
+                                                    <tr class="gradeA odd" role="row">
+                                                        <td class="sorting_1"
+                                                            tabindex="0">{{ revizyon_proje.proje_no }}</td>
+                                                        <td class="sorting_1"
+                                                            tabindex="0">{{ revizyon_proje.proje_basligi }}</td>
+                                                        <td>{{ revizyon_proje.proje_durumu.current_app_state.value }}</td>
+                                                        <td>{{ revizyon_proje.proje_durumu.description }}</td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                <button class="btn btn-info dropdown-toggle"
+                                                                        type="button"
+                                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false"><i
+                                                                        class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                                                </button>
+                                                                <div class="dropdown-menu arrow">
+                                                                    <a class="dropdown-item"
+                                                                       href="{{ url_for('proje.proje_dashboard', proje_id=revizyon_proje.id) }}">
+                                                                        {{ _("Proje Anasayfası") }}
+                                                                    </a>
+                                                                    <a class="dropdown-item"
+                                                                       href="{{ url_for('proje.ProjeRevizyon:proje_revizyon_get', proje_id=revizyon_proje.id) }}">
+                                                                        {{ _("Revize Et") }}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="default-tab-6" role="tabpanel">
+                                <div id="data-table_wrapper"
+                                     class="dataTables_wrapper dt-bootstrap4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="data-table-taslak"
+                                                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                                                   role="grid" style="width: 100%">
+                                                <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1" aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending"
+                                                        style="width: 70%;">
+                                                        {{ _("Proje Adı") }}
+                                                    </th>
+                                                    <th class="sorting_asc" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1" aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending"
+                                                        style="width: 10%;">
+                                                        {{ _("Taslak Oluşturulma Tarihi") }}
+                                                    </th>
+                                                    <th class="sorting_asc" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1" aria-sort="ascending"
+                                                        aria-label="Rendering engine: activate to sort column descending"
+                                                        style="width: 10%;">
+                                                        {{ _("Taslak Güncelleme Tarihi") }}
+                                                    </th>
+                                                    <th class="sorting" tabindex="0"
+                                                        aria-controls="data-table" rowspan="1"
+                                                        colspan="1"
+                                                        aria-label="Engine version: activate to sort column ascending"
+                                                        style="width: 10%;">{{ _("Projeyi Güncelle") }}
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for p in taslak_olan_projeler %}
+                                                    <tr class="gradeA odd" role="row">
+                                                        <td class="sorting_1"
+                                                            tabindex="0">{{ p.proje_basligi }}</td>
+                                                        <td class="sorting_1"
+                                                            tabindex="0">{{ datetime_to_string(p.created_at) }}</td>
+                                                        <td class="sorting_1"
+                                                            tabindex="0">{{ datetime_to_string(p.updated_at) }}</td>
+                                                        <td class="sorting_1" tabindex="0">
+                                                            <a href="{{ url_for('proje.proje_yeni_basvuru_taslak_with_id', proje_id=p.id) }}">
+                                                                <span class="fa fa-arrow-circle-right fa-2x "></span></a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-revizyon") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-taslak") }}
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            let table = $($.fn.dataTable.tables(true)).DataTable();
+            table.fixedHeader.adjust();
+            table.columns.adjust();
+
+        });
+    </script>
+{% endblock %}

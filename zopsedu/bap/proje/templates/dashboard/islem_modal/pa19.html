@@ -1,0 +1,166 @@
+{% from 'macros/durum_degisim.html' import proje_bilgileri,genel_islemler,email_checker %}
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_field_upper_label %}
+
+<form id="proje_durum_degistir">
+    {{ form.csrf_token }}
+    <div>
+        {{ proje_bilgileri(form,proje_numarasi,proje_adi,app_state_description) }}
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-items">
+            <a href="#default-tab-1" data-toggle="tab" class="nav-link active"
+               role="tab">
+                <span> {{ _('İşlemler') }}</span>
+            </a>
+        </li>
+        <li class="nav-items">
+            <a href="#default-tab-2" data-toggle="tab" class="nav-link"
+               role="tab">
+                <span> {{ _('Bildirimler') }}</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+            <ul class="nav nav-tabs">
+                <li class="nav-items">
+                    <a href="#genel-tab" data-toggle="tab"
+                       class="nav-link active">
+                        <span class="d-sm-none"></span>
+                        <span class="d-sm-block d-none">{{ _("Genel") }}</span>
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="#karar-tab" data-toggle="tab"
+                       class="nav-link">
+                        <span class="d-sm-none"></span>
+                        <span class="d-sm-block d-none">{{ form.karar.label.text }}</span>
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="#aciklama-tab" data-toggle="tab" class="nav-link">
+                        <span class="d-sm-none"></span>
+                        <span class="d-sm-block d-none">{{ form.aciklama.label.text }}</span>
+                    </a>
+                </li>
+                <li class="nav-items">
+                    <a href="#ek-dosya-tab" data-toggle="tab" class="nav-link">
+                        <span class="d-sm-none">Tab 3</span>
+                        <span class="d-sm-block d-none">{{ form.ek_dosya_id.label.text }}</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="tab-content">
+                <!-- begin tab-pane -->
+                <div class="tab-pane fade active show" id="genel-tab">
+                    <div class="row">
+                        <div class="col-md-6 m-b-10">
+                            {{ render_text_field(form.tipi) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_select_field_upper_label(form.toplanti_tarihi) }}
+                        </div>
+                        <div class="col-md-6 m-b-10">
+                            {{ render_text_field(form.karar_durum) }}
+                        </div>
+                    </div>
+                </div>
+                <!-- end tab-pane -->
+                <!-- begin tab-pane -->
+                <div class="tab-pane fade" id="karar-tab">
+                    <div class="col-md-12 m-b-10">
+                        {{ form.karar }}
+                    </div>
+                </div>
+                <!-- end tab-pane -->
+                <!-- begin tab-pane -->
+                <div class="tab-pane fade" id="aciklama-tab">
+                    <div class="col-md-12 m-b-10">
+                        {{ form.aciklama }}
+                    </div>
+                </div>
+                <!-- end tab-pane -->
+                <!-- begin tab-pane -->
+                <div class="tab-pane fade" id="ek-dosya-tab">
+                    <div class="col-md-12 m-b-10 d-flex justify-content-center">
+                        {{ form.ek_dosya_id }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="default-tab-2" role="tabpanel">
+            <div class="row">
+                <div class="col-md-12">
+                    {{ error(form.bap_admin_log) }}
+                    {{ form.bap_admin_log.label }}
+                    {{ form.bap_admin_log }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ error(form.yurutucu_log) }}
+                    {{ form.yurutucu_log.label }}
+                    {{ form.yurutucu_log }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    {{ email_checker(form) }}
+
+    <script>
+
+        $(document).ready(function () {
+            selector = {
+                "karar": $('[name={{ form.karar.name }}]'),
+                "aciklama": $('[name={{ form.aciklama.name }}]'),
+                "sablon_id": $('[name={{ form.sablon_id.name }}')
+            };
+
+            function reset() {
+                selector.karar.summernote("code", "");
+                selector.aciklama.summernote("code", "");
+            }
+
+            $('select[name="{{ form.tipi.name }}"]').on('change', function () {
+                let projeId, sablonTipi;
+                sablonTipi = $('#{{ form.tipi.name }} option:selected').val();
+                projeId = {{ proje_id }};
+
+                if (projeId) {
+                    $.ajax({
+                        url: "{{ url_for('toplanti.GundemView:render_gundem_sablonu') }}",
+                        type: 'POST',
+                        data: JSON.stringify({
+                            "proje_id": projeId,
+                            "sablon_tipi": sablonTipi
+                        }),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: 'json',
+                        success: function (result) {
+                            reset();
+                            selector.karar.summernote("code", result.data.karar);
+                            selector.aciklama.summernote("code", result.data.aciklama);
+                            selector.sablon_id.append(result.data.sablon_id);
+                        },
+                        error: function () {
+                            swal("{{ _("Gündem şablonun verisi getirilirken bir hata oluştur. Lütfen daha sonra tekrar deneyiniz") }}", {
+                                icon: "error",
+                                timer: 4000,
+                                buttons: false
+                            });
+                        }
+                    });
+                }
+            });
+
+            $('select[name="{{ form.tipi.name }}"]').trigger("change");
+        });
+
+
+    </script>
+</form>
+

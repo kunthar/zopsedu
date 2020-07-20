@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block context %}
+    <!-- begin #content -->
+    <div id="content" class="content ">
+        <!-- begin error -->
+        <div class="error">
+            <div class="error-code m-b-10">{{ error_title }}</div>
+            <div class="error-content">
+                <div class="error-message">{{ error_message }}</div>
+                <div class="error-desc m-b-30">
+                    {{ error_description }} <br/>
+                </div>
+            </div>
+        </div>
+        <!-- end error -->
+    </div>
+    <!-- end #content -->
+{% endblock %}

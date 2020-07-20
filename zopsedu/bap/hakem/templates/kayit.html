@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from 'macros/kaydet.html' import kurum_ici_hakem, kurum_disi_hakem %}
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Hakem Kayıt") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('hakem.HakemView:hakem_listele') }}">
+                    <button class="btn btn-success">
+                        {{ _("Hakem Arama Sayfasina Git") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="hakem-kayit-tab" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a class="nav-link active show" id="active-tab" data-toggle="tab" href="#kurum-ici-tab"
+                               aria-controls="active"
+                               aria-expanded="true">{{ _("Kurum İçi") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="link-tab" data-toggle="tab"
+                               href="#kurum-disi-tab"
+                               aria-controls="link"
+                               aria-expanded="false">{{ _("Kurum Dışı") }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="hakem-kayit-tab-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active show" id="kurum-ici-tab"
+                             aria-labelledby="base-kurum-ici">
+                            {{ kurum_ici_hakem(kurum_ici_hakem_form,url=url_for('hakem.hakem_kayit_kurum_ici')) }}
+                        </div>
+                        <div class="tab-pane" id="kurum-disi-tab"
+                             aria-labelledby="base-kurum-disi">
+                            {{ kurum_disi_hakem(kurum_disi_hakem_form,url=url_for('hakem.hakem_kayit_kurum_disi'))}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

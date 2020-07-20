@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% from 'macros/form_wizard.html' import form_wizard with context %}
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list with context %}
+{% from 'macros/_formhelpers.html' import render_datetime_field, render_select_tag, render_text_field,
+                                          render_double_time_fields, link_to_somewhere, render_language_level_text,
+                                          render_checkbox, render_alert, render_title %}
+
+{% block context %}
+    {% macro form_buttons() %}
+        <div class="input-group-append justify-content-end">
+            <button class="btn btn-success" formaction="/erasmus_form/kaydet">Kaydet</button>
+        </div>
+    {% endmacro %}
+    {% set headers1 = [
+        "Table A Before the Mobility",
+        "Component Code (if any)",
+        "Component title  (as indicated in the course catalogue) at the receiving institution",
+        "Semester  [e.g. autumn / spring/ term]",
+        "Number of ECTS credits (or equivalent) to be awarded by the receiving institution upon successful completion",
+    ] %}
+    {% set headers2 = [
+        "Table B Before the Mobility",
+        "Component Code (if any)",
+        "Component title  (as indicated in the course catalogue) at the receiving institution",
+        "Semester  [e.g. autumn / spring/ term]",
+        "Number of ECTS credits (or equivalent) for the group of educational components in the student's degree that
+        would normally be completed at the sending institution and which will be replaced by the study abroad",
+    ] %}
+    {% set contents = [
+        erasmus_form.bos_input,
+        erasmus_form.bos_input,
+        erasmus_form.bos_input,
+        erasmus_form.bos_input,
+        erasmus_form.empty_number_input,
+    ] %}
+    {% set form_steps = {
+            "steps": [
+                {
+                    "title": _('Student'),
+                    "form_elements":[
+                        (render_text_field(erasmus_form.ad), 6),
+                        (render_text_field(erasmus_form.soyad), 6),
+                        (render_datetime_field(erasmus_form.ogrenci_dogum_tarihi), 6),
+                        (render_select_tag(erasmus_form.ogrenci_cinsiyet), 6),
+                        (render_text_field(erasmus_form.ogrenci_uyruk), 6),
+                        (render_select_tag(erasmus_form.ogrenim_durumu), 6),
+                        (render_text_field(erasmus_form.akademik_yil, type="number", min=1990), 6),
+                        (render_text_field(erasmus_form.calisma_alani_kodu), 6),
+                    ]
+                },
+
+                {
+                    "title": _('Sending Institution'),
+                    "form_elements":[
+                        (render_text_field(erasmus_form.name_only), 6),
+                        (render_text_field(erasmus_form.fakulte), 6),
+                        (render_text_field(erasmus_form.erasmus_kodu), 6),
+                        (render_text_field(erasmus_form.bolum), 6),
+                        (render_text_field(erasmus_form.adres), 6),
+                        (render_text_field(erasmus_form.ulke), 6),
+                        (render_text_field(erasmus_form.contact_person_ad), 6),
+                        (render_text_field(erasmus_form.constact_person_email_or_phone), 6),
+                    ]
+                },
+
+                {
+                    "title": _('Receiving Institution'),
+                    "form_elements":[
+                        (render_text_field(erasmus_form.name_only), 6),
+                        (render_text_field(erasmus_form.fakulte), 6),
+                        (render_text_field(erasmus_form.erasmus_kodu), 6),
+                        (render_text_field(erasmus_form.bolum), 6),
+                        (render_text_field(erasmus_form.adres), 6),
+                        (render_text_field(erasmus_form.ulke), 6),
+                        (render_text_field(erasmus_form.contact_person_ad), 6),
+                        (render_text_field(erasmus_form.constact_person_email_or_phone), 6),
+                    ]
+                },
+
+                {
+                    "title": _('Study Programmee at Receiving Institution'),
+                    "form_elements":[
+                        (render_text_field(erasmus_form.planed_period_of_the_mobility_from), 6),
+                        (render_text_field(erasmus_form.planed_period_of_the_mobility_to), 6),
+                        (dynamic_field_list(headers1, contents, 20), 12),
+                        (link_to_somewhere("Web link to the course catalogue at the receiving institution describing the learning outcomes: ",
+                        "[web link to the relevant information]", "#"), 12),
+                        (render_language_level_text(erasmus_form.bos_input), 12),
+                        (render_checkbox(erasmus_form.a1), 1),
+                        (render_checkbox(erasmus_form.a2), 1),
+                        (render_checkbox(erasmus_form.b1), 1),
+                        (render_checkbox(erasmus_form.b2), 1),
+                        (render_checkbox(erasmus_form.c1), 1),
+                        (render_checkbox(erasmus_form.c2), 1),
+                        (render_checkbox(erasmus_form.native), 2)
+                    ]
+                },
+
+                {
+                    "title": _('Recognition at Sending Institution'),
+                    "form_elements":[
+                        (dynamic_field_list(headers2, contents, 20), 12),
+                        (link_to_somewhere("Web link to the course catalogue at the receiving institution describing the learning outcomes: ",
+                        "[web link to the relevant information]", "#"), 12),
+                    ]
+                },
+
+                {
+                    "title": _('Finish'),
+                    "form_elements":[
+                        (render_alert("By signing this document, the student, the sending institution and the
+                        receiving institution confirm that they approve the proposed Learning Agreement and that they
+                        will comply with all the arrangements agreed by all parties. Sending and receiving institutions
+                        undertake to apply all the principles of the Erasmus Charter for Higher Education relating to
+                        mobility for studies (or the principles agreed in the inter-institutional agreement for
+                        institutions located in Partner Countries). The sending institution and the student should
+                        also commit to what is set out in the Erasmus+ grant agreement. The receiving institution
+                        confirms that the educational components listed in Table A are in line with its course catalogue
+                        and should be available to the student. The sending institution commits to recognise all the
+                        credits gained at the receiving institution for the successfully completed educational components
+                        and to count them towards the student's degree as described in Table C. Any exceptions to this
+                        rule are documented in an annex of this Learning Agreement and agreed by all parties. The
+                        student and receiving institution will communicate to the sending institution any problems or
+                        changes regarding the proposed mobility programme, responsible persons and/or study period.",
+                        "info"), 12),
+                        (render_title("Student"), 12),
+                        (render_text_field(erasmus_form.name_only), 2),
+                        (render_text_field(erasmus_form.function), 2),
+                        (render_text_field(erasmus_form.phone_number, type="number", min=1000000000), 2),
+                        (render_text_field(erasmus_form.email, type="email"), 3),
+                        (render_datetime_field(erasmus_form.date), 3),
+                        (render_title("Responsible person at the Sending Institution"), 12),
+                        (render_text_field(erasmus_form.name_only), 2),
+                        (render_text_field(erasmus_form.function), 2),
+                        (render_text_field(erasmus_form.phone_number, type="number", min=1000000000), 2),
+                        (render_text_field(erasmus_form.email, type="email"), 3),
+                        (render_datetime_field(erasmus_form.date), 3),
+                        (render_title("Responsible person at the Receiving Institution"), 12),
+                        (render_text_field(erasmus_form.name_only), 2),
+                        (render_text_field(erasmus_form.function), 2),
+                        (render_text_field(erasmus_form.phone_number, type="number", min=1000000000), 2),
+                        (render_text_field(erasmus_form.email, type="email"), 3),
+                        (render_datetime_field(erasmus_form.date), 3),
+                    ]
+                }
+            ]
+    } %}
+    <div class="content">
+        {{ form_wizard(form_steps, form_buttons(), navigate_steps=True) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{
+  "hakem": [
+    {
+      "created_at": "2018-12-12 01:56:47.417776",
+      "updated_at": "2018-12-12 01:56:47.417784",
+      "id": 11,
+      "kurum_ici": true,
+      "hakem_turu": "hakem",
+      "kurum": null,
+      "daire": null,
+      "birim": null,
+      "person_id": 5,
+      "personel_id": 5,
+      "unvan": 3837,
+      "universite_id": 113746,
+      "fakulte_id": 113746,
+      "bolum_id": 113746
+    }
+  ]
+}

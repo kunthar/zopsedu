@@ -1,0 +1,6688 @@
+{
+  "gelir_siniflandirma": [
+    {
+      "id": 1,
+      "parent_id": 0,
+      "kodu": "01",
+      "aciklama": "Vergi Gelirleri"
+    },
+    {
+      "id": 2,
+      "parent_id": 1,
+      "kodu": "01.1",
+      "aciklama": "Gelir ve  Kazanç Üzerinden Alınan Vergiler"
+    },
+    {
+      "id": 3,
+      "parent_id": 2,
+      "kodu": "01.1.1",
+      "aciklama": "Gelir Vergisi"
+    },
+    {
+      "id": 4,
+      "parent_id": 3,
+      "kodu": "01.1.1.01",
+      "aciklama": "Beyana Dayanan Gelir Vergisi"
+    },
+    {
+      "id": 5,
+      "parent_id": 3,
+      "kodu": "01.1.1.02",
+      "aciklama": "Basit Usulde Gelir Vergisi"
+    },
+    {
+      "id": 6,
+      "parent_id": 3,
+      "kodu": "01.1.1.03",
+      "aciklama": "Gelir Vergisi Tevkifatı"
+    },
+    {
+      "id": 7,
+      "parent_id": 3,
+      "kodu": "01.1.1.04",
+      "aciklama": "Gelir Geçici Vergisi"
+    },
+    {
+      "id": 8,
+      "parent_id": 2,
+      "kodu": "01.1.2",
+      "aciklama": "Kurumlar Vergisi"
+    },
+    {
+      "id": 9,
+      "parent_id": 8,
+      "kodu": "01.1.2.01",
+      "aciklama": "Beyana Dayanan Kurumlar Vergisi"
+    },
+    {
+      "id": 10,
+      "parent_id": 8,
+      "kodu": "01.1.2.02",
+      "aciklama": "Kurumlar Vergisi Tevkifatı"
+    },
+    {
+      "id": 11,
+      "parent_id": 8,
+      "kodu": "01.1.2.03",
+      "aciklama": "Kurumlar Geçici Vergisi"
+    },
+    {
+      "id": 12,
+      "parent_id": 1,
+      "kodu": "01.2",
+      "aciklama": "Mülkiyet Üzerinden Alınan Vergiler "
+    },
+    {
+      "id": 13,
+      "parent_id": 12,
+      "kodu": "01.2.1",
+      "aciklama": "Veraset ve İntikal Vergisi"
+    },
+    {
+      "id": 14,
+      "parent_id": 13,
+      "kodu": "01.2.1.01",
+      "aciklama": "Veraset ve İntikal Vergisi"
+    },
+    {
+      "id": 15,
+      "parent_id": 12,
+      "kodu": "01.2.2",
+      "aciklama": "Motorlu Taşıtlar Vergisi"
+    },
+    {
+      "id": 16,
+      "parent_id": 15,
+      "kodu": "01.2.2.01",
+      "aciklama": "Motorlu Taşıtlar Vergisi"
+    },
+    {
+      "id": 17,
+      "parent_id": 12,
+      "kodu": "01.2.9",
+      "aciklama": "Mülkiyet Üzerinden Alınan Diğer Vergiler"
+    },
+    {
+      "id": 18,
+      "parent_id": 17,
+      "kodu": "01.2.9.51",
+      "aciklama": "Bina Vergisi"
+    },
+    {
+      "id": 19,
+      "parent_id": 17,
+      "kodu": "01.2.9.52",
+      "aciklama": "Arsa Vergisi"
+    },
+    {
+      "id": 20,
+      "parent_id": 17,
+      "kodu": "01.2.9.53",
+      "aciklama": "Arazi Vergisi"
+    },
+    {
+      "id": 21,
+      "parent_id": 17,
+      "kodu": "01.2.9.54",
+      "aciklama": "Çevre Temizlik Vergisi"
+    },
+    {
+      "id": 22,
+      "parent_id": 1,
+      "kodu": "01.3",
+      "aciklama": "Dahilde Alınan Mal ve Hizmet Vergileri"
+    },
+    {
+      "id": 23,
+      "parent_id": 22,
+      "kodu": "01.3.1",
+      "aciklama": "Dahilde Alınan Katma Değer Vergisi"
+    },
+    {
+      "id": 24,
+      "parent_id": 23,
+      "kodu": "01.3.1.01",
+      "aciklama": "Beyana Dayanan KDV"
+    },
+    {
+      "id": 25,
+      "parent_id": 23,
+      "kodu": "01.3.1.02",
+      "aciklama": "Tevkif  Suretiyle Kesilen KDV"
+    },
+    {
+      "id": 26,
+      "parent_id": 22,
+      "kodu": "01.3.2",
+      "aciklama": "Özel Tüketim Vergisi"
+    },
+    {
+      "id": 27,
+      "parent_id": 26,
+      "kodu": "01.3.2.01",
+      "aciklama": "Petrol ve Doğalgaz Ürünleri"
+    },
+    {
+      "id": 28,
+      "parent_id": 26,
+      "kodu": "01.3.2.02",
+      "aciklama": "Motorlu Taşıt Araçları"
+    },
+    {
+      "id": 29,
+      "parent_id": 26,
+      "kodu": "01.3.2.03",
+      "aciklama": "Alkollü İçkiler"
+    },
+    {
+      "id": 30,
+      "parent_id": 26,
+      "kodu": "01.3.2.04",
+      "aciklama": "Tütün Mamülleri"
+    },
+    {
+      "id": 31,
+      "parent_id": 26,
+      "kodu": "01.3.2.05",
+      "aciklama": "Kolalı Gazozlar"
+    },
+    {
+      "id": 32,
+      "parent_id": 26,
+      "kodu": "01.3.2.06",
+      "aciklama": "Dayanıklı Tüketim ve Diğer Mallar"
+    },
+    {
+      "id": 33,
+      "parent_id": 26,
+      "kodu": "01.3.2.51",
+      "aciklama": "Haberleşme Vergisi"
+    },
+    {
+      "id": 34,
+      "parent_id": 26,
+      "kodu": "01.3.2.52",
+      "aciklama": "Elektrik ve Havagazı Tüketim Vergisi"
+    },
+    {
+      "id": 35,
+      "parent_id": 26,
+      "kodu": "01.3.2.80",
+      "aciklama": "6111 sayılı Kanun  Kapsamında Tahsil Olunan Özel Tüketim Vergileri"
+    },
+    {
+      "id": 36,
+      "parent_id": 26,
+      "kodu": "01.3.2.81",
+      "aciklama": "6736 sayılı Kanun Kapsamında Tahsil Olunan Özel Tüketim Vergileri"
+    },
+    {
+      "id": 37,
+      "parent_id": 26,
+      "kodu": "01.3.2.82",
+      "aciklama": "7143 Sayılı Kanun Kapsamında Tahsil Olunan Özel Tüketim Vergileri "
+    },
+    {
+      "id": 38,
+      "parent_id": 22,
+      "kodu": "01.3.3",
+      "aciklama": "Banka ve Sigorta Muameleleri Vergisi"
+    },
+    {
+      "id": 39,
+      "parent_id": 38,
+      "kodu": "01.3.3.01",
+      "aciklama": "Banka ve Sigorta Muameleleri Vergisi"
+    },
+    {
+      "id": 40,
+      "parent_id": 22,
+      "kodu": "01.3.4",
+      "aciklama": "Şans Oyunları Vergisi"
+    },
+    {
+      "id": 41,
+      "parent_id": 40,
+      "kodu": "01.3.4.01",
+      "aciklama": "Şans Oyunları Vergisi"
+    },
+    {
+      "id": 42,
+      "parent_id": 22,
+      "kodu": "01.3.5",
+      "aciklama": "Özel İletişim Vergisi"
+    },
+    {
+      "id": 43,
+      "parent_id": 42,
+      "kodu": "01.3.5.01",
+      "aciklama": "Özel İletişim Vergisi"
+    },
+    {
+      "id": 44,
+      "parent_id": 22,
+      "kodu": "01.3.9",
+      "aciklama": "Dahilde Alınan Diğer Mal ve Hizmet Vergileri"
+    },
+    {
+      "id": 45,
+      "parent_id": 44,
+      "kodu": "01.3.9.01",
+      "aciklama": "6113 Sayılı Kanun Kapsamında Alınan Vergiler"
+    },
+    {
+      "id": 46,
+      "parent_id": 44,
+      "kodu": "01.3.9.51",
+      "aciklama": "Eğlence Vergisi"
+    },
+    {
+      "id": 47,
+      "parent_id": 44,
+      "kodu": "01.3.9.52",
+      "aciklama": "Yangın Sigortası Vergisi"
+    },
+    {
+      "id": 48,
+      "parent_id": 44,
+      "kodu": "01.3.9.53",
+      "aciklama": "İlan ve Reklam Vergisi"
+    },
+    {
+      "id": 49,
+      "parent_id": 1,
+      "kodu": "01.4",
+      "aciklama": "Uluslararası Ticaret ve Muamelelerden Alınan Vergiler"
+    },
+    {
+      "id": 50,
+      "parent_id": 49,
+      "kodu": "01.4.1",
+      "aciklama": "Gümrük Vergileri"
+    },
+    {
+      "id": 51,
+      "parent_id": 50,
+      "kodu": "01.4.1.01",
+      "aciklama": "Gümrük Vergileri"
+    },
+    {
+      "id": 52,
+      "parent_id": 50,
+      "kodu": "01.4.1.02",
+      "aciklama": "Ek Mali Yükümlülük"
+    },
+    {
+      "id": 53,
+      "parent_id": 49,
+      "kodu": "01.4.2",
+      "aciklama": "İthalde Alınan Katma Değer Vergisi"
+    },
+    {
+      "id": 54,
+      "parent_id": 53,
+      "kodu": "01.4.2.01",
+      "aciklama": "İthalde Alınan Katma Değer Vergisi"
+    },
+    {
+      "id": 55,
+      "parent_id": 49,
+      "kodu": "01.4.3",
+      "aciklama": "Diğer Dış Ticaret Gelirleri"
+    },
+    {
+      "id": 56,
+      "parent_id": 55,
+      "kodu": "01.4.3.01",
+      "aciklama": "Diğer Dış Ticaret Gelirleri"
+    },
+    {
+      "id": 57,
+      "parent_id": 1,
+      "kodu": "01.5",
+      "aciklama": "Damga Vergisi"
+    },
+    {
+      "id": 58,
+      "parent_id": 57,
+      "kodu": "01.5.1",
+      "aciklama": "Damga Vergisi"
+    },
+    {
+      "id": 59,
+      "parent_id": 58,
+      "kodu": "01.5.1.01",
+      "aciklama": "Damga Vergisi"
+    },
+    {
+      "id": 60,
+      "parent_id": 57,
+      "kodu": "01.5.2",
+      "aciklama": "Eğitime Katkı Payı Ayrılması Gereken Damga Vergileri "
+    },
+    {
+      "id": 61,
+      "parent_id": 60,
+      "kodu": "01.5.2.01",
+      "aciklama": "Eğitime Katkı Payı Ayrılması Gereken Damga Vergileri "
+    },
+    {
+      "id": 62,
+      "parent_id": 1,
+      "kodu": "01.6",
+      "aciklama": "Harçlar"
+    },
+    {
+      "id": 63,
+      "parent_id": 62,
+      "kodu": "01.6.1",
+      "aciklama": "Yargı Harçları"
+    },
+    {
+      "id": 64,
+      "parent_id": 63,
+      "kodu": "01.6.1.01",
+      "aciklama": "Ticaret Sicil Harçları"
+    },
+    {
+      "id": 65,
+      "parent_id": 63,
+      "kodu": "01.6.1.02",
+      "aciklama": "Esnaf  Sicil Harçları"
+    },
+    {
+      "id": 66,
+      "parent_id": 63,
+      "kodu": "01.6.1.99",
+      "aciklama": "Diğer Yargı Harçları"
+    },
+    {
+      "id": 67,
+      "parent_id": 62,
+      "kodu": "01.6.2",
+      "aciklama": "Noter Harçları"
+    },
+    {
+      "id": 68,
+      "parent_id": 67,
+      "kodu": "01.6.2.01",
+      "aciklama": "Noter Harçları"
+    },
+    {
+      "id": 69,
+      "parent_id": 62,
+      "kodu": "01.6.3",
+      "aciklama": "Vergi Yargısı Harçları"
+    },
+    {
+      "id": 70,
+      "parent_id": 69,
+      "kodu": "01.6.3.01",
+      "aciklama": "Vergi Yargısı Harçları"
+    },
+    {
+      "id": 71,
+      "parent_id": 62,
+      "kodu": "01.6.4",
+      "aciklama": "Tapu Harçları"
+    },
+    {
+      "id": 72,
+      "parent_id": 71,
+      "kodu": "01.6.4.01",
+      "aciklama": "Tapu Harçları"
+    },
+    {
+      "id": 73,
+      "parent_id": 62,
+      "kodu": "01.6.5",
+      "aciklama": "Pasaport ve Konsolosluk Harçları"
+    },
+    {
+      "id": 74,
+      "parent_id": 73,
+      "kodu": "01.6.5.01",
+      "aciklama": "Pasaport ve Konsolosluk Harçları"
+    },
+    {
+      "id": 75,
+      "parent_id": 62,
+      "kodu": "01.6.6",
+      "aciklama": "Gemi ve Liman Harçları"
+    },
+    {
+      "id": 76,
+      "parent_id": 75,
+      "kodu": "01.6.6.01",
+      "aciklama": "Gemi ve Liman Harçları"
+    },
+    {
+      "id": 77,
+      "parent_id": 62,
+      "kodu": "01.6.7",
+      "aciklama": "İmtiyazname, Ruhsatname ve Diploma Harçları"
+    },
+    {
+      "id": 78,
+      "parent_id": 77,
+      "kodu": "01.6.7.01",
+      "aciklama": "Avcılık Belgesi Harçları"
+    },
+    {
+      "id": 79,
+      "parent_id": 77,
+      "kodu": "1.6.7.02",
+      "aciklama": "Hidrolik Kaynaklara Dayalı Elektrik Üretim Lisans Harçları"
+    },
+    {
+      "id": 80,
+      "parent_id": 77,
+      "kodu": "01.6.7.99",
+      "aciklama": "Diğer İmtiyazname, Ruhsatname ve Diploma Harçları"
+    },
+    {
+      "id": 81,
+      "parent_id": 62,
+      "kodu": "01.6.8",
+      "aciklama": "Trafik Harçları"
+    },
+    {
+      "id": 82,
+      "parent_id": 81,
+      "kodu": "01.6.8.01",
+      "aciklama": "Trafik Harçları"
+    },
+    {
+      "id": 83,
+      "parent_id": 62,
+      "kodu": "1.6.9",
+      "aciklama": "Diğer Harçlar"
+    },
+    {
+      "id": 84,
+      "parent_id": 83,
+      "kodu": "01.6.9.01",
+      "aciklama": "Yurtdışı Çıkış Harcı"
+    },
+    {
+      "id": 85,
+      "parent_id": 83,
+      "kodu": "01.6.9.02",
+      "aciklama": "Eğitime Katkı Payı  Ayrılması Gereken Harçlar "
+    },
+    {
+      "id": 86,
+      "parent_id": 83,
+      "kodu": "01.6.9.03",
+      "aciklama": "Özel Güvenlik Harçları "
+    },
+    {
+      "id": 87,
+      "parent_id": 83,
+      "kodu": "01.6.9.04",
+      "aciklama": "Türk Uluslararası Gemi Sicil Kayıt Harcı ve Yıllık Tonaj Harcı  "
+    },
+    {
+      "id": 88,
+      "parent_id": 83,
+      "kodu": "01.6.9.49",
+      "aciklama": "Gemi Sağlık Resmi"
+    },
+    {
+      "id": 89,
+      "parent_id": 83,
+      "kodu": "01.6.9.51",
+      "aciklama": "Bina İnşaat Harcı"
+    },
+    {
+      "id": 90,
+      "parent_id": 83,
+      "kodu": "01.6.9.52",
+      "aciklama": "Hayvan Kesimi Muayene ve Denetleme Harcı"
+    },
+    {
+      "id": 91,
+      "parent_id": 83,
+      "kodu": "01.6.9.53",
+      "aciklama": "İşgal Harcı"
+    },
+    {
+      "id": 92,
+      "parent_id": 83,
+      "kodu": "01.6.9.54",
+      "aciklama": "İşyeri Açma İzni Harcı"
+    },
+    {
+      "id": 93,
+      "parent_id": 83,
+      "kodu": "01.6.9.55",
+      "aciklama": "Kaynak Suları Harcı"
+    },
+    {
+      "id": 94,
+      "parent_id": 83,
+      "kodu": "01.6.9.56",
+      "aciklama": "Ölçü ve Tartı Aletleri Muayene Harcı"
+    },
+    {
+      "id": 95,
+      "parent_id": 83,
+      "kodu": "01.6.9.57",
+      "aciklama": "Tatil Günlerinde Çalışma Ruhsatı Harcı"
+    },
+    {
+      "id": 96,
+      "parent_id": 83,
+      "kodu": "01.6.9.58",
+      "aciklama": "Tellallık Harcı"
+    },
+    {
+      "id": 97,
+      "parent_id": 83,
+      "kodu": "01.6.9.59",
+      "aciklama": "Toptancı Hali Resmi"
+    },
+    {
+      "id": 98,
+      "parent_id": 83,
+      "kodu": "01.6.9.60",
+      "aciklama": "Yapı Kullanma İzni Harcı"
+    },
+    {
+      "id": 99,
+      "parent_id": 83,
+      "kodu": "01.6.9.99",
+      "aciklama": "Diğer Harçlar"
+    },
+    {
+      "id": 100,
+      "parent_id": 1,
+      "kodu": "01.9",
+      "aciklama": "Başka Yerde Sınıflandırılmayan Vergiler"
+    },
+    {
+      "id": 101,
+      "parent_id": 100,
+      "kodu": "01.9.1",
+      "aciklama": "Kaldırılan Vergi Artıkları"
+    },
+    {
+      "id": 102,
+      "parent_id": 101,
+      "kodu": "1.9.1.01",
+      "aciklama": "Kaldırılan Vergi Artıkları"
+    },
+    {
+      "id": 103,
+      "parent_id": 100,
+      "kodu": "01.9.2",
+      "aciklama": "Bazı Varlıkların Milli Ekonomiye Kazandırılması Hakkında Kan.Uy.Alınan Vergi"
+    },
+    {
+      "id": 104,
+      "parent_id": 103,
+      "kodu": "1.9.2.01",
+      "aciklama": "Bazı Varlıkların Milli Ekonomiye Kazandırılması Hakkında Kan.Uy.Alınan Vergi"
+    },
+    {
+      "id": 105,
+      "parent_id": 100,
+      "kodu": "01.9.9",
+      "aciklama": "Başka Yerde Sınıflandırılmayan Diğer Vergiler "
+    },
+    {
+      "id": 106,
+      "parent_id": 105,
+      "kodu": "01.9.9.99",
+      "aciklama": "Başka Yerde Sınıflandırılmayan Diğer Vergiler "
+    },
+    {
+      "id": 107,
+      "parent_id": 0,
+      "kodu": "02",
+      "aciklama": "Sosyal Güvenlik Gelirleri"
+    },
+    {
+      "id": 108,
+      "parent_id": 107,
+      "kodu": "02.1",
+      "aciklama": " Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 109,
+      "parent_id": 108,
+      "kodu": "02.1.1",
+      "aciklama": "Malüllük, Yaşlılık ve Ölüm Sigortası Prim Gelirler"
+    },
+    {
+      "id": 110,
+      "parent_id": 109,
+      "kodu": "02.1.1.01",
+      "aciklama": "Hizmet Akdine Dayalı Prim Gelirleri (İşçiler)"
+    },
+    {
+      "id": 111,
+      "parent_id": 109,
+      "kodu": "02.1.1.02",
+      "aciklama": "Bağımsız Çalışanlardan veya Çalışmayanlardan Prim Gelirleri"
+    },
+    {
+      "id": 112,
+      "parent_id": 109,
+      "kodu": "02.1.1.03",
+      "aciklama": "Kamu Hizmetlerinde Çalışanlardan Prim Gelirleri (Memurlar)"
+    },
+    {
+      "id": 113,
+      "parent_id": 109,
+      "kodu": "02.1.1.04",
+      "aciklama": "İsteğe Bağlı Sigorta Prim Gelirleri"
+    },
+    {
+      "id": 114,
+      "parent_id": 109,
+      "kodu": "02.1.1.05",
+      "aciklama": "Tarım Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 115,
+      "parent_id": 109,
+      "kodu": "02.1.1.06",
+      "aciklama": "İsviçre Prim Gelirleri"
+    },
+    {
+      "id": 116,
+      "parent_id": 109,
+      "kodu": "02.1.1.07",
+      "aciklama": "Toptan Alınan Prim Gelirleri"
+    },
+    {
+      "id": 117,
+      "parent_id": 109,
+      "kodu": "02.1.1.08",
+      "aciklama": "Döviz Karşılığı Prim Gelirleri"
+    },
+    {
+      "id": 118,
+      "parent_id": 109,
+      "kodu": "02.1.1.09",
+      "aciklama": "Topluluk Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 119,
+      "parent_id": 109,
+      "kodu": "02.1.1.10",
+      "aciklama": "Borçlanma Karşılığı Prim Gelirleri"
+    },
+    {
+      "id": 120,
+      "parent_id": 109,
+      "kodu": "02.1.1.11",
+      "aciklama": "Fiili Hizmet Zammı"
+    },
+    {
+      "id": 121,
+      "parent_id": 109,
+      "kodu": "02.1.1.99",
+      "aciklama": "Diğer Prim Gelirleri"
+    },
+    {
+      "id": 122,
+      "parent_id": 107,
+      "kodu": "02.2",
+      "aciklama": "Genel Sağlık Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 123,
+      "parent_id": 122,
+      "kodu": "02.2.1",
+      "aciklama": "Genel Sağlık Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 124,
+      "parent_id": 123,
+      "kodu": "02.2.1.01",
+      "aciklama": "Hizmet Akdine Dayalı Olanlardan (İşçiler) Alınan GSS Prim Gelirleri "
+    },
+    {
+      "id": 125,
+      "parent_id": 123,
+      "kodu": "02.2.1.02",
+      "aciklama": "Bağımsız Çalışanlardan veya Çalışmayanlardan Alınan GSS Prim Gelirleri"
+    },
+    {
+      "id": 126,
+      "parent_id": 123,
+      "kodu": "02.2.1.03",
+      "aciklama": "Kamu Hizmetlerinde Çalışanlardan (Memurlar) Alınan GSS Prim Gelirleri"
+    },
+    {
+      "id": 127,
+      "parent_id": 123,
+      "kodu": "02.2.1.04",
+      "aciklama": "Primi Devletçe Karşılanan GSS Primi Gelirleri"
+    },
+    {
+      "id": 128,
+      "parent_id": 123,
+      "kodu": "2.2.1.05",
+      "aciklama": "Primini Kendisi Ödeyenler (60 ıncı madde kapsamında)"
+    },
+    {
+      "id": 129,
+      "parent_id": 123,
+      "kodu": "02.2.1.99",
+      "aciklama": "Diğer Prim Gelirleri"
+    },
+    {
+      "id": 130,
+      "parent_id": 107,
+      "kodu": "02.3",
+      "aciklama": "İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 131,
+      "parent_id": 130,
+      "kodu": "02.3.1",
+      "aciklama": "İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 132,
+      "parent_id": 131,
+      "kodu": "2.3.1.01",
+      "aciklama": "Hizmet Akdine Dayalı Olanlardan (İşçiler) Alınan İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 133,
+      "parent_id": 131,
+      "kodu": "02.3.1.02",
+      "aciklama": "Bağımsız Çalışanlardan veya Çalışmayanlardan Alınan İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 134,
+      "parent_id": 131,
+      "kodu": "02.3.1.03",
+      "aciklama": "Kamu Hizmetlerinde Çalışanlardan (Memurlar) Alınan İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 135,
+      "parent_id": 131,
+      "kodu": "02.3.1.99",
+      "aciklama": "Diğer Prim Gelirleri"
+    },
+    {
+      "id": 136,
+      "parent_id": 107,
+      "kodu": "02.4",
+      "aciklama": "Devlet Katkısı"
+    },
+    {
+      "id": 137,
+      "parent_id": 136,
+      "kodu": "02.4.1",
+      "aciklama": "Sosyal Güvenlik Kurumuna Bağlı Çalışanlar"
+    },
+    {
+      "id": 138,
+      "parent_id": 137,
+      "kodu": "02.4.1.01",
+      "aciklama": "Sosyal Güvenlik Primi Devlet Katkısı"
+    },
+    {
+      "id": 139,
+      "parent_id": 137,
+      "kodu": "02.4.1.02",
+      "aciklama": "Sağlık Primi Devlet Katkısı"
+    },
+    {
+      "id": 140,
+      "parent_id": 136,
+      "kodu": "02.4.2",
+      "aciklama": "Diğer Genel Sağlık Sigortası Kapsamında Olanlar"
+    },
+    {
+      "id": 141,
+      "parent_id": 140,
+      "kodu": "02.4.2.01",
+      "aciklama": "Sağlık Primi Devlet Katkısı"
+    },
+    {
+      "id": 142,
+      "parent_id": 107,
+      "kodu": "02.5",
+      "aciklama": "5510 Öncesi Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 143,
+      "parent_id": 142,
+      "kodu": "02.5.1",
+      "aciklama": "5510 Öncesi Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 144,
+      "parent_id": 143,
+      "kodu": "02.5.1.01",
+      "aciklama": "Hizmet Akdine Dayalı Olanlardan (İşçiler) Alınan Prim Gelirleri "
+    },
+    {
+      "id": 145,
+      "parent_id": 143,
+      "kodu": "02.5.1.02",
+      "aciklama": "Bağımsız Çalışanlardan veya Çalışmayanlardan Alınan Prim Gelirleri"
+    },
+    {
+      "id": 146,
+      "parent_id": 143,
+      "kodu": "02.5.1.03",
+      "aciklama": "Kamu Hizmetlerinde Çalışanlardan (Memurlar) Alınan Prim Gelirleri"
+    },
+    {
+      "id": 147,
+      "parent_id": 143,
+      "kodu": "02.5.1.04",
+      "aciklama": "İsteğe Bağlı Sigorta Prim Gelirleri"
+    },
+    {
+      "id": 148,
+      "parent_id": 143,
+      "kodu": "02.5.1.05",
+      "aciklama": "Tarım Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 149,
+      "parent_id": 143,
+      "kodu": "02.5.1.06",
+      "aciklama": "İsviçre Prim Gelirleri"
+    },
+    {
+      "id": 150,
+      "parent_id": 143,
+      "kodu": "02.5.1.07",
+      "aciklama": "Toptan Alınan Prim Gelirleri"
+    },
+    {
+      "id": 151,
+      "parent_id": 143,
+      "kodu": "02.5.1.08",
+      "aciklama": "Döviz Karşılığı Prim Gelirleri"
+    },
+    {
+      "id": 152,
+      "parent_id": 143,
+      "kodu": "02.5.1.09",
+      "aciklama": "Topluluk Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 153,
+      "parent_id": 143,
+      "kodu": "02.5.1.10",
+      "aciklama": "Borçlanma Karşılığı Prim Gelirleri"
+    },
+    {
+      "id": 154,
+      "parent_id": 143,
+      "kodu": "02.5.1.99",
+      "aciklama": "Diğer Prim Gelirleri"
+    },
+    {
+      "id": 155,
+      "parent_id": 107,
+      "kodu": "02.9",
+      "aciklama": "Diğer Sosyal Güvenlik Primi Gelirleri"
+    },
+    {
+      "id": 156,
+      "parent_id": 155,
+      "kodu": "02.9.1",
+      "aciklama": "Diğer Sosyal Güvenlik Primi Gelirleri"
+    },
+    {
+      "id": 157,
+      "parent_id": 156,
+      "kodu": "02.9.1.01",
+      "aciklama": "Sosyal Güvenlik Destekleme Prim Gelirleri"
+    },
+    {
+      "id": 158,
+      "parent_id": 156,
+      "kodu": "02.9.1.99",
+      "aciklama": "Diğer Prim Gelirleri"
+    },
+    {
+      "id": 159,
+      "parent_id": 0,
+      "kodu": "03",
+      "aciklama": "Teşebbüs ve Mülkiyet Gelirleri"
+    },
+    {
+      "id": 160,
+      "parent_id": 159,
+      "kodu": "03.1",
+      "aciklama": "Mal ve Hizmet Satış Gelirleri"
+    },
+    {
+      "id": 161,
+      "parent_id": 160,
+      "kodu": "03.1.1",
+      "aciklama": "Mal Satış Gelirleri"
+    },
+    {
+      "id": 162,
+      "parent_id": 161,
+      "kodu": "03.1.1.01",
+      "aciklama": "Şartname, Basılı Evrak, Form Satış Gelirleri"
+    },
+    {
+      "id": 163,
+      "parent_id": 161,
+      "kodu": "03.1.1.02",
+      "aciklama": "Kitap,Yayın vb. Satış Gelirleri"
+    },
+    {
+      "id": 164,
+      "parent_id": 161,
+      "kodu": "03.1.1.03",
+      "aciklama": "Banka Çekleri Değerli Kağıt Bedelleri"
+    },
+    {
+      "id": 165,
+      "parent_id": 161,
+      "kodu": "03.1.1.04",
+      "aciklama": "Diğer Değerli Kağıt Bedelleri"
+    },
+    {
+      "id": 166,
+      "parent_id": 161,
+      "kodu": "03.1.1.05",
+      "aciklama": "Gemi Sağlık Cüzdanı Bedelleri"
+    },
+    {
+      "id": 167,
+      "parent_id": 161,
+      "kodu": "03.1.1.06",
+      "aciklama": "Sağlık Karnesi Satışı"
+    },
+    {
+      "id": 168,
+      "parent_id": 161,
+      "kodu": "03.1.1.07",
+      "aciklama": "İhale Bülteni Abone Geliri "
+    },
+    {
+      "id": 169,
+      "parent_id": 161,
+      "kodu": "03.1.1.08",
+      "aciklama": "Noter Kağıtları Satış Bedeli"
+    },
+    {
+      "id": 170,
+      "parent_id": 161,
+      "kodu": "03.1.1.09",
+      "aciklama": "Pasaport Satış Bedeli"
+    },
+    {
+      "id": 171,
+      "parent_id": 161,
+      "kodu": "03.1.1.10",
+      "aciklama": "Yabancılar İçin İkametgah Tezkereleri Satış Bedeli"
+    },
+    {
+      "id": 172,
+      "parent_id": 161,
+      "kodu": "03.1.1.11",
+      "aciklama": "Nüfus Cüzdanı Satış Bedeli"
+    },
+    {
+      "id": 173,
+      "parent_id": 161,
+      "kodu": "03.1.1.12",
+      "aciklama": "Aile Cüzdanı Satış Bedeli"
+    },
+    {
+      "id": 174,
+      "parent_id": 161,
+      "kodu": "03.1.1.13",
+      "aciklama": "Sürücü Belgesi Satış Bedeli"
+    },
+    {
+      "id": 175,
+      "parent_id": 161,
+      "kodu": "03.1.1.14",
+      "aciklama": "Sürücü Çalışma Belgesi (Karne) Satış Bedeli"
+    },
+    {
+      "id": 176,
+      "parent_id": 161,
+      "kodu": "03.1.1.15",
+      "aciklama": "Motorlu Araç Trafik Belgesi Satış Bedeli"
+    },
+    {
+      "id": 177,
+      "parent_id": 161,
+      "kodu": "03.1.1.16",
+      "aciklama": "Motorlu Araç Tescil Belgesi Satış Bedeli"
+    },
+    {
+      "id": 178,
+      "parent_id": 161,
+      "kodu": "03.1.1.17",
+      "aciklama": "İş Makinesi Tescil Belgesi Satış Bedeli"
+    },
+    {
+      "id": 179,
+      "parent_id": 161,
+      "kodu": "03.1.1.18",
+      "aciklama": "İşyurtları Kantin Satış Gelirleri"
+    },
+    {
+      "id": 180,
+      "parent_id": 161,
+      "kodu": "03.1.1.19",
+      "aciklama": "Bağımsız Denetçi Kimlik ve Mühür Ücret Gelirleri"
+    },
+    {
+      "id": 181,
+      "parent_id": 161,
+      "kodu": "03.1.1.20",
+      "aciklama": "Mavi Kart Satış Bedeli"
+    },
+    {
+      "id": 182,
+      "parent_id": 161,
+      "kodu": "03.1.1.21",
+      "aciklama": "Yabancı Çalışma İzni Belgesi Satış Bedeli"
+    },
+    {
+      "id": 183,
+      "parent_id": 161,
+      "kodu": "03.1.1.22",
+      "aciklama": "Çalışma İzni Muafiyeti Belgesi Satış Bedeli"
+    },
+    {
+      "id": 184,
+      "parent_id": 161,
+      "kodu": "03.1.1.99",
+      "aciklama": "Diğer Mal Satış Gelirleri"
+    },
+    {
+      "id": 185,
+      "parent_id": 160,
+      "kodu": "03.1.2",
+      "aciklama": "Hizmet Gelirleri"
+    },
+    {
+      "id": 186,
+      "parent_id": 185,
+      "kodu": "03.1.2.01",
+      "aciklama": "Teftiş ve denetleme ücret ve payları"
+    },
+    {
+      "id": 187,
+      "parent_id": 185,
+      "kodu": "03.1.2.02",
+      "aciklama": "Muayene, denetim ve kontrol ücretleri"
+    },
+    {
+      "id": 188,
+      "parent_id": 185,
+      "kodu": "03.1.2.03",
+      "aciklama": "Avukatlık Vekalet Ücreti Gelirleri"
+    },
+    {
+      "id": 189,
+      "parent_id": 185,
+      "kodu": "03.1.2.04",
+      "aciklama": "Kurs, Toplantı, Seminer, Eğitim vb. Faaliyet Gelirleri"
+    },
+    {
+      "id": 190,
+      "parent_id": 185,
+      "kodu": "03.1.2.05",
+      "aciklama": "Danışmanlık / Bilgilendirme Gelirleri"
+    },
+    {
+      "id": 191,
+      "parent_id": 185,
+      "kodu": "03.1.2.06",
+      "aciklama": "Laboratuvar Deney ve Analiz Gelirleri"
+    },
+    {
+      "id": 192,
+      "parent_id": 185,
+      "kodu": "03.1.2.07",
+      "aciklama": "Kalite Kontrol Hizmet Gelirleri"
+    },
+    {
+      "id": 193,
+      "parent_id": 185,
+      "kodu": "03.1.2.08",
+      "aciklama": "Yol, Köprü ve Tünel Ücret Gelirleri"
+    },
+    {
+      "id": 194,
+      "parent_id": 185,
+      "kodu": "03.1.2.09",
+      "aciklama": "İhaleye İlişkin Şikayetler İçin Alınan Bedeller"
+    },
+    {
+      "id": 195,
+      "parent_id": 185,
+      "kodu": "03.1.2.10",
+      "aciklama": "Sportif faaliyet gelirleri"
+    },
+    {
+      "id": 196,
+      "parent_id": 185,
+      "kodu": "03.1.2.11",
+      "aciklama": "İlan ve Reklam Gelirleri"
+    },
+    {
+      "id": 197,
+      "parent_id": 185,
+      "kodu": "03.1.2.12",
+      "aciklama": "Gişe Gelirleri"
+    },
+    {
+      "id": 198,
+      "parent_id": 185,
+      "kodu": "03.1.2.13",
+      "aciklama": "Ölçü ve Ayar Hizmet Gelirleri"
+    },
+    {
+      "id": 199,
+      "parent_id": 185,
+      "kodu": "03.1.2.14",
+      "aciklama": "Çevre Kirliliğini Önleme Gelirleri"
+    },
+    {
+      "id": 200,
+      "parent_id": 185,
+      "kodu": "03.1.2.15",
+      "aciklama": "Sivil Savunma Gelirleri"
+    },
+    {
+      "id": 201,
+      "parent_id": 185,
+      "kodu": "03.1.2.16",
+      "aciklama": "Elektirik Enerjisi Gelirleri"
+    },
+    {
+      "id": 202,
+      "parent_id": 185,
+      "kodu": "03.1.2.17",
+      "aciklama": "Serbest Bölge Gelirleri "
+    },
+    {
+      "id": 203,
+      "parent_id": 185,
+      "kodu": "03.1.2.18",
+      "aciklama": "Kooperatifçiliği Tanıtım ve Eğitim Gelirleri"
+    },
+    {
+      "id": 204,
+      "parent_id": 185,
+      "kodu": "03.1.2.19",
+      "aciklama": "Etüt ve Proje Gelirleri"
+    },
+    {
+      "id": 205,
+      "parent_id": 185,
+      "kodu": "03.1.2.20",
+      "aciklama": "Patent Gelirleri"
+    },
+    {
+      "id": 206,
+      "parent_id": 185,
+      "kodu": "03.1.2.21",
+      "aciklama": "Marka Gelirleri"
+    },
+    {
+      "id": 207,
+      "parent_id": 185,
+      "kodu": "03.1.2.22",
+      "aciklama": "Faydalı Model Gelirleri"
+    },
+    {
+      "id": 208,
+      "parent_id": 185,
+      "kodu": "03.1.2.23",
+      "aciklama": "Coğrafi İşaret Gelirleri"
+    },
+    {
+      "id": 209,
+      "parent_id": 185,
+      "kodu": "03.1.2.24",
+      "aciklama": "Endüstriyel Tasarım Gelirleri"
+    },
+    {
+      "id": 210,
+      "parent_id": 185,
+      "kodu": "03.1.2.25",
+      "aciklama": "Entegre Devre Topografya Gelirleri"
+    },
+    {
+      "id": 211,
+      "parent_id": 185,
+      "kodu": "03.1.2.26",
+      "aciklama": "Radyoaktivite, Radyasyon Ölçüm ve Denetim Hizmetleri"
+    },
+    {
+      "id": 212,
+      "parent_id": 185,
+      "kodu": "03.1.2.27",
+      "aciklama": "Akreditasyon Hizmeti Gelirleri"
+    },
+    {
+      "id": 213,
+      "parent_id": 185,
+      "kodu": "03.1.2.28",
+      "aciklama": "Sergi ve Fuar Gelirleri"
+    },
+    {
+      "id": 214,
+      "parent_id": 185,
+      "kodu": "03.1.2.29",
+      "aciklama": "Birinci Öğretimden Elde Edilen Gelirler"
+    },
+    {
+      "id": 215,
+      "parent_id": 185,
+      "kodu": "03.1.2.30",
+      "aciklama": "Sınav, Kayıt ve Bunlara İlişkin Diğer Hizmet Gelirleri"
+    },
+    {
+      "id": 216,
+      "parent_id": 185,
+      "kodu": "03.1.2.31",
+      "aciklama": "İkinci Öğretimden Elde Edilen Gelirler"
+    },
+    {
+      "id": 217,
+      "parent_id": 185,
+      "kodu": "03.1.2.32",
+      "aciklama": "Yaz Okulu Gelirleri"
+    },
+    {
+      "id": 218,
+      "parent_id": 185,
+      "kodu": "03.1.2.33",
+      "aciklama": "Tezsiz Yüksek Lisans Gelirleri"
+    },
+    {
+      "id": 219,
+      "parent_id": 185,
+      "kodu": "03.1.2.34",
+      "aciklama": "Tezli Yüksek Lisans Gelirleri"
+    },
+    {
+      "id": 220,
+      "parent_id": 185,
+      "kodu": "03.1.2.35",
+      "aciklama": "Doktora Gelirleri"
+    },
+    {
+      "id": 221,
+      "parent_id": 185,
+      "kodu": "03.1.2.36",
+      "aciklama": "Sosyal Tesis İşletme Gelirleri"
+    },
+    {
+      "id": 222,
+      "parent_id": 185,
+      "kodu": "03.1.2.37",
+      "aciklama": "Kantin Kafeterya İşletme Gelirleri"
+    },
+    {
+      "id": 223,
+      "parent_id": 185,
+      "kodu": "03.1.2.38",
+      "aciklama": "Yurt Yatak Ücreti Gelirleri"
+    },
+    {
+      "id": 224,
+      "parent_id": 185,
+      "kodu": "03.1.2.39",
+      "aciklama": "İhale İlan Yayın Geliri"
+    },
+    {
+      "id": 225,
+      "parent_id": 185,
+      "kodu": "03.1.2.40",
+      "aciklama": "Otopark İşletmesi Gelirleri"
+    },
+    {
+      "id": 226,
+      "parent_id": 185,
+      "kodu": "03.1.2.41",
+      "aciklama": "Uluslararası Ortak Eğitim ve Öğretim Program Gelirleri"
+    },
+    {
+      "id": 227,
+      "parent_id": 185,
+      "kodu": "03.1.2.42",
+      "aciklama": "Vakıf Yönetim ve Temsil Gelirleri"
+    },
+    {
+      "id": 228,
+      "parent_id": 185,
+      "kodu": "03.1.2.43",
+      "aciklama": "Vatandaşlık İşlemleri Hizmet Bedeli"
+    },
+    {
+      "id": 229,
+      "parent_id": 185,
+      "kodu": "03.1.2.44",
+      "aciklama": "Kimlik ve Adres Paylaşımı Gelirleri"
+    },
+    {
+      "id": 230,
+      "parent_id": 185,
+      "kodu": "03.1.2.45",
+      "aciklama": "Uzaktan Öğretimden Elde Edilen Gelirler"
+    },
+    {
+      "id": 231,
+      "parent_id": 185,
+      "kodu": "03.1.2.46",
+      "aciklama": "Uzaktan Öğretim Materyal Gelirleri"
+    },
+    {
+      "id": 232,
+      "parent_id": 185,
+      "kodu": "03.1.2.47",
+      "aciklama": "6502 Sayılı Kanun Kapsamında Alınan Tebligat ve Bilirkişi Ücret Gelirleri"
+    },
+    {
+      "id": 233,
+      "parent_id": 185,
+      "kodu": "03.1.2.48",
+      "aciklama": "Açık Öğretimden Elde Edilen Gelirler"
+    },
+    {
+      "id": 234,
+      "parent_id": 185,
+      "kodu": "03.1.2.49",
+      "aciklama": "Su Yapıları Denetim Hizmet Gelirleri"
+    },
+    {
+      "id": 235,
+      "parent_id": 185,
+      "kodu": "03.1.2.51",
+      "aciklama": "Çevre ve Esenlik Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 236,
+      "parent_id": 185,
+      "kodu": "03.1.2.52",
+      "aciklama": "Doğalgaz Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 237,
+      "parent_id": 185,
+      "kodu": "03.1.2.53",
+      "aciklama": "Eğitim Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 238,
+      "parent_id": 185,
+      "kodu": "03.1.2.54",
+      "aciklama": "Ekonomik Hizmetlere İlişkin Gelirler"
+    },
+    {
+      "id": 239,
+      "parent_id": 185,
+      "kodu": "03.1.2.55",
+      "aciklama": "Kültürel Hizmetlere İlişkin Gelirler"
+    },
+    {
+      "id": 240,
+      "parent_id": 185,
+      "kodu": "03.1.2.56",
+      "aciklama": "Sağlık Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 241,
+      "parent_id": 185,
+      "kodu": "03.1.2.57",
+      "aciklama": "Sosyal Hizmetlere İlişkin Gelirler"
+    },
+    {
+      "id": 242,
+      "parent_id": 185,
+      "kodu": "03.1.2.58",
+      "aciklama": "Su Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 243,
+      "parent_id": 185,
+      "kodu": "03.1.2.59",
+      "aciklama": "Ulaştırma Hizmetlerine İlişkin Gelirler"
+    },
+    {
+      "id": 244,
+      "parent_id": 185,
+      "kodu": "03.1.2.60",
+      "aciklama": "Tarımsal Hizmetlere İlişkin Gelirler"
+    },
+    {
+      "id": 245,
+      "parent_id": 185,
+      "kodu": "03.1.2.98",
+      "aciklama": "667 Sayılı KHK Kapsamında Tahsil Edilen Eğitim-Öğretim Ücretleri "
+    },
+    {
+      "id": 246,
+      "parent_id": 185,
+      "kodu": "03.1.2.99",
+      "aciklama": "Diğer hizmet gelirleri"
+    },
+    {
+      "id": 247,
+      "parent_id": 159,
+      "kodu": "03.2",
+      "aciklama": "Malların kullanma veya faaliyette bulunma izni  gelirleri"
+    },
+    {
+      "id": 248,
+      "parent_id": 247,
+      "kodu": "03.2.1",
+      "aciklama": "Malların kullanma veya faaliyette bulunma izni  gelirleri"
+    },
+    {
+      "id": 249,
+      "parent_id": 248,
+      "kodu": "03.2.1.01",
+      "aciklama": "TV Yayın Lisansı Ücreti"
+    },
+    {
+      "id": 250,
+      "parent_id": 248,
+      "kodu": "03.2.1.02",
+      "aciklama": "Radyo Yayın Lisansı Ücreti"
+    },
+    {
+      "id": 251,
+      "parent_id": 248,
+      "kodu": "03.2.1.03",
+      "aciklama": "Sağlık Malzeme Hizmetleri Ruhsat Bedeli"
+    },
+    {
+      "id": 252,
+      "parent_id": 248,
+      "kodu": "03.2.1.04",
+      "aciklama": "Yatırımları Teşvik Gelirleri"
+    },
+    {
+      "id": 253,
+      "parent_id": 248,
+      "kodu": "03.2.1.05",
+      "aciklama": "Radyasyon kaynakları İle İlgili İzin Gelirleri"
+    },
+    {
+      "id": 254,
+      "parent_id": 248,
+      "kodu": "03.2.1.06",
+      "aciklama": "Atom Enerjisi Lisans Gelirleri"
+    },
+    {
+      "id": 255,
+      "parent_id": 248,
+      "kodu": "03.2.1.07",
+      "aciklama": "İletişim Araçları Ruhsatname ve Sertifika Ücretleri"
+    },
+    {
+      "id": 256,
+      "parent_id": 248,
+      "kodu": "03.2.1.08",
+      "aciklama": "İletişim Araçları Kullanım Ücretleri"
+    },
+    {
+      "id": 257,
+      "parent_id": 248,
+      "kodu": "03.2.1.09",
+      "aciklama": "Sermaye Piyasası Araçları Kayıt Ücretleri"
+    },
+    {
+      "id": 258,
+      "parent_id": 248,
+      "kodu": "03.2.1.10",
+      "aciklama": "Elektrik Piyasası Lisans Gelirleri"
+    },
+    {
+      "id": 259,
+      "parent_id": 248,
+      "kodu": "03.2.1.11",
+      "aciklama": "Doğalgaz Piyasası Lisans ve Sertifika Gelirleri"
+    },
+    {
+      "id": 260,
+      "parent_id": 248,
+      "kodu": "03.2.1.12",
+      "aciklama": "Petrol Piyasası Lisans Gelirleri"
+    },
+    {
+      "id": 261,
+      "parent_id": 248,
+      "kodu": "03.2.1.13",
+      "aciklama": "LPG Piyasası Lisans Gelirleri"
+    },
+    {
+      "id": 262,
+      "parent_id": 248,
+      "kodu": "03.2.1.14",
+      "aciklama": "Televizyon Kanal Yıllık Kullanım Ücreti"
+    },
+    {
+      "id": 263,
+      "parent_id": 248,
+      "kodu": "03.2.1.15",
+      "aciklama": "Radyo Frekans Yıllık Kullanım Ücreti"
+    },
+    {
+      "id": 264,
+      "parent_id": 248,
+      "kodu": "03.2.1.16",
+      "aciklama": "Tütün Piyasası İzin vb. Gelirleri"
+    },
+    {
+      "id": 265,
+      "parent_id": 248,
+      "kodu": "03.2.1.17",
+      "aciklama": "Tütün Mamülleri Piyasası İzin vb. Gelirleri"
+    },
+    {
+      "id": 266,
+      "parent_id": 248,
+      "kodu": "03.2.1.18",
+      "aciklama": "Alkollü İçkiler Piyasası İzin vb. Gelirleri"
+    },
+    {
+      "id": 267,
+      "parent_id": 248,
+      "kodu": "03.2.1.19",
+      "aciklama": "Uluslararası Mobil Telekomünikasyon Hizmet ve Altyapı Yetkilendirme Gelirleri"
+    },
+    {
+      "id": 268,
+      "parent_id": 248,
+      "kodu": "03.2.1.20",
+      "aciklama": "Sivil Havacılık Ruhsat Gelirleri"
+    },
+    {
+      "id": 269,
+      "parent_id": 248,
+      "kodu": "03.2.1.21",
+      "aciklama": "Sivil Havacılık Sertifika Gelirleri"
+    },
+    {
+      "id": 270,
+      "parent_id": 248,
+      "kodu": "03.2.1.22",
+      "aciklama": "Sivil Havacılık Tescil ve Lisans Gelirleri"
+    },
+    {
+      "id": 271,
+      "parent_id": 248,
+      "kodu": "03.2.1.23",
+      "aciklama": "Ürün Kayıt Ücretleri"
+    },
+    {
+      "id": 272,
+      "parent_id": 248,
+      "kodu": "03.2.1.24",
+      "aciklama": "Ürün Sertifika Gelirleri"
+    },
+    {
+      "id": 273,
+      "parent_id": 248,
+      "kodu": "03.2.1.25",
+      "aciklama": "İlaç Ruhsat Gelirleri"
+    },
+    {
+      "id": 274,
+      "parent_id": 248,
+      "kodu": "03.2.1.26",
+      "aciklama": "Multipleks Kapasite Kullanım Ücreti"
+    },
+    {
+      "id": 275,
+      "parent_id": 248,
+      "kodu": "03.2.1.27",
+      "aciklama": "Yayın İletim Yetkilendirme Ücreti"
+    },
+    {
+      "id": 276,
+      "parent_id": 248,
+      "kodu": "03.2.1.28",
+      "aciklama": "Arabuluculuk Sicili Gelirleri"
+    },
+    {
+      "id": 277,
+      "parent_id": 248,
+      "kodu": "03.2.1.29",
+      "aciklama": "Bağımsız Denetçi ve Bağımsız Denetim Kuruluşu Belge Ücret Gelirleri"
+    },
+    {
+      "id": 278,
+      "parent_id": 248,
+      "kodu": "03.2.1.99",
+      "aciklama": "Malların Kullanma veya Faaliyette Bulunma İznine İlişkin Diğer Gelirler"
+    },
+    {
+      "id": 279,
+      "parent_id": 159,
+      "kodu": "03.3",
+      "aciklama": "KİT ve Kamu Bankaları Gelirleri"
+    },
+    {
+      "id": 280,
+      "parent_id": 279,
+      "kodu": "03.3.1",
+      "aciklama": "Hazine Portföyü ve İştirak Gelirleri"
+    },
+    {
+      "id": 281,
+      "parent_id": 280,
+      "kodu": "03.3.1.01",
+      "aciklama": "KİT'lerden Elde Edilen Gelirler"
+    },
+    {
+      "id": 282,
+      "parent_id": 280,
+      "kodu": "03.3.1.02",
+      "aciklama": "İştirak Gelirleri"
+    },
+    {
+      "id": 283,
+      "parent_id": 280,
+      "kodu": "03.3.1.03",
+      "aciklama": "Yeniden Değerlendirme Farkları"
+    },
+    {
+      "id": 284,
+      "parent_id": 280,
+      "kodu": "03.3.1.04",
+      "aciklama": "2.Tip Telekomünikasyon Ruhsatı ve Genel İzin Gelirleri"
+    },
+    {
+      "id": 285,
+      "parent_id": 280,
+      "kodu": "03.3.1.05",
+      "aciklama": "Kamu Bankalarından Elde Edilen Temettü Gelirleri"
+    },
+    {
+      "id": 286,
+      "parent_id": 280,
+      "kodu": "03.3.1.99",
+      "aciklama": "Diğer Hazine Portföyü ve İştirak Gelirleri"
+    },
+    {
+      "id": 287,
+      "parent_id": 279,
+      "kodu": "03.3.2",
+      "aciklama": "KİT ve İDT'lerden Sağlanan Gelirler"
+    },
+    {
+      "id": 288,
+      "parent_id": 287,
+      "kodu": "03.3.2.01",
+      "aciklama": "Devlet Hava Mey. İşl. Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 289,
+      "parent_id": 287,
+      "kodu": "03.3.2.02",
+      "aciklama": "Devlet Malzeme Ofisi Genel Müdürlüğünden"
+    },
+    {
+      "id": 290,
+      "parent_id": 287,
+      "kodu": "03.3.2.03",
+      "aciklama": "Kıyı Emniyeti ve Gemi Kurtarma İşletmeleri Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 291,
+      "parent_id": 287,
+      "kodu": "03.3.2.04",
+      "aciklama": "Türkiye Petrolleri Anonim Ortaklığı'ndan"
+    },
+    {
+      "id": 292,
+      "parent_id": 287,
+      "kodu": "03.3.2.99",
+      "aciklama": "Diğer KİT ve İDT'lerden Sağlanan Gelirler"
+    },
+    {
+      "id": 293,
+      "parent_id": 159,
+      "kodu": "03.4",
+      "aciklama": "Kurumlar Hasılatı"
+    },
+    {
+      "id": 294,
+      "parent_id": 293,
+      "kodu": "03.4.1",
+      "aciklama": "Genel Bütçeli İdareler Kurumlar Hasılatı"
+    },
+    {
+      "id": 295,
+      "parent_id": 294,
+      "kodu": "03.4.1.01",
+      "aciklama": "Resmi Basımevleri, Okullar Kurumlar Hasılatı"
+    },
+    {
+      "id": 296,
+      "parent_id": 294,
+      "kodu": "03.4.1.99",
+      "aciklama": "Diğer"
+    },
+    {
+      "id": 297,
+      "parent_id": 293,
+      "kodu": "03.4.5",
+      "aciklama": "Mahalli İdareler Kurumlar Hasılatı"
+    },
+    {
+      "id": 298,
+      "parent_id": 297,
+      "kodu": "03.4.5.51",
+      "aciklama": "Çevre ve Esenlik Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 299,
+      "parent_id": 297,
+      "kodu": "03.4.5.52",
+      "aciklama": "Doğalgaz Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 300,
+      "parent_id": 297,
+      "kodu": "03.4.5.53",
+      "aciklama": "Eğitim Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 301,
+      "parent_id": 297,
+      "kodu": "03.4.5.54",
+      "aciklama": "Ekonomik Hizmetlere İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 302,
+      "parent_id": 297,
+      "kodu": "03.4.5.55",
+      "aciklama": "Kültürel Hizmetlere İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 303,
+      "parent_id": 297,
+      "kodu": "03.4.5.56",
+      "aciklama": "Sağlık Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 304,
+      "parent_id": 297,
+      "kodu": "03.4.5.57",
+      "aciklama": "Sosyal Hizmetlere İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 305,
+      "parent_id": 297,
+      "kodu": "03.4.5.58",
+      "aciklama": "Su Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 306,
+      "parent_id": 297,
+      "kodu": "03.4.5.59",
+      "aciklama": "Ulaştırma Hizmetlerine İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 307,
+      "parent_id": 297,
+      "kodu": "03.4.5.60",
+      "aciklama": "Tarımsal Hizmetlere İlişkin Kurumlar Hasılatı"
+    },
+    {
+      "id": 308,
+      "parent_id": 293,
+      "kodu": "03.4.9",
+      "aciklama": "Diğer Kurumlar Hasılatı"
+    },
+    {
+      "id": 309,
+      "parent_id": 308,
+      "kodu": "03.4.9.99",
+      "aciklama": "Diğer Kurumlar Hasılatı"
+    },
+    {
+      "id": 310,
+      "parent_id": 159,
+      "kodu": "03.5",
+      "aciklama": "Kurumlar Karları"
+    },
+    {
+      "id": 311,
+      "parent_id": 310,
+      "kodu": "03.5.1",
+      "aciklama": "Döner Sermayeler"
+    },
+    {
+      "id": 312,
+      "parent_id": 311,
+      "kodu": "03.5.1.01",
+      "aciklama": "Döner Sermayelerin Aylık Gayrisafi Hasılatından Aktarmalar"
+    },
+    {
+      "id": 313,
+      "parent_id": 311,
+      "kodu": "03.5.1.02",
+      "aciklama": "Döner Sermayelerin Yılsonu Karlarından Aktarmalar"
+    },
+    {
+      "id": 314,
+      "parent_id": 310,
+      "kodu": "03.5.5",
+      "aciklama": "Mahalli İdareler "
+    },
+    {
+      "id": 315,
+      "parent_id": 314,
+      "kodu": "03.5.5.51",
+      "aciklama": "Çevre ve Esenlik Hizmetlerine İlişkin Kurumların Karları"
+    },
+    {
+      "id": 316,
+      "parent_id": 314,
+      "kodu": "03.5.5.52",
+      "aciklama": "Doğalgaz Hizmetlerine İlişkin Kurumların Karları"
+    },
+    {
+      "id": 317,
+      "parent_id": 314,
+      "kodu": "03.5.5.53",
+      "aciklama": "Eğitim Hizmetlerine İlişkin Kurumların Karları"
+    },
+    {
+      "id": 318,
+      "parent_id": 314,
+      "kodu": "03.5.5.54",
+      "aciklama": "Ekonomik Hizmetlere İlişkin Kurumların Karları"
+    },
+    {
+      "id": 319,
+      "parent_id": 314,
+      "kodu": "03.5.5.55",
+      "aciklama": "Kültürel Hizmetlere İlişkin Kurumların Karları"
+    },
+    {
+      "id": 320,
+      "parent_id": 314,
+      "kodu": "03.5.5.56",
+      "aciklama": "Sağlık Hizmetlerine İlişkin Kurumların Karları"
+    },
+    {
+      "id": 321,
+      "parent_id": 314,
+      "kodu": "03.5.5.57",
+      "aciklama": "Sosyal Hizmetlere İlişkin Kurumların Karları"
+    },
+    {
+      "id": 322,
+      "parent_id": 314,
+      "kodu": "03.5.5.58",
+      "aciklama": "Su Hizmetlerine İlişkin Kurumların Karları "
+    },
+    {
+      "id": 323,
+      "parent_id": 314,
+      "kodu": "03.5.5.59",
+      "aciklama": "Ulaştırma Hizmetlerine İlişkin Kurumların Karları"
+    },
+    {
+      "id": 324,
+      "parent_id": 314,
+      "kodu": "03.5.5.60",
+      "aciklama": "Tarımsal Hizmetlere İlişkin Kurumların Karları"
+    },
+    {
+      "id": 325,
+      "parent_id": 310,
+      "kodu": "03.5.9",
+      "aciklama": "Diğer kurumlar karları"
+    },
+    {
+      "id": 326,
+      "parent_id": 325,
+      "kodu": "03.5.9.99",
+      "aciklama": "Diğer kurumlar karları"
+    },
+    {
+      "id": 327,
+      "parent_id": 159,
+      "kodu": "03.6",
+      "aciklama": "Kira Gelirleri"
+    },
+    {
+      "id": 328,
+      "parent_id": 327,
+      "kodu": "03.6.1",
+      "aciklama": "Taşınmaz Kiraları"
+    },
+    {
+      "id": 329,
+      "parent_id": 328,
+      "kodu": "03.6.1.01",
+      "aciklama": "Lojman Kira Gelirleri"
+    },
+    {
+      "id": 330,
+      "parent_id": 328,
+      "kodu": "03.6.1.02",
+      "aciklama": "Ecrimisil Gelirleri"
+    },
+    {
+      "id": 331,
+      "parent_id": 328,
+      "kodu": "03.6.1.03",
+      "aciklama": "Sosyal Tesis Kira Gelirleri"
+    },
+    {
+      "id": 332,
+      "parent_id": 328,
+      "kodu": "03.6.1.04",
+      "aciklama": "Spor Tesisi Kira Gelirleri"
+    },
+    {
+      "id": 333,
+      "parent_id": 328,
+      "kodu": "03.6.1.05",
+      "aciklama": "Kültür Amaçlı Tesis Kira Gelirleri"
+    },
+    {
+      "id": 334,
+      "parent_id": 328,
+      "kodu": "03.6.1.99",
+      "aciklama": "Diğer Taşınmaz Kira Gelirleri"
+    },
+    {
+      "id": 335,
+      "parent_id": 327,
+      "kodu": "03.6.2",
+      "aciklama": "Taşınır Kiraları"
+    },
+    {
+      "id": 336,
+      "parent_id": 335,
+      "kodu": "03.6.2.01 ",
+      "aciklama": "Taşınır Kira Gelirleri"
+    },
+    {
+      "id": 337,
+      "parent_id": 327,
+      "kodu": "03.6.3",
+      "aciklama": "Ön İzin, İrtifak Hakkı ve Kullanma İzni Gelirleri"
+    },
+    {
+      "id": 338,
+      "parent_id": 337,
+      "kodu": "03.6.3.01 ",
+      "aciklama": "Ön İzin Gelirleri"
+    },
+    {
+      "id": 339,
+      "parent_id": 337,
+      "kodu": "03.6.3.02",
+      "aciklama": "İrtifak Hakkı Gelirleri"
+    },
+    {
+      "id": 340,
+      "parent_id": 337,
+      "kodu": "03.6.3.03",
+      "aciklama": "Kullanma İzni Gelirleri"
+    },
+    {
+      "id": 341,
+      "parent_id": 337,
+      "kodu": "03.6.3.04",
+      "aciklama": "Ormancılık Faaliyetleri İçin Arazi İzin Bedeli Geliri"
+    },
+    {
+      "id": 342,
+      "parent_id": 337,
+      "kodu": "03.6.3.05",
+      "aciklama": "Ağaçlandırma Bedeli Geliri"
+    },
+    {
+      "id": 343,
+      "parent_id": 337,
+      "kodu": "03.6.3.23",
+      "aciklama": "Kiraya Verilen Hazineye Ait Taşınmazlardan Elde Edilen Hasılat ve Ticari Kar Payı Gelirleri"
+    },
+    {
+      "id": 344,
+      "parent_id": 159,
+      "kodu": "03.9",
+      "aciklama": "Diğer Teşebbüs ve Mülkiyet Gelirleri"
+    },
+    {
+      "id": 345,
+      "parent_id": 344,
+      "kodu": "03.9.9",
+      "aciklama": "Diğer Gelirler"
+    },
+    {
+      "id": 346,
+      "parent_id": 345,
+      "kodu": "03.9.9.01",
+      "aciklama": "Para Basımı Gelirleri"
+    },
+    {
+      "id": 347,
+      "parent_id": 345,
+      "kodu": "03.9.9.02",
+      "aciklama": "İşletme Mükelleflerinden Tahsil Olunan Amortisman Ücretleri"
+    },
+    {
+      "id": 348,
+      "parent_id": 345,
+      "kodu": "03.9.9.03",
+      "aciklama": "Masraf Karşılıkları"
+    },
+    {
+      "id": 349,
+      "parent_id": 345,
+      "kodu": "03.9.9.04",
+      "aciklama": "Yurt Dışı Dövizli Askerlik Gelirleri"
+    },
+    {
+      "id": 350,
+      "parent_id": 345,
+      "kodu": "03.9.9.05",
+      "aciklama": "Tarımsal Amaçlı Kooperatif Kredi Dönüş Gelirleri"
+    },
+    {
+      "id": 351,
+      "parent_id": 345,
+      "kodu": "03.9.9.06",
+      "aciklama": "İçme, Kullanma ve Endüstri Suyu Tesislerine İlişkin Yatırım Bedeli Geri Ödemeleri"
+    },
+    {
+      "id": 352,
+      "parent_id": 345,
+      "kodu": "03.9.9.99",
+      "aciklama": "Diğer Çeşitli Teşebbüs ve Mülkiyet Gelirleri"
+    },
+    {
+      "id": 353,
+      "parent_id": 0,
+      "kodu": "04",
+      "aciklama": "Alınan Bağış ve Yardımlar ile Özel Gelirler"
+    },
+    {
+      "id": 354,
+      "parent_id": 353,
+      "kodu": "04.1",
+      "aciklama": "Yurt Dışından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 355,
+      "parent_id": 354,
+      "kodu": "04.1.1",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 356,
+      "parent_id": 355,
+      "kodu": "04.1.1.01",
+      "aciklama": "AB' den Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 357,
+      "parent_id": 355,
+      "kodu": "04.1.1.02",
+      "aciklama": "Dünya Bankasından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 358,
+      "parent_id": 355,
+      "kodu": "04.1.1.03",
+      "aciklama": "Merkez Bankasındaki 34 No'lu NATO hesabından Hazineye devrolunacak miktar"
+    },
+    {
+      "id": 359,
+      "parent_id": 355,
+      "kodu": "04.1.1.04",
+      "aciklama": "BM'den Alınan Bağış ve Yardımlar "
+    },
+    {
+      "id": 360,
+      "parent_id": 355,
+      "kodu": "04.1.1.99",
+      "aciklama": "Yurtdışından Alınan Diğer Bağış ve Yardımlar"
+    },
+    {
+      "id": 361,
+      "parent_id": 354,
+      "kodu": "04.1.2",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 362,
+      "parent_id": 361,
+      "kodu": "04.1.2.01",
+      "aciklama": "AB' den Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 363,
+      "parent_id": 361,
+      "kodu": "04.1.2.02",
+      "aciklama": "Dünya Bankasından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 364,
+      "parent_id": 361,
+      "kodu": "04.1.2.03",
+      "aciklama": "Merkez Bankasındaki 34 No'lu NATO hesabından Hazineye devrolunacak miktar"
+    },
+    {
+      "id": 365,
+      "parent_id": 361,
+      "kodu": "04.1.2.04",
+      "aciklama": "BM'den Alınan Bağış ve Yardımlar "
+    },
+    {
+      "id": 366,
+      "parent_id": 361,
+      "kodu": "04.1.2.99",
+      "aciklama": "Yurtdışından Alınan Diğer Bağış ve Yardımlar"
+    },
+    {
+      "id": 367,
+      "parent_id": 353,
+      "kodu": "04.2",
+      "aciklama": "Merkezi Yönetim Bütçesine Dahil İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 368,
+      "parent_id": 367,
+      "kodu": "04.2.1",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 369,
+      "parent_id": 368,
+      "kodu": "04.2.1.01",
+      "aciklama": "Hazine yardımı"
+    },
+    {
+      "id": 370,
+      "parent_id": 368,
+      "kodu": "04.2.1.51",
+      "aciklama": "Muhtar ödenekleri için genel bütçeden alınan"
+    },
+    {
+      "id": 371,
+      "parent_id": 368,
+      "kodu": "04.2.1.99",
+      "aciklama": "Cari nitelikli diğer işler için genel bütçeden alınan"
+    },
+    {
+      "id": 372,
+      "parent_id": 367,
+      "kodu": "04.2.2",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 373,
+      "parent_id": 372,
+      "kodu": "04.2.2.01",
+      "aciklama": "Hazine yardımı"
+    },
+    {
+      "id": 374,
+      "parent_id": 372,
+      "kodu": "04.2.2.51",
+      "aciklama": "Alt yapı hizmetleri için genel bütçeden alınan"
+    },
+    {
+      "id": 375,
+      "parent_id": 372,
+      "kodu": "04.2.2.52",
+      "aciklama": "Eğitim hizmetleri için genel bütçeden alınan"
+    },
+    {
+      "id": 376,
+      "parent_id": 372,
+      "kodu": "04.2.2.99",
+      "aciklama": "Sermaye nitelikli diğer işler için genel bütçeden alınan"
+    },
+    {
+      "id": 377,
+      "parent_id": 353,
+      "kodu": "04.3",
+      "aciklama": "Diğer İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 378,
+      "parent_id": 377,
+      "kodu": "04.3.1",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 379,
+      "parent_id": 378,
+      "kodu": "04.3.1.01",
+      "aciklama": "Sosyal Güvenlik Kurumlarından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 380,
+      "parent_id": 378,
+      "kodu": "04.3.1.02",
+      "aciklama": "Mahalli İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 381,
+      "parent_id": 378,
+      "kodu": "04.3.1.03",
+      "aciklama": "Diğerlerinden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 382,
+      "parent_id": 377,
+      "kodu": "04.3.2",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 383,
+      "parent_id": 382,
+      "kodu": "04.3.2.01",
+      "aciklama": "Sosyal Güvenlik Kurumlarından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 384,
+      "parent_id": 382,
+      "kodu": "04.3.2.02",
+      "aciklama": "Mahalli İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 385,
+      "parent_id": 382,
+      "kodu": "04.3.2.03",
+      "aciklama": "Diğerlerinden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 386,
+      "parent_id": 353,
+      "kodu": "04.4",
+      "aciklama": "Kurumlardan ve Kişilerden Alınan Yardım ve Bağışlar"
+    },
+    {
+      "id": 387,
+      "parent_id": 386,
+      "kodu": "04.4.1",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 388,
+      "parent_id": 387,
+      "kodu": "04.4.1.01",
+      "aciklama": "Kurumlardan alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 389,
+      "parent_id": 387,
+      "kodu": "04.4.1.02",
+      "aciklama": "Kişilerden alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 390,
+      "parent_id": 387,
+      "kodu": "04.4.1.03",
+      "aciklama": "Kurumlardan Alınan Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 391,
+      "parent_id": 387,
+      "kodu": "04.4.1.04",
+      "aciklama": "Kişilerden Alınan Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 392,
+      "parent_id": 386,
+      "kodu": "04.4.2",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 393,
+      "parent_id": 392,
+      "kodu": "04.4.2.01",
+      "aciklama": "Kurumlardan alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 394,
+      "parent_id": 392,
+      "kodu": "04.4.2.02",
+      "aciklama": "Kişilerden alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 395,
+      "parent_id": 392,
+      "kodu": "04.4.2.03",
+      "aciklama": "Kurumlardan Alınan Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 396,
+      "parent_id": 392,
+      "kodu": "04.4.2.04",
+      "aciklama": "Kişilerden Alınan Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 397,
+      "parent_id": 353,
+      "kodu": "04.5",
+      "aciklama": "Proje Yardımları"
+    },
+    {
+      "id": 398,
+      "parent_id": 397,
+      "kodu": "04.5.1",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 399,
+      "parent_id": 398,
+      "kodu": "04.5.1.01",
+      "aciklama": "Genel Bütçeli İdarelerden Alınan Proje Yardımları"
+    },
+    {
+      "id": 400,
+      "parent_id": 398,
+      "kodu": "04.5.1.02",
+      "aciklama": "Özel Bütçeli İdarelerden Alınan Proje Yardımları "
+    },
+    {
+      "id": 401,
+      "parent_id": 398,
+      "kodu": "04.5.1.03",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlardan Alınan Proje Yardımları"
+    },
+    {
+      "id": 402,
+      "parent_id": 398,
+      "kodu": "04.5.1.04",
+      "aciklama": "Sosyal Güvenlik Kurumlarından Alınan Proje Yardımları"
+    },
+    {
+      "id": 403,
+      "parent_id": 398,
+      "kodu": "04.5.1.05",
+      "aciklama": "Mahalli İdarelerden Alınan Proje Yardımları"
+    },
+    {
+      "id": 404,
+      "parent_id": 398,
+      "kodu": "04.5.1.09",
+      "aciklama": "Diğerlerinden Alınan Proje Yardımları "
+    },
+    {
+      "id": 405,
+      "parent_id": 398,
+      "kodu": "04.5.1.10",
+      "aciklama": "YÖK Öğretim Üyesi Yetiştirme Programı Destekleri"
+    },
+    {
+      "id": 406,
+      "parent_id": 398,
+      "kodu": "04.5.1.11",
+      "aciklama": "YÖK Yurtdışı Destekleri"
+    },
+    {
+      "id": 407,
+      "parent_id": 398,
+      "kodu": "04.5.1.12",
+      "aciklama": "YÖK Yabancı Uyruklu Öğrenci Programı Destekleri"
+    },
+    {
+      "id": 408,
+      "parent_id": 398,
+      "kodu": "04.5.1.13",
+      "aciklama": "YÖK Burs Destekleri "
+    },
+    {
+      "id": 409,
+      "parent_id": 398,
+      "kodu": "04.5.1.14",
+      "aciklama": "YÖK Yurtdışı Araştırma Destekleri "
+    },
+    {
+      "id": 410,
+      "parent_id": 397,
+      "kodu": "04.5.2",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 411,
+      "parent_id": 410,
+      "kodu": "04.5.2.01",
+      "aciklama": "Genel Bütçeli İdarelerden Alınan Proje Yardımları"
+    },
+    {
+      "id": 412,
+      "parent_id": 410,
+      "kodu": "04.5.2.02",
+      "aciklama": "Özel Bütçeli İdarelerden Alınan Proje Yardımları "
+    },
+    {
+      "id": 413,
+      "parent_id": 410,
+      "kodu": "04.5.2.03",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlardan Alınan Proje Yardımları"
+    },
+    {
+      "id": 414,
+      "parent_id": 410,
+      "kodu": "04.5.2.04",
+      "aciklama": "Sosyal Güvenlik Kurumlarından Alınan Proje Yardımları"
+    },
+    {
+      "id": 415,
+      "parent_id": 410,
+      "kodu": "04.5.2.05",
+      "aciklama": "Mahalli İdarelerden Alınan Proje Yardımları"
+    },
+    {
+      "id": 416,
+      "parent_id": 410,
+      "kodu": "04.5.2.09",
+      "aciklama": "Diğerlerinden Alınan Proje Yardımları "
+    },
+    {
+      "id": 417,
+      "parent_id": 353,
+      "kodu": "04.6",
+      "aciklama": "Özel Gelirler"
+    },
+    {
+      "id": 418,
+      "parent_id": 417,
+      "kodu": "04.6.1",
+      "aciklama": "Genel Bütçeli İdarelere Ait Özel Gelirler"
+    },
+    {
+      "id": 419,
+      "parent_id": 418,
+      "kodu": "04.6.1.01",
+      "aciklama": "İç ve Dış Tanıtım Gelirleri"
+    },
+    {
+      "id": 420,
+      "parent_id": 418,
+      "kodu": "04.6.1.02",
+      "aciklama": "Harita ve Kadastro Bedeli "
+    },
+    {
+      "id": 421,
+      "parent_id": 418,
+      "kodu": "04.6.1.03",
+      "aciklama": "Saray Köşk ve Kasır Gelirler"
+    },
+    {
+      "id": 422,
+      "parent_id": 418,
+      "kodu": "04.6.1.04",
+      "aciklama": "Basılı Kağıt ve Plaka Satış Gelirleri"
+    },
+    {
+      "id": 423,
+      "parent_id": 418,
+      "kodu": "04.6.1.05",
+      "aciklama": "Nato Anlaşma Karşılıkları"
+    },
+    {
+      "id": 424,
+      "parent_id": 418,
+      "kodu": "04.6.1.06",
+      "aciklama": "Çıraklık, Mesleki ve Teknik Eğitim Gelirleri"
+    },
+    {
+      "id": 425,
+      "parent_id": 418,
+      "kodu": "04.6.1.07",
+      "aciklama": "TSK Mal ve Hizmet Satış Geliri"
+    },
+    {
+      "id": 426,
+      "parent_id": 418,
+      "kodu": "04.6.1.08",
+      "aciklama": "Kara, Deniz ve Hava Taşıt Kira Gelirleri"
+    },
+    {
+      "id": 427,
+      "parent_id": 418,
+      "kodu": "04.6.1.09",
+      "aciklama": "Organize Sanayi Bölge Gelirleri"
+    },
+    {
+      "id": 428,
+      "parent_id": 418,
+      "kodu": "04.6.1.10",
+      "aciklama": "Gıda Maddesi Üretim İzin Gelirleri"
+    },
+    {
+      "id": 429,
+      "parent_id": 418,
+      "kodu": "04.6.1.11",
+      "aciklama": "İletişim Lisans ve Ruhsat Bedeli"
+    },
+    {
+      "id": 430,
+      "parent_id": 418,
+      "kodu": "04.6.1.12",
+      "aciklama": "Döner Sermaye Karlarından Sermayeye Eklenen Gelirler"
+    },
+    {
+      "id": 431,
+      "parent_id": 418,
+      "kodu": "04.6.1.13",
+      "aciklama": "Konvertibl Olmayan Konsolosluk Gelirleri"
+    },
+    {
+      "id": 432,
+      "parent_id": 418,
+      "kodu": "04.6.1.14",
+      "aciklama": "Deprem Nedeniyle Yapılan Bağış,Hibe ve Yardımlar"
+    },
+    {
+      "id": 433,
+      "parent_id": 418,
+      "kodu": "04.6.1.15",
+      "aciklama": "Yol ve Tünel Geçiş Ücreti"
+    },
+    {
+      "id": 434,
+      "parent_id": 418,
+      "kodu": "04.6.1.16",
+      "aciklama": "Ücretle Yapılacak İş ve Hizmet Karşılıkları"
+    },
+    {
+      "id": 435,
+      "parent_id": 418,
+      "kodu": "04.6.1.17",
+      "aciklama": "Köprü Geçiş Ücretleri"
+    },
+    {
+      "id": 436,
+      "parent_id": 418,
+      "kodu": "04.6.1.18",
+      "aciklama": "Gayrimenkul Satış ve Kira Gelirleri"
+    },
+    {
+      "id": 437,
+      "parent_id": 418,
+      "kodu": "04.6.1.20",
+      "aciklama": "Hurda Gemi Satış Geliri"
+    },
+    {
+      "id": 438,
+      "parent_id": 418,
+      "kodu": "04.6.1.21",
+      "aciklama": "Yabancı Uyruklu Öğrenci Eğitim Karşılığı"
+    },
+    {
+      "id": 439,
+      "parent_id": 418,
+      "kodu": "04.6.1.22",
+      "aciklama": "Kamu Bankalarından Nakledilen Personel Ücreti"
+    },
+    {
+      "id": 440,
+      "parent_id": 418,
+      "kodu": "04.6.1.23",
+      "aciklama": "Afet Riski Altındaki Alanların Dönüşüm Gelirleri"
+    },
+    {
+      "id": 441,
+      "parent_id": 418,
+      "kodu": "04.6.1.24",
+      "aciklama": "Cami, Mescit ve Kur’an Kursu Müştemilatı Gelirleri"
+    },
+    {
+      "id": 442,
+      "parent_id": 418,
+      "kodu": "04.6.1.25",
+      "aciklama": "Gümrük İdarelerince Tahsil Edilen TRT Bandrol Ücretlerinden Ayrılan Gelirler"
+    },
+    {
+      "id": 443,
+      "parent_id": 418,
+      "kodu": "04.6.1.26",
+      "aciklama": "Kredi ve Yurtlar Genel Müdürlüğünce Elde Edilen Yurt Yatak Ücret Gelirleri"
+    },
+    {
+      "id": 444,
+      "parent_id": 418,
+      "kodu": "04.6.1.27",
+      "aciklama": "Öğrenim Kredisi Geri Ödeme Gelirleri"
+    },
+    {
+      "id": 445,
+      "parent_id": 418,
+      "kodu": "04.6.1.28",
+      "aciklama": "Spor Toto-Loto Pay Gelirleri"
+    },
+    {
+      "id": 446,
+      "parent_id": 418,
+      "kodu": "04.6.1.97",
+      "aciklama": "Kredi ve Yurtlar Genel Müdürlüğünce Elde Edilen Diğer Özel Gelirler"
+    },
+    {
+      "id": 447,
+      "parent_id": 418,
+      "kodu": "04.6.1.98",
+      "aciklama": "Spor Hizmetleri Genel Müdürlüğünce Elde Edilen Diğer Özel Gelirler"
+    },
+    {
+      "id": 448,
+      "parent_id": 418,
+      "kodu": "04.6.1.99",
+      "aciklama": "Diğer Özel Gelirler"
+    },
+    {
+      "id": 449,
+      "parent_id": 417,
+      "kodu": "04.6.2",
+      "aciklama": "Özel Bütçeli İdarelere Ait Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 450,
+      "parent_id": 449,
+      "kodu": "04.6.2.01",
+      "aciklama": "Şartlı Bağış ve Yardımlar"
+    },
+    {
+      "id": 451,
+      "parent_id": 0,
+      "kodu": "05",
+      "aciklama": "Diğer Gelirler"
+    },
+    {
+      "id": 452,
+      "parent_id": 451,
+      "kodu": "05.1",
+      "aciklama": "Faiz Gelirleri"
+    },
+    {
+      "id": 453,
+      "parent_id": 452,
+      "kodu": "05.1.1",
+      "aciklama": "Dış Borcun İkrazından Doğan Alacaklar Faizleri"
+    },
+    {
+      "id": 454,
+      "parent_id": 453,
+      "kodu": "05.1.1.01",
+      "aciklama": "Dış Borcun İkrazından Doğan Alacaklar Faizleri"
+    },
+    {
+      "id": 455,
+      "parent_id": 452,
+      "kodu": "05.1.2",
+      "aciklama": "Para Piyasası Nakit İşlemleri Alacakları Faizleri"
+    },
+    {
+      "id": 456,
+      "parent_id": 455,
+      "kodu": "05.1.2.01",
+      "aciklama": "Para Piyasası Nakit İşlemleri Alacakları Faizleri"
+    },
+    {
+      "id": 457,
+      "parent_id": 452,
+      "kodu": "05.1.3",
+      "aciklama": "Kurumca Verilen Borçlardan Alacakların Faizleri"
+    },
+    {
+      "id": 458,
+      "parent_id": 457,
+      "kodu": "05.1.3.01",
+      "aciklama": "Kurumca Verilen Borçlardan Alacakların Faizleri"
+    },
+    {
+      "id": 459,
+      "parent_id": 452,
+      "kodu": "05.1.4",
+      "aciklama": "Takipteki Kurum Alacakları Faizleri"
+    },
+    {
+      "id": 460,
+      "parent_id": 459,
+      "kodu": "05.1.4.01",
+      "aciklama": "Takipteki Kurum Alacakları Faizleri"
+    },
+    {
+      "id": 461,
+      "parent_id": 452,
+      "kodu": "05.1.5",
+      "aciklama": "Menkul Kıymet ve Gecikmiş Ödemeler Faizleri"
+    },
+    {
+      "id": 462,
+      "parent_id": 461,
+      "kodu": "05.1.5.01",
+      "aciklama": "Menkul Kıymet ve Gecikmiş Ödemeler Faizleri"
+    },
+    {
+      "id": 463,
+      "parent_id": 452,
+      "kodu": "05.1.6",
+      "aciklama": "Borçlanma Senedi Geçmiş Gün Faizleri"
+    },
+    {
+      "id": 464,
+      "parent_id": 463,
+      "kodu": "05.1.6.01",
+      "aciklama": "Borçlanma Senedi Geçmiş Gün Faizleri"
+    },
+    {
+      "id": 465,
+      "parent_id": 452,
+      "kodu": "05.1.7",
+      "aciklama": "Borçlanma Senedi Primli Satış Geliri"
+    },
+    {
+      "id": 466,
+      "parent_id": 465,
+      "kodu": "05.1.7.01",
+      "aciklama": "İç Borçlanma Senedi Primli Satış Geliri"
+    },
+    {
+      "id": 467,
+      "parent_id": 465,
+      "kodu": "05.1.7.02",
+      "aciklama": "Dış Borçlanma Senedi Primli Satış Geliri"
+    },
+    {
+      "id": 468,
+      "parent_id": 452,
+      "kodu": "05.1.8",
+      "aciklama": "Vergi, Resim ve Harç Gecikme Faizleri"
+    },
+    {
+      "id": 469,
+      "parent_id": 468,
+      "kodu": "05.1.8.01",
+      "aciklama": "Vergi, Resim ve Harç Gecikme Faizleri"
+    },
+    {
+      "id": 470,
+      "parent_id": 452,
+      "kodu": "05.1.9",
+      "aciklama": "Diğer Faizler"
+    },
+    {
+      "id": 471,
+      "parent_id": 470,
+      "kodu": "05.1.9.01",
+      "aciklama": "Kişilerden Alacaklar Faizleri"
+    },
+    {
+      "id": 472,
+      "parent_id": 470,
+      "kodu": "05.1.9.02",
+      "aciklama": "Hazine Alacağına Dönüşen Tohumluk Kredilerinin Faizleri"
+    },
+    {
+      "id": 473,
+      "parent_id": 470,
+      "kodu": "05.1.9.03",
+      "aciklama": "Mevduat Faizleri"
+    },
+    {
+      "id": 474,
+      "parent_id": 470,
+      "kodu": "05.1.9.04",
+      "aciklama": "Çevre Kredi Faizleri"
+    },
+    {
+      "id": 475,
+      "parent_id": 470,
+      "kodu": "05.1.9.05",
+      "aciklama": "İkrazlardan Geri Alınanlar"
+    },
+    {
+      "id": 476,
+      "parent_id": 470,
+      "kodu": "05.1.9.06",
+      "aciklama": "6113 Sayılı Kanun Kapsamındaki Faiz Gelirleri"
+    },
+    {
+      "id": 477,
+      "parent_id": 470,
+      "kodu": "05.1.9.07",
+      "aciklama": "İşsizlik Sigortası Fonu Nema Gelirleri"
+    },
+    {
+      "id": 478,
+      "parent_id": 470,
+      "kodu": "05.1.9.08",
+      "aciklama": "Prim Gecikme Faizleri"
+    },
+    {
+      "id": 479,
+      "parent_id": 470,
+      "kodu": "05.1.9.99",
+      "aciklama": "Diğer Faizler"
+    },
+    {
+      "id": 480,
+      "parent_id": 451,
+      "kodu": "05.2",
+      "aciklama": "Kişi ve Kurumlardan Alınan Paylar"
+    },
+    {
+      "id": 481,
+      "parent_id": 480,
+      "kodu": "05.2.1",
+      "aciklama": "Devlet Payları"
+    },
+    {
+      "id": 482,
+      "parent_id": 481,
+      "kodu": "05.2.1.01",
+      "aciklama": "Mükerrer Sigorta Şirketlerden Alınan"
+    },
+    {
+      "id": 483,
+      "parent_id": 481,
+      "kodu": "05.2.1.02",
+      "aciklama": "Petrolden Devlet Hakkı"
+    },
+    {
+      "id": 484,
+      "parent_id": 481,
+      "kodu": "05.2.1.03",
+      "aciklama": "Madenlerden  Devlet Hakkı"
+    },
+    {
+      "id": 485,
+      "parent_id": 481,
+      "kodu": "05.2.1.04",
+      "aciklama": "Oyun Kağıtları Gelirleri"
+    },
+    {
+      "id": 486,
+      "parent_id": 481,
+      "kodu": "05.2.1.05",
+      "aciklama": "Petrolden Devlet Hissesi"
+    },
+    {
+      "id": 487,
+      "parent_id": 481,
+      "kodu": "05.2.1.06",
+      "aciklama": "Hidroelektrik Kaynak Katkı Payı Gelirleri"
+    },
+    {
+      "id": 488,
+      "parent_id": 480,
+      "kodu": "05.2.2",
+      "aciklama": "Vergi ve Harç Gelirlerinden Alınan Paylar"
+    },
+    {
+      "id": 489,
+      "parent_id": 488,
+      "kodu": "05.2.2.01",
+      "aciklama": "Yargı Harçlarından Alınan Paylar"
+    },
+    {
+      "id": 490,
+      "parent_id": 488,
+      "kodu": "05.2.2.02",
+      "aciklama": "Noter Harçlarından Alınan Paylar"
+    },
+    {
+      "id": 491,
+      "parent_id": 488,
+      "kodu": "05.2.2.03",
+      "aciklama": "Ticaret Sicil Harçlarından Alınan Paylar"
+    },
+    {
+      "id": 492,
+      "parent_id": 488,
+      "kodu": "05.2.2.04",
+      "aciklama": "Savunma Sanayi Destekleme Fonu Payları"
+    },
+    {
+      "id": 493,
+      "parent_id": 488,
+      "kodu": "05.2.2.51",
+      "aciklama": "Merkezi idare Vergi Gelirlerinden Alınan Paylar"
+    },
+    {
+      "id": 494,
+      "parent_id": 488,
+      "kodu": "05.2.2.52",
+      "aciklama": "Çevre Temizlik Vergisinden Alınan Paylar"
+    },
+    {
+      "id": 495,
+      "parent_id": 480,
+      "kodu": "05.2.3",
+      "aciklama": "Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 496,
+      "parent_id": 495,
+      "kodu": "05.2.3.01",
+      "aciklama": "Genel Bütçeli İdarelerden Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 497,
+      "parent_id": 495,
+      "kodu": "05.2.3.02",
+      "aciklama": "Özel Bütçeli İdarelerden Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 498,
+      "parent_id": 495,
+      "kodu": "05.2.3.03",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlardan Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 499,
+      "parent_id": 495,
+      "kodu": "05.2.3.04",
+      "aciklama": "Sosyal Güvenlik Kurumlarından Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 500,
+      "parent_id": 495,
+      "kodu": "05.2.3.05",
+      "aciklama": "Mahalli İdarelerden Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 501,
+      "parent_id": 495,
+      "kodu": "05.2.3.06",
+      "aciklama": "KİT'lerden Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 502,
+      "parent_id": 495,
+      "kodu": "05.2.3.07",
+      "aciklama": "Fonlardan Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 503,
+      "parent_id": 495,
+      "kodu": "05.2.3.99",
+      "aciklama": "Diğerlerinden Alınan Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 504,
+      "parent_id": 480,
+      "kodu": "05.2.4",
+      "aciklama": "Kamu Harcamalarına Katılma Payları"
+    },
+    {
+      "id": 505,
+      "parent_id": 504,
+      "kodu": "05.2.4.51",
+      "aciklama": "Kanalizasyon Harcamalarına Katılma Payı"
+    },
+    {
+      "id": 506,
+      "parent_id": 504,
+      "kodu": "05.2.4.52",
+      "aciklama": "Su Tesisleri Harcamalarına Katılma Payı"
+    },
+    {
+      "id": 507,
+      "parent_id": 504,
+      "kodu": "05.2.4.53",
+      "aciklama": "Yol Harcamalarına Katılma Payı"
+    },
+    {
+      "id": 508,
+      "parent_id": 504,
+      "kodu": "05.2.4.99",
+      "aciklama": "Diğer Harcamalara Katılma Payları"
+    },
+    {
+      "id": 509,
+      "parent_id": 480,
+      "kodu": "05.2.5",
+      "aciklama": "Genel Bütçeli İdarelere Ait Paylar"
+    },
+    {
+      "id": 510,
+      "parent_id": 509,
+      "kodu": "05.2.5.01",
+      "aciklama": "Özel Bütçeli İdarelerden Alınan Paylar"
+    },
+    {
+      "id": 511,
+      "parent_id": 509,
+      "kodu": "05.2.5.02",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlardan Alınan Paylar"
+    },
+    {
+      "id": 512,
+      "parent_id": 509,
+      "kodu": "05.2.5.03",
+      "aciklama": "Mahalli İdarelerden Alınan Paylar"
+    },
+    {
+      "id": 513,
+      "parent_id": 509,
+      "kodu": "05.2.5.04",
+      "aciklama": "Eğitim Özel Geliri (4306 S.K.)"
+    },
+    {
+      "id": 514,
+      "parent_id": 509,
+      "kodu": "05.2.5.05",
+      "aciklama": "Fonlardan Aktarmalar"
+    },
+    {
+      "id": 515,
+      "parent_id": 509,
+      "kodu": "05.2.5.06",
+      "aciklama": "Tasfiye Edilen Fon Gelirleri"
+    },
+    {
+      "id": 516,
+      "parent_id": 509,
+      "kodu": "05.2.5.07",
+      "aciklama": "RTÜK'den Elde Edilen Eğitime Katkı Payı"
+    },
+    {
+      "id": 517,
+      "parent_id": 509,
+      "kodu": "05.2.5.08",
+      "aciklama": "GSM İşletmelerinden Alınan Hazine Payları"
+    },
+    {
+      "id": 518,
+      "parent_id": 509,
+      "kodu": "05.2.5.09",
+      "aciklama": "Evrensel Hizmet Gelirleri"
+    },
+    {
+      "id": 519,
+      "parent_id": 509,
+      "kodu": "05.2.5.10",
+      "aciklama": "3308 SK. Mülga 32/2-C maddesi Uyarınca Alınan Fon Payı"
+    },
+    {
+      "id": 520,
+      "parent_id": 509,
+      "kodu": "05.2.5.11",
+      "aciklama": "İthalatta Kaynak Kullanımı Destekleme Fonu Kesintisi"
+    },
+    {
+      "id": 521,
+      "parent_id": 509,
+      "kodu": "05.2.5.12",
+      "aciklama": "Kaynak Kullanımı Destekleme Fonu Kesintisi"
+    },
+    {
+      "id": 522,
+      "parent_id": 509,
+      "kodu": "05.2.5.13",
+      "aciklama": "Müşterek bahis hasılatından elde edilen gelirler"
+    },
+    {
+      "id": 523,
+      "parent_id": 509,
+      "kodu": "05.2.5.14",
+      "aciklama": "Bandrol, Kayıt, Tescil Ücret ve Payları"
+    },
+    {
+      "id": 524,
+      "parent_id": 509,
+      "kodu": "05.2.5.15",
+      "aciklama": "Bağıtlanan Sözleşmelerden Alınan Kurum Payı"
+    },
+    {
+      "id": 525,
+      "parent_id": 509,
+      "kodu": "05.2.5.16",
+      "aciklama": "Araştırma Projeleri Gelirleri Payı"
+    },
+    {
+      "id": 526,
+      "parent_id": 509,
+      "kodu": "05.2.5.17",
+      "aciklama": "Trafik Sigorta Payları"
+    },
+    {
+      "id": 527,
+      "parent_id": 509,
+      "kodu": "05.2.5.18",
+      "aciklama": "İthalden Yüzde Bir ve Binde Beş Oranında Alınan Çevre Katkı Payı"
+    },
+    {
+      "id": 528,
+      "parent_id": 509,
+      "kodu": "05.2.5.19",
+      "aciklama": "Belediyelerden Alınan Yüzde Bir Oranında Çevre Katkı Payı"
+    },
+    {
+      "id": 529,
+      "parent_id": 509,
+      "kodu": "05.2.5.20",
+      "aciklama": "Borsa İstanbul A.Ş.’den Alınan Paylar"
+    },
+    {
+      "id": 530,
+      "parent_id": 509,
+      "kodu": "05.2.5.21",
+      "aciklama": "Şans Oyunları Hasılatından Ayrılan Kamu Payları"
+    },
+    {
+      "id": 531,
+      "parent_id": 509,
+      "kodu": "05.2.5.22",
+      "aciklama": "Trafik Muayene Ücreti Hazine Payı"
+    },
+    {
+      "id": 532,
+      "parent_id": 509,
+      "kodu": "05.2.5.24",
+      "aciklama": "Mahalli İdare Gelirlerinden Ayrılan Paylar"
+    },
+    {
+      "id": 533,
+      "parent_id": 509,
+      "kodu": "05.2.5.25",
+      "aciklama": "Elektronik Haberleşme Sektörüne İlişkin Araştırma,Geliştirme ve Eğitim Faaliyetleri Payı"
+    },
+    {
+      "id": 534,
+      "parent_id": 509,
+      "kodu": "05.2.5.26",
+      "aciklama": "Evrensel Posta Hizmeti Gelirleri"
+    },
+    {
+      "id": 535,
+      "parent_id": 509,
+      "kodu": "05.2.5.27",
+      "aciklama": "Yerli ve Yabancı Film Gösterimlerinden Alınan Eğlence Vergisi Genel Bütçe Payı"
+    },
+    {
+      "id": 536,
+      "parent_id": 509,
+      "kodu": "05.2.5.28",
+      "aciklama": "Askeri Kantin ve Askeri Müze Gelirlerinden Alınan Hazine Payı"
+    },
+    {
+      "id": 537,
+      "parent_id": 509,
+      "kodu": "05.2.5.29",
+      "aciklama": "6001 sayılı Kanunun 30 uncu Maddesinin 5 inci Fıkrası Gereğince Tahsil Edilen Hazine Payı"
+    },
+    {
+      "id": 538,
+      "parent_id": 509,
+      "kodu": "05.2.5.30",
+      "aciklama": "5846 sayılı Fikir ve Sanat Eserleri Kanununun 44. Maddesi Gereğince Alınan Paylar "
+    },
+    {
+      "id": 539,
+      "parent_id": 509,
+      "kodu": "05.2.5.31",
+      "aciklama": "4634 Sayılı Şeker Kanununun 2/A Maddesi Gereğince Alınan Katılım Payı"
+    },
+    {
+      "id": 540,
+      "parent_id": 509,
+      "kodu": "05.2.5.99",
+      "aciklama": "Diğerlerinden Alınan Paylar"
+    },
+    {
+      "id": 541,
+      "parent_id": 480,
+      "kodu": "05.2.6",
+      "aciklama": "Özel Bütçeli İdarelere Ait Paylar"
+    },
+    {
+      "id": 542,
+      "parent_id": 541,
+      "kodu": "05.2.6.01",
+      "aciklama": "Eti Maden İşletmelerinden Alınan Pay"
+    },
+    {
+      "id": 543,
+      "parent_id": 541,
+      "kodu": "05.2.6.02",
+      "aciklama": "Bor Madeni Payı"
+    },
+    {
+      "id": 544,
+      "parent_id": 541,
+      "kodu": "05.2.6.03",
+      "aciklama": "Gençlik Faaliyetlerine Katılım Payı"
+    },
+    {
+      "id": 545,
+      "parent_id": 541,
+      "kodu": "05.2.6.04",
+      "aciklama": "Gençlik Kamplarına Katılım Payı"
+    },
+    {
+      "id": 546,
+      "parent_id": 541,
+      "kodu": "05.2.6.05",
+      "aciklama": "Federasyon Faaliyetlerine Katılım Payı"
+    },
+    {
+      "id": 547,
+      "parent_id": 541,
+      "kodu": "05.2.6.06",
+      "aciklama": "Spor Toto-Loto Payları"
+    },
+    {
+      "id": 548,
+      "parent_id": 541,
+      "kodu": "05.2.6.07",
+      "aciklama": "At Yarışları  Payı"
+    },
+    {
+      "id": 549,
+      "parent_id": 541,
+      "kodu": "05.2.6.08",
+      "aciklama": "Aidat Gelirleri"
+    },
+    {
+      "id": 550,
+      "parent_id": 541,
+      "kodu": "05.2.6.09",
+      "aciklama": "Buluculuk ve Katkı Payları"
+    },
+    {
+      "id": 551,
+      "parent_id": 541,
+      "kodu": "05.2.6.10",
+      "aciklama": "MKE'den Alınan İthal Silah ve Fişek Satış Payları"
+    },
+    {
+      "id": 552,
+      "parent_id": 541,
+      "kodu": "05.2.6.11",
+      "aciklama": "İhracatçı Birlikleri Katkı Payı"
+    },
+    {
+      "id": 553,
+      "parent_id": 541,
+      "kodu": "05.2.6.12",
+      "aciklama": "Maden ve Jeotermal Kaynak Ruhsat Saha Devir Payları"
+    },
+    {
+      "id": 554,
+      "parent_id": 541,
+      "kodu": "05.2.6.16",
+      "aciklama": "Araştırma Projeleri Gelirleri Payı"
+    },
+    {
+      "id": 555,
+      "parent_id": 541,
+      "kodu": "05.2.6.17",
+      "aciklama": "ÖSYM Gelir Fazlaları Payı"
+    },
+    {
+      "id": 556,
+      "parent_id": 541,
+      "kodu": "05.2.6.99",
+      "aciklama": "Özel Bütçeli İdarelere Ait Diğer Paylar"
+    },
+    {
+      "id": 557,
+      "parent_id": 480,
+      "kodu": "05.2.7",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlara Ait Paylar"
+    },
+    {
+      "id": 558,
+      "parent_id": 557,
+      "kodu": "05.2.7.01",
+      "aciklama": "Bankalar Katılım Payı"
+    },
+    {
+      "id": 559,
+      "parent_id": 557,
+      "kodu": "05.2.7.02",
+      "aciklama": "Banka Dışı Mali Kuruluşlar Katılım Payı"
+    },
+    {
+      "id": 560,
+      "parent_id": 557,
+      "kodu": "05.2.7.03",
+      "aciklama": "Şirket Kuruluş ve Sermaye Arttırımlarından Alınan Pay"
+    },
+    {
+      "id": 561,
+      "parent_id": 557,
+      "kodu": "05.2.7.04",
+      "aciklama": "TV Ticari İletişim Geliri"
+    },
+    {
+      "id": 562,
+      "parent_id": 557,
+      "kodu": "05.2.7.05",
+      "aciklama": "Radyo Ticari İletişim Geliri"
+    },
+    {
+      "id": 563,
+      "parent_id": 557,
+      "kodu": "05.2.7.99",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlara Ait Diğer Paylar"
+    },
+    {
+      "id": 564,
+      "parent_id": 480,
+      "kodu": "05.2.8",
+      "aciklama": "Mahalli İdarelere Ait Paylar"
+    },
+    {
+      "id": 565,
+      "parent_id": 564,
+      "kodu": "05.2.8.51",
+      "aciklama": "Maden İşletmelerinden Alınan Paylar"
+    },
+    {
+      "id": 566,
+      "parent_id": 564,
+      "kodu": "05.2.8.52",
+      "aciklama": "Müze Giriş Ücretlerinden Alınan Paylar"
+    },
+    {
+      "id": 567,
+      "parent_id": 564,
+      "kodu": "05.2.8.53",
+      "aciklama": "Ortak Altyapı Hizmetleri İçin Diğer Kurumlar Tarafından Verilen Paylar"
+    },
+    {
+      "id": 568,
+      "parent_id": 564,
+      "kodu": "05.2.8.54",
+      "aciklama": "Otopark Gelirlerinden İlçe ve İlk Kademe Belediyeleri Payları"
+    },
+    {
+      "id": 569,
+      "parent_id": 564,
+      "kodu": "05.2.8.99",
+      "aciklama": "Mahalli İdarelere Ait Diğer Paylar"
+    },
+    {
+      "id": 570,
+      "parent_id": 480,
+      "kodu": "05.2.9",
+      "aciklama": "Diğer Paylar"
+    },
+    {
+      "id": 571,
+      "parent_id": 570,
+      "kodu": "05.2.9.01",
+      "aciklama": "Çalışanlardan Tedavi Katılım Payı"
+    },
+    {
+      "id": 572,
+      "parent_id": 570,
+      "kodu": "05.2.9.02",
+      "aciklama": "Yeşil Kartlılardan Tedavi Katılım Payı"
+    },
+    {
+      "id": 573,
+      "parent_id": 570,
+      "kodu": "05.2.9.03",
+      "aciklama": "Sağlık Katılım Payları"
+    },
+    {
+      "id": 574,
+      "parent_id": 570,
+      "kodu": "05.2.9.99",
+      "aciklama": "Diğer Paylar"
+    },
+    {
+      "id": 575,
+      "parent_id": 451,
+      "kodu": "05.3",
+      "aciklama": "Para Cezaları"
+    },
+    {
+      "id": 576,
+      "parent_id": 575,
+      "kodu": "05.3.1",
+      "aciklama": "Yargı Para Cezaları"
+    },
+    {
+      "id": 577,
+      "parent_id": 576,
+      "kodu": "05.3.1.01",
+      "aciklama": "Yargı Para Cezaları"
+    },
+    {
+      "id": 578,
+      "parent_id": 575,
+      "kodu": "05.3.2",
+      "aciklama": "İdari Para Cezaları"
+    },
+    {
+      "id": 579,
+      "parent_id": 578,
+      "kodu": "05.3.2.01",
+      "aciklama": "Trafik Para Cezaları"
+    },
+    {
+      "id": 580,
+      "parent_id": 578,
+      "kodu": "05.3.2.02",
+      "aciklama": "Karayolu Taşıma Kanununa Göre Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 581,
+      "parent_id": 578,
+      "kodu": "05.3.2.03",
+      "aciklama": "Karayolu Geçiş Ücretleri İdari Para Cezaları"
+    },
+    {
+      "id": 582,
+      "parent_id": 578,
+      "kodu": "05.3.2.04",
+      "aciklama": "Çevre İdari Para Cezaları"
+    },
+    {
+      "id": 583,
+      "parent_id": 578,
+      "kodu": "05.3.2.05",
+      "aciklama": "Doğalgaz Piyasası Kanunu Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 584,
+      "parent_id": 578,
+      "kodu": "05.3.2.06",
+      "aciklama": "Petrol Piyasası Kanunu Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 585,
+      "parent_id": 578,
+      "kodu": "05.3.2.07",
+      "aciklama": "Sıvılaştırılmış Petrol Gazları Piyasası Kanunu Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 586,
+      "parent_id": 578,
+      "kodu": "05.3.2.08",
+      "aciklama": "Suç Gelirlerinin Aklanmasının Önlenmesi Hakkında Kanun Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 587,
+      "parent_id": 578,
+      "kodu": "05.3.2.09",
+      "aciklama": "Tütün Mamüllerinin Zararlarının Önlenmesine Dair Kanunu Uyarınca Al.İd.P.C."
+    },
+    {
+      "id": 588,
+      "parent_id": 578,
+      "kodu": "05.3.2.10",
+      "aciklama": "Bağlama Kütüğüne Kayıt ve Tescile İlişkin İdari Para Cezaları"
+    },
+    {
+      "id": 589,
+      "parent_id": 578,
+      "kodu": "05.3.2.11",
+      "aciklama": "Veteriner Hizmetleri, Bitki Sağlığı, Gıda ve Yem Kanunu Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 590,
+      "parent_id": 578,
+      "kodu": "05.3.2.13",
+      "aciklama": "5378 sayılı Engelliler Hakkında Kanun Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 591,
+      "parent_id": 578,
+      "kodu": "05.3.2.99",
+      "aciklama": "Diğer İdari Para Cezaları"
+    },
+    {
+      "id": 592,
+      "parent_id": 575,
+      "kodu": "05.3.3",
+      "aciklama": "Pay Ayrılan İdari Para Cezaları"
+    },
+    {
+      "id": 593,
+      "parent_id": 592,
+      "kodu": "05.3.3.01",
+      "aciklama": "Trafik Para Cezaları"
+    },
+    {
+      "id": 594,
+      "parent_id": 592,
+      "kodu": "05.3.3.02",
+      "aciklama": "Şeker Kanununa Göre Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 595,
+      "parent_id": 592,
+      "kodu": "05.3.3.03",
+      "aciklama": "Elektrik Piyasası Kanunu Uyarınca Alınan İdari Para Cezaları"
+    },
+    {
+      "id": 596,
+      "parent_id": 592,
+      "kodu": "05.3.3.99",
+      "aciklama": "Pay Ayrılan Diğer İdari Para Cezaları"
+    },
+    {
+      "id": 597,
+      "parent_id": 575,
+      "kodu": "05.3.4",
+      "aciklama": "Vergi Cezaları"
+    },
+    {
+      "id": 598,
+      "parent_id": 597,
+      "kodu": "05.3.4.01",
+      "aciklama": "Vergi ve Diğer Amme Alacakları Gecikme Zamları"
+    },
+    {
+      "id": 599,
+      "parent_id": 597,
+      "kodu": "05.3.4.02",
+      "aciklama": "Vergi Barışı TEFE Tutarı"
+    },
+    {
+      "id": 600,
+      "parent_id": 597,
+      "kodu": "05.3.4.03",
+      "aciklama": "Vergi Barışı Geç Ödeme Zammı"
+    },
+    {
+      "id": 601,
+      "parent_id": 597,
+      "kodu": "05.3.4.04",
+      "aciklama": "Vergi Barışı Kıymetli Maden ve Ziynet Eşyası Beyanı"
+    },
+    {
+      "id": 602,
+      "parent_id": 597,
+      "kodu": "05.3.4.05",
+      "aciklama": "6111 sayılı Kanun  Kapsamında Geç Ödeme Zammı"
+    },
+    {
+      "id": 603,
+      "parent_id": 597,
+      "kodu": "05.3.4.06",
+      "aciklama": "6111 sayılı Kanun  Kapsamında TÜFE/ÜFE Tutarı"
+    },
+    {
+      "id": 604,
+      "parent_id": 597,
+      "kodu": "05.3.4.07",
+      "aciklama": "6111 sayılı Kanun  Kapsamında Katsayı Tutarı"
+    },
+    {
+      "id": 605,
+      "parent_id": 597,
+      "kodu": "05.3.4.08",
+      "aciklama": "6552 sayılı Kanun  Kapsamında Geç Ödeme Zammı"
+    },
+    {
+      "id": 606,
+      "parent_id": 597,
+      "kodu": "05.3.4.09",
+      "aciklama": "6552 sayılı Kanun  Kapsamında TÜFE/ÜFE Tutarı"
+    },
+    {
+      "id": 607,
+      "parent_id": 597,
+      "kodu": "05.3.4.10",
+      "aciklama": "6552 sayılı Kanun  Kapsamında Katsayı Tutarı"
+    },
+    {
+      "id": 608,
+      "parent_id": 597,
+      "kodu": "05.3.4.11",
+      "aciklama": "6736 sayılı Kanun Kapsamında Geç Ödeme Zammı"
+    },
+    {
+      "id": 609,
+      "parent_id": 597,
+      "kodu": "05.3.4.12",
+      "aciklama": "6736 sayılı Kanun Kapsamında Yİ/ÜFE Tutarı"
+    },
+    {
+      "id": 610,
+      "parent_id": 597,
+      "kodu": "05.3.4.13",
+      "aciklama": "6736 sayılı Kanun Kapsamında Katsayı Tutarı"
+    },
+    {
+      "id": 611,
+      "parent_id": 597,
+      "kodu": "05.3.4.14",
+      "aciklama": "7020 sayılı Kanun Kapsamında Geç Ödeme Zammı"
+    },
+    {
+      "id": 612,
+      "parent_id": 597,
+      "kodu": "05.3.4.15",
+      "aciklama": "7020 sayılı Kanun Kapsamında Yİ/ÜFE Tutarı"
+    },
+    {
+      "id": 613,
+      "parent_id": 597,
+      "kodu": "05.3.4.16",
+      "aciklama": "7020 sayılı Kanun Kapsamında Katsayı Tutarı"
+    },
+    {
+      "id": 614,
+      "parent_id": 597,
+      "kodu": "05.3.4.17",
+      "aciklama": "7143 Sayılı Kanun Kapsamında Geç Ödeme Zammı "
+    },
+    {
+      "id": 615,
+      "parent_id": 597,
+      "kodu": "05.3.4.18",
+      "aciklama": "7143 Sayılı Kanun Kapsamında Yİ/ÜFE Tutarı"
+    },
+    {
+      "id": 616,
+      "parent_id": 597,
+      "kodu": "05.3.4.19",
+      "aciklama": "7143 Sayılı Kanun Kapsamında Katsayı Tutarı"
+    },
+    {
+      "id": 617,
+      "parent_id": 597,
+      "kodu": "05.3.4.20",
+      "aciklama": "7143 Sayılı Kanunun 10. Maddesinin 13. Fıkrasına Göre Tahsil Edilen Gelirler "
+    },
+    {
+      "id": 618,
+      "parent_id": 597,
+      "kodu": "05.3.4.91",
+      "aciklama": "Usulsüzlük, Vergi Ziyaı  ve Kaçakçılık Cezaları"
+    },
+    {
+      "id": 619,
+      "parent_id": 597,
+      "kodu": "05.3.4.99",
+      "aciklama": "Diğer Vergi Cezaları"
+    },
+    {
+      "id": 620,
+      "parent_id": 575,
+      "kodu": "05.3.9",
+      "aciklama": "Diğer Para Cezaları"
+    },
+    {
+      "id": 621,
+      "parent_id": 620,
+      "kodu": "05.3.9.01",
+      "aciklama": "Düşük Olan Değerleme Tutarları"
+    },
+    {
+      "id": 622,
+      "parent_id": 620,
+      "kodu": "05.3.9.02",
+      "aciklama": "Zamanında Ödenmeyen Ücret Gelirlerinden Alınacak Gecikme Zamları"
+    },
+    {
+      "id": 623,
+      "parent_id": 620,
+      "kodu": "05.3.9.03",
+      "aciklama": "Cezai Faiz (Kaynak Kullanımı Des.Fonu Kesintileri)"
+    },
+    {
+      "id": 624,
+      "parent_id": 620,
+      "kodu": "05.3.9.04",
+      "aciklama": "Hazine Alacağına Dönüşen Tohumluk Kredilerinin Gecikme Zamları"
+    },
+    {
+      "id": 625,
+      "parent_id": 620,
+      "kodu": "05.3.9.05",
+      "aciklama": "Tahkim Kurulu İtiraz ve Ceza Gelirleri"
+    },
+    {
+      "id": 626,
+      "parent_id": 620,
+      "kodu": "05.3.9.06",
+      "aciklama": "Öğrenim Kredisi Gecikme Zammı"
+    },
+    {
+      "id": 627,
+      "parent_id": 620,
+      "kodu": "05.3.9.07",
+      "aciklama": "Katkı Kredisi Gecikme Zammı"
+    },
+    {
+      "id": 628,
+      "parent_id": 620,
+      "kodu": "05.3.9.08",
+      "aciklama": "Trafik Muayenesi Para Cezaları"
+    },
+    {
+      "id": 629,
+      "parent_id": 620,
+      "kodu": "05.3.9.99",
+      "aciklama": "Yukarıda Tanımlanmayan Diğer Para Cezaları"
+    },
+    {
+      "id": 630,
+      "parent_id": 451,
+      "kodu": "05.9",
+      "aciklama": "Diğer Çeşitli Gelirler"
+    },
+    {
+      "id": 631,
+      "parent_id": 630,
+      "kodu": "05.9.1",
+      "aciklama": "Diğer Çeşitli Gelirler"
+    },
+    {
+      "id": 632,
+      "parent_id": 631,
+      "kodu": "05.9.1.01",
+      "aciklama": "İrat Kaydedilecek Nakdi Teminatlar"
+    },
+    {
+      "id": 633,
+      "parent_id": 631,
+      "kodu": "05.9.1.02",
+      "aciklama": "İrat Kaydedilecek Hisse Senedi ve Tahviller"
+    },
+    {
+      "id": 634,
+      "parent_id": 631,
+      "kodu": "05.9.1.03",
+      "aciklama": "İrat Kaydedilecek Teminat Mektupları"
+    },
+    {
+      "id": 635,
+      "parent_id": 631,
+      "kodu": "05.9.1.04",
+      "aciklama": "Hazine Alacağına Dönüşen Tohumluk Kredi Gelirleri"
+    },
+    {
+      "id": 636,
+      "parent_id": 631,
+      "kodu": "05.9.1.05",
+      "aciklama": "Para Farkları"
+    },
+    {
+      "id": 637,
+      "parent_id": 631,
+      "kodu": "05.9.1.06",
+      "aciklama": "Kişilerden Alacaklar"
+    },
+    {
+      "id": 638,
+      "parent_id": 631,
+      "kodu": "05.9.1.07",
+      "aciklama": "Afetlerde Kullanılacak Gelirler"
+    },
+    {
+      "id": 639,
+      "parent_id": 631,
+      "kodu": "05.9.1.08",
+      "aciklama": "Orman Köylülerini Kalkındırma Gelirleri"
+    },
+    {
+      "id": 640,
+      "parent_id": 631,
+      "kodu": "05.9.1.09",
+      "aciklama": "Ağaçlandırma ve Erozyon Kontrol Gelirleri"
+    },
+    {
+      "id": 641,
+      "parent_id": 631,
+      "kodu": "05.9.1.10",
+      "aciklama": "Milli Parkları Koruma ve Geliştirme Gelirleri"
+    },
+    {
+      "id": 642,
+      "parent_id": 631,
+      "kodu": "05.9.1.11",
+      "aciklama": "Mera Gelirleri"
+    },
+    {
+      "id": 643,
+      "parent_id": 631,
+      "kodu": "05.9.1.12",
+      "aciklama": "Çevre Kredi Ana Parası"
+    },
+    {
+      "id": 644,
+      "parent_id": 631,
+      "kodu": "05.9.1.13",
+      "aciklama": "Teknoloji Geliştirme Bölgeleri Gelirleri"
+    },
+    {
+      "id": 645,
+      "parent_id": 631,
+      "kodu": "05.9.1.14",
+      "aciklama": "Tazminatlar"
+    },
+    {
+      "id": 646,
+      "parent_id": 631,
+      "kodu": "05.9.1.15",
+      "aciklama": "Emekli Aylıklarından Kaynaklanan Müşterek Hisseli Alacaklar"
+    },
+    {
+      "id": 647,
+      "parent_id": 631,
+      "kodu": "05.9.1.16",
+      "aciklama": "Ek Ödemelerden Kaynaklanan Alacaklar"
+    },
+    {
+      "id": 648,
+      "parent_id": 631,
+      "kodu": "05.9.1.17",
+      "aciklama": "Emekli İkramiyeleri"
+    },
+    {
+      "id": 649,
+      "parent_id": 631,
+      "kodu": "05.9.1.18",
+      "aciklama": "Emekli Ölüm Yardımı"
+    },
+    {
+      "id": 650,
+      "parent_id": 631,
+      "kodu": "05.9.1.19",
+      "aciklama": "Öğrenci Katkı Payı Telafi Gelirleri"
+    },
+    {
+      "id": 651,
+      "parent_id": 631,
+      "kodu": "05.9.1.20",
+      "aciklama": "4632 sayılı Kanunun Ek 1 inci Maddesi Gereğince Tahsil Edilen Devlet Katkısı Tutarları"
+    },
+    {
+      "id": 652,
+      "parent_id": 631,
+      "kodu": "05.9.1.22",
+      "aciklama": "YİKOB’lar Tarafından Yürütülecek Hizmetler Karşılığı Elde Edilen Gelirler"
+    },
+    {
+      "id": 653,
+      "parent_id": 631,
+      "kodu": "05.9.1.24",
+      "aciklama": "Yargılama Giderleri Karşılığı Tahsil Edilen Gelirler"
+    },
+    {
+      "id": 654,
+      "parent_id": 631,
+      "kodu": "05.9.1.25",
+      "aciklama": "6100 Sayılı Kanun Gereği İdarece Ödenen Gider Avanslarından Kullanılmayan Tutarlara İlişkin Gelir Tahsilatı"
+    },
+    {
+      "id": 655,
+      "parent_id": 631,
+      "kodu": "05.9.1.26",
+      "aciklama": "Sulama Tesisi İşletme Gelirleri"
+    },
+    {
+      "id": 656,
+      "parent_id": 631,
+      "kodu": "05.9.1.27",
+      "aciklama": "Özelleştirme Fonu Nakit Fazlası Karşılığı Gelirleri "
+    },
+    {
+      "id": 657,
+      "parent_id": 631,
+      "kodu": "05.9.1.28",
+      "aciklama": "KKTC’ye Su Temini Projesi Kapsamında Elde Edilen Gelirler"
+    },
+    {
+      "id": 658,
+      "parent_id": 631,
+      "kodu": "05.9.1.29",
+      "aciklama": "Maden Çalışanları Zorunlu Ferdi Kaza Sigortası Reasürans Prim Geliri"
+    },
+    {
+      "id": 659,
+      "parent_id": 631,
+      "kodu": "05.9.1.30",
+      "aciklama": "2547 sayılı Kanunun Geçici 74 üncü Maddesi Kapsamındaki Gelirler "
+    },
+    {
+      "id": 660,
+      "parent_id": 631,
+      "kodu": "05.9.1.31",
+      "aciklama": "OSB Meslek Yüksekokulları Eğitim Desteği "
+    },
+    {
+      "id": 661,
+      "parent_id": 631,
+      "kodu": "05.9.1.32",
+      "aciklama": "3194 sayılı Kanunun Geçici 16. Maddesi Kapsamında Tahsil Edilen Yapı Kayıt Belgesi Gelirleri"
+    },
+    {
+      "id": 662,
+      "parent_id": 631,
+      "kodu": "05.9.1.33",
+      "aciklama": "Bedelli Askerlik Gelirleri"
+    },
+    {
+      "id": 663,
+      "parent_id": 631,
+      "kodu": "05.9.1.51",
+      "aciklama": "Otopark Yönetmeliği Uyarınca Alınan Otopark Bedeli"
+    },
+    {
+      "id": 664,
+      "parent_id": 631,
+      "kodu": "05.9.1.91",
+      "aciklama": "Pay Ayrılmayan Kaldırılan Fon Artıkları"
+    },
+    {
+      "id": 665,
+      "parent_id": 631,
+      "kodu": "05.9.1.99",
+      "aciklama": "Yukarıda Tanımlanmayan Diğer Çeşitli Gelirler"
+    },
+    {
+      "id": 666,
+      "parent_id": 0,
+      "kodu": "6",
+      "aciklama": "Sermaye Gelirleri"
+    },
+    {
+      "id": 667,
+      "parent_id": 666,
+      "kodu": "6.1",
+      "aciklama": "Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 668,
+      "parent_id": 667,
+      "kodu": "6.1.1",
+      "aciklama": "Lojman Satış Gelirleri"
+    },
+    {
+      "id": 669,
+      "parent_id": 668,
+      "kodu": "6.1.1.01",
+      "aciklama": "Lojman Satış Gelirleri"
+    },
+    {
+      "id": 670,
+      "parent_id": 667,
+      "kodu": "6.1.2",
+      "aciklama": "Sosyal Tesis Satış Gelirleri"
+    },
+    {
+      "id": 671,
+      "parent_id": 670,
+      "kodu": "6.1.2.01",
+      "aciklama": "Sosyal Tesis Satış Gelirleri"
+    },
+    {
+      "id": 672,
+      "parent_id": 667,
+      "kodu": "6.1.3",
+      "aciklama": "Diğer Bina Satış Gelirleri"
+    },
+    {
+      "id": 673,
+      "parent_id": 672,
+      "kodu": "6.1.3.01",
+      "aciklama": "Diğer Bina Satış Gelirleri"
+    },
+    {
+      "id": 674,
+      "parent_id": 667,
+      "kodu": "6.1.4",
+      "aciklama": "Arazi Satışı"
+    },
+    {
+      "id": 675,
+      "parent_id": 674,
+      "kodu": "6.1.4.01",
+      "aciklama": "Arazi Satışı"
+    },
+    {
+      "id": 676,
+      "parent_id": 667,
+      "kodu": "6.1.5",
+      "aciklama": "Arsa Satışı"
+    },
+    {
+      "id": 677,
+      "parent_id": 676,
+      "kodu": "6.1.5.01",
+      "aciklama": "Arsa Satışı"
+    },
+    {
+      "id": 678,
+      "parent_id": 667,
+      "kodu": "6.1.6",
+      "aciklama": "Vakıflara Ait  Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 679,
+      "parent_id": 678,
+      "kodu": "6.1.6.01",
+      "aciklama": "Mazbut Vakıflara Ait Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 680,
+      "parent_id": 678,
+      "kodu": "6.1.6.02",
+      "aciklama": "Mazbut Vakıflara Taviz Bedelleri"
+    },
+    {
+      "id": 681,
+      "parent_id": 667,
+      "kodu": "6.1.9",
+      "aciklama": "Diğer Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 682,
+      "parent_id": 681,
+      "kodu": "6.1.9.01",
+      "aciklama": "DSİ Genel Müdürlüğüne Tahsisli veya Kullanımındaki Taşınmazların Satış Gelirleri"
+    },
+    {
+      "id": 683,
+      "parent_id": 681,
+      "kodu": "6.1.9.02",
+      "aciklama": "2/B Taşınmazlarının Satış Gelirleri (6292 Sayılı Kanun 6. md)"
+    },
+    {
+      "id": 684,
+      "parent_id": 681,
+      "kodu": "6.1.9.03",
+      "aciklama": "Proje Alanlarındaki 2/B Taşınmazlarının Devrinden Elde Edilen Gelirler (6292 Sayılı Kanun 8. md)"
+    },
+    {
+      "id": 685,
+      "parent_id": 681,
+      "kodu": "6.1.9.04",
+      "aciklama": "Hazineye Ait Tarım Arazilerinin Satış Gelirleri  (6292 Sayılı Kanun 12. md)"
+    },
+    {
+      "id": 686,
+      "parent_id": 681,
+      "kodu": "6.1.9.05",
+      "aciklama": "Hazineye Ait Tarım Arazilerinin Satış Gelirleri (4706 sayılı Kanun 4. Md) "
+    },
+    {
+      "id": 687,
+      "parent_id": 681,
+      "kodu": "6.1.9.06",
+      "aciklama": "Yapı Kayıt Belgeli Taşınmaz Satış Gelirleri "
+    },
+    {
+      "id": 688,
+      "parent_id": 681,
+      "kodu": "6.1.9.99",
+      "aciklama": "Diğer Çeşitli Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 689,
+      "parent_id": 666,
+      "kodu": "6.2",
+      "aciklama": "Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 690,
+      "parent_id": 689,
+      "kodu": "6.2.1",
+      "aciklama": "Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 691,
+      "parent_id": 690,
+      "kodu": "6.2.1.01",
+      "aciklama": "Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 692,
+      "parent_id": 689,
+      "kodu": "6.2.2",
+      "aciklama": "Taşıt Satış Gelirleri"
+    },
+    {
+      "id": 693,
+      "parent_id": 692,
+      "kodu": "6.2.2.01",
+      "aciklama": "Taşıt Satış Gelirleri"
+    },
+    {
+      "id": 694,
+      "parent_id": 689,
+      "kodu": "6.2.3",
+      "aciklama": "Stok Satış Gelirleri"
+    },
+    {
+      "id": 695,
+      "parent_id": 694,
+      "kodu": "6.2.3.01",
+      "aciklama": "Stok Satış Gelirleri"
+    },
+    {
+      "id": 696,
+      "parent_id": 689,
+      "kodu": "6.2.9",
+      "aciklama": "Diğer Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 697,
+      "parent_id": 696,
+      "kodu": "6.2.9.99",
+      "aciklama": "Diğer Çeşitli Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 698,
+      "parent_id": 666,
+      "kodu": "6.3",
+      "aciklama": "Menkul Kıymet ve Varlık Satış Gelirleri"
+    },
+    {
+      "id": 699,
+      "parent_id": 698,
+      "kodu": "6.3.1",
+      "aciklama": "Tahvil Senet ve Bonolar"
+    },
+    {
+      "id": 700,
+      "parent_id": 699,
+      "kodu": "6.3.1.01",
+      "aciklama": "Tahvil Senet ve Bonolar"
+    },
+    {
+      "id": 701,
+      "parent_id": 698,
+      "kodu": "6.3.2",
+      "aciklama": "Altın"
+    },
+    {
+      "id": 702,
+      "parent_id": 701,
+      "kodu": "6.3.2.01",
+      "aciklama": "Altın"
+    },
+    {
+      "id": 703,
+      "parent_id": 698,
+      "kodu": "6.3.3",
+      "aciklama": "Altın Dışındaki Kıymetli Madenler"
+    },
+    {
+      "id": 704,
+      "parent_id": 703,
+      "kodu": "6.3.3.01",
+      "aciklama": "Altın Dışındaki Kıymetli Madenler"
+    },
+    {
+      "id": 705,
+      "parent_id": 698,
+      "kodu": "6.3.4",
+      "aciklama": "Konvertibl Olmayan Yabancı Paralar"
+    },
+    {
+      "id": 706,
+      "parent_id": 705,
+      "kodu": "6.3.4.01",
+      "aciklama": "Konvertibl Olmayan Yabancı Paralar"
+    },
+    {
+      "id": 707,
+      "parent_id": 698,
+      "kodu": "6.3.9",
+      "aciklama": "Diğer Çeşitli Menkul Varlıklar"
+    },
+    {
+      "id": 708,
+      "parent_id": 707,
+      "kodu": "6.3.9.99",
+      "aciklama": "Diğer Çeşitli Menkul Varlıklar"
+    },
+    {
+      "id": 709,
+      "parent_id": 666,
+      "kodu": "6.9",
+      "aciklama": "Diğer Sermaye Satış Gelirleri"
+    },
+    {
+      "id": 710,
+      "parent_id": 709,
+      "kodu": "6.9.1",
+      "aciklama": "Enerji Dağıtım ve Santralları Devri Geliri"
+    },
+    {
+      "id": 711,
+      "parent_id": 710,
+      "kodu": "6.9.1.01",
+      "aciklama": "Enerji Dağıtım ve Santralları Devri Geliri"
+    },
+    {
+      "id": 712,
+      "parent_id": 709,
+      "kodu": "6.9.2",
+      "aciklama": "Telekom Hisse Satış Geliri"
+    },
+    {
+      "id": 713,
+      "parent_id": 712,
+      "kodu": "6.9.2.01",
+      "aciklama": "Telekom Hisse Satış Geliri"
+    },
+    {
+      "id": 714,
+      "parent_id": 709,
+      "kodu": "6.9.9",
+      "aciklama": "Diğer Sermaye Satış Gelirleri"
+    },
+    {
+      "id": 715,
+      "parent_id": 714,
+      "kodu": "6.9.9.99",
+      "aciklama": "Diğer Çeşitli Sermaye Satış Gelirleri"
+    },
+    {
+      "id": 716,
+      "parent_id": 0,
+      "kodu": "8",
+      "aciklama": "Alacaklardan Tahsilat"
+    },
+    {
+      "id": 717,
+      "parent_id": 716,
+      "kodu": "8.1",
+      "aciklama": "Yurtiçi Alacaklardan Tahsilat"
+    },
+    {
+      "id": 718,
+      "parent_id": 717,
+      "kodu": "8.1.1",
+      "aciklama": "Genel Bütçeli İdarelerden "
+    },
+    {
+      "id": 719,
+      "parent_id": 718,
+      "kodu": "8.1.1.01",
+      "aciklama": "Genel Bütçeli İdarelerden "
+    },
+    {
+      "id": 720,
+      "parent_id": 717,
+      "kodu": "8.1.2",
+      "aciklama": "Özel Bütçeli İdarelerden"
+    },
+    {
+      "id": 721,
+      "parent_id": 720,
+      "kodu": "8.1.2.01",
+      "aciklama": "Ölçme, Seçme ve Yerleştirme Merkezi Başkanlığı'ndan"
+    },
+    {
+      "id": 722,
+      "parent_id": 720,
+      "kodu": "8.1.2.02",
+      "aciklama": "Atatürk Kültür, Dil Tarih Yüksek Kurumu'ndan"
+    },
+    {
+      "id": 723,
+      "parent_id": 720,
+      "kodu": "8.1.2.04",
+      "aciklama": "Türkiye Bilimsel ve Teknolojik Araştırma Kurumu Başkanlığı'ndan"
+    },
+    {
+      "id": 724,
+      "parent_id": 720,
+      "kodu": "8.1.2.05",
+      "aciklama": "Türkiye Bilimler Akademisi Başkanlığı'ndan"
+    },
+    {
+      "id": 725,
+      "parent_id": 720,
+      "kodu": "8.1.2.09",
+      "aciklama": "Devlet Tiyatroları Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 726,
+      "parent_id": 720,
+      "kodu": "8.1.2.10",
+      "aciklama": "Devlet Opera ve Balesi Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 727,
+      "parent_id": 720,
+      "kodu": "8.1.2.11",
+      "aciklama": "Vakıflar Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 728,
+      "parent_id": 720,
+      "kodu": "8.1.2.12",
+      "aciklama": "Türkiye Hudut ve Sahiller Sağlık Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 729,
+      "parent_id": 720,
+      "kodu": "8.1.2.13",
+      "aciklama": "Türk Akreditasyon Kurumu'ndan"
+    },
+    {
+      "id": 730,
+      "parent_id": 720,
+      "kodu": "8.1.2.14",
+      "aciklama": "Türk Standartları Enstitüsü'nden"
+    },
+    {
+      "id": 731,
+      "parent_id": 720,
+      "kodu": "8.1.2.16",
+      "aciklama": "Türk Patent ve Marka Kurumu'ndan"
+    },
+    {
+      "id": 732,
+      "parent_id": 720,
+      "kodu": "8.1.2.17",
+      "aciklama": "Ulusal Bor Araştırma Enstitüsü'nden"
+    },
+    {
+      "id": 733,
+      "parent_id": 720,
+      "kodu": "8.1.2.18",
+      "aciklama": "Türkiye Atom Enerjisi Kurumu'ndan"
+    },
+    {
+      "id": 734,
+      "parent_id": 720,
+      "kodu": "8.1.2.19",
+      "aciklama": "Savunma Sanayi Başkanlığı'ndan"
+    },
+    {
+      "id": 735,
+      "parent_id": 720,
+      "kodu": "8.1.2.20",
+      "aciklama": "Küçük ve Orta Ölçekli İşletmeleri Geliştirme ve Destekleme İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 736,
+      "parent_id": 720,
+      "kodu": "8.1.2.22",
+      "aciklama": "Türk İşbirliği ve Koordinasyon Ajansı Başkanlığı'ndan"
+    },
+    {
+      "id": 737,
+      "parent_id": 720,
+      "kodu": "8.1.2.24",
+      "aciklama": "GAP Bölge Kalkınma İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 738,
+      "parent_id": 720,
+      "kodu": "8.1.2.25",
+      "aciklama": "Özelleştirme İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 739,
+      "parent_id": 720,
+      "kodu": "8.1.2.27",
+      "aciklama": "Maden Tetkik ve Arama Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 740,
+      "parent_id": 720,
+      "kodu": "8.1.2.28",
+      "aciklama": "Ceza İnfaz Kurumları ile Tutukevleri İş Yurtları Kurumu'ndan"
+    },
+    {
+      "id": 741,
+      "parent_id": 720,
+      "kodu": "8.1.2.29",
+      "aciklama": "Sivil Havacılık Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 742,
+      "parent_id": 720,
+      "kodu": "8.1.2.30",
+      "aciklama": "Orman Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 743,
+      "parent_id": 720,
+      "kodu": "8.1.2.31",
+      "aciklama": "Atatürk Araştırma Merkezi'nden"
+    },
+    {
+      "id": 744,
+      "parent_id": 720,
+      "kodu": "8.1.2.32",
+      "aciklama": "Atatürk Kültür Merkezi'nden"
+    },
+    {
+      "id": 745,
+      "parent_id": 720,
+      "kodu": "8.1.2.33",
+      "aciklama": "Türk Dil Kurumu'ndan"
+    },
+    {
+      "id": 746,
+      "parent_id": 720,
+      "kodu": "8.1.2.34",
+      "aciklama": "Türk Tarih Kurumu'ndan"
+    },
+    {
+      "id": 747,
+      "parent_id": 720,
+      "kodu": "8.1.2.35",
+      "aciklama": "Yurtdışı Türkler ve Akraba Topluluklar Başkanlığı'ndan"
+    },
+    {
+      "id": 748,
+      "parent_id": 720,
+      "kodu": "8.1.2.36",
+      "aciklama": "Karayolları Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 749,
+      "parent_id": 720,
+      "kodu": "8.1.2.37",
+      "aciklama": "Türkiye Yazma Eserler Kurumu Başkanlığı'ndan"
+    },
+    {
+      "id": 750,
+      "parent_id": 720,
+      "kodu": "8.1.2.38",
+      "aciklama": "Doğu Anadolu Projesi Bölge Kalkınma İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 751,
+      "parent_id": 720,
+      "kodu": "8.1.2.39",
+      "aciklama": "Konya Ovası Projesi Bölge Kalkınma İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 752,
+      "parent_id": 720,
+      "kodu": "8.1.2.40",
+      "aciklama": "Doğu Karadeniz Projesi Bölge Kalkınma İdaresi Başkanlığı'ndan"
+    },
+    {
+      "id": 753,
+      "parent_id": 720,
+      "kodu": "8.1.2.41",
+      "aciklama": "Devlet Su İşleri Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 754,
+      "parent_id": 720,
+      "kodu": "8.1.2.42",
+      "aciklama": "Türkiye Su Enstitüsü'nden"
+    },
+    {
+      "id": 755,
+      "parent_id": 720,
+      "kodu": "8.1.2.43",
+      "aciklama": "Türkiye İlaç ve Tıbbi Cihaz Kurumu'ndan"
+    },
+    {
+      "id": 756,
+      "parent_id": 720,
+      "kodu": "8.1.2.44",
+      "aciklama": "Kamu Denetçiliği Kurumu'ndan"
+    },
+    {
+      "id": 757,
+      "parent_id": 720,
+      "kodu": "8.1.2.45",
+      "aciklama": "Türkiye İnsan Hakları ve Eşitlik Kurumu'ndan"
+    },
+    {
+      "id": 758,
+      "parent_id": 720,
+      "kodu": "8.1.2.46",
+      "aciklama": "Türkiye Sağlık Enstitüleri Başkanlığı'ndan"
+    },
+    {
+      "id": 759,
+      "parent_id": 720,
+      "kodu": "8.1.2.47",
+      "aciklama": "Helal Akreditasyon Kurumu'ndan"
+    },
+    {
+      "id": 760,
+      "parent_id": 720,
+      "kodu": "8.1.2.48",
+      "aciklama": "Nadir Toprak Elementleri Araştırma Enstitüsü'nden"
+    },
+    {
+      "id": 761,
+      "parent_id": 720,
+      "kodu": "8.1.2.49",
+      "aciklama": "Maden ve Petrol İşleri Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 762,
+      "parent_id": 717,
+      "kodu": "8.1.3",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlardan"
+    },
+    {
+      "id": 763,
+      "parent_id": 762,
+      "kodu": "8.1.3.01",
+      "aciklama": "Radyo ve Televizyon Üst Kurulu'ndan"
+    },
+    {
+      "id": 764,
+      "parent_id": 762,
+      "kodu": "8.1.3.02",
+      "aciklama": "Bilgi Teknolojileri ve İletişim Kurumu'ndan"
+    },
+    {
+      "id": 765,
+      "parent_id": 762,
+      "kodu": "8.1.3.03",
+      "aciklama": "Sermaye Piyasası Kurulu'ndan"
+    },
+    {
+      "id": 766,
+      "parent_id": 762,
+      "kodu": "8.1.3.04",
+      "aciklama": "Bankacılık Düzenleme ve Denetleme Kurumu'ndan"
+    },
+    {
+      "id": 767,
+      "parent_id": 762,
+      "kodu": "8.1.3.05",
+      "aciklama": "Enerji Piyasası Düzenleme Kurulu'ndan"
+    },
+    {
+      "id": 768,
+      "parent_id": 762,
+      "kodu": "8.1.3.06",
+      "aciklama": "Kamu İhale Kurumu'ndan"
+    },
+    {
+      "id": 769,
+      "parent_id": 762,
+      "kodu": "8.1.3.07",
+      "aciklama": "Rekabet Kurumu'ndan"
+    },
+    {
+      "id": 770,
+      "parent_id": 762,
+      "kodu": "8.1.3.09",
+      "aciklama": "Kamu Gözetimi, Muhasebe ve Denetim Standartları Kurumu'ndan"
+    },
+    {
+      "id": 771,
+      "parent_id": 762,
+      "kodu": "8.1.3.10",
+      "aciklama": "Kişisel Verileri Koruma Kurumu'ndan"
+    },
+    {
+      "id": 772,
+      "parent_id": 762,
+      "kodu": "8.1.3.11",
+      "aciklama": "Nükleer Düzenleme Kurumu'ndan"
+    },
+    {
+      "id": 773,
+      "parent_id": 717,
+      "kodu": "8.1.4",
+      "aciklama": "Sosyal Güvenlik Kurumlarından"
+    },
+    {
+      "id": 774,
+      "parent_id": 773,
+      "kodu": "8.1.4.04",
+      "aciklama": "Türkiye İş Kurumu Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 775,
+      "parent_id": 773,
+      "kodu": "8.1.4.06",
+      "aciklama": "Sosyal Güvenlik Kurumu'ndan"
+    },
+    {
+      "id": 776,
+      "parent_id": 773,
+      "kodu": "8.1.4.99",
+      "aciklama": "Diğer Sosyal Güvenlik Kurumlarından"
+    },
+    {
+      "id": 777,
+      "parent_id": 717,
+      "kodu": "8.1.5",
+      "aciklama": "Mahalli İdarelerden"
+    },
+    {
+      "id": 778,
+      "parent_id": 777,
+      "kodu": "8.1.5.01",
+      "aciklama": "İl Özel İdarelerden"
+    },
+    {
+      "id": 779,
+      "parent_id": 777,
+      "kodu": "8.1.5.02",
+      "aciklama": "Belediyelerden"
+    },
+    {
+      "id": 780,
+      "parent_id": 777,
+      "kodu": "8.1.5.03",
+      "aciklama": "Köylerden"
+    },
+    {
+      "id": 781,
+      "parent_id": 777,
+      "kodu": "8.1.5.04",
+      "aciklama": "Mahalli İdare Birliklerinden"
+    },
+    {
+      "id": 782,
+      "parent_id": 777,
+      "kodu": "8.1.5.05",
+      "aciklama": "Bağlı İdarelerden"
+    },
+    {
+      "id": 783,
+      "parent_id": 717,
+      "kodu": "8.1.6",
+      "aciklama": "Kamu Teşebbüslerinden, Döner Sermayelerden, Fonlardan ve Mali Kurumlardan"
+    },
+    {
+      "id": 784,
+      "parent_id": 783,
+      "kodu": "8.1.6.02",
+      "aciklama": "T.C. Devlet Demiryolları'ndan"
+    },
+    {
+      "id": 785,
+      "parent_id": 783,
+      "kodu": "8.1.6.03",
+      "aciklama": "Tarım İşletmeleri'nden"
+    },
+    {
+      "id": 786,
+      "parent_id": 783,
+      "kodu": "8.1.6.04",
+      "aciklama": "Toprak Mahsulleri Ofisi'nden"
+    },
+    {
+      "id": 787,
+      "parent_id": 783,
+      "kodu": "8.1.6.05",
+      "aciklama": "tta Gayrimenkul Anonim Şirketi Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 788,
+      "parent_id": 783,
+      "kodu": "8.1.6.06",
+      "aciklama": "Çay İşletmeleri Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 789,
+      "parent_id": 783,
+      "kodu": "8.1.6.07",
+      "aciklama": "Türkiye Elektrik Dağıtım A.Ş'den"
+    },
+    {
+      "id": 790,
+      "parent_id": 783,
+      "kodu": "8.1.6.08",
+      "aciklama": "Elektrik Üretim A.Ş.'den"
+    },
+    {
+      "id": 791,
+      "parent_id": 783,
+      "kodu": "8.1.6.09",
+      "aciklama": "Elektrik İletim A.Ş.'den"
+    },
+    {
+      "id": 792,
+      "parent_id": 783,
+      "kodu": "8.1.6.10",
+      "aciklama": "Türkiye Elektrik ve Taahhüt A.Ş.'den"
+    },
+    {
+      "id": 793,
+      "parent_id": 783,
+      "kodu": "8.1.6.11",
+      "aciklama": "Türkiye Taşkömürü Kurumu'ndan"
+    },
+    {
+      "id": 794,
+      "parent_id": 783,
+      "kodu": "8.1.6.12",
+      "aciklama": "Üretici Birlikleri'nden"
+    },
+    {
+      "id": 795,
+      "parent_id": 783,
+      "kodu": "8.1.6.13",
+      "aciklama": "Tarım Kredi Kooperatifleri'nden"
+    },
+    {
+      "id": 796,
+      "parent_id": 783,
+      "kodu": "8.1.6.14",
+      "aciklama": "Türkiye Şeker Fabrikaları A.Ş.'den"
+    },
+    {
+      "id": 797,
+      "parent_id": 783,
+      "kodu": "8.1.6.15",
+      "aciklama": "Sümer Halı A.Ş.'den"
+    },
+    {
+      "id": 798,
+      "parent_id": 783,
+      "kodu": "8.1.6.16",
+      "aciklama": "Makina ve Kimya Endüstrisi Kurumu'ndan"
+    },
+    {
+      "id": 799,
+      "parent_id": 783,
+      "kodu": "8.1.6.17",
+      "aciklama": "Türkiye Seluloz ve Kağıt Fabrikaları A.Ş.'den"
+    },
+    {
+      "id": 800,
+      "parent_id": 783,
+      "kodu": "8.1.6.18",
+      "aciklama": "Türkiye Kömür İşletmeleri Kurumu'ndan"
+    },
+    {
+      "id": 801,
+      "parent_id": 783,
+      "kodu": "8.1.6.19",
+      "aciklama": "Et ve Süt Kurumu Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 802,
+      "parent_id": 783,
+      "kodu": "8.1.6.20",
+      "aciklama": "Türkiye Elektromekanik Sanayii Genel Müdürlüğü'nden"
+    },
+    {
+      "id": 803,
+      "parent_id": 783,
+      "kodu": "8.1.6.23",
+      "aciklama": "Türkiye Petrolleri Anonim Ortaklığı’ndan"
+    },
+    {
+      "id": 804,
+      "parent_id": 783,
+      "kodu": "8.1.6.49",
+      "aciklama": "Diğer Teşebbüslerden"
+    },
+    {
+      "id": 805,
+      "parent_id": 783,
+      "kodu": "8.1.6.50",
+      "aciklama": "Darphane ve Damga Matbaası Döner Sermaye İşletmesi'nden"
+    },
+    {
+      "id": 806,
+      "parent_id": 783,
+      "kodu": "8.1.6.59",
+      "aciklama": "Diğer Döner Sermaye İşletmeleri'nden"
+    },
+    {
+      "id": 807,
+      "parent_id": 783,
+      "kodu": "8.1.6.70",
+      "aciklama": "Ziraat Bankası'ndan"
+    },
+    {
+      "id": 808,
+      "parent_id": 783,
+      "kodu": "8.1.6.71",
+      "aciklama": "Kalkınma Bankası'ndan"
+    },
+    {
+      "id": 809,
+      "parent_id": 783,
+      "kodu": "8.1.6.72",
+      "aciklama": "Eximbank'tan"
+    },
+    {
+      "id": 810,
+      "parent_id": 783,
+      "kodu": "8.1.6.79",
+      "aciklama": "Diğer Mali Kurumlardan"
+    },
+    {
+      "id": 811,
+      "parent_id": 783,
+      "kodu": "8.1.6.80",
+      "aciklama": "Sosyal Yardımlaşma ve Dayanışmayı Teşvik Fonundan"
+    },
+    {
+      "id": 812,
+      "parent_id": 783,
+      "kodu": "8.1.6.89",
+      "aciklama": "Diğer Fonlardan"
+    },
+    {
+      "id": 813,
+      "parent_id": 717,
+      "kodu": "8.1.7",
+      "aciklama": "Yükseköğretim Kurumlarından"
+    },
+    {
+      "id": 814,
+      "parent_id": 813,
+      "kodu": "8.1.7.01",
+      "aciklama": "Yükseköğretim Kurulu'ndan"
+    },
+    {
+      "id": 815,
+      "parent_id": 813,
+      "kodu": "8.1.7.02",
+      "aciklama": "Ankara Üniversitesi'nden"
+    },
+    {
+      "id": 816,
+      "parent_id": 813,
+      "kodu": "8.1.7.03",
+      "aciklama": "Ortadoğu Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 817,
+      "parent_id": 813,
+      "kodu": "8.1.7.04",
+      "aciklama": "Hacettepe Üniversitesi'nden"
+    },
+    {
+      "id": 818,
+      "parent_id": 813,
+      "kodu": "8.1.7.05",
+      "aciklama": "Gazi Üniversitesi'nden"
+    },
+    {
+      "id": 819,
+      "parent_id": 813,
+      "kodu": "8.1.7.06",
+      "aciklama": "İstanbul Üniversitesi'nden"
+    },
+    {
+      "id": 820,
+      "parent_id": 813,
+      "kodu": "8.1.7.07",
+      "aciklama": "İstanbul Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 821,
+      "parent_id": 813,
+      "kodu": "8.1.7.08",
+      "aciklama": "Boğaziçi Üniversitesi'nden"
+    },
+    {
+      "id": 822,
+      "parent_id": 813,
+      "kodu": "8.1.7.09",
+      "aciklama": "Marmara Üniversitesi'nden"
+    },
+    {
+      "id": 823,
+      "parent_id": 813,
+      "kodu": "8.1.7.10",
+      "aciklama": "Yıldız Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 824,
+      "parent_id": 813,
+      "kodu": "8.1.7.11",
+      "aciklama": "Mimar Sinan Güzel Sanatlar Üniversitesi'nden"
+    },
+    {
+      "id": 825,
+      "parent_id": 813,
+      "kodu": "8.1.7.12",
+      "aciklama": "Ege Üniversitesi'nden"
+    },
+    {
+      "id": 826,
+      "parent_id": 813,
+      "kodu": "8.1.7.13",
+      "aciklama": "Dokuz Eylül Üniversitesi'nden"
+    },
+    {
+      "id": 827,
+      "parent_id": 813,
+      "kodu": "8.1.7.14",
+      "aciklama": "Trakya Üniversitesi'nden"
+    },
+    {
+      "id": 828,
+      "parent_id": 813,
+      "kodu": "8.1.7.15",
+      "aciklama": "Bursa Uludağ Üniversitesi'nden"
+    },
+    {
+      "id": 829,
+      "parent_id": 813,
+      "kodu": "8.1.7.16",
+      "aciklama": "Anadolu Üniversitesi'nden"
+    },
+    {
+      "id": 830,
+      "parent_id": 813,
+      "kodu": "8.1.7.17",
+      "aciklama": "Selçuk Üniversitesi'nden"
+    },
+    {
+      "id": 831,
+      "parent_id": 813,
+      "kodu": "8.1.7.18",
+      "aciklama": "Akdeniz Üniversitesi'nden"
+    },
+    {
+      "id": 832,
+      "parent_id": 813,
+      "kodu": "8.1.7.19",
+      "aciklama": "Erciyes Üniversitesi'nden"
+    },
+    {
+      "id": 833,
+      "parent_id": 813,
+      "kodu": "8.1.7.20",
+      "aciklama": "Sivas Cumhuriyet Üniversitesi'nden"
+    },
+    {
+      "id": 834,
+      "parent_id": 813,
+      "kodu": "8.1.7.21",
+      "aciklama": "Çukurova Üniversitesi'nden"
+    },
+    {
+      "id": 835,
+      "parent_id": 813,
+      "kodu": "8.1.7.22",
+      "aciklama": "Ondokuz Mayıs Üniversitesi'nden"
+    },
+    {
+      "id": 836,
+      "parent_id": 813,
+      "kodu": "8.1.7.23",
+      "aciklama": "Karadeniz Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 837,
+      "parent_id": 813,
+      "kodu": "8.1.7.24",
+      "aciklama": "Atatürk Üniversitesi'nden"
+    },
+    {
+      "id": 838,
+      "parent_id": 813,
+      "kodu": "8.1.7.25",
+      "aciklama": "İnönü Üniversitesi'nden"
+    },
+    {
+      "id": 839,
+      "parent_id": 813,
+      "kodu": "8.1.7.26",
+      "aciklama": "Fırat Üniversitesi'nden"
+    },
+    {
+      "id": 840,
+      "parent_id": 813,
+      "kodu": "8.1.7.27",
+      "aciklama": "Dicle Üniversitesi'nden"
+    },
+    {
+      "id": 841,
+      "parent_id": 813,
+      "kodu": "8.1.7.28",
+      "aciklama": "Van Yüzüncüyıl Üniversitesi'nden"
+    },
+    {
+      "id": 842,
+      "parent_id": 813,
+      "kodu": "8.1.7.29",
+      "aciklama": "Gaziantep Üniversitesi'nden"
+    },
+    {
+      "id": 843,
+      "parent_id": 813,
+      "kodu": "8.1.7.30",
+      "aciklama": "İzmir Yüksek Teknoloji Enstitüsü'nden"
+    },
+    {
+      "id": 844,
+      "parent_id": 813,
+      "kodu": "8.1.7.31",
+      "aciklama": "Gebze Teknik Üniversitesi'nden    "
+    },
+    {
+      "id": 845,
+      "parent_id": 813,
+      "kodu": "8.1.7.32",
+      "aciklama": "Harran Üniversitesi'nden"
+    },
+    {
+      "id": 846,
+      "parent_id": 813,
+      "kodu": "8.1.7.33",
+      "aciklama": "Süleyman Demirel Üniversitesi'nden"
+    },
+    {
+      "id": 847,
+      "parent_id": 813,
+      "kodu": "8.1.7.34",
+      "aciklama": "Aydın Adnan Menderes Üniversitesi'nden"
+    },
+    {
+      "id": 848,
+      "parent_id": 813,
+      "kodu": "8.1.7.35",
+      "aciklama": "Zonguldak Bülent Ecevit Üniversitesi'nden"
+    },
+    {
+      "id": 849,
+      "parent_id": 813,
+      "kodu": "8.1.7.36",
+      "aciklama": "Mersin Üniversitesi'nden"
+    },
+    {
+      "id": 850,
+      "parent_id": 813,
+      "kodu": "8.1.7.37",
+      "aciklama": "Pamukkale Üniversitesi'nden"
+    },
+    {
+      "id": 851,
+      "parent_id": 813,
+      "kodu": "8.1.7.38",
+      "aciklama": "Balıkesir Üniversitesi'nden"
+    },
+    {
+      "id": 852,
+      "parent_id": 813,
+      "kodu": "8.1.7.39",
+      "aciklama": "Kocaeli Üniversitesi'nden"
+    },
+    {
+      "id": 853,
+      "parent_id": 813,
+      "kodu": "8.1.7.40",
+      "aciklama": "Sakarya Üniversitesi'nden"
+    },
+    {
+      "id": 854,
+      "parent_id": 813,
+      "kodu": "8.1.7.41",
+      "aciklama": "Manisa Celal Bayar Üniversitesi'nden"
+    },
+    {
+      "id": 855,
+      "parent_id": 813,
+      "kodu": "8.1.7.42",
+      "aciklama": "Bolu Abant İzzet Baysal Üniversitesi'nden"
+    },
+    {
+      "id": 856,
+      "parent_id": 813,
+      "kodu": "8.1.7.43",
+      "aciklama": "Hatay Mustafa Kemal Üniversitesi^nden"
+    },
+    {
+      "id": 857,
+      "parent_id": 813,
+      "kodu": "8.1.7.44",
+      "aciklama": "Afyon Kocatepe Üniversitesi'nden"
+    },
+    {
+      "id": 858,
+      "parent_id": 813,
+      "kodu": "8.1.7.45",
+      "aciklama": "Kafkas Üniversitesi'nden"
+    },
+    {
+      "id": 859,
+      "parent_id": 813,
+      "kodu": "8.1.7.46",
+      "aciklama": "Çanakkale 18 Mart Üniversitesi'nden"
+    },
+    {
+      "id": 860,
+      "parent_id": 813,
+      "kodu": "8.1.7.47",
+      "aciklama": "Niğde Ömer Halisdemir Üniversitesi'nden"
+    },
+    {
+      "id": 861,
+      "parent_id": 813,
+      "kodu": "8.1.7.48",
+      "aciklama": "Kütahya Dumlupınar Üniversitesi'nden"
+    },
+    {
+      "id": 862,
+      "parent_id": 813,
+      "kodu": "8.1.7.49",
+      "aciklama": "Tokat Gaziosmanpaşa Üniversitesi'nden"
+    },
+    {
+      "id": 863,
+      "parent_id": 813,
+      "kodu": "8.1.7.50",
+      "aciklama": "Muğla Sıtkı Koçman Üniversitesi'nden"
+    },
+    {
+      "id": 864,
+      "parent_id": 813,
+      "kodu": "8.1.7.51",
+      "aciklama": "Kahramanmaraş Sütçü İmam Üniversitesi'nden"
+    },
+    {
+      "id": 865,
+      "parent_id": 813,
+      "kodu": "8.1.7.52",
+      "aciklama": "Kırıkkale Üniversitesi'nden"
+    },
+    {
+      "id": 866,
+      "parent_id": 813,
+      "kodu": "8.1.7.53",
+      "aciklama": "Eskişehir Osmangazi Üniversitesi'nden"
+    },
+    {
+      "id": 867,
+      "parent_id": 813,
+      "kodu": "8.1.7.54",
+      "aciklama": "Galatasaray Üniversitesi'nden"
+    },
+    {
+      "id": 868,
+      "parent_id": 813,
+      "kodu": "8.1.7.55",
+      "aciklama": "Kırşehir Ahi Evran Üniversitesi'nden"
+    },
+    {
+      "id": 869,
+      "parent_id": 813,
+      "kodu": "8.1.7.56",
+      "aciklama": "Kastamonu Üniversitesi'nden"
+    },
+    {
+      "id": 870,
+      "parent_id": 813,
+      "kodu": "8.1.7.57",
+      "aciklama": "Düzce Üniversitesi'nden"
+    },
+    {
+      "id": 871,
+      "parent_id": 813,
+      "kodu": "8.1.7.58",
+      "aciklama": "Burdur Mehmet Akif Ersoy Üniversitesi'nden"
+    },
+    {
+      "id": 872,
+      "parent_id": 813,
+      "kodu": "8.1.7.59",
+      "aciklama": "Uşak Üniversitesi'nden"
+    },
+    {
+      "id": 873,
+      "parent_id": 813,
+      "kodu": "8.1.7.60",
+      "aciklama": "Recep Tayyip Erdoğan Üniversitesi'nden"
+    },
+    {
+      "id": 874,
+      "parent_id": 813,
+      "kodu": "8.1.7.61",
+      "aciklama": "Tekirdağ Namık Kemal Üniversitesi'nden"
+    },
+    {
+      "id": 875,
+      "parent_id": 813,
+      "kodu": "8.1.7.62",
+      "aciklama": "Erzincan Binali Yıldırım Üniversitesi'nden"
+    },
+    {
+      "id": 876,
+      "parent_id": 813,
+      "kodu": "8.1.7.63",
+      "aciklama": "Aksaray Üniversitesi'nden"
+    },
+    {
+      "id": 877,
+      "parent_id": 813,
+      "kodu": "8.1.7.64",
+      "aciklama": "Giresun Üniversitesi'nden"
+    },
+    {
+      "id": 878,
+      "parent_id": 813,
+      "kodu": "8.1.7.65",
+      "aciklama": "Hitit Üniversitesi'nden"
+    },
+    {
+      "id": 879,
+      "parent_id": 813,
+      "kodu": "8.1.7.66",
+      "aciklama": "Yozgat Bozok Üniversitesi'nden"
+    },
+    {
+      "id": 880,
+      "parent_id": 813,
+      "kodu": "8.1.7.67",
+      "aciklama": "Adıyaman Üniversitesi'nden"
+    },
+    {
+      "id": 881,
+      "parent_id": 813,
+      "kodu": "8.1.7.68",
+      "aciklama": "Ordu Üniversitesi'nden"
+    },
+    {
+      "id": 882,
+      "parent_id": 813,
+      "kodu": "8.1.7.69",
+      "aciklama": "Amasya Üniversitesi'nden"
+    },
+    {
+      "id": 883,
+      "parent_id": 813,
+      "kodu": "8.1.7.70",
+      "aciklama": "Karamanoğlu Mehmetbey Üniversitesi'nden"
+    },
+    {
+      "id": 884,
+      "parent_id": 813,
+      "kodu": "8.1.7.71",
+      "aciklama": "Ağrı İbrahim Çeçen Üniversitesi'nden"
+    },
+    {
+      "id": 885,
+      "parent_id": 813,
+      "kodu": "8.1.7.72",
+      "aciklama": "Sinop Üniversitesi'nden"
+    },
+    {
+      "id": 886,
+      "parent_id": 813,
+      "kodu": "8.1.7.73",
+      "aciklama": "Siirt Üniversitesi'nden"
+    },
+    {
+      "id": 887,
+      "parent_id": 813,
+      "kodu": "8.1.7.74",
+      "aciklama": "Nevşehir Hacı Bektaş Veli Üniversitesi'nden"
+    },
+    {
+      "id": 888,
+      "parent_id": 813,
+      "kodu": "8.1.7.75",
+      "aciklama": "Karabük Üniversitesi'nden"
+    },
+    {
+      "id": 889,
+      "parent_id": 813,
+      "kodu": "8.1.7.76",
+      "aciklama": "Kilis 7 Aralık Üniversitesi'nden"
+    },
+    {
+      "id": 890,
+      "parent_id": 813,
+      "kodu": "8.1.7.77",
+      "aciklama": "Çankırı Karatekin Üniversitesi'nden"
+    },
+    {
+      "id": 891,
+      "parent_id": 813,
+      "kodu": "8.1.7.78",
+      "aciklama": "Artvin Çoruh Üniversitesi'nden"
+    },
+    {
+      "id": 892,
+      "parent_id": 813,
+      "kodu": "8.1.7.79",
+      "aciklama": "Bilecik Şeyh Edabali Üniversitesi'nden"
+    },
+    {
+      "id": 893,
+      "parent_id": 813,
+      "kodu": "8.1.7.80",
+      "aciklama": "Bitlis Eren Üniversitesi'nden"
+    },
+    {
+      "id": 894,
+      "parent_id": 813,
+      "kodu": "8.1.7.81",
+      "aciklama": "Kırklareli Üniversitesi'nden"
+    },
+    {
+      "id": 895,
+      "parent_id": 813,
+      "kodu": "8.1.7.82",
+      "aciklama": "Osmaniye Korkut Ata Üniversitesi'nden"
+    },
+    {
+      "id": 896,
+      "parent_id": 813,
+      "kodu": "8.1.7.83",
+      "aciklama": "Bingöl Üniversitesi'nden"
+    },
+    {
+      "id": 897,
+      "parent_id": 813,
+      "kodu": "8.1.7.84",
+      "aciklama": "Muş Alparslan Üniversitesi'nden"
+    },
+    {
+      "id": 898,
+      "parent_id": 813,
+      "kodu": "8.1.7.85",
+      "aciklama": "Mardin Artuklu Üniversitesi'nden"
+    },
+    {
+      "id": 899,
+      "parent_id": 813,
+      "kodu": "8.1.7.86",
+      "aciklama": "Batman Üniversitesi'nden"
+    },
+    {
+      "id": 900,
+      "parent_id": 813,
+      "kodu": "8.1.7.87",
+      "aciklama": "Ardahan Üniversitesi'nden"
+    },
+    {
+      "id": 901,
+      "parent_id": 813,
+      "kodu": "8.1.7.88",
+      "aciklama": "Bartın Üniversitesi'nden"
+    },
+    {
+      "id": 902,
+      "parent_id": 813,
+      "kodu": "8.1.7.89",
+      "aciklama": "Bayburt Üniversitesi'nden"
+    },
+    {
+      "id": 903,
+      "parent_id": 813,
+      "kodu": "8.1.7.90",
+      "aciklama": "Gümüşhane Üniversitesi'nden"
+    },
+    {
+      "id": 904,
+      "parent_id": 813,
+      "kodu": "8.1.7.91",
+      "aciklama": "Hakkari Üniversitesi'nden"
+    },
+    {
+      "id": 905,
+      "parent_id": 813,
+      "kodu": "8.1.7.92",
+      "aciklama": "Iğdır Üniversitesi'nden"
+    },
+    {
+      "id": 906,
+      "parent_id": 813,
+      "kodu": "8.1.7.93",
+      "aciklama": "Şırnak Üniversitesi'nden"
+    },
+    {
+      "id": 907,
+      "parent_id": 813,
+      "kodu": "8.1.7.94",
+      "aciklama": "Munzur Üniversitesi'nden"
+    },
+    {
+      "id": 908,
+      "parent_id": 813,
+      "kodu": "8.1.7.95",
+      "aciklama": "Yalova Üniversitesi'nden"
+    },
+    {
+      "id": 909,
+      "parent_id": 813,
+      "kodu": "8.1.7.96",
+      "aciklama": "Türk-Alman Üniversitesi'nden"
+    },
+    {
+      "id": 910,
+      "parent_id": 813,
+      "kodu": "8.1.7.97",
+      "aciklama": "Ankara Yıldırım Beyazıt Üniversitesi'nden"
+    },
+    {
+      "id": 911,
+      "parent_id": 813,
+      "kodu": "8.1.7.98",
+      "aciklama": "Bursa Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 912,
+      "parent_id": 813,
+      "kodu": "8.1.7.99",
+      "aciklama": "İstanbul Medeniyet Üniversitesi'nden"
+    },
+    {
+      "id": 913,
+      "parent_id": 717,
+      "kodu": "8.1.8",
+      "aciklama": "Yükseköğretim Kurumlarından"
+    },
+    {
+      "id": 914,
+      "parent_id": 913,
+      "kodu": "8.1.8.01",
+      "aciklama": "İzmir Katip Çelebi Üniversitesi'nden"
+    },
+    {
+      "id": 915,
+      "parent_id": 913,
+      "kodu": "8.1.8.02",
+      "aciklama": "Necmettin Erbakan Üniversitesi'nden"
+    },
+    {
+      "id": 916,
+      "parent_id": 913,
+      "kodu": "8.1.8.03",
+      "aciklama": "Abdullah Gül Üniversitesi'nden"
+    },
+    {
+      "id": 917,
+      "parent_id": 913,
+      "kodu": "8.1.8.04",
+      "aciklama": "Erzurum Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 918,
+      "parent_id": 913,
+      "kodu": "8.1.8.05",
+      "aciklama": "Adana Bilim ve Teknoloji Üniversitesi'nden"
+    },
+    {
+      "id": 919,
+      "parent_id": 913,
+      "kodu": "8.1.8.06",
+      "aciklama": "Ankara Sosyal Bilimler Üniversitesi'nden"
+    },
+    {
+      "id": 920,
+      "parent_id": 913,
+      "kodu": "8.1.8.07",
+      "aciklama": "Sağlık Bilimleri Üniversitesi'nden"
+    },
+    {
+      "id": 921,
+      "parent_id": 913,
+      "kodu": "8.1.8.08",
+      "aciklama": "Bandırma Onyedi Eylül Üniversitesi'nden"
+    },
+    {
+      "id": 922,
+      "parent_id": 913,
+      "kodu": "8.1.8.09",
+      "aciklama": "İskenderun Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 923,
+      "parent_id": 913,
+      "kodu": "8.1.8.10",
+      "aciklama": "Alanya Alaaddin Keykubat Üniversitesi'nden"
+    },
+    {
+      "id": 924,
+      "parent_id": 913,
+      "kodu": "8.1.8.12",
+      "aciklama": "İzmir Bakırçay Üniversitesi'nden"
+    },
+    {
+      "id": 925,
+      "parent_id": 913,
+      "kodu": "8.1.8.13",
+      "aciklama": "İzmir Demokrasi Üniversitesi'nden"
+    },
+    {
+      "id": 926,
+      "parent_id": 913,
+      "kodu": "8.1.8.14",
+      "aciklama": "Yükseköğretim Kalite Kurulu'ndan"
+    },
+    {
+      "id": 927,
+      "parent_id": 913,
+      "kodu": "8.1.8.15",
+      "aciklama": "Ankara Müzik ve Güzel Sanatlar Üniversitesi'nden"
+    },
+    {
+      "id": 928,
+      "parent_id": 913,
+      "kodu": "8.1.8.17",
+      "aciklama": "Konya Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 929,
+      "parent_id": 913,
+      "kodu": "8.1.8.18",
+      "aciklama": "Kütahya Sağlık Bilimleri Üniversitesi'nden"
+    },
+    {
+      "id": 930,
+      "parent_id": 913,
+      "kodu": "8.1.8.19",
+      "aciklama": "Malatya Turgut Özal Üniversitesi'nden"
+    },
+    {
+      "id": 931,
+      "parent_id": 913,
+      "kodu": "8.1.8.20",
+      "aciklama": "İstanbul Üniversitesi-Cerrahpaşa'dan "
+    },
+    {
+      "id": 932,
+      "parent_id": 913,
+      "kodu": "8.1.8.21",
+      "aciklama": "Ankara Hacı Bayram Veli Üniversitesi'nden"
+    },
+    {
+      "id": 933,
+      "parent_id": 913,
+      "kodu": "8.1.8.22",
+      "aciklama": "Sakarya Uygulamalı Bilimler Üniversitesi'nden"
+    },
+    {
+      "id": 934,
+      "parent_id": 913,
+      "kodu": "8.1.8.23",
+      "aciklama": "Samsun Üniversitesi'nden"
+    },
+    {
+      "id": 935,
+      "parent_id": 913,
+      "kodu": "8.1.8.25",
+      "aciklama": "Tarsus Üniversitesi'nden"
+    },
+    {
+      "id": 936,
+      "parent_id": 913,
+      "kodu": "8.1.8.26",
+      "aciklama": "Trabzon Üniversitesi'nden"
+    },
+    {
+      "id": 937,
+      "parent_id": 913,
+      "kodu": "8.1.8.27",
+      "aciklama": "Kayseri Üniversitesi'nden"
+    },
+    {
+      "id": 938,
+      "parent_id": 913,
+      "kodu": "8.1.8.28",
+      "aciklama": "Kahramanmaraş İstiklal Üniversitesi'nden"
+    },
+    {
+      "id": 939,
+      "parent_id": 913,
+      "kodu": "8.1.8.29",
+      "aciklama": "Eskişehir Teknik Üniversitesi'nden"
+    },
+    {
+      "id": 940,
+      "parent_id": 913,
+      "kodu": "8.1.8.30",
+      "aciklama": "Isparta Uygulamalı Bilimler Üniversitesi'nden"
+    },
+    {
+      "id": 941,
+      "parent_id": 913,
+      "kodu": "8.1.8.31",
+      "aciklama": "Afyonkarahisar Sağlık Bilimleri Üniversitesi'nden"
+    },
+    {
+      "id": 942,
+      "parent_id": 717,
+      "kodu": "8.1.9",
+      "aciklama": "Diğer Yurtiçi Alacaklardan Tahsilat"
+    },
+    {
+      "id": 943,
+      "parent_id": 942,
+      "kodu": "8.1.9.01",
+      "aciklama": "Dernek, Birlik, Kurum, Kuruluş, Sandık vb. Kuruluşlardan"
+    },
+    {
+      "id": 944,
+      "parent_id": 942,
+      "kodu": "8.1.9.02",
+      "aciklama": "Vakıf üniversitelerinden"
+    },
+    {
+      "id": 945,
+      "parent_id": 942,
+      "kodu": "8.1.9.03",
+      "aciklama": "Diğer kamu kurum ve kuruluşlarından"
+    },
+    {
+      "id": 946,
+      "parent_id": 942,
+      "kodu": "8.1.9.04",
+      "aciklama": "Kamu Ortaklıklarından"
+    },
+    {
+      "id": 947,
+      "parent_id": 942,
+      "kodu": "8.1.9.05",
+      "aciklama": "Özel Teşebbüslerden"
+    },
+    {
+      "id": 948,
+      "parent_id": 942,
+      "kodu": "8.1.9.06",
+      "aciklama": "Hane Halklarından"
+    },
+    {
+      "id": 949,
+      "parent_id": 942,
+      "kodu": "8.1.9.99",
+      "aciklama": "Diğerlerinden"
+    },
+    {
+      "id": 950,
+      "parent_id": 716,
+      "kodu": "8.2",
+      "aciklama": "Yurtdışı Alacaklardan Tahsilat"
+    },
+    {
+      "id": 951,
+      "parent_id": 950,
+      "kodu": "8.2.1",
+      "aciklama": "Dış Ülkelere Yapılan Yardımlardan Tahsilat"
+    },
+    {
+      "id": 952,
+      "parent_id": 951,
+      "kodu": "8.2.1.01",
+      "aciklama": "Kuzey Kıbrıs Türk Cumhuriyetinden"
+    },
+    {
+      "id": 953,
+      "parent_id": 951,
+      "kodu": "8.2.1.99",
+      "aciklama": "Diğer ülkelerden"
+    },
+    {
+      "id": 954,
+      "parent_id": 950,
+      "kodu": "8.2.2",
+      "aciklama": "Uluslararası Kuruluşlara Yapılacak Ödemelerden Tahsilat"
+    },
+    {
+      "id": 955,
+      "parent_id": 954,
+      "kodu": "8.2.2.01",
+      "aciklama": "Uluslararası kuruluşlara yapılan ödemelerden tahsilat"
+    },
+    {
+      "id": 956,
+      "parent_id": 950,
+      "kodu": "8.2.3",
+      "aciklama": "Uluslarüstü Kuruluşlardan Tahsilat"
+    },
+    {
+      "id": 957,
+      "parent_id": 956,
+      "kodu": "8.2.3.01",
+      "aciklama": "Uluslarüstü kuruluşlardan tahsilat"
+    },
+    {
+      "id": 958,
+      "parent_id": 950,
+      "kodu": "8.2.4",
+      "aciklama": "Dışarıya Verilen Diğer Borçlardan Tahsilat"
+    },
+    {
+      "id": 959,
+      "parent_id": 958,
+      "kodu": "8.2.4.99",
+      "aciklama": "Dışarıya verilen diğer borçlardan tahsilat"
+    },
+    {
+      "id": 960,
+      "parent_id": 0,
+      "kodu": "09",
+      "aciklama": "Red ve İadeler (-)"
+    },
+    {
+      "id": 961,
+      "parent_id": 960,
+      "kodu": "09.1",
+      "aciklama": "Vergi Gelirleri"
+    },
+    {
+      "id": 962,
+      "parent_id": 961,
+      "kodu": "09.1.1",
+      "aciklama": "Gelir ve  Kazanç Üzerinden Alınan Vergiler"
+    },
+    {
+      "id": 963,
+      "parent_id": 962,
+      "kodu": "09.1.1.01 ",
+      "aciklama": "Gelir Vergisi"
+    },
+    {
+      "id": 964,
+      "parent_id": 962,
+      "kodu": "09.1.1.02 ",
+      "aciklama": "Kurumlar Vergisi"
+    },
+    {
+      "id": 965,
+      "parent_id": 961,
+      "kodu": "09.1.2",
+      "aciklama": "Mülkiyet Üzerinden Alınan Vergiler "
+    },
+    {
+      "id": 966,
+      "parent_id": 965,
+      "kodu": "09.1.2.01",
+      "aciklama": "Veraset ve İntikal Vergisi"
+    },
+    {
+      "id": 967,
+      "parent_id": 965,
+      "kodu": "09.1.2.02",
+      "aciklama": "Motorlu Taşıtlar Vergisi"
+    },
+    {
+      "id": 968,
+      "parent_id": 965,
+      "kodu": "09.1.2.09",
+      "aciklama": "Mülkiyet Üzerinden Alınan Diğer Vergiler"
+    },
+    {
+      "id": 969,
+      "parent_id": 961,
+      "kodu": "09.1.3",
+      "aciklama": "Dahilde Alınan Mal ve Hizmet Vergileri"
+    },
+    {
+      "id": 970,
+      "parent_id": 969,
+      "kodu": "09.1.3.01 ",
+      "aciklama": "Dahilde Alınan Katma Değer Vergisi"
+    },
+    {
+      "id": 971,
+      "parent_id": 969,
+      "kodu": "09.1.3.02",
+      "aciklama": "Özel Tüketim Vergisi"
+    },
+    {
+      "id": 972,
+      "parent_id": 969,
+      "kodu": "09.1.3.03",
+      "aciklama": "Banka ve Sigorta Muameleleri Vergisi"
+    },
+    {
+      "id": 973,
+      "parent_id": 969,
+      "kodu": "09.1.3.04",
+      "aciklama": "Şans Oyunları Vergisi"
+    },
+    {
+      "id": 974,
+      "parent_id": 969,
+      "kodu": "09.1.3.05",
+      "aciklama": "Özel İletişim Vergisi"
+    },
+    {
+      "id": 975,
+      "parent_id": 969,
+      "kodu": "09.1.3.09",
+      "aciklama": "Dahilde Alınan Diğer Mal ve Hizmet Vergileri"
+    },
+    {
+      "id": 976,
+      "parent_id": 961,
+      "kodu": "09.1.4",
+      "aciklama": "Uluslararası Ticaret ve Muamelelerden Alınan Vergiler"
+    },
+    {
+      "id": 977,
+      "parent_id": 976,
+      "kodu": "09.1.4.01 ",
+      "aciklama": "Gümrük Vergileri"
+    },
+    {
+      "id": 978,
+      "parent_id": 976,
+      "kodu": "09.1.4.02",
+      "aciklama": "İthalde Alınan Katma Değer Vergisi"
+    },
+    {
+      "id": 979,
+      "parent_id": 976,
+      "kodu": "09.1.4.03",
+      "aciklama": "Diğer Dış Ticaret Gelirleri"
+    },
+    {
+      "id": 980,
+      "parent_id": 961,
+      "kodu": "09.1.5",
+      "aciklama": "Damga Vergisi"
+    },
+    {
+      "id": 981,
+      "parent_id": 980,
+      "kodu": "09.1.5.01",
+      "aciklama": "Damga Vergisi"
+    },
+    {
+      "id": 982,
+      "parent_id": 980,
+      "kodu": "09.1.5.02",
+      "aciklama": "Eğitime Katkı Payı Ayrılması Gereken Damga Vergileri "
+    },
+    {
+      "id": 983,
+      "parent_id": 961,
+      "kodu": "09.1.6",
+      "aciklama": "Harçlar"
+    },
+    {
+      "id": 984,
+      "parent_id": 983,
+      "kodu": "09.1.6.01",
+      "aciklama": "Yargı Harçları"
+    },
+    {
+      "id": 985,
+      "parent_id": 983,
+      "kodu": "09.1.6.02",
+      "aciklama": "Noter Harçları"
+    },
+    {
+      "id": 986,
+      "parent_id": 983,
+      "kodu": "09.1.6.03",
+      "aciklama": "Vergi Yargısı Harçları"
+    },
+    {
+      "id": 987,
+      "parent_id": 983,
+      "kodu": "09.1.6.04",
+      "aciklama": "Tapu Harçları"
+    },
+    {
+      "id": 988,
+      "parent_id": 983,
+      "kodu": "09.1.6.05",
+      "aciklama": "Pasaport ve Konsolosluk Harçları"
+    },
+    {
+      "id": 989,
+      "parent_id": 983,
+      "kodu": "09.1.6.06",
+      "aciklama": "Gemi ve Liman Harçları"
+    },
+    {
+      "id": 990,
+      "parent_id": 983,
+      "kodu": "09.1.6.07",
+      "aciklama": "İmtiyazname, Ruhsatname ve Diploma Harçları"
+    },
+    {
+      "id": 991,
+      "parent_id": 983,
+      "kodu": "09.1.6.08",
+      "aciklama": "Trafik Harçları"
+    },
+    {
+      "id": 992,
+      "parent_id": 983,
+      "kodu": "09.1.6.09",
+      "aciklama": "Diğer Harçlar"
+    },
+    {
+      "id": 993,
+      "parent_id": 961,
+      "kodu": "09.1.9",
+      "aciklama": "Başka Yerde Sınıflandırılmayan Vergiler"
+    },
+    {
+      "id": 994,
+      "parent_id": 993,
+      "kodu": "09.1.9.01",
+      "aciklama": "Kaldırılan Vergi Artıkları"
+    },
+    {
+      "id": 995,
+      "parent_id": 993,
+      "kodu": "09.1.9.02",
+      "aciklama": "Bazı Varlıkların Milli Ekonomiye Kazandırılması Hakkında Kan.Uy.Alınan Vergi"
+    },
+    {
+      "id": 996,
+      "parent_id": 993,
+      "kodu": "09.1.9.09",
+      "aciklama": "Başka Yerde Sınıflandırılmayan Diğer Vergiler "
+    },
+    {
+      "id": 997,
+      "parent_id": 960,
+      "kodu": "09.2",
+      "aciklama": "Sosyal Güvenlik Gelirleri"
+    },
+    {
+      "id": 998,
+      "parent_id": 997,
+      "kodu": "09.2.1",
+      "aciklama": "Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 999,
+      "parent_id": 998,
+      "kodu": "09.2.1.01",
+      "aciklama": "Malüllük, Yaşlılık Ve Ölüm Sigortası Prim Gelirler  "
+    },
+    {
+      "id": 1000,
+      "parent_id": 997,
+      "kodu": "09.2.2",
+      "aciklama": "Genel Sağlık Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 1001,
+      "parent_id": 1000,
+      "kodu": "09.2.2.01",
+      "aciklama": "Genel Sağlık Sigortası Prim Gelirleri"
+    },
+    {
+      "id": 1002,
+      "parent_id": 997,
+      "kodu": "09.2.3",
+      "aciklama": "İş Kazaları ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 1003,
+      "parent_id": 1002,
+      "kodu": "09.2.3.01",
+      "aciklama": "İş Kazaları Ve Meslek Hastalıkları Prim Gelirleri"
+    },
+    {
+      "id": 1004,
+      "parent_id": 997,
+      "kodu": "09.2.4",
+      "aciklama": "Devlet Katkısı"
+    },
+    {
+      "id": 1005,
+      "parent_id": 1004,
+      "kodu": "09.2.4.01",
+      "aciklama": "Sosyal Güvenlik Kurumuna Bağlı Çalışanlar"
+    },
+    {
+      "id": 1006,
+      "parent_id": 1004,
+      "kodu": "09.2.4.02",
+      "aciklama": "Diğer Genel Sağlık Sigortası Kapsamında Olanlar"
+    },
+    {
+      "id": 1007,
+      "parent_id": 997,
+      "kodu": "09.2.5",
+      "aciklama": "5510 Öncesi Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 1008,
+      "parent_id": 1007,
+      "kodu": "09.2.5.01",
+      "aciklama": "5510 Öncesi Sosyal Sigortalar Prim Gelirleri"
+    },
+    {
+      "id": 1009,
+      "parent_id": 997,
+      "kodu": "09.2.9",
+      "aciklama": "Diğer Sosyal Güvenlik Primi Gelirleri"
+    },
+    {
+      "id": 1010,
+      "parent_id": 1009,
+      "kodu": "09.2.9.01",
+      "aciklama": "Diğer Sosyal Güvenlik Primi Gelirleri"
+    },
+    {
+      "id": 1011,
+      "parent_id": 960,
+      "kodu": "09.3",
+      "aciklama": "Teşebbüs ve Mülkiyet Gelirleri"
+    },
+    {
+      "id": 1012,
+      "parent_id": 1011,
+      "kodu": "09.3.1",
+      "aciklama": "Mal ve Hizmet Satış Gelirleri"
+    },
+    {
+      "id": 1013,
+      "parent_id": 1012,
+      "kodu": "09.3.1.01",
+      "aciklama": "Mal Satış Gelirleri"
+    },
+    {
+      "id": 1014,
+      "parent_id": 1012,
+      "kodu": "09.3.1.02",
+      "aciklama": "Hizmet Gelirleri"
+    },
+    {
+      "id": 1015,
+      "parent_id": 1012,
+      "kodu": "09.3.2. ",
+      "aciklama": "Malların kullanma veya faaliyette bulunma izni gelirleri"
+    },
+    {
+      "id": 1016,
+      "parent_id": 1012,
+      "kodu": "09.3.2.01",
+      "aciklama": "Malların kullanma veya faaliyette bulunma izni gelirleri"
+    },
+    {
+      "id": 1017,
+      "parent_id": 1011,
+      "kodu": "09.3.3",
+      "aciklama": "KİT ve Kamu Bankaları Gelirleri"
+    },
+    {
+      "id": 1018,
+      "parent_id": 1017,
+      "kodu": "09.3.3.01",
+      "aciklama": "Hazine Portföyü ve İştirak Gelirleri"
+    },
+    {
+      "id": 1019,
+      "parent_id": 1017,
+      "kodu": "09.3.3.02",
+      "aciklama": "KİT ve İDT'lerden Sağlanan Gelirler"
+    },
+    {
+      "id": 1020,
+      "parent_id": 1011,
+      "kodu": "09.3.4",
+      "aciklama": "Kurumlar Hasılatı"
+    },
+    {
+      "id": 1021,
+      "parent_id": 1020,
+      "kodu": "09.3.4.01",
+      "aciklama": "Genel Bütçeli İdareler Kurumlar Hasılatı"
+    },
+    {
+      "id": 1022,
+      "parent_id": 1020,
+      "kodu": "09.3.4.05",
+      "aciklama": "Mahalli İdareler Kurumlar Hasılatı"
+    },
+    {
+      "id": 1023,
+      "parent_id": 1020,
+      "kodu": "09.3.4.09",
+      "aciklama": "Diğer Kurumlar Hasılatı"
+    },
+    {
+      "id": 1024,
+      "parent_id": 1011,
+      "kodu": "09.3.5",
+      "aciklama": "Kurumlar Karları"
+    },
+    {
+      "id": 1025,
+      "parent_id": 1024,
+      "kodu": "09.3.5.01",
+      "aciklama": "Döner Sermayeler"
+    },
+    {
+      "id": 1026,
+      "parent_id": 1024,
+      "kodu": "09.3.5.05",
+      "aciklama": "Mahalli İdareler "
+    },
+    {
+      "id": 1027,
+      "parent_id": 1024,
+      "kodu": "09.3.5.09",
+      "aciklama": "Diğer kurumlar karları"
+    },
+    {
+      "id": 1028,
+      "parent_id": 1011,
+      "kodu": "09.3.6",
+      "aciklama": "Kira Gelirleri"
+    },
+    {
+      "id": 1029,
+      "parent_id": 1028,
+      "kodu": "09.3.6.01 ",
+      "aciklama": "Taşınmaz Kiraları"
+    },
+    {
+      "id": 1030,
+      "parent_id": 1028,
+      "kodu": "09.3.6.02",
+      "aciklama": "Taşınır Kiraları"
+    },
+    {
+      "id": 1031,
+      "parent_id": 1028,
+      "kodu": "09.3.6.03",
+      "aciklama": "Ön İzin, İrtifak Hakkı ve Kullanma İzni Gelirleri"
+    },
+    {
+      "id": 1032,
+      "parent_id": 1011,
+      "kodu": "09.3.9",
+      "aciklama": "Diğer Teşebbüs ve Mülkiyet Gelirleri"
+    },
+    {
+      "id": 1033,
+      "parent_id": 1032,
+      "kodu": "09.3.9.09",
+      "aciklama": "Diğer Gelirler"
+    },
+    {
+      "id": 1034,
+      "parent_id": 960,
+      "kodu": "09.4",
+      "aciklama": "Alınan Bağış ve Yardımlar ile Özel Gelirler"
+    },
+    {
+      "id": 1035,
+      "parent_id": 1034,
+      "kodu": "09.4.1",
+      "aciklama": "Yurt Dışından Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 1036,
+      "parent_id": 1035,
+      "kodu": "09.4.1.01",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 1037,
+      "parent_id": 1035,
+      "kodu": "09.4.1.02",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 1038,
+      "parent_id": 1034,
+      "kodu": "09.4.2",
+      "aciklama": "Merkezi Yönetim Bütçesine Dahil İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 1039,
+      "parent_id": 1038,
+      "kodu": "09.4.2.01",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 1040,
+      "parent_id": 1038,
+      "kodu": "09.4.2.02",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 1041,
+      "parent_id": 1034,
+      "kodu": "09.4.3",
+      "aciklama": "Diğer İdarelerden Alınan Bağış ve Yardımlar"
+    },
+    {
+      "id": 1042,
+      "parent_id": 1041,
+      "kodu": "09.4.3.01",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 1043,
+      "parent_id": 1041,
+      "kodu": "09.4.3.02",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 1044,
+      "parent_id": 1034,
+      "kodu": "09.4.4",
+      "aciklama": "Kurumlardan ve Kişilerden Alınan Yardım ve Bağışlar"
+    },
+    {
+      "id": 1045,
+      "parent_id": 1044,
+      "kodu": "09.4.4.01",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 1046,
+      "parent_id": 1044,
+      "kodu": "09.4.4.02",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 1047,
+      "parent_id": 1034,
+      "kodu": "09.4.5",
+      "aciklama": "Proje Yardımları"
+    },
+    {
+      "id": 1048,
+      "parent_id": 1047,
+      "kodu": "09.4.5.01",
+      "aciklama": "Cari"
+    },
+    {
+      "id": 1049,
+      "parent_id": 1047,
+      "kodu": "09.4.5.02",
+      "aciklama": "Sermaye"
+    },
+    {
+      "id": 1050,
+      "parent_id": 1034,
+      "kodu": "09.4.6",
+      "aciklama": "Özel Gelirler"
+    },
+    {
+      "id": 1051,
+      "parent_id": 1050,
+      "kodu": "09.4.6.01",
+      "aciklama": "Genel Bütçeli İdarelere Ait Özel Gelirler"
+    },
+    {
+      "id": 1052,
+      "parent_id": 960,
+      "kodu": "09.5",
+      "aciklama": "Diğer Gelirler"
+    },
+    {
+      "id": 1053,
+      "parent_id": 1052,
+      "kodu": "09.5.1",
+      "aciklama": "Faiz Gelirleri"
+    },
+    {
+      "id": 1054,
+      "parent_id": 1053,
+      "kodu": "09.5.1.01",
+      "aciklama": "Dış Borcun İkrazından Doğan Alacaklar Faizleri"
+    },
+    {
+      "id": 1055,
+      "parent_id": 1053,
+      "kodu": "09.5.1.02",
+      "aciklama": "Para Piyasası Nakit İşlemleri Alacakları Faizleri"
+    },
+    {
+      "id": 1056,
+      "parent_id": 1053,
+      "kodu": "09.5.1.03",
+      "aciklama": "Kurumca Verilen Borçlardan Alacakların Faizleri"
+    },
+    {
+      "id": 1057,
+      "parent_id": 1053,
+      "kodu": "09.5.1.04",
+      "aciklama": "Takipteki Kurum Alacakları Faizleri"
+    },
+    {
+      "id": 1058,
+      "parent_id": 1053,
+      "kodu": "09.5.1.05",
+      "aciklama": "Menkul Kıymet ve Gecikmiş Ödemeler Faizleri"
+    },
+    {
+      "id": 1059,
+      "parent_id": 1053,
+      "kodu": "09.5.1.06",
+      "aciklama": "Borçlanma Senedi Geçmiş Gün Faizleri"
+    },
+    {
+      "id": 1060,
+      "parent_id": 1053,
+      "kodu": "09.5.1.07",
+      "aciklama": "Borçlanma Senedi Primli Satış Geliri"
+    },
+    {
+      "id": 1061,
+      "parent_id": 1053,
+      "kodu": "09.5.1.08",
+      "aciklama": "Vergi, Resim ve Harç Gecikme Faizleri"
+    },
+    {
+      "id": 1062,
+      "parent_id": 1053,
+      "kodu": "09.5.1.09",
+      "aciklama": "Diğer Faizler"
+    },
+    {
+      "id": 1063,
+      "parent_id": 1052,
+      "kodu": "09.5.2",
+      "aciklama": "Kişi ve Kurumlardan Alınan Paylar"
+    },
+    {
+      "id": 1064,
+      "parent_id": 1063,
+      "kodu": "09.5.2.01 ",
+      "aciklama": "Devlet Payları"
+    },
+    {
+      "id": 1065,
+      "parent_id": 1063,
+      "kodu": "09.5.2.02",
+      "aciklama": "Vergi ve Harç Gelirlerinden Alınan Paylar"
+    },
+    {
+      "id": 1066,
+      "parent_id": 1063,
+      "kodu": "09.5.2.03",
+      "aciklama": "Yönetim Giderlerine Katılma Payları"
+    },
+    {
+      "id": 1067,
+      "parent_id": 1063,
+      "kodu": "09.5.2.04",
+      "aciklama": "Kamu Harcamalarına Katılma Payları"
+    },
+    {
+      "id": 1068,
+      "parent_id": 1063,
+      "kodu": "09.5.2.05",
+      "aciklama": "Genel Bütçeli İdarelere Ait Paylar"
+    },
+    {
+      "id": 1069,
+      "parent_id": 1063,
+      "kodu": "09.5.2.06",
+      "aciklama": "Özel Bütçeli İdarelere Ait Paylar"
+    },
+    {
+      "id": 1070,
+      "parent_id": 1063,
+      "kodu": "09.5.2.07",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlara Ait Paylar"
+    },
+    {
+      "id": 1071,
+      "parent_id": 1063,
+      "kodu": "09.5.2.08",
+      "aciklama": "Mahalli İdarelere Ait Paylar"
+    },
+    {
+      "id": 1072,
+      "parent_id": 1063,
+      "kodu": "09.5.2.09",
+      "aciklama": "Diğer Paylar"
+    },
+    {
+      "id": 1073,
+      "parent_id": 1052,
+      "kodu": "09.5.3",
+      "aciklama": "Para Cezaları"
+    },
+    {
+      "id": 1074,
+      "parent_id": 1073,
+      "kodu": "09.5.3.01 ",
+      "aciklama": "Yargı Para Cezaları"
+    },
+    {
+      "id": 1075,
+      "parent_id": 1073,
+      "kodu": "09.5.3.02",
+      "aciklama": "İdari Para Cezaları"
+    },
+    {
+      "id": 1076,
+      "parent_id": 1073,
+      "kodu": "09.5.3.03",
+      "aciklama": "Pay Ayrılan İdari Para Cezaları"
+    },
+    {
+      "id": 1077,
+      "parent_id": 1073,
+      "kodu": "09.5.3.04",
+      "aciklama": "Vergi Cezaları"
+    },
+    {
+      "id": 1078,
+      "parent_id": 1073,
+      "kodu": "09.5.3.09",
+      "aciklama": "Diğer Para Cezaları"
+    },
+    {
+      "id": 1079,
+      "parent_id": 1052,
+      "kodu": "09.5.9",
+      "aciklama": "Diğer Çeşitli Gelirler"
+    },
+    {
+      "id": 1080,
+      "parent_id": 1079,
+      "kodu": "09.5.9.01",
+      "aciklama": "İrat Kaydedilecek Nakdi Teminatlar"
+    },
+    {
+      "id": 1081,
+      "parent_id": 1079,
+      "kodu": "09.5.9.02",
+      "aciklama": "İrat Kaydedilecek Hisse Senedi ve Tahviller"
+    },
+    {
+      "id": 1082,
+      "parent_id": 1079,
+      "kodu": "09.5.9.03",
+      "aciklama": "İrat Kaydedilecek Teminat Mektupları"
+    },
+    {
+      "id": 1083,
+      "parent_id": 1079,
+      "kodu": "09.5.9.04",
+      "aciklama": "Hazine Alacağına Dönüşen Tohumluk Kredi Gelirleri"
+    },
+    {
+      "id": 1084,
+      "parent_id": 1079,
+      "kodu": "09.5.9.05",
+      "aciklama": "Para Farkları"
+    },
+    {
+      "id": 1085,
+      "parent_id": 1079,
+      "kodu": "09.5.9.06",
+      "aciklama": "Kişilerden Alacaklar"
+    },
+    {
+      "id": 1086,
+      "parent_id": 1079,
+      "kodu": "09.5.9.07",
+      "aciklama": "Afetlerde Kullanılacak Gelirler"
+    },
+    {
+      "id": 1087,
+      "parent_id": 1079,
+      "kodu": "09.5.9.08",
+      "aciklama": "Orman Köylülerini Kalkındırma Gelirleri"
+    },
+    {
+      "id": 1088,
+      "parent_id": 1079,
+      "kodu": "09.5.9.09",
+      "aciklama": "Ağaçlandırma ve Erozyon Kontrol Gelirleri"
+    },
+    {
+      "id": 1089,
+      "parent_id": 1079,
+      "kodu": "09.5.9.10",
+      "aciklama": "Milli Parkları Koruma ve Geliştirme Gelirleri"
+    },
+    {
+      "id": 1090,
+      "parent_id": 1079,
+      "kodu": "09.5.9.11",
+      "aciklama": "Mera Gelirleri"
+    },
+    {
+      "id": 1091,
+      "parent_id": 1079,
+      "kodu": "09.5.9.99",
+      "aciklama": "Yukarıda Tanımlanmayan Diğer Çeşitli Gelirler"
+    },
+    {
+      "id": 1092,
+      "parent_id": 960,
+      "kodu": "09.6",
+      "aciklama": "Sermaye Gelirleri"
+    },
+    {
+      "id": 1093,
+      "parent_id": 1092,
+      "kodu": "09.6.1",
+      "aciklama": "Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 1094,
+      "parent_id": 1093,
+      "kodu": "09.6.1.01",
+      "aciklama": "Lojman Satış Gelirleri"
+    },
+    {
+      "id": 1095,
+      "parent_id": 1093,
+      "kodu": "09.6.1.02",
+      "aciklama": "Sosyal Tesis Satış Gelirleri"
+    },
+    {
+      "id": 1096,
+      "parent_id": 1093,
+      "kodu": "09.6.1.03",
+      "aciklama": "Diğer Bina Satış Gelirleri"
+    },
+    {
+      "id": 1097,
+      "parent_id": 1093,
+      "kodu": "09.6.1.04",
+      "aciklama": "Arazi Satışı"
+    },
+    {
+      "id": 1098,
+      "parent_id": 1093,
+      "kodu": "09.6.1.05",
+      "aciklama": "Arsa Şatışı"
+    },
+    {
+      "id": 1099,
+      "parent_id": 1093,
+      "kodu": "09.6.1.09",
+      "aciklama": "Diğer Taşınmaz Satış Gelirleri"
+    },
+    {
+      "id": 1100,
+      "parent_id": 1092,
+      "kodu": "09.6.2",
+      "aciklama": "Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 1101,
+      "parent_id": 1100,
+      "kodu": "09.6.2.01",
+      "aciklama": "Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 1102,
+      "parent_id": 1100,
+      "kodu": "09.6.2.02",
+      "aciklama": "Taşıt Satış Gelirleri"
+    },
+    {
+      "id": 1103,
+      "parent_id": 1100,
+      "kodu": "09.6.2.03",
+      "aciklama": "Stok Satış Gelirleri"
+    },
+    {
+      "id": 1104,
+      "parent_id": 1100,
+      "kodu": "09.6.2.09",
+      "aciklama": "Diğer Taşınır Satış Gelirleri"
+    },
+    {
+      "id": 1105,
+      "parent_id": 1092,
+      "kodu": "09.6.3",
+      "aciklama": "Menkul Kıymet ve Varlık Satış Gelirleri"
+    },
+    {
+      "id": 1106,
+      "parent_id": 1105,
+      "kodu": "09.6.3.01",
+      "aciklama": "Tahvil Senet ve Bonolar"
+    },
+    {
+      "id": 1107,
+      "parent_id": 1105,
+      "kodu": "09.6.3.02",
+      "aciklama": "Altın"
+    },
+    {
+      "id": 1108,
+      "parent_id": 1105,
+      "kodu": "09.6.3.03",
+      "aciklama": "Altın Dışındaki Kıymetli Madenler"
+    },
+    {
+      "id": 1109,
+      "parent_id": 1105,
+      "kodu": "09.6.3.04",
+      "aciklama": "Konvertibl Olmayan Yabancı Paralar"
+    },
+    {
+      "id": 1110,
+      "parent_id": 1105,
+      "kodu": "09.6.3.09",
+      "aciklama": "Diğer Çeşitli Menkul Varlıklar"
+    },
+    {
+      "id": 1111,
+      "parent_id": 1092,
+      "kodu": "09.6.9",
+      "aciklama": "Diğer Sermaye Satış Gelirleri"
+    },
+    {
+      "id": 1112,
+      "parent_id": 1111,
+      "kodu": "09.6.9.01",
+      "aciklama": "Enerji Dağıtım ve Santralları Devri Geliri"
+    },
+    {
+      "id": 1113,
+      "parent_id": 1111,
+      "kodu": "09.6.9.02",
+      "aciklama": "Telekom Hisse Satış Geliri"
+    },
+    {
+      "id": 1114,
+      "parent_id": 1111,
+      "kodu": "09.6.9.09",
+      "aciklama": "Diğer Sermaye Satış Gelirleri"
+    }
+  ]
+}

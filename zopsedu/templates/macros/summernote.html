@@ -1,0 +1,38 @@
+{% macro render_summernote(field, tabsize=2, height=200) %}
+    {% set id=uuid() %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                            <textarea class="summernote-code" id="{{ id }}" name="{{ field.name }}">
+                                  {{ field.data }}
+                            </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            SummerNoteInit.init("#{{ id }}", {
+                placeholder: "{{ field.placeholder }}",
+                height:{{ height }},
+                tabsize: {{ tabsize }},
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['fullscreen', ['fullscreen']],
+                ], popover: {
+                    air: [
+                        ['strikethrough', ['strikethrough']],
+                    ]
+                }
+            });
+        });
+    </script>
+
+{% endmacro %}

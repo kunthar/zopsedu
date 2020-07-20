@@ -1,0 +1,319 @@
+{
+  "app_action": [
+    {
+      "id": 1,
+      "action_code": "PA1",
+      "description": "Diğer işlem eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 2,
+      "action_code": "PA2",
+      "description": "Projeye özel not eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 3,
+      "action_code": "PA3",
+      "description": "Proje yürütücüsüne özel not eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 4,
+      "action_code": "PA4",
+      "description": "Hakem eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 5,
+      "action_code": "PA5",
+      "description": "Hakem silindi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 6,
+      "action_code": "PA6",
+      "description": "Seçili Hakem / Hakemlere proje değerlendirilmesi gönderildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 7,
+      "action_code": "PA7",
+      "description": "Seçili Hakem / Hakemlere ara/sonuç raporu gönderildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 8,
+      "action_code": "PA8",
+      "description": "Proje proje değerlendirilmesi ile ilgili hakem kararı teslim alındı",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 9,
+      "action_code": "PA9",
+      "description": "Proje ara/sonuç raporu ile ilgili hakem kararı teslim alındı",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 10,
+      "action_code": "PA10",
+      "description": "Hakem proje değerlendirimesi BAP Yetkilisi tarafından incelendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 11,
+      "action_code": "PA11",
+      "description": "Hakem ara / sonuç rapor değerlendirmesi BAP Yetkilisi tarafından incelendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 12,
+      "action_code": "PA12",
+      "description": "Yönetim kurulu kararı eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 13,
+      "action_code": "PA13",
+      "description": "Proje klasör sıra numarası eklendi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 14,
+      "action_code": "PA14",
+      "description": "Proje başlık / numarası değiştirildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 15,
+      "action_code": "PA15",
+      "description": "Proje yürütücüsü proje için ek talep oluşturdu",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 16,
+      "action_code": "PA16",
+      "description": "Proje başlangıç tarihi ve kabul süresi değiştirildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 17,
+      "action_code": "PA17",
+      "description": "Proje türü değiştirildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 18,
+      "action_code": "PA18",
+      "description": "Proje yürütücüsü değiştirildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 19,
+      "action_code": "PA19",
+      "description": "Gündem maddesi oluşturuldu",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 20,
+      "action_code": "STA1",
+      "description": "İlgili satınalmaya memur atandı",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 21,
+      "action_code": "STA2",
+      "description": "Talep edilen ürünlerin miktarlarını değiştir",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 22,
+      "action_code": "STA3",
+      "description": "Yürütücünün duyuru düzenlemesini iste",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 23,
+      "action_code": "STA4",
+      "description": "Gelen teklifler için teknik şartname değerlendirmesini düzenle",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 24,
+      "action_code": "STA5",
+      "description": "Gelen tekliflere göre sipariş ver",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 25,
+      "action_code": "STA6",
+      "description": "Seçili firmalardan tekrardan teklif iste",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 26,
+      "action_code": "STA7",
+      "description": "Siparişi teslim al",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 27,
+      "action_code": "STA8",
+      "description": "Muayeneye Gönderildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 29,
+      "action_code": "STA9",
+      "description": "Muayene ve Kabul tamamlandı",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 30,
+      "action_code": "STA10",
+      "description": "Muayene gönderildi ve kabul edilmedi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 31,
+      "action_code": "STA11",
+      "description": "Seçili firmaların faturasını teslim al",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 32,
+      "action_code": "STA12",
+      "description": "Kesin teminat ekle/düzenle",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 33,
+      "action_code": "STA13",
+      "description": "Siparişi iptal et",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 34,
+      "action_code": "STA14",
+      "description": "Satınalma Arşiv-Klasör numarası ekle",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 35,
+      "action_code": "STA15",
+      "description": "Yürütücüden teknik şartnameyi düzenlemesini iste",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "satinalma",
+      "sub_module_name": "bap_satinalma"
+    },
+    {
+      "id": 36,
+      "action_code": "PA20",
+      "description": "Proje kalemlerine kabul edilen miktar ve bütçe ekle",
+      "module_name": "bap",
+      "universite_id": 0,
+      "action_type": "proje",
+      "sub_module_name": "bap_proje"
+    }
+  ]
+}

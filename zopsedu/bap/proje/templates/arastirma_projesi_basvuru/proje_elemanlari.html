@@ -1,0 +1,1068 @@
+d{% from 'macros/form_helpers/text_fields.html' import render_text_field, render_text_field_with_tooltip %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox_with_tooltip %}
+{% from 'macros/form_helpers/select2_fields.html' import render_select2field_with_tooltip %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+{% macro render_arastirma_projesi_proje_elemanlari(form, proje_id, proje_calisanlari, yurutucu_calisan_id, uyari_mesajlari) %}
+    {% set arastirmacilar = [] %}
+    {% set bursiyerler = [] %}
+    {% set harici_arastirmacilar = [] %}
+    {% for calisan in proje_calisanlari %}
+        {% if calisan.personel_id and (not yurutucu_calisan_id or calisan.id != yurutucu_calisan_id) %}
+            {% do arastirmacilar.append(calisan) %}
+        {% elif calisan.ogrenci_id %}
+            {% do bursiyerler.append(calisan) %}
+        {% elif calisan.person_id %}
+            {% do harici_arastirmacilar.append(calisan) %}
+        {% endif %}
+    {% endfor %}
+
+    <section>
+        <div class="card">
+            <div class="content-header row">
+                <div class="content-header-left col-md-8 col-12 mb-2">
+                    <h5 class="content-header-title mb-0 d-inline-block">    {{ form.form_title }}
+                        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                           data-original-title="{{ _('Proje ekibi hakkında bilgileri giriniz.') }}"></i></h5>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_alert_list(form.form_description) }}
+                    <h6 class="form-section">{{ form.yurutucu.form_title }}</h6>
+                    <div class="row">
+                        {#                            {{ render_select2field_with_tooltip(form.yurutucu.yurutucu_id,#}
+                        {#                            title=_('Proje yürütücüsünü seçiniz.')) }}#}
+                        {#                        </div>#}
+                        <div class="col-md-6 m-t-10">
+                            {{ render_text_field_with_tooltip(form.yurutucu.projedeki_gorevi,
+                            title=_('Proje yürütücüsünün projedeki görevini belirtiniz.')) }}
+                        </div>
+                        <div class="col-md-6 m-t-10">
+                            {{ render_text_field_with_tooltip(form.yurutucu.projeye_bilimsel_katkisi,
+                            title=_('Proje yürütücüsünün projeye katkısını belirtiniz.')) }}
+                        </div>
+                        <div class="col-md-6 m-t-10">
+                            {{ render_text_field_with_tooltip(form.yurutucu.projeye_katkisi, type="number", min=0,
+                            title=_('Proje yürütücüsünün projeye katkı yüzdesini belirtiniz.')) }}
+                        </div>
+                        <div class="col-md-6 m-t-10">
+                            {{ render_text_field_with_tooltip(form.yurutucu.banka_bilgisi,
+                            title=_('Proje yürütücüsünün iban bilgisini belirtiniz.'),
+                                    class="form-control iban-mask") }}
+                        </div>
+                        {% if form.yurutucu.ozgecmis_file_id %}
+                            <div class="col-md-9 m-t-10">
+                                {{ form.yurutucu.ozgecmis_text.label }}
+                                {{ form.yurutucu.ozgecmis_text }}
+                            </div>
+                        {% else %}
+                            <div class="col-md-12 m-t-10">
+                                {{ form.yurutucu.ozgecmis_text.label }}
+                                {{ form.yurutucu.ozgecmis_text }}
+                            </div>
+                        {% endif %}
+                        {% if form.yurutucu.ozgecmis_file_id %}
+                            <div class="col-md-3 m-t-10 text-center">
+                                {{ form.yurutucu.ozgecmis_file_id.label }}
+                                {{ form.yurutucu.ozgecmis_file_id }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if form.arastirmaci %}
+                        <h6 class="form-section">{{ form.arastirmaci.form_title }}</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped m-b-0" id="arastirmacilar-tablo">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ _("Adı Soyadı") }}</th>
+                                        <th>{{ _("Görevi") }}</th>
+                                        <th class="all">{{ _("İşlemler") }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for arastirmaci in arastirmacilar %}
+                                        <tr id="arastirmaci_{{ arastirmaci.id }}">
+                                            <td>{{ arastirmaci.personel.person.ad }} {{ arastirmaci.personel.person.soyad }}</td>
+                                            <td>{{ arastirmaci.projedeki_gorevi }}</td>
+                                            <td class="calisan-islemler">
+                                                <a class="btn btn-sm btn-icon btn-info arastirmaci-duzenle">
+                                                    <i class="fa fa-edit fa-sm"></i></a>
+                                                <a class="btn btn-sm btn-icon btn-danger calisan-sil"><i
+                                                        class="fa fa-trash fa-sm"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr id="empty-row">
+                                            <td colspan="3">{{ _("Proje Çalışanı Bulunmamaktadır") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="text-center">
+                                    <a href="#arastirmaci-kaydet-modal"
+                                       data-toggle="modal">
+                                        <button class="btn btn-info">{{ _("Araştırmacı Kaydet") }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="arastirmaci-kaydet-modal">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">{{ _("Araştırmacı Kaydet") }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                ×
+                                            </button>
+                                        </div>
+                                        <div class="modal-body row">
+                                            <div class="col-md-12">
+                                                {{ render_select2field_with_tooltip(form.arastirmaci.personel_id,
+                               title=_('Araştırmacı seçiniz.')) }}
+                                            </div>
+                                            <div class="col-md-6 m-t-10">
+                                                {{ render_text_field_with_tooltip(form.arastirmaci.projedeki_gorevi,
+                               title=_('Araştırmacının projedeki görevini belirtiniz.')) }}
+                                            </div>
+                                            <div class="col-md-6 m-t-10">
+                                                {{ render_text_field_with_tooltip(form.arastirmaci.projeye_bilimsel_katkisi,
+                                title=_('Araştırmacının projeye katkısını belirtiniz.')) }}
+                                            </div>
+                                            <div class="col-md-6 m-t-10">
+                                                {{ render_text_field_with_tooltip(form.arastirmaci.projeye_katkisi, type="number", min=0,
+                                 title=_('Araştırmacının projeye katkısını yüzde ile belirtiniz.')) }}
+                                            </div>
+                                            <div class="col-md-6 m-t-10">
+                                                {{ render_text_field_with_tooltip(form.arastirmaci.banka_bilgisi,
+                                title=_('Araştırmacının banka bilgilerini belirtiniz.')) }}
+                                            </div>
+
+                                            {% if form.arastirmaci.ozgecmis_file_id %}
+                                                <div class="col-md-9 m-t-10">
+                                                    {{ form.arastirmaci.ozgecmis_text.label }}
+                                                    {{ form.arastirmaci.ozgecmis_text }}
+                                                </div>
+                                            {% else %}
+                                                <div class="col-md-12 m-t-10">
+                                                    {{ form.arastirmaci.ozgecmis_text.label }}
+                                                    {{ form.arastirmaci.ozgecmis_text }}
+                                                </div>
+                                            {% endif %}
+                                            {% if form.arastirmaci.ozgecmis_file_id %}
+                                                <div class="col-md-3 m-t-10">
+                                                    {{ form.arastirmaci.ozgecmis_file_id.label }}
+                                                    {{ form.arastirmaci.ozgecmis_file_id }}
+                                                </div>
+                                            {% endif %}
+                                            <div class="col-md-12 m-t-10">
+                                                {{ render_checkbox_with_tooltip(form.arastirmaci.yonetici_yetkisi_var_mi,
+                                     title="_('Onayladğınızda araştırmacı proje ve raporlar hakkında değişiklik yapma yetkisine sahip olacak')") }}
+                                            </div>
+                                            <input type="hidden" id="arastirmaci-id">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn grey btn-outline-warning"
+                                                    data-dismiss="modal">{{ _("Kapat") }}
+                                            </button>
+                                            <button id="arastirmaci-kaydet" type="button"
+                                                    class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+
+                                arastirmaciSelector = {
+                                    "personelSelector": $('[name={{ form.arastirmaci.personel_id.name }}]'),
+                                    "goreviSelector": $('#{{ form.arastirmaci.projedeki_gorevi.name }}'),
+                                    "bilimselKatkiSelector": $('#{{ form.arastirmaci.projeye_bilimsel_katkisi.name }}'),
+                                    "katkiSelector": $('#{{ form.arastirmaci.projeye_katkisi.name }}'),
+                                    "bankaBilgisiSelector": $('#{{ form.arastirmaci.banka_bilgisi.name }}'),
+                                    "ozgecmisTextSelector": $('[name={{ form.arastirmaci.ozgecmis_text.name }}]'),
+                                    "ozgecmisFileIdSelector": $('#proje_personeli-arastirmaci-ozgecmis_file_id'),
+                                    "yoneticiYetkisiSelector": $('#{{ form.arastirmaci.yonetici_yetkisi_var_mi.name }}'),
+                                    "arastirmaciId": $('#arastirmaci-id'),
+                                    "modalSelector": $('#arastirmaci-kaydet-modal')
+                                };
+
+                                function reset_arastirmaci_modal() {
+                                    arastirmaciSelector.personelSelector.empty();
+                                    arastirmaciSelector.goreviSelector.val("");
+                                    arastirmaciSelector.bilimselKatkiSelector.val("");
+                                    arastirmaciSelector.katkiSelector.val("0");
+                                    arastirmaciSelector.bankaBilgisiSelector.val("");
+                                    arastirmaciSelector.ozgecmisTextSelector.summernote("code", "");
+                                    arastirmaciSelector.ozgecmisFileIdSelector.val("");
+                                    arastirmaciSelector.yoneticiYetkisiSelector.val("");
+                                    arastirmaciSelector.arastirmaciId.val("");
+                                }
+
+                                function getArastirmaciData() {
+                                    return {
+                                        "personel_id": arastirmaciSelector.personelSelector.val(),
+                                        "projedeki_gorevi": arastirmaciSelector.goreviSelector.val(),
+                                        "projeye_bilimsel_katkisi": arastirmaciSelector.bilimselKatkiSelector.val(),
+                                        "projeye_katkisi": parseInt(arastirmaciSelector.katkiSelector.val()),
+                                        "banka_bilgisi": arastirmaciSelector.bankaBilgisiSelector.val(),
+                                        "ozgecmis_text": arastirmaciSelector.ozgecmisTextSelector.val(),
+                                        "ozgecmis_file_id": arastirmaciSelector.ozgecmisFileIdSelector.val(),
+                                        "yonetici_yetkisi_varmi": arastirmaciSelector.yoneticiYetkisiSelector.is(":checked")
+                                    }
+                                }
+
+
+                                $(document).on("click", '.arastirmaci-duzenle', function () {
+                                    let tr, trId, calisan, calisanId, url, calisanData, calisanAd,
+                                        personelOption;
+                                    reset_arastirmaci_modal();
+                                    tr = this.parentElement.parentElement;
+                                    trId = tr.id;
+                                    calisan = trId.split("_");
+                                    calisanId = calisan[calisan.length - 1];
+                                    url = "{{ url_for('.BasvuruPersonelView:get_proje_calisani', proje_id=proje_id, calisan_id=-1) }}";
+                                    url = url.replace("-1", calisanId);
+                                    $.ajax({
+                                        url: url,
+                                        type: 'GET',
+                                        success: function (result) {
+
+                                            calisanData = result.calisan;
+                                            calisanAd = tr.firstChild.textContent;
+                                            personelOption = new Option(calisanAd, calisanData.personel_id, false, false);
+                                            arastirmaciSelector.personelSelector.append(personelOption).trigger('change');
+                                            arastirmaciSelector.goreviSelector.val(calisanData.projedeki_gorevi);
+                                            arastirmaciSelector.bilimselKatkiSelector.val(calisanData.projeye_bilimsel_katkisi);
+                                            arastirmaciSelector.katkiSelector.val(calisanData.projeye_katkisi);
+                                            arastirmaciSelector.bankaBilgisiSelector.val(calisanData.banka_bilgisi);
+                                            arastirmaciSelector.ozgecmisTextSelector.summernote("code", calisanData.ozgecmis_text);
+                                            arastirmaciSelector.ozgecmisFileIdSelector.val(calisanData.ozgecmis_file_id);
+                                            arastirmaciSelector.yoneticiYetkisiSelector.val(calisanData.yonetici_yetkisi_varmi);
+                                            arastirmaciSelector.arastirmaciId.val(calisanData.id);
+                                            arastirmaciSelector.modalSelector.modal("show");
+                                        },
+                                        error: function () {
+                                            swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                                                icon: "error",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                        }
+                                    });
+                                });
+
+                                $('#arastirmaci-kaydet').click(function () {
+                                    let personel_id, arastirmaciId, kaydetUrl, guncelleUrl, url,
+                                        arastirmaciData;
+
+                                    kaydetUrl = "{{ url_for('.BasvuruPersonelView:arastirmaci_kaydet', proje_id=proje_id) }}";
+                                    personel_id = arastirmaciSelector.personelSelector.val();
+                                    arastirmaciId = arastirmaciSelector.arastirmaciId.val();
+
+                                    if (typeof personel_id === 'undefined' || personel_id === null || personel_id === "") {
+                                        swal("{{ _("Araştırmacı Kaydedebilmeniz için personel seçmelisiniz!") }}", {
+                                            icon: "warning",
+                                            timer: 4000,
+                                            buttons: false
+                                        });
+                                    } else {
+                                        arastirmaciData = getArastirmaciData();
+                                        if (arastirmaciId !== "") {
+                                            guncelleUrl = "{{ url_for('.BasvuruPersonelView:calisan_guncelle', proje_id=proje_id, calisan_id=-1) }}";
+                                            guncelleUrl = guncelleUrl.replace("-1", arastirmaciId);
+                                            url = guncelleUrl;
+
+                                        } else {
+                                            url = kaydetUrl;
+                                        }
+                                        $.ajax({
+                                            url: url,
+                                            type: 'POST',
+                                            data: JSON.stringify(arastirmaciData),
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: 'json',
+                                            success: function (result) {
+                                                let arastirmaci, guncellenecekArastirmaci, successMessage, row,
+                                                    emptyRowSelector;
+                                                emptyRowSelector = $('#arastirmacilar-tablo tbody #empty-row');
+                                                if (emptyRowSelector) {
+                                                    emptyRowSelector.remove();
+                                                }
+                                                arastirmaci = result.calisan;
+                                                guncellenecekArastirmaci = $('#arastirmaci_' + arastirmaci.id);
+                                                if (guncellenecekArastirmaci.length) {
+                                                    guncellenecekArastirmaci.children("td").eq(0).text(arastirmaci.ad + " " + arastirmaci.soyad);
+                                                    guncellenecekArastirmaci.children("td").eq(1).text(arastirmaci.gorevi);
+                                                    successMessage = "{{ _("Seçilen araştırmacı başarıyla güncellendi.") }}";
+                                                } else {
+                                                    row = appendCalisanRow("arastirmaci", arastirmaci.id, arastirmaci.ad, arastirmaci.soyad, arastirmaci.gorevi);
+                                                    successMessage = "{{ _("Seçilen araştırmacı başarıyla projenin çalışanlarına eklendi..") }}";
+                                                    $('#arastirmacilar-tablo tbody').append(row);
+                                                }
+
+
+                                                swal(successMessage, {
+                                                    icon: "success",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            },
+                                            error: function (result) {
+                                                let errorMessage;
+                                                errorMessage = result.responseJSON.error_message;
+                                                swal({
+                                                    title: "{{ _("Seçilen personel proje çalışanlarına eklenemedi!") }}",
+                                                    text: errorMessage || "{{ _("Proje çalışanı eklenmeye çalışırken bir hata oluştu daha sonra tekrar deneyiniz.") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            }
+                                        });
+                                        reset_arastirmaci_modal();
+                                        arastirmaciSelector.modalSelector.modal("hide")
+                                    }
+                                });
+                            </script>
+                        </div>
+                    {% endif %}
+                    {% if form.harici_arastirmaci %}
+                        <h6 class="form-section">{{ form.harici_arastirmaci.form_title }}</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped m-b-0"
+                                       id="harici-arastirmacilar-tablo" style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ _("Adı Soyadı") }}</th>
+                                        <th>{{ _("Görevi") }}</th>
+                                        <th class="all">{{ _("İşlemler") }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for harici_arastirmaci in harici_arastirmacilar %}
+                                        <tr id="harici_arastirmaci_{{ harici_arastirmaci.id }}">
+                                            <td>{{ harici_arastirmaci.person.ad }} {{ harici_arastirmaci.person.soyad }}</td>
+                                            <td>{{ harici_arastirmaci.projedeki_gorevi }}</td>
+                                            <td class="calisan-islemler">
+                                                <a class="btn btn-sm btn-icon btn-info harici_arastirmaci-duzenle">
+                                                    <i class="fa fa-edit fa-sm"></i></a>
+                                                <a class="btn btn-sm btn-icon btn-danger calisan-sil"><i
+                                                        class="fa fa-trash fa-sm"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr id="empty-row">
+                                            <td colspan="3">{{ _("Proje Çalışanı Bulunmamaktadır.") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <div class="text-center">
+                                    <a href="#harici-arastirmaci-kaydet-modal"
+                                       data-toggle="modal">
+                                        <button class="btn btn-info">{{ _("Harici Araştırmacı Kaydet") }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="harici-arastirmaci-kaydet-modal">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">{{ _("Harici Araştırmacı Kaydet") }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                ×
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-4 m-t-10">
+                                                    {{ render_select2field_with_tooltip(form.harici_arastirmaci.hitap_unvan_id,
+                                title=_('Projenizde çalışacak harici araştırmacının ünvanını seçiniz.')) }}
+                                                </div>
+                                                <div class="col-md-4 m-t-10">
+                                                    {{ render_select2field_with_tooltip(form.harici_arastirmaci.fakulte_id,
+                               title=_('Projenizde çalışacak harici araştırmacının fakültesini seçiniz.')) }}
+                                                </div>
+                                                <div class="col-md-4 m-t-10">
+                                                    {{ render_select2field_with_tooltip(form.harici_arastirmaci.bolum_id,
+                               title=_('Projenizde çalışacak harici araştırmacının bölümünü seçiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.ad,
+                               title=_('Projenizde çalışacak harici araştırmacının adını belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.soyad,
+                               title=_('Projenizde çalışacak harici araştırmacının soyadını belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.eposta,
+                               title=_('Projenizde çalışacak harici araştırmacının epostasını belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.is_telefonu,
+                               title=_('Projenizde çalışacak harici araştırmacının iş telefonunu belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.projedeki_gorevi,
+                                title=_('Projenizde çalışacak harici araştırmacının projedeki görevini belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.projeye_bilimsel_katkisi,
+                                title=_('Projenizde çalışacak harici araştırmacının bilimsel katkısını belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.banka_bilgisi,
+                                title=_('Projenizde çalışacak harici araştırmacının iban bilgisini belirtiniz.'),
+                                 class="form-control iban-mask") }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.harici_arastirmaci.projeye_katkisi, type="number", min=0,
+                                title=_('Projenizde çalışacak harici araştırmacının katkısını yüzde ile belirtiniz.')) }}
+                                                </div>
+                                                {% if form.harici_arastirmaci.ozgecmis_file_id %}
+                                                    <div class="col-md-9 m-t-10">
+                                                        {{ form.harici_arastirmaci.ozgecmis_text.label }}
+                                                        {{ form.harici_arastirmaci.ozgecmis_text }}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="col-md-12 m-t-10">
+                                                        {{ form.harici_arastirmaci.ozgecmis_text.label }}
+                                                        {{ form.harici_arastirmaci.ozgecmis_text }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if form.harici_arastirmaci.ozgecmis_file_id %}
+                                                    <div class="col-md-3 m-t-10">
+                                                        {{ form.harici_arastirmaci.ozgecmis_file_id.label }}
+                                                        {{ form.harici_arastirmaci.ozgecmis_file_id }}
+                                                    </div>
+                                                {% endif %}
+                                                <div class="col-md-9 m-t-10">
+                                                    {{ render_checkbox_with_tooltip(form.harici_arastirmaci.yonetici_yetkisi_var_mi,
+                                         title="_('Onayladğınızda harici araştırmacı proje ve raporlar hakkında değişiklik yapma yetkisine sahip olacak')") }}
+                                                </div>
+                                                <input type="hidden" id="harici-arastirmaci-id">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn grey btn-outline-warning"
+                                                    data-dismiss="modal">{{ _("Kapat") }}
+                                            </button>
+                                            <button id="harici-arastirmaci-kaydet" type="button"
+                                                    class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                hariciArastirmaciSelector = {
+                                    "url": "{{ url_for('.BasvuruPersonelView:harici_arastirmaci_kaydet', proje_id=proje_id) }}",
+                                    "hitapUnvanSelector": $('[name=proje_personeli-harici_arastirmaci-hitap_unvan_id]'),
+                                    "fakulteSelector": $('[name=proje_personeli-harici_arastirmaci-fakulte_id]'),
+                                    "bolumSelector": $('[name=proje_personeli-harici_arastirmaci-bolum_id]'),
+                                    "adSelector": $('#proje_personeli-harici_arastirmaci-ad'),
+                                    "soyadSelector": $('#proje_personeli-harici_arastirmaci-soyad'),
+                                    "emailSelector": $('#proje_personeli-harici_arastirmaci-eposta'),
+                                    "isTelefonuSelector": $('#proje_personeli-harici_arastirmaci-is_telefonu'),
+                                    "goreviSelector": $('#proje_personeli-harici_arastirmaci-projedeki_gorevi'),
+                                    "bilimselKatkiSelector": $('#proje_personeli-harici_arastirmaci-projeye_bilimsel_katkisi'),
+                                    "katkiSelector": $('#proje_personeli-harici_arastirmaci-projeye_katkisi'),
+                                    "bankaBilgisiSelector": $('#proje_personeli-harici_arastirmaci-banka_bilgisi'),
+                                    "ozgecmisTextSelector": $('[name=proje_personeli-harici_arastirmaci-ozgecmis_text]'),
+                                    "ozgecmisFileIdSelector": $('#proje_personeli-harici_arastirmaci-ozgecmis_file_id'),
+                                    "yoneticiYetkisiSelector": $('#proje_personeli-harici_arastirmaci-yonetici_yetkisi_var_mi'),
+                                    "hariciArastirmaciId": $('#harici-arastirmaci-id'),
+                                    "modalSelector": $('#harici-arastirmaci-kaydet-modal')
+
+                                };
+
+                                function reset_harici_arastirmaci_modal() {
+                                    hariciArastirmaciSelector.hitapUnvanSelector.empty();
+                                    hariciArastirmaciSelector.fakulteSelector.empty();
+                                    hariciArastirmaciSelector.bolumSelector.empty();
+                                    hariciArastirmaciSelector.adSelector.val("");
+                                    hariciArastirmaciSelector.soyadSelector.val("");
+                                    hariciArastirmaciSelector.emailSelector.val("");
+                                    hariciArastirmaciSelector.isTelefonuSelector.val("");
+                                    hariciArastirmaciSelector.goreviSelector.val("");
+                                    hariciArastirmaciSelector.bilimselKatkiSelector.val("");
+                                    hariciArastirmaciSelector.katkiSelector.val("0");
+                                    hariciArastirmaciSelector.bankaBilgisiSelector.val("");
+                                    hariciArastirmaciSelector.ozgecmisTextSelector.summernote("code", "");
+                                    hariciArastirmaciSelector.ozgecmisFileIdSelector.val("");
+                                    hariciArastirmaciSelector.yoneticiYetkisiSelector.val("");
+                                    hariciArastirmaciSelector.hariciArastirmaciId.val("");
+                                }
+
+                                function getHariciArastirmaciData() {
+                                    return {
+                                        "hitap_unvan_id": hariciArastirmaciSelector.hitapUnvanSelector.val(),
+                                        "fakulte_id": hariciArastirmaciSelector.fakulteSelector.val(),
+                                        "bolum_id": hariciArastirmaciSelector.bolumSelector.val(),
+                                        "ad": hariciArastirmaciSelector.adSelector.val(),
+                                        "soyad": hariciArastirmaciSelector.soyadSelector.val(),
+                                        "email": hariciArastirmaciSelector.emailSelector.val(),
+                                        "is_telefonu": hariciArastirmaciSelector.isTelefonuSelector.val(),
+                                        "projedeki_gorevi": hariciArastirmaciSelector.goreviSelector.val(),
+                                        "projeye_bilimsel_katkisi": hariciArastirmaciSelector.bilimselKatkiSelector.val(),
+                                        "projeye_katkisi": parseInt(hariciArastirmaciSelector.katkiSelector.val()),
+                                        "banka_bilgisi": hariciArastirmaciSelector.bankaBilgisiSelector.val(),
+                                        "ozgecmis_text": hariciArastirmaciSelector.ozgecmisTextSelector.val(),
+                                        "ozgecmis_file_id": hariciArastirmaciSelector.ozgecmisFileIdSelector.val(),
+                                        "yonetici_yetkisi_varmi": hariciArastirmaciSelector.yoneticiYetkisiSelector.is(":checked")
+                                    }
+                                }
+
+                                $(document).on("click", '.harici_arastirmaci-duzenle', function () {
+                                    let tr, trId, calisan, calisanId, url, calisanData;
+                                    reset_harici_arastirmaci_modal();
+                                    tr = this.parentElement.parentElement;
+                                    trId = tr.id;
+                                    calisan = trId.split("_");
+                                    calisanId = calisan[calisan.length - 1];
+                                    url = "{{ url_for('.BasvuruPersonelView:get_proje_calisani', proje_id=proje_id, calisan_id=-1) }}";
+                                    url = url.replace("-1", calisanId);
+                                    $.ajax({
+                                        url: url,
+                                        type: 'GET',
+                                        success: function (result) {
+                                            let unvanOption, fakulteOption, bolumOption;
+                                            calisanData = result.calisan;
+
+                                            unvanOption = new Option(calisanData.hitap_unvan_ad, calisanData.hitap_unvan_id, false, false);
+                                            bolumOption = new Option(calisanData.bolum_ad, calisanData.bolum_id, false, false);
+                                            fakulteOption = new Option(calisanData.fakulte_ad, calisanData.fakulte_id, false, false);
+
+                                            hariciArastirmaciSelector.adSelector.val(calisanData.ad);
+                                            hariciArastirmaciSelector.soyadSelector.val(calisanData.soyad);
+                                            hariciArastirmaciSelector.emailSelector.val(calisanData.email);
+                                            hariciArastirmaciSelector.isTelefonuSelector.val(calisanData.is_telefonu);
+                                            hariciArastirmaciSelector.hitapUnvanSelector.append(unvanOption).trigger('change');
+                                            hariciArastirmaciSelector.bolumSelector.append(bolumOption).trigger('change');
+                                            hariciArastirmaciSelector.fakulteSelector.append(fakulteOption).trigger('change');
+                                            hariciArastirmaciSelector.goreviSelector.val(calisanData.projedeki_gorevi);
+                                            hariciArastirmaciSelector.bilimselKatkiSelector.val(calisanData.projeye_bilimsel_katkisi);
+                                            hariciArastirmaciSelector.katkiSelector.val(calisanData.projeye_katkisi);
+                                            hariciArastirmaciSelector.bankaBilgisiSelector.val(calisanData.banka_bilgisi);
+                                            hariciArastirmaciSelector.ozgecmisTextSelector.summernote("code", calisanData.ozgecmis_text);
+                                            hariciArastirmaciSelector.ozgecmisFileIdSelector.val(calisanData.ozgecmis_file_id);
+                                            hariciArastirmaciSelector.yoneticiYetkisiSelector.val(calisanData.yonetici_yetkisi_varmi);
+                                            hariciArastirmaciSelector.hariciArastirmaciId.val(calisanData.id);
+                                            hariciArastirmaciSelector.modalSelector.modal("show");
+                                        },
+                                        error: function () {
+                                            swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                                                icon: "error",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                        }
+                                    });
+                                });
+
+                                $('#harici-arastirmaci-kaydet').click(function () {
+                                    let ad, soyad, hariciArastirmaciData, hariciArastirmaciId, kaydetUrl,
+                                        guncelleUrl, url, hitapUnvan, bolum, fakulte;
+
+                                    ad = hariciArastirmaciSelector.adSelector.val();
+                                    soyad = hariciArastirmaciSelector.soyadSelector.val();
+                                    hariciArastirmaciId = hariciArastirmaciSelector.hariciArastirmaciId.val();
+                                    hitapUnvan = hariciArastirmaciSelector.hitapUnvanSelector.val();
+                                    bolum = hariciArastirmaciSelector.bolumSelector.val();
+                                    fakulte = hariciArastirmaciSelector.fakulteSelector.val();
+
+                                    kaydetUrl = "{{ url_for('.BasvuruPersonelView:harici_arastirmaci_kaydet', proje_id=proje_id) }}";
+
+                                    if (typeof ad === 'undefined' || ad === null || ad === "" || typeof soyad === 'undefined' || soyad === null || soyad === "" ||
+                                        typeof hitapUnvan === 'undefined' || hitapUnvan === null || hitapUnvan === "" || typeof bolum === 'undefined' || bolum === null || bolum === "" ||
+                                        typeof fakulte === 'undefined' || fakulte === null || fakulte === ""
+                                    ) {
+                                        swal("{{ _("Harici Araştırmacı Kaydedebilmeniz için ad, soyad, ünvan, fakulte, bolum belirtmelisiniz!") }}", {
+                                            icon: "warning",
+                                            timer: 4000,
+                                            buttons: false
+                                        });
+                                    } else {
+                                        hariciArastirmaciData = getHariciArastirmaciData();
+                                        if (hariciArastirmaciId !== "") {
+                                            guncelleUrl = "{{ url_for('.BasvuruPersonelView:calisan_guncelle', proje_id=proje_id, calisan_id=-1) }}";
+                                            guncelleUrl = guncelleUrl.replace("-1", hariciArastirmaciId);
+                                            url = guncelleUrl;
+
+                                        } else {
+                                            url = kaydetUrl;
+                                        }
+                                        $.ajax({
+                                            url: url,
+                                            type: 'POST',
+                                            data: JSON.stringify(hariciArastirmaciData),
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: 'json',
+                                            success: function (result) {
+                                                let hariciArastirmaci, row, emptyRowSelector,
+                                                    guncellenecekHariciArastirmaci, successMessage;
+                                                emptyRowSelector = $('#harici-arastirmacilar-tablo tbody #empty-row');
+                                                if (emptyRowSelector.length) {
+                                                    emptyRowSelector.remove();
+                                                }
+                                                hariciArastirmaci = result.calisan;
+                                                guncellenecekHariciArastirmaci = $('#harici_arastirmaci_' + hariciArastirmaci.id);
+                                                if (guncellenecekHariciArastirmaci.length) {
+                                                    guncellenecekHariciArastirmaci.children("td").eq(0).text(hariciArastirmaci.ad + " " + hariciArastirmaci.soyad);
+                                                    guncellenecekHariciArastirmaci.children("td").eq(1).text(hariciArastirmaci.gorevi);
+                                                    successMessage = "{{ _("Seçilen araştırmacı başarıyla güncellendi.") }}";
+                                                } else {
+                                                    row = appendCalisanRow("harici_arastirmaci", hariciArastirmaci.id, hariciArastirmaci.ad, hariciArastirmaci.soyad, hariciArastirmaci.gorevi);
+                                                    successMessage = "{{ _("Seçilen araştırmacı başarıyla projenin çalışanlarına eklendi..") }}";
+                                                    $('#harici-arastirmacilar-tablo tbody').append(row);
+                                                }
+
+
+                                                swal(successMessage, {
+                                                    icon: "success",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            },
+                                            error: function () {
+                                                swal({
+                                                    title: "{{ _("Seçilen harici araştırmacı proje çalışanlarına eklenemedi!") }}",
+                                                    text: "{{ _("Harici araştırmaci proje çalışanlarına eklemeye çalışılırken bir hata oluştur. Lütfen daha sonra tekrar deneyiniz") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            }
+                                        });
+                                        reset_harici_arastirmaci_modal();
+                                        hariciArastirmaciSelector.modalSelector.modal("hide")
+                                    }
+                                });
+                            </script>
+                        </div>
+                    {% endif %}
+                    {% if form.bursiyer %}
+                        <h6 class="form-section">{{ form.bursiyer.form_title }}</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-striped m-b-0" id="bursiyerler-tablo"
+                                       style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <th>{{ _("Adı Soyadı") }}</th>
+                                        <th>{{ _("Görevi") }}</th>
+                                        <th class="all">{{ _("İşlemler") }}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for bursiyer in bursiyerler %}
+                                        <tr id="bursiyer_{{ bursiyer.id }}">
+                                            <td>{{ bursiyer.ogrenci.person.ad }} {{ bursiyer.ogrenci.person.soyad }}</td>
+                                            <td>{{ bursiyer.projedeki_gorevi }}</td>
+                                            <td class="calisan-islemler">
+                                                <a class="btn btn-sm btn-icon btn-info bursiyer-duzenle">
+                                                    <i class="fa fa-edit fa-sm"></i></a>
+                                                <a class="btn btn-sm btn-icon btn-danger calisan-sil"><i
+                                                        class="fa fa-trash fa-sm"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr id="empty-row">
+                                            <td colspan="3">{{ _("Proje Çalışanı Bulunmamaktadır.") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                                <div class="text-center">
+                                    <a href="#bursiyer-kaydet-modal"
+                                       data-toggle="modal">
+                                        <button class="btn btn-info">{{ _("Bursiyer Kaydet") }}</button>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="modal fade" id="bursiyer-kaydet-modal">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">{{ _("Bursiyer Kaydet") }}</h4>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">
+                                                ×
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    {{ render_select2field_with_tooltip(form.bursiyer.ogrenci_id,
+                                title=_('Projenizde çalışacak bursiyeri seçiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.bursiyer.projedeki_gorevi,
+                                 title=_('Projenizde çalışacak bursiyerin görevini belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.bursiyer.projeye_bilimsel_katkisi,
+                                title=_('Projenizde çalışacak bursiyerin katkısını belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.bursiyer.projeye_katkisi, type="number", min=0,
+                                title=_('Projenizde çalışacak bursiyerin katkısını yüzde ile belirtiniz.')) }}
+                                                </div>
+                                                <div class="col-md-6 m-t-10">
+                                                    {{ render_text_field_with_tooltip(form.bursiyer.banka_bilgisi,
+                                 title=_('Projenizde çalışacak bursiyerin iban bilgisini giriniz.'),
+                                 class="form-control iban-mask") }}
+                                                </div>
+                                                {% if form.bursiyer.ozgecmis_file_id %}
+                                                    <div class="col-md-9 m-t-10">
+                                                        {{ form.bursiyer.ozgecmis_text.label }}
+                                                        {{ form.bursiyer.ozgecmis_text }}
+                                                    </div>
+                                                {% else %}
+                                                    <div class="col-md-12 m-t-10">
+                                                        {{ form.bursiyer.ozgecmis_text.label }}
+                                                        {{ form.bursiyer.ozgecmis_text }}
+                                                    </div>
+                                                {% endif %}
+                                                {% if form.bursiyer.ozgecmis_file_id %}
+                                                    <div class="col-md-3 m-t-10">
+                                                        {{ form.bursiyer.ozgecmis_file_id.label }}
+                                                        {{ form.bursiyer.ozgecmis_file_id }}
+                                                    </div>
+                                                {% endif %}
+                                                <div class="col-md-12 m-t-10">
+                                                    {{ render_checkbox_with_tooltip(form.bursiyer.yonetici_yetkisi_var_mi,
+                                        title=_('Onayladğınızda bursiyer proje ve raporlar hakkında değişiklik yapma yetkisine sahip olacak')) }}
+                                                </div>
+                                                <input type="hidden" id="bursiyer-id">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn grey btn-outline-warning"
+                                                    data-dismiss="modal">{{ _("Kapat") }}
+                                            </button>
+                                            <button id="bursiyer-kaydet" type="button"
+                                                    class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                bursiyerSelector = {
+                                    "ogrenciSelector": $('[name={{ form.bursiyer.ogrenci_id.name }}]'),
+                                    "goreviSelector": $('#{{ form.bursiyer.projedeki_gorevi.name }}'),
+                                    "bilimselKatkiSelector": $('#{{ form.bursiyer.projeye_bilimsel_katkisi.name }}'),
+                                    "katkiSelector": $('#{{ form.bursiyer.projeye_katkisi.name }}'),
+                                    "bankaBilgisiSelector": $('#{{ form.bursiyer.banka_bilgisi.name }}'),
+                                    "ozgecmisTextSelector": $('[name={{ form.bursiyer.ozgecmis_text.name }}]'),
+                                    "ozgecmisFileIdSelector": $('#proje_personeli-bursiyer-ozgecmis_file_id'),
+                                    "yoneticiYetkisiSelector": $('#{{ form.bursiyer.yonetici_yetkisi_var_mi.name }}'),
+                                    "bursiyerId": $('#bursiyer-id'),
+                                    "modalSelector": $('#bursiyer-kaydet-modal')
+                                };
+
+                                function reset_bursiyer_modal() {
+                                    bursiyerSelector.ogrenciSelector.empty();
+                                    bursiyerSelector.goreviSelector.val("");
+                                    bursiyerSelector.bilimselKatkiSelector.val("");
+                                    bursiyerSelector.katkiSelector.val("0");
+                                    bursiyerSelector.bankaBilgisiSelector.val("");
+                                    bursiyerSelector.ozgecmisTextSelector.summernote("code", "");
+                                    bursiyerSelector.ozgecmisFileIdSelector.val("");
+                                    bursiyerSelector.yoneticiYetkisiSelector.val("");
+                                    bursiyerSelector.bursiyerId.val("");
+                                }
+
+                                function getBursiyerData() {
+                                    return {
+                                        "ogrenci_id": bursiyerSelector.ogrenciSelector.val(),
+                                        "projedeki_gorevi": bursiyerSelector.goreviSelector.val(),
+                                        "projeye_bilimsel_katkisi": bursiyerSelector.bilimselKatkiSelector.val(),
+                                        "projeye_katkisi": parseInt(bursiyerSelector.katkiSelector.val()),
+                                        "banka_bilgisi": bursiyerSelector.bankaBilgisiSelector.val(),
+                                        "ozgecmis_text": bursiyerSelector.ozgecmisTextSelector.val(),
+                                        "ozgecmis_file_id": bursiyerSelector.ozgecmisFileIdSelector.val(),
+                                        "yonetici_yetkisi_varmi": bursiyerSelector.yoneticiYetkisiSelector.is(":checked")
+                                    }
+                                }
+
+                                bursiyerSelector.modalSelector.on("hidden.bs.modal", function () {
+                                    reset_bursiyer_modal()
+                                });
+
+                                $(document).on("click", '.bursiyer-duzenle', function () {
+                                    let tr, trId, calisan, calisanId, url, calisanData, calisanAd,
+                                        ogrenciOption;
+                                    reset_bursiyer_modal();
+                                    tr = this.parentElement.parentElement;
+                                    trId = tr.id;
+                                    calisan = trId.split("_");
+                                    calisanId = calisan[calisan.length - 1];
+                                    url = "{{ url_for('.BasvuruPersonelView:get_proje_calisani', proje_id=proje_id, calisan_id=-1) }}";
+                                    url = url.replace("-1", calisanId);
+                                    $.ajax({
+                                        url: url,
+                                        type: 'GET',
+                                        success: function (result) {
+
+                                            calisanData = result.calisan;
+                                            calisanAd = tr.firstChild.textContent;
+                                            ogrenciOption = new Option(calisanAd, calisanData.ogrenci_id, false, false);
+                                            bursiyerSelector.ogrenciSelector.append(ogrenciOption).trigger('change');
+                                            bursiyerSelector.goreviSelector.val(calisanData.projedeki_gorevi);
+                                            bursiyerSelector.bilimselKatkiSelector.val(calisanData.projeye_bilimsel_katkisi);
+                                            bursiyerSelector.katkiSelector.val(calisanData.projeye_katkisi);
+                                            bursiyerSelector.bankaBilgisiSelector.val(calisanData.banka_bilgisi);
+                                            bursiyerSelector.ozgecmisTextSelector.summernote("code", calisanData.ozgecmis_text);
+                                            bursiyerSelector.ozgecmisFileIdSelector.val(calisanData.ozgecmis_file_id);
+                                            bursiyerSelector.yoneticiYetkisiSelector.val(calisanData.yonetici_yetkisi_varmi);
+                                            bursiyerSelector.bursiyerId.val(calisanData.id);
+                                            bursiyerSelector.modalSelector.modal("show");
+                                        },
+                                        error: function () {
+                                            swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                                                icon: "error",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                        }
+                                    });
+                                });
+
+                                $('#bursiyer-kaydet').click(function () {
+                                    let ogrenci, bursiyerId, kaydetUrl, guncelleUrl, url, bursiyerData;
+
+                                    kaydetUrl = "{{ url_for('.BasvuruPersonelView:bursiyer_kaydet', proje_id=proje_id) }}";
+                                    ogrenci = bursiyerSelector.ogrenciSelector.val();
+                                    bursiyerId = bursiyerSelector.bursiyerId.val();
+
+                                    if (typeof ogrenci === 'undefined' || ogrenci === null || ogrenci === "") {
+                                        swal("{{ _("Bursiyer Kaydedebilmeniz için öğrenci seçmelisiniz!") }}", {
+                                            icon: "warning",
+                                            timer: 4000,
+                                            buttons: false
+                                        });
+                                    } else {
+                                        if (bursiyerId !== "") {
+                                            guncelleUrl = "{{ url_for('.BasvuruPersonelView:calisan_guncelle', proje_id=proje_id, calisan_id=-1) }}";
+                                            guncelleUrl = guncelleUrl.replace("-1", bursiyerId);
+                                            url = guncelleUrl;
+
+                                        } else {
+                                            url = kaydetUrl;
+                                        }
+                                        bursiyerData = getBursiyerData();
+                                        $.ajax({
+                                            url: url,
+                                            type: 'POST',
+                                            data: JSON.stringify(bursiyerData),
+                                            contentType: "application/json; charset=utf-8",
+                                            dataType: 'json',
+                                            success: function (result) {
+                                                let bursiyer, guncellenecekArastirmaci, successMessage, row,
+                                                    emptyRowSelector;
+                                                emptyRowSelector = $('#bursiyerler-tablo tbody #empty-row');
+                                                if (emptyRowSelector) {
+                                                    emptyRowSelector.remove();
+                                                }
+                                                bursiyer = result.calisan;
+
+                                                guncellenecekArastirmaci = $('#bursiyer_' + bursiyer.id);
+                                                if (guncellenecekArastirmaci.length) {
+                                                    guncellenecekArastirmaci.children("td").eq(0).text(arastirmaci.ad + " " + arastirmaci.soyad);
+                                                    guncellenecekArastirmaci.children("td").eq(1).text(arastirmaci.gorevi);
+                                                    successMessage = "{{ _("Seçilen bursiyer başarıyla güncellendi.") }}";
+                                                } else {
+                                                    row = appendCalisanRow("bursiyer", bursiyer.id, bursiyer.ad, bursiyer.soyad, bursiyer.gorevi);
+                                                    successMessage = "{{ _("Seçilen bursiyer başarıyla projenin çalışanlarına eklendi..") }}";
+                                                    $('#bursiyerler-tablo tbody').append(row);
+                                                }
+
+                                                swal(successMessage, {
+                                                    icon: "success",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            },
+                                            error: function () {
+                                                let errorMessage;
+                                                errorMessage = result.responseJSON.error_message;
+                                                swal({
+                                                    title: "{{ _("Seçilen öğrenci proje bursiyerlerine eklenemedi!") }}",
+                                                    text: errorMessage || "{{ _("Bursiyer eklemeye çalışırken bir hata oluştur. Lütfen daha sonra tekrar deneyiniz.") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            }
+                                        });
+                                        reset_bursiyer_modal();
+                                        bursiyerSelector.modalSelector.modal("hide")
+                                    }
+                                });
+                            </script>
+                        </div>
+                    {% endif %}
+                </div>
+                <script>
+                    function appendCalisanRow(type, rowId, ad, soyad, gorev) {
+                        let row, adElement, adText, gorevElement, gorevText, action, deleteButton,
+                            deleteButtonIcon;
+                        let editButton, editButtonIcon;
+                        row = document.createElement("tr");
+                        row.id = type + "_" + rowId;
+
+                        adElement = document.createElement("td");
+                        adText = document.createTextNode(ad + " " + soyad);
+                        adElement.appendChild(adText);
+                        row.appendChild(adElement);
+
+                        gorevElement = document.createElement("td");
+                        gorevText = document.createTextNode(gorev);
+                        gorevElement.appendChild(gorevText);
+                        row.appendChild(gorevElement);
+
+                        action = document.createElement("td");
+                        deleteButton = document.createElement("a");
+                        deleteButtonIcon = document.createElement("i");
+
+                        action.className = "calisan-islemler";
+                        deleteButton.className = "btn btn-sm btn-icon btn-danger calisan-sil";
+                        deleteButtonIcon.className = "fa fa-trash fa-sm";
+                        deleteButton.appendChild(deleteButtonIcon);
+
+                        editButton = document.createElement("a");
+                        editButtonIcon = document.createElement("i");
+                        editButton.className = "btn btn-sm btn-icon btn-info " + type + "-duzenle";
+                        editButtonIcon.className = "fa fa-edit fa-sm";
+                        editButton.appendChild(editButtonIcon);
+
+                        action.appendChild(deleteButton);
+                        action.appendChild(editButton);
+                        action.appendChild(deleteButton);
+                        row.appendChild(action);
+                        return row
+                    }
+
+                    $(document).on("click", '.calisan-sil', function () {
+                        let tr = this.parentElement.parentElement;
+                        let tbody = tr.parentElement;
+                        let trId = tr.id;
+                        let calisan = trId.split("_");
+                        let calisanId = calisan[calisan.length - 1];
+                        let url = "{{ url_for('.BasvuruPersonelView:proje_calisani_sil', proje_id=proje_id, calisan_id=-1) }}";
+                        url = url.replace("-1", calisanId);
+                        let calisanAdi = this.parentElement.parentElement.children[0].innerText;
+                        swal({
+                            title: calisanAdi + " " + "{{ _("adlı kişi projenin çalışanları arasından çıkarılacak.") }}",
+                            text: "{{ _("Yeni çalışan eklemek için ilgili butonları kullanabilirsiniz.") }}",
+                            icon: "error",
+                            buttons: {
+                                cancel: {
+                                    text: "{{ _("Vazgeç") }}",
+                                    value: false,
+                                    visible: !0,
+                                    closeModal: !0
+                                },
+                                confirm: {
+                                    text: "{{ _("Kabul Et") }}",
+                                    value: true,
+                                    visible: !0,
+                                    closeModal: false
+                                }
+                            }
+                        }).then(function (willDelete) {
+                            if (willDelete) {
+                                $.ajax({
+                                    url: url,
+                                    type: 'DELETE',
+                                    dataType: 'json',
+                                    success: function () {
+                                        tr.remove();
+                                        swal(calisanAdi + " " + "{{ _("adlı kişi proje çalışanları arasından başarıyla çıkarıldı!") }}", {
+                                            icon: "success",
+                                            timer: 4000,
+                                            button: false
+                                        });
+                                        if (tbody.children.length === 0) {
+                                            let row = document.createElement('tr');
+                                            row.id = "empty-row";
+                                            let rowCell = document.createElement('td');
+                                            rowCell.colSpan = 3;
+                                            let text = "{{ _('Proje Çalışanı Bulunmamaktadır.') }}";
+                                            let rowCellText = document.createTextNode(text);
+                                            rowCell.appendChild(rowCellText);
+                                            row.appendChild(rowCell);
+                                            tbody.appendChild(row);
+                                        }
+
+                                    },
+                                    error: function () {
+                                        swal(calisanAdi + " " + "{{ _("adlı kişi proje çalışanları arasından çıkarılmaya çalışılırken bir hata oluştu!") }}", {
+                                            icon: "error",
+                                            timer: 4000,
+                                            button: false
+                                        });
+
+                                    }
+                                });
+                            } else {
+                                swal(calisanAdi + " " + "{{ _("adlı kişiyi proje çalışanları arasından çıkarmaktan vazgeçtiniz!") }}", {
+                                    icon: "warning",
+                                    timer: 4000,
+                                    button: false
+                                });
+                            }
+                        });
+
+                    });
+                </script>
+            </div>
+        </div>
+        {% if uyari_mesajlari and uyari_mesajlari.personel_ekrani_bilgilendirme_mesaji %}
+            {{ proje_personel_ekrani_uyari_mesaji(uyari_mesajlari) }}
+        {% endif %}
+    </section>
+{% endmacro %}
+
+{% macro proje_personel_ekrani_uyari_mesaji(uyari_mesajlari) %}
+    <div class="modal fade" id="personel-ekrani-uyari-mesaji-modal"
+         style="display: none; padding-left: 0px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger m-b-0">
+                        <br>
+                        <h5>
+                            <i class="fa fa-info-circle"></i>{{ _("Personel Ekranı Uyarı Mesajı") }}
+                        </h5>
+                        <p>  {{ uyari_mesajlari.personel_ekrani_bilgilendirme_mesaji  | safe }} </p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).on("click", '#step-tab-proje-personeli', function () {
+            $('#personel-ekrani-uyari-mesaji-modal').modal('show');
+        });
+    </script>
+{% endmacro %}

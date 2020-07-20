@@ -1,0 +1,125 @@
+{
+  "odeme_bilgileri": [
+    {
+      "created_at": "2018-12-11 21:09:44.743905",
+      "updated_at": "2018-12-11 21:09:44.743913",
+      "id": 10,
+      "person_id": 10,
+      "banka_adi": "Örnek BANKA 10",
+      "sube_adi": "ÖRNEK ŞUBE 10",
+      "sube_kod": 288994,
+      "hesap_no": 453757,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:55.092610",
+      "updated_at": "2018-12-11 21:09:55.092618",
+      "id": 11,
+      "person_id": 11,
+      "banka_adi": "Örnek BANKA 11",
+      "sube_adi": "ÖRNEK ŞUBE 11",
+      "sube_kod": 123123,
+      "hesap_no": 2131,
+      "iban_no": "TR0123123123123"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.717163",
+      "updated_at": "2018-12-11 21:09:44.717173",
+      "id": 6,
+      "person_id": 6,
+      "banka_adi": "Örnek BANKA 6",
+      "sube_adi": "ÖRNEK ŞUBE 6",
+      "sube_kod": 468655,
+      "hesap_no": 178960,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.693905",
+      "updated_at": "2018-12-11 21:09:44.693914",
+      "id": 4,
+      "person_id": 4,
+      "banka_adi": "Örnek BANKA 4",
+      "sube_adi": "ÖRNEK ŞUBE 4",
+      "sube_kod": 554088,
+      "hesap_no": 446751,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.729322",
+      "updated_at": "2018-12-11 21:09:44.729332",
+      "id": 7,
+      "person_id": 7,
+      "banka_adi": "Örnek BANKA 7",
+      "sube_adi": "ÖRNEK ŞUBE 7",
+      "sube_kod": 179175,
+      "hesap_no": 442169,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.698830",
+      "updated_at": "2018-12-11 21:09:44.698837",
+      "id": 5,
+      "person_id": 5,
+      "banka_adi": "Örnek BANKA 5",
+      "sube_adi": "ÖRNEK ŞUBE 5",
+      "sube_kod": 857108,
+      "hesap_no": 332164,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.738824",
+      "updated_at": "2018-12-11 21:09:44.738836",
+      "id": 9,
+      "person_id": 9,
+      "banka_adi": "Örnek BANKA 9",
+      "sube_adi": "ÖRNEK ŞUBE 9",
+      "sube_kod": 736423,
+      "hesap_no": 416514,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.687626",
+      "updated_at": "2018-12-11 21:09:44.687633",
+      "id": 3,
+      "person_id": 3,
+      "banka_adi": "Örnek BANKA 3",
+      "sube_adi": "ÖRNEK ŞUBE 3",
+      "sube_kod": 353488,
+      "hesap_no": 453316,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.677723",
+      "updated_at": "2018-12-11 21:09:44.677730",
+      "id": 1,
+      "person_id": 1,
+      "banka_adi": "Örnek BANKA 1",
+      "sube_adi": "ÖRNEK ŞUBE 1",
+      "sube_kod": 270644,
+      "hesap_no": 526780,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.682938",
+      "updated_at": "2018-12-11 21:09:44.682945",
+      "id": 2,
+      "person_id": 2,
+      "banka_adi": "Örnek BANKA 2",
+      "sube_adi": "ÖRNEK ŞUBE 2",
+      "sube_kod": 199271,
+      "hesap_no": 654793,
+      "iban_no": "TR11111111112233"
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.734017",
+      "updated_at": "2018-12-11 21:09:44.734025",
+      "id": 8,
+      "person_id": 8,
+      "banka_adi": "Örnek BANKA 8",
+      "sube_adi": "ÖRNEK ŞUBE 8",
+      "sube_kod": 542812,
+      "hesap_no": 624718,
+      "iban_no": "TR11111111112233"
+    }
+  ]
+}

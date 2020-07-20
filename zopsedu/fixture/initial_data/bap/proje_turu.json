@@ -1,0 +1,59 @@
+{
+  "proje_turu": [
+    {
+      "created_at": "2018-12-28 07:07:31",
+      "updated_at": "2018-12-28 07:07:31",
+      "id": 1,
+      "tur_kodu": 1,
+      "guncel_mi": true,
+      "ad": "ZOPSEDU PROJESİ 1",
+      "kategori": "bilimsel_arastirma_projesi",
+      "gelir_kasasi_id": 1,
+      "basvuru_baslama_tarihi": "2019-01-01",
+      "basvuru_bitis_tarihi": "2030-12-31",
+      "proje_turu_aciklama": "Proje türünün kısa bir açıklaması yürütücüye bildirmek için.",
+      "hakem_onerilsin_mi": false,
+      "basvuru_hakem_oneri_sayisi": 1,
+      "hakem_degerlendirmesi_gerekli_mi": true,
+      "sure_alt_limiti": 1,
+      "sure_ust_limiti": 3,
+      "sure_birimi": "yil",
+      "ek_sure_talep_tipi": "yuzde",
+      "ek_sure_talep_degeri": 25,
+      "ek_sureler_proje_sure_limitine_dahil_mi": true,
+      "oneri_sablon_id": 32,
+      "hakem_degerlendirme_sablon_id": 16,
+      "hakem_ara_rapor_sablon_id": 16,
+      "hakem_sonuc_rapor_sablon_id": 18,
+      "ara_rapor_sablon_id": 19,
+      "sonuc_raporu_sablon_id": 15,
+      "sozlesme_sablon_id": 30,
+      "basvuru_aktif_mi": true,
+      "proje_ek_talepleri_icin_rapor_kontrolu_yapilacak_mi": true,
+      "herkese_acik_proje_listesinde_yer_alacak_mi": true,
+      "ara_rapor_gerekli_mi": true,
+      "sonuc_raporu_gerekli_mi": true,
+      "rapor_araligi_suresi": 3,
+      "rapor_araligi_birimi": "ay",
+      "sonuc_raporu_icin_ek_sure": 3,
+      "sonuc_raporu_icin_ek_sure_birimi": "ay",
+      "rapor_gecikme_mail_suresi": 3,
+      "rapor_gecikme_mail_suresi_birimi": "ay",
+      "rapor_gecikmelerinde_satinalma_yapabilecek_mi": true,
+      "rapor_gecikmelerinde_yolluk_talebi_yapabilecek_mi": true,
+      "rapor_gecikmelerinde_ek_talep_yapabilecek_mi": true,
+      "sonuc_raporu_sonrasi_islem_yapilsin_mi": true,
+      "proje_yurutucusu_ek_dosyalar_ekleyebilir_mi": true,
+      "is_zaman_plani_otomasyon_icerisinde_doldurulsun_mu": false,
+      "ek_dosya_yuklenebilir_mi": false,
+      "proje_mali_destek_suresi": 1,
+      "mali_destek_suresi_birimi": "yil",
+      "butce_tercihi": "proje_yurutucusu_onersin",
+      "genel_uyari_mesajlari": { "degerlendirme_sonunda_bilgi_notu": "\\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">De\\u011Ferlendirme sonunda bilgi notu<\\/span>                                  \\\\r\\\\n                            \\\", \\\"basvuru_tamamlandiktan_sonra_bilgilendirme\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Ba\\\\u015fvuru Tamamland\\\\u0131ktan Sonra Bilgilendirme Mesaj\\\\u0131<\\/span>\\\", \\\"basvuru_yapilmadan_gelecek_uyari\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Basvuru Yapilmadan Gelecek Uyari Mesaj\\\\u0131<\\/span>                                  \\\\r\\\\n                            \\\", \\\"ara_rapor_uyari\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Ara Rapor \\\\u0130\\\\u00e7in Uyar\\\\u0131 Mesaj\\\\u0131<\\/span>                                  \\\\r\\\\n                            \\\", \\\"proje_yurutucusu_icin_yardim_mesaji\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Proje Y\\\\u00fcr\\\\u00fct\\\\u00fcc\\\\u00fcs\\\\u00fc \\\\u0130\\\\u00e7in Yard\\\\u0131m Mesaj\\\\u0131<\\/span>\\\", \\\"butce_ekrani_bilgilendirme\\\": \\\"                                  \\\\r\\\\n                            \\\", \\\"gonder_islemi_yapilirken_yurutucuye_gosterilecek_uyari\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">G\\\\u00f6nder \\\\u0130\\\\u015flemi Yap\\\\u0131l\\\\u0131rken Yurutucuye G\\\\u00f6sterilecek Uyar\\\\u0131 Mesaj\\\\u0131<\\/span>\\\", \\\"personel_ekrani_bilgilendirme_mesaji\\\": \\\"<p><span style=\\\\\\\"color: rgb(65, 65, 65); font-family: &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 1rem;\\\\\\\">Personel Ekran\\\\u0131 Bilgilendirme Mesaj\\\\u0131<\\/span><br><\\/p>\\\", \\\"yurutucu_proje_sozlesme_bekleme_mesaji\\\": \\\"<label class=\\\\\\\"control-label\\\\\\\" for=\\\\\\\"yurutucu_proje_sozlesme_bekleme_mesaji\\\\\\\">Y\\\\u00fcr\\\\u00fct\\\\u00fcc\\\\u00fc Proje S\\\\u00f6zle\\\\u015fme Bekleme Mesaj\\\\u0131<\\/label><span style=\\\\\\\"color: rgb(85, 89, 92);\\\\\\\">&nbsp;<\\/span>                                  \\\\r\\\\n                            \\\", \\\"hakem_onerisi_bilgilendirme\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Hakem \\\\u00d6nerisi Bilgilendirme Mesaj\\\\u0131<\\/span>                                  \\\\r\\\\n                            \\\", \\\"sonuc_raporu_uyari\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Sonuc Raporu \\\\u0130\\\\u00e7in Uyar\\\\u0131 Mesaj\\\\u0131<\\/span>\\\", \\\"degerlendirme_ekraninda_bilgi_notu\\\": \\\"<label class=\\\\\\\"control-label\\\\\\\" for=\\\\\\\"degerlendirme_ekraninda_bilgi_notu\\\\\\\">De\\\\u011ferlendirme ekran\\\\u0131nda bilgi notu<\\/label><span style=\\\\\\\"color: rgb(85, 89, 92);\\\\\\\">&nbsp;<\\/span>                                  \\\\r\\\\n                            \\\", \\\"ek_dosyalar_ekrani_bilgilendirme\\\": \\\"<span style=\\\\\\\"color: rgb(65, 65, 65);\\\\\\\">Ek Dosyalar Ekran\\\\u0131 Bilgilendirme Mesaj\\\\u0131<\\/span>                                  \\\\r\\\\n                            \\\""
+      }
+    }
+
+  ]
+}
+
+

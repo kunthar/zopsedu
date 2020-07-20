@@ -1,0 +1,76 @@
+{% macro form_wizard(form_steps, buttons, navigate_steps=False, keyNavigation=False, form_sweet_alert_macro=None) %}
+    <!-- keyNavigation'ın çalışmasını istersek True göndermemiz gerekiyor-->
+    <section id="number-tabs">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-content collapse show">
+                        <div class="card-body">
+                            <form method="POST" name="form-wizard"
+                                  class="number-tab-steps wizard-notification wizard clearfix" id="form-wizard"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                {% for  step in form_steps['steps'] %}
+                                    <h6>{{ step["title"] if step["title"] else loop.index }}</h6>
+                                    <fieldset>
+                                        <div>
+                                            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                                                {% if errors %}
+                                                    <ul class=flashes>
+                                                        {% for error in errors %}
+                                                            <li class="text-red f-s-15 text-center">{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            {% endwith %}
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-body">
+                                                    <h4 class="form-section"> {{ step['title'] }}</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <!-- begin form-group -->
+                                                            <div class="row">
+                                                                {% for i in step['form_elements'] %}
+                                                                    <div class="form-group  m-b-10 col-md-{{ i[1] }}">
+                                                                        {{ i[0] }}
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </fieldset>
+                                {% endfor %}
+                                {{ buttons }}
+                                {% if form_sweet_alert_macro %}
+                                    {{ form_sweet_alert_macro() }}
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+            FormWizardInit.init({
+                headerTag: "h6",
+                bodyTag: "fieldset",
+                transitionEffect: "fade",
+                titleTemplate: "<span class='step'>#index# </span> #title#",
+                labels: {
+                    next: "sonraki",
+                    previous: "önceki"
+                },
+                enableFinishButton: false,
+                enableKeyNavigation:false,
+                saveState:true,
+                enableAllSteps:true
+            });
+
+    </script>
+
+{% endmacro %}

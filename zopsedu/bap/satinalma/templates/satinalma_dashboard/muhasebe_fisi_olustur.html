@@ -1,0 +1,319 @@
+{% extends "base.html" %}
+
+{% from 'macros/form_helpers/text_fields.html' import render_text_field2, render_text_field %}
+{% from 'macros/form_helpers/_formhelpers.html' import  render_alert_list %}
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">   {{ _("Muhasebe Fişi") }} </h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('hakem.HakemView:hakem_listele') }}">
+                    <button class="btn btn-success">
+                        {{ _("Hakem Arama Sayfasina Git") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="hakem-kayit-tab" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ render_alert_list(muhasebe_fis_formu.uyari_mesajlari) }}
+                    {{ render_proje_genel_bilgileri(proje_bilgileri) }}
+                    {{ render_proje_kalemi_bilgileri(proje_kalemi_data) }}
+                    <form method="POST" enctype="multipart/form-data"
+                          action="{{ url_for("satinalma.SatinalmaMuhasebeFisleri:muhasebe_fisi_olustur_post", siparis_id=siparis_id, satinalma_id=satinalma_id) }}">
+                        {{ muhasebe_fis_formu.csrf_token }}
+                        {{ render_genel_bilgiler(muhasebe_fis_formu.fis_genel_bilgileri) }}
+                        {{ render_kisi_bilgileri(muhasebe_fis_formu.odeme_yapilacak_kisi_bilgileri) }}
+                        {{ render_fis_maddeleri(muhasebe_fis_formu.fis_maddeleri) }}
+                        {{ render_fatura_bilgileri(muhasebe_fis_formu.fatura_bilgileri) }}
+                        <div class="text-center col-md-12">
+                            <button class="btn btn-success">{{ _("Kaydet") }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% macro render_proje_genel_bilgileri(proje_bilgileri) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Proje Bilgileri") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <td style="width: 15%">
+                                    {{ _("Proje No") }}
+                                </td>
+                                <td style="width: 35%">
+                                    {{ proje_bilgileri.proje_no }}
+                                </td>
+                                <td style="width: 15%">
+                                    {{ _("Proje Adı") }}
+                                </td>
+                                <td style="width: 35%">
+                                    {{ proje_bilgileri.proje_adi }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 15%">
+                                    {{ _("Proje Yürütücüsü") }}
+                                </td>
+                                <td style="width: 35%">
+                                    {{ proje_bilgileri.proje_yurutucu_ad_soyad }}
+                                </td>
+                                <td style="width: 15%">
+                                    {{ _("Fakülte") }}
+                                </td>
+                                <td style="width: 35%">
+                                    {{ proje_bilgileri.proje_fakulte }}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_proje_kalemi_bilgileri(proje_kalemi_data) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Proje Kalemi Bilgileri") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <td>{{ _("Bütçe Kalemi") }}</td>
+                                <td>{{ _("Proje Kalemi") }}</td>
+                                <td>{{ _("Toplam Bütçe") }}</td>
+                                <td>{{ _("Rezerv Bütçe") }}</td>
+                                <td>{{ _("Kullanılan Bütçe") }}</td>
+                                <td>{{ _("Fiş Tutarı") }}</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ proje_kalemi_data.butce_kalemi_kodu }}
+                                    - {{ proje_kalemi_data.butce_kalemi_adi }}</td>
+                                <td>{{ proje_kalemi_data.proje_kalemi_adi }}</td>
+                                <td>{{ proje_kalemi_data.toplam_butce | currency }}</td>
+                                <td>{{ proje_kalemi_data.rezerv_butce | currency }}</td>
+                                <td>{{ proje_kalemi_data.kullanilan_butce | currency }}</td>
+                                <td>{{ proje_kalemi_data.fis_tutari | currency }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+
+{% macro render_genel_bilgiler(fis_genel_bilgileri) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Genel Bilgiler") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.kurum_adi) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.kurum_kodu) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.muhasebe_birimi_adi) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.muhasebe_birimi_kodu) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.birim_adi) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.birim_kodu) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.fakulte_bolum) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.yil) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.belge_tarihi) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fis_genel_bilgileri.belge_numarasi) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_kisi_bilgileri(odeme_yapilacak_kisi_bilgileri) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Kişi Bilgileri") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ render_text_field2(odeme_yapilacak_kisi_bilgileri.adi_soyadi) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(odeme_yapilacak_kisi_bilgileri.banka_sube) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(odeme_yapilacak_kisi_bilgileri.vergi_no) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(odeme_yapilacak_kisi_bilgileri.hesap_no) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(odeme_yapilacak_kisi_bilgileri.vergi_dairesi_id) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_fatura_bilgileri(fatura_bilgileri) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Fatura Bilgileri") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ render_text_field2(fatura_bilgileri.fatura_no) }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_text_field2(fatura_bilgileri.fatura_tarihi) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ render_text_field(fatura_bilgileri.aciklama) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+
+{% macro render_fis_maddeleri(fis_maddeleri) %}
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="form-section">{{ _("Fiş Maddeleri") }}</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% set tooltip_titles = [
+                        _("Fonksiyonel Kod Giriniz"),
+                        _("Fonksiyonel Kod İçin Açıklama Giriniz"),
+                    ] %}
+                        {% set headers = [
+                        (fis_maddeleri[0].hesap_kodu.label.text,100),
+                        (fis_maddeleri[0].kurumsal_kod.label.text,100),
+                        (fis_maddeleri[0].fonksiyonel_kod.label.text,100),
+                        (fis_maddeleri[0].finans_kodu.label.text,100),
+                        (fis_maddeleri[0].borc.label.text,100),
+                        (fis_maddeleri[0].alacak.label.text,100)
+                        ] %}
+
+                        {% set initial_data = [] %}
+                        {% set contents = [] %}
+                        {% for fis_maddesi in fis_maddeleri %}
+                            {% set data = [
+                       fis_maddesi.hesap_kodu,
+                       fis_maddesi.kurumsal_kod,
+                       fis_maddesi.fonksiyonel_kod,
+                       fis_maddesi.finans_kodu,
+                       fis_maddesi.borc,
+                       fis_maddesi.alacak
+                       ] %}
+                            {% do initial_data.append(data) %}
+                            {% if loop.index == loop.length %}
+                                {% do contents.extend( [
+                               fis_maddeleri[loop.index - 1].hesap_kodu,
+                               fis_maddeleri[loop.index - 1].kurumsal_kod,
+                               fis_maddeleri[loop.index - 1].fonksiyonel_kod,
+                               fis_maddeleri[loop.index - 1].finans_kodu,
+                               fis_maddeleri[loop.index - 1].borc,
+                               fis_maddeleri[loop.index - 1].alacak,
+                                ]) %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {{ dynamic_field_list(headers,
+                          contents,
+                          initial_data,
+                          button_name = _("Ekle"),
+                          tooltip_titles = tooltip_titles) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_fonksiyonel_kodlar(fonksiyonel_kodlar_form) %}
+    {% set tooltip_titles = [
+                        _("Fonksiyonel Kod Giriniz"),
+                        _("Fonksiyonel Kod İçin Açıklama Giriniz"),
+    ] %}
+    {% set headers = [  (fonksiyonel_kodlar_form[0].kod.label.text,100),
+                        (fonksiyonel_kodlar_form[0].aciklama.label.text,100),
+                        ] %}
+
+    {% set initial_data = [] %}
+    {% set contents = [] %}
+    {% for fonksiyonel_kod in fonksiyonel_kodlar_form %}
+        {% set data = [
+                       fonksiyonel_kod.kod,
+                       fonksiyonel_kod.aciklama] %}
+        {% do initial_data.append(data) %}
+        {% if loop.index == loop.length %}
+            {% do contents.extend( [
+                                fonksiyonel_kodlar_form[loop.index - 1].kod,
+                                fonksiyonel_kodlar_form[loop.index - 1].aciklama]) %}
+        {% endif %}
+    {% endfor %}
+
+    {{ dynamic_field_list(headers,
+                          contents,
+                          initial_data,
+                          button_name = _("Fonksiyonel Kod Ekle"),
+                          tooltip_titles = tooltip_titles) }}
+{% endmacro %}

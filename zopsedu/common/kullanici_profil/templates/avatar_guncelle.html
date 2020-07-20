@@ -1,0 +1,34 @@
+{% extends "profil_base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% block profil %}
+
+
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        {{ big_flash_message() }}
+                        <form class="form" method="post" enctype="multipart/form-data">
+                            <div class="form-body">
+                                <div class="text-center col-md-12">
+                                    {{ avatar_form.csrf_token }}
+                                    {{ avatar_form.avatar.label }}
+                                    {{ avatar_form.avatar }}
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    {{ avatar_form.guncelle(class="btn btn-success") }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

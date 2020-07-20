@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/select2_fields.html" import render_select2field_with_label %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field %}
+
+
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">{{ _('İdari Personel Arama') }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section>
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <div class="row">
+                            <div class="content-header-left col-md-8 col-12 mb-2"></div>
+                        </div>
+                        <div id="aramaAlani">
+                            {% if search_form %}
+                                <form class="form" id="detayli-arama-form">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{ search_form.csrf_token }}
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        {{ search_form.ad.label }}
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        {{ search_form.ad(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        {{ search_form.soyad.label }}
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        {{ search_form.soyad(class="form-control") }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        {{ search_form.unvan_id.label }}
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        {{ search_form.unvan_id(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        {{ search_form.gorevi.label }}
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        {{ search_form.gorevi(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-4">
+                                                        {{ search_form.durumu.label }}
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        {{ search_form.durumu(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <button id="ara" class="btn btn-search btn-success m-r">Ara</button>
+                                    <button id="temizle" class="btn btn-clear btn-warning">Temizle</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title all">{{ _('İdari Personel Listesi') }}</h4>
+                <div class="btn-group float-md-right">
+                    <a href="#idari_personel_ekle"
+                       class="btn btn-success"
+                       data-toggle="modal"
+                       data-target="#idari_personel_ekle">
+                        {{ _('İdari Personel Ekle') }}
+                    </a>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ big_flash_message() }}
+                    <div id="data-table_wrapper"
+                         class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="data-table"
+                                       class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                                       role="grid">
+                                    <thead>
+                                    <tr role="row">
+                                        <th>{{ _("#") }}</th>
+                                        <th> {{ _('Ünvan') }}</th>
+                                        <th>{{ _('Ad Soyad') }}</th>
+                                        <th>{{ _('Görevi') }}</th>
+                                        <th>{{ _('Görev Açıklaması') }}</th>
+                                        <th>{{ _('Durumu') }}</th>
+                                        <th class="all">{{ _('Düzenle') }}</th>
+                                        <th class="all">{{ _('Çıkar') }}</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    {{ personel_durumunu_belirle() }}
+                    {{ idari_personel_ekle() }}
+                    {{ idari_personel_sil() }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import custom_serverside_table %}
+    {{ custom_serverside_table(endpoint=url_for('personel_yonetimi.idari_search'), id="data-table",ara_button_id="#ara",temizle_button_id="#temizle",search_form_id='#detayli-arama-form') }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+{% endblock %}
+
+
+{% macro idari_personel_ekle() %}
+    <div class="modal fade" id="idari_personel_ekle" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rolAtaModalLabel">{{ _('İdari Personel Ekle') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" id="idari_personel_ekle_formu">
+                    {{ idari_personel_ekle_form.csrf_token }}
+                    <div class="modal-body">
+                        {{ render_select2field_with_label(idari_personel_ekle_form.personel_id) }}
+                        {{ render_select_field(idari_personel_ekle_form.gorevi) }}
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                {{ render_text_field(idari_personel_ekle_form.gorev_aciklamasi) }}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                    <button id="kasa-girdi-kaydet" type="button" class="btn btn-outline-success"
+                            data-toggle="modal" onclick="idari_personel_ekle()">
+                        {{ _('Kaydet') }}</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function idari_personel_ekle() {
+                let url;
+                url = "{{ url_for("personel_yonetimi.idari_personel_kaydet") }}";
+                swal({
+                    title: "İdari personel eklemek istediğinize emin misiniz ?",
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            text: "Hayır",
+                            value: false,
+                            visible: true,
+                            closeModal: true
+                        },
+                        confirm: {
+                            text: "Evet",
+                            value: true,
+                            visible: true,
+                            closeModal: true,
+                        }
+                    }
+                })
+                    .then((willSave) => {
+                        if (willSave) {
+                            $('#idari_personel_ekle_formu').attr('action', url).submit();
+                        } else {
+                            swal("{{ _("İdari personel eklemekten vazgeçtiniz") }}",{
+                                icon:"warning",
+                                timer: 4000,
+                                button: false
+                            });
+                        }
+                    });
+            }
+        </script>
+    </div>
+{% endmacro %}
+
+{% macro idari_personel_sil() %}
+    <script>
+        function idari_personel_sil(id, unvan_ad, ad, soyad) {
+            let url;
+            let idari_personel_id = id;
+            let title = unvan_ad + " " + ad + " " + soyad + " adlı personeli idari personeller arasından çıkartmak istediğinize emin misiniz ?";
+            url = "{{ url_for("personel_yonetimi.idari_personel_sil") }}";
+            swal({
+                title: title,
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Hayır",
+                        value: false,
+                        visible: true,
+                        closeModal: true
+                    },
+                    confirm: {
+                        text: "Evet",
+                        value: true,
+                        visible: true,
+                        closeModal: true,
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        $.ajax({
+                            url: url,
+                            type: 'POST',
+                            data: JSON.stringify({"idari_personel_id":idari_personel_id}),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: 'json',
+                            success: function (result) {
+                                swal("{{ _("İşleminiz başarıyla gerçekleştirildi") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            redirectUrl = "{{ url_for('personel_yonetimi.IdariPersonelView:liste') }}";
+                            window.location.replace(redirectUrl)
+                            },
+                            error: function () {
+                                swal("{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("İdari personeli çıkartmaktan vazgeçtiniz") }}",{
+                            icon:"warning",
+                            timer:4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+    </script>
+
+{% endmacro %}
+
+{% macro personel_durumunu_belirle() %}
+    <div class="modal fade" id="preview-personel_durum" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rolAtaModalLabel">{{ _('Personel Durum Detay') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" id="personel_durum_formu">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Unvan : ') }}</label>
+                                <label id="personel_unvani"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{ _('Ad: ') }}</label>
+                                <label id="personel_ad"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Soyad: ') }} </label>
+                                <label id="personel_soyadi"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Aktiflik veya pasiflik durumu: ') }} </label>
+                                <label id="personel_durumu"></label>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{ personel_durum_form.csrf_token }}
+                                {{ personel_durum_form.durum_listesi.label }}
+                                {{ personel_durum_form.durum_listesi }}
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-9">
+                                <input type="hidden" id="personel_id" value="">
+                            </div>
+                        </div>
+                        <span id="preview-personel_durum-content"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button id="kasa-girdi-kaydet" type="button" class="btn btn-outline-success"
+                                data-toggle="modal" onclick="personel_durum_yonetimi()">
+                            {{ _('Kaydet') }}</button>
+                    </div>
+                </form>
+
+
+                <script>
+                    modalSelector = {
+
+                        'personel_unvani': $('#personel_unvani'),
+                        'personel_ad': $('#personel_ad'),
+                        'personel_soyadi': $('#personel_soyadi'),
+                        'personel_durumu': $('#personel_durumu'),
+                        "personel_id": $("#personel_id")
+                    };
+
+                    function resetModal() {
+
+                        modalSelector.personel_unvani.empty();
+                        modalSelector.personel_ad.empty();
+                        modalSelector.personel_soyadi.empty();
+                        modalSelector.personel_durumu.empty();
+                        modalSelector.personel_id.val("");
+                    }
+
+                    function personel_bilgisi(personel_id) {
+                        let url, personelId;
+                        personelId = personel_id;
+                        url = "{{ url_for("personel_yonetimi.AkademikPersonelView:personel_bilgisi" , personel_id=-1) }}";
+                        url = url.replace("-1", personelId);
+                        $.ajax({
+                            url: url,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (data) {
+                                resetModal();
+                                modalSelector.personel_unvani.append(data.personel.personel_turu);
+                                modalSelector.personel_ad.append(data.personel.personel_adı);
+                                modalSelector.personel_soyadi.append(data.personel.personel_soyadı);
+                                modalSelector.personel_id.val(data.personel.personel_id);
+                                if (data.personel.personel_aktifliği == true) {
+                                    data.personel.personel_aktifliği = 'Aktif';
+                                } else {
+                                    data.personel.personel_aktifliği = 'Pasif';
+                                }
+                                modalSelector.personel_durumu.append(data.personel.personel_aktifliği);
+                            },
+                            error: function () {
+                                swal("{{ _("Personel Bilgisine Erişilirken Hata Oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    }
+
+                    function personel_durum_yonetimi() {
+
+                        let url, personelId;
+                        personelId = modalSelector.personel_id.val();
+                        url = "{{ url_for("personel_yonetimi.idari_personel_durum_ata" , personel_id=-1) }}";
+                        url = url.replace("-1", personelId);
+                        swal({
+                            title: "Personeli durumunu değiştirmek istediğinizden emin misiniz ?",
+                            icon: "warning",
+                            buttons: {
+                                cancel: {
+                                    text: "Hayır",
+                                    value: false,
+                                    visible: true,
+                                    closeModal: true
+                                },
+                                confirm: {
+                                    text: "Evet",
+                                    value: true,
+                                    visible: true,
+                                    closeModal: true,
+                                }
+                            }
+                        })
+                            .then((willSave) => {
+                                if (willSave) {
+                                    $('#personel_durum_formu').attr('action', url).submit();
+                                } else {
+                                    swal("{{ _("Personel durumu değiştirmekten vazgeçtiniz") }}",{
+                                        icon: "warning",
+                                        timer:4000,
+                                        button:false
+                                    });
+                                }
+                            });
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

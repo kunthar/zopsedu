@@ -1,0 +1,58 @@
+{% macro flash_message() %}
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            {% if message %}
+                <ul class="parsley-errors-list filled">
+                    <li class="parsley-required">{{ message }} </li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+{% endmacro %}
+
+{% macro big_flash_message() %}
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            {% if message %}
+                <div class="alert alert-primary fade show">
+                    <span class="close" data-dismiss="alert">×</span>
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+{% endmacro %}
+
+{% macro flash_message_with_category(category) %}
+    {% with messages = get_flashed_messages(category_filter=[category]) %}
+        {% for message in messages %}
+            {% if message %}
+                <ul class="list-group parsley-errors-list filled">
+                    <li class="list-group-item parsley-required">{{ message }} </li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+{% endmacro %}
+
+{% macro flash_message_with_negative_category(category) %}
+    {% with messages = get_flashed_messages(category_filter=[category]) %}
+        {% if messages %}
+            <div class="alert alert-danger fadeIn">
+                <span class="close" data-dismiss="alert">×</span>
+                <div class="row">
+                    <i class="fas fa-info-circle fa-2x pull-left m-l-10 m-r-10"></i>
+                    <ul class="fa-ul m-l-20">
+                        {% for message in messages %}
+                            <li>
+                                        <span class="fa-li"><i
+                                                class="fas fa-check-square"></i></span>
+                                {{ message | safe }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endmacro %}

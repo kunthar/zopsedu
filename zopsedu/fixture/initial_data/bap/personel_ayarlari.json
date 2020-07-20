@@ -1,0 +1,16 @@
+{
+  "personel_ayarlari":[
+    {
+      "created_at": "2018-12-28 07:07:31",
+      "updated_at": "2018-12-28 07:07:31",
+      "id": 1,
+      "proje_turu_id":1 ,
+      "yardimci_arastirmaci_secenekleri":"sadece_danisman_ve_tez_ogrencisi",
+      "yardimci_arastirmaci_alt_limiti":0,
+      "yardimci_arastirmaci_ust_limiti":0,
+      "ozgecmis_yuklenmesi_zorunlu_mu":false,
+      "dosya_olarak_ozgecmis_yuklenebilir_mi":false,
+      "banka_bilgilerini_girmek_zorunlu_mu":false
+   }
+  ]
+}

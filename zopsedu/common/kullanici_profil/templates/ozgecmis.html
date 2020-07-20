@@ -1,0 +1,68 @@
+{% extends "profil_base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+
+{% block profil %}
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        {{ big_flash_message() }}
+                        <form class="form"
+                              action="{{ url_for('kullanici_profil.KullaniciProfilView:ozgecmis_kaydet') }}"
+                              method="POST" enctype="multipart/form-data">
+                            {{ kayit_formu.csrf_token() }}
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="form-section"><i class="ft-user"></i> {{ kayit_formu.tecrube.label }}
+                                        </h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                {{ kayit_formu.tecrube }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <div class="alert alert-warning alert-dismissible mb-2" role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    {{ kayit_formu.ozgecmis_dosya.label }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-md-3">
+                                                {{ kayit_formu.ozgecmis_dosya }}
+                                            </div>
+                                            <div class="col-md-3">
+                                                {% if kayit_formu.ozgecmis_dosya_id.data %}
+                                                    <a href="{{ url_for("FileView:file_download", file_id=kayit_formu.ozgecmis_dosya_id.data) }}">
+                                                        <button class="btn btn-info" type="button">
+                                                            {{ _('Özgeçmiş İndir') }}
+                                                        </button>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    {{ kayit_formu.kaydet(class="btn btn-success") }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

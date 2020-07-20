@@ -1,0 +1,2698 @@
+{
+    "vergi_dairesi": [
+        {
+            
+            "kodu": "01201",
+            "il": "ADANA",
+            "adi": "CEYHAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01203",
+            "il": "ADANA",
+            "adi": "KOZAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01205",
+            "il": "ADANA",
+            "adi": "KARATA\u015e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01251",
+            "il": "ADANA",
+            "adi": "BE\u015eOCAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01252",
+            "il": "ADANA",
+            "adi": "Y\u00dcRE\u011e\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01253",
+            "il": "ADANA",
+            "adi": "SEYHAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01254",
+            "il": "ADANA",
+            "adi": "Z\u0130YAPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "01255",
+            "il": "ADANA",
+            "adi": "\u00c7UKUROVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "02260",
+            "il": "ADIYAMAN",
+            "adi": "ADIYAMAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "02261",
+            "il": "ADIYAMAN",
+            "adi": "KAHTA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03201",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "TINAZTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03202",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "\u00c7AY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03260",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "D\u0130NAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03261",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "BOLVAD\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03262",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "EM\u0130RDA\u011e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03263",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "SANDIKLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "03280",
+            "il": "AFYONKARAH\u0130SAR",
+            "adi": "KOCATEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "04260",
+            "il": "A\u011eRI",
+            "adi": "A\u011eRI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "04261",
+            "il": "A\u011eRI",
+            "adi": "DO\u011eUBEYAZIT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "05260",
+            "il": "AMASYA",
+            "adi": "AMASYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "05261",
+            "il": "AMASYA",
+            "adi": "MERZ\u0130FON VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "05262",
+            "il": "AMASYA",
+            "adi": "G\u00dcM\u00dc\u015eHACIK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "05263",
+            "il": "AMASYA",
+            "adi": "TA\u015eOVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "05264",
+            "il": "AMASYA",
+            "adi": "SULUOVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06205",
+            "il": "ANKARA",
+            "adi": "POLATLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06207",
+            "il": "ANKARA",
+            "adi": "\u015eEREFL\u0130KO\u00c7H\u0130SAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06209",
+            "il": "ANKARA",
+            "adi": "BEYPAZARI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06211",
+            "il": "ANKARA",
+            "adi": "\u00c7UBUK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06213",
+            "il": "ANKARA",
+            "adi": "HAYMANA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06215",
+            "il": "ANKARA",
+            "adi": "ELMADA\u011e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06252",
+            "il": "ANKARA",
+            "adi": "VERASET ve HAR\u00c7LAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06253",
+            "il": "ANKARA",
+            "adi": "KAVAKLIDERE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06254",
+            "il": "ANKARA",
+            "adi": "MALTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06255",
+            "il": "ANKARA",
+            "adi": "YEN\u0130MAHALLE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06257",
+            "il": "ANKARA",
+            "adi": "\u00c7ANKAYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06258",
+            "il": "ANKARA",
+            "adi": "KIZILBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06259",
+            "il": "ANKARA",
+            "adi": "M\u0130THATPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06260",
+            "il": "ANKARA",
+            "adi": "ULUS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06261",
+            "il": "ANKARA",
+            "adi": "YILDIRIMBEYAZIT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06262",
+            "il": "ANKARA",
+            "adi": "SE\u011eMENLER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06263",
+            "il": "ANKARA",
+            "adi": "ULUS\u0130TE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06264",
+            "il": "ANKARA",
+            "adi": "D\u0130K\u0130MEV\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06265",
+            "il": "ANKARA",
+            "adi": "DO\u011eANBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06266",
+            "il": "ANKARA",
+            "adi": "YE\u011eENBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06268",
+            "il": "ANKARA",
+            "adi": "H\u0130T\u0130T VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06269",
+            "il": "ANKARA",
+            "adi": "YAHYA GAL\u0130P VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06270",
+            "il": "ANKARA",
+            "adi": "M.KARAG\u00dcZEL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06271",
+            "il": "ANKARA",
+            "adi": "OST\u0130M VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06272",
+            "il": "ANKARA",
+            "adi": "G\u00d6LBA\u015eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06273",
+            "il": "ANKARA",
+            "adi": "S\u0130NCAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06274",
+            "il": "ANKARA",
+            "adi": "DI\u015eKAPI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06275",
+            "il": "ANKARA",
+            "adi": "ET\u0130MESGUT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06276",
+            "il": "ANKARA",
+            "adi": "BA\u015eKENT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06277",
+            "il": "ANKARA",
+            "adi": "CUMHUR\u0130YET VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "06278",
+            "il": "ANKARA",
+            "adi": "KE\u00c7\u0130\u00d6REN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07201",
+            "il": "ANTALYA",
+            "adi": "ALANYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07202",
+            "il": "ANTALYA",
+            "adi": "SER\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07203",
+            "il": "ANTALYA",
+            "adi": "MANAVGAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07204",
+            "il": "ANTALYA",
+            "adi": "ELMALI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07205",
+            "il": "ANTALYA",
+            "adi": "KEMER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07206",
+            "il": "ANTALYA",
+            "adi": "KUMLUCA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07251",
+            "il": "ANTALYA",
+            "adi": "\u00dc\u00c7KAPILAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07252",
+            "il": "ANTALYA",
+            "adi": "KALEKAPI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07253",
+            "il": "ANTALYA",
+            "adi": "MURATPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07254",
+            "il": "ANTALYA",
+            "adi": "D\u00dcDEN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "07255",
+            "il": "ANTALYA",
+            "adi": "ANTALYA KURUMLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "08260",
+            "il": "ARTV\u0130N",
+            "adi": "ARTV\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "08261",
+            "il": "ARTV\u0130N",
+            "adi": "HOPA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09201",
+            "il": "AYDIN",
+            "adi": "EFELER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09260",
+            "il": "AYDIN",
+            "adi": "NAZ\u0130LL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09261",
+            "il": "AYDIN",
+            "adi": "S\u00d6KE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09262",
+            "il": "AYDIN",
+            "adi": "\u00c7\u0130NE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09263",
+            "il": "AYDIN",
+            "adi": "GERMENC\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09265",
+            "il": "AYDIN",
+            "adi": "KU\u015eADASI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09280",
+            "il": "AYDIN",
+            "adi": "G\u00dcZELH\u0130SAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "09281",
+            "il": "AYDIN",
+            "adi": "D\u0130D\u0130M VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10201",
+            "il": "BALIKES\u0130R",
+            "adi": "KARES\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10260",
+            "il": "BALIKES\u0130R",
+            "adi": "AYVALIK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10261",
+            "il": "BALIKES\u0130R",
+            "adi": "BANDIRMA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10262",
+            "il": "BALIKES\u0130R",
+            "adi": "BURHAN\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10263",
+            "il": "BALIKES\u0130R",
+            "adi": "EDREM\u0130T VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10264",
+            "il": "BALIKES\u0130R",
+            "adi": "G\u00d6NEN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10265",
+            "il": "BALIKES\u0130R",
+            "adi": "SUSURLUK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10266",
+            "il": "BALIKES\u0130R",
+            "adi": "ERDEK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10267",
+            "il": "BALIKES\u0130R",
+            "adi": "B\u0130GAD\u0130\u00c7 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10268",
+            "il": "BALIKES\u0130R",
+            "adi": "SINDIRGI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10269",
+            "il": "BALIKES\u0130R",
+            "adi": "DURSUNBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "10280",
+            "il": "BALIKES\u0130R",
+            "adi": "KURTDEREL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "11260",
+            "il": "B\u0130LEC\u0130K",
+            "adi": "B\u0130LEC\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "11261",
+            "il": "B\u0130LEC\u0130K",
+            "adi": "BOZ\u00d6Y\u00dcK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "12260",
+            "il": "B\u0130NG\u00d6L",
+            "adi": "B\u0130NG\u00d6L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "13260",
+            "il": "B\u0130TL\u0130S",
+            "adi": "B\u0130TL\u0130S VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "13261",
+            "il": "B\u0130TL\u0130S",
+            "adi": "TATVAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "14260",
+            "il": "BOLU",
+            "adi": "BOLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "14262",
+            "il": "BOLU",
+            "adi": "GEREDE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "15260",
+            "il": "BURDUR",
+            "adi": "BURDUR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "15261",
+            "il": "BURDUR",
+            "adi": "BUCAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16201",
+            "il": "BURSA",
+            "adi": "GEML\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16202",
+            "il": "BURSA",
+            "adi": "\u0130NEG\u00d6L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16203",
+            "il": "BURSA",
+            "adi": "KARACABEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16204",
+            "il": "BURSA",
+            "adi": "M.KEMALPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16205",
+            "il": "BURSA",
+            "adi": "MUDANYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16206",
+            "il": "BURSA",
+            "adi": "ORHANGAZ\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16207",
+            "il": "BURSA",
+            "adi": "\u0130ZN\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16208",
+            "il": "BURSA",
+            "adi": "YEN\u0130\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16251",
+            "il": "BURSA",
+            "adi": "OSMANGAZ\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16252",
+            "il": "BURSA",
+            "adi": "YILDIRIM VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16253",
+            "il": "BURSA",
+            "adi": "\u00c7EK\u0130RGE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16254",
+            "il": "BURSA",
+            "adi": "SETBA\u015eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16255",
+            "il": "BURSA",
+            "adi": "ULUDA\u011e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16256",
+            "il": "BURSA",
+            "adi": "YE\u015e\u0130L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16257",
+            "il": "BURSA",
+            "adi": "N\u0130L\u00dcFER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16258",
+            "il": "BURSA",
+            "adi": "ERTU\u011eRULGAZ\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "16259",
+            "il": "BURSA",
+            "adi": "G\u00d6KDERE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "17260",
+            "il": "\u00c7ANAKKALE",
+            "adi": "\u00c7ANAKKALE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "17261",
+            "il": "\u00c7ANAKKALE",
+            "adi": "B\u0130GA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "17262",
+            "il": "\u00c7ANAKKALE",
+            "adi": "\u00c7AN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "17263",
+            "il": "\u00c7ANAKKALE",
+            "adi": "GEL\u0130BOLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "18260",
+            "il": "\u00c7ANKIRI",
+            "adi": "\u00c7ANKIRI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "19260",
+            "il": "\u00c7ORUM",
+            "adi": "\u00c7ORUM VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "19261",
+            "il": "\u00c7ORUM",
+            "adi": "SUNGURLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20201",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "SARAYLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20202",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "\u00c7INAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20203",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "G\u00d6KPINAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20260",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "SARAYK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20261",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "ACIPAYAM VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20262",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "TAVAS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20263",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "BULDAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20264",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "\u00c7AL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20265",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "\u00c7\u0130VR\u0130L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "20280",
+            "il": "DEN\u0130ZL\u0130",
+            "adi": "PAMUKKALE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "21251",
+            "il": "D\u0130YARBAKIR",
+            "adi": "G\u00d6KALP VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "21281",
+            "il": "D\u0130YARBAKIR",
+            "adi": "S\u00dcLEYMANNAZ\u0130F VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "21282",
+            "il": "D\u0130YARBAKIR",
+            "adi": "C.SITKI TARANCI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22201",
+            "il": "ED\u0130RNE",
+            "adi": "ARDA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22260",
+            "il": "ED\u0130RNE",
+            "adi": "KIRKPINAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22261",
+            "il": "ED\u0130RNE",
+            "adi": "KE\u015eAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22262",
+            "il": "ED\u0130RNE",
+            "adi": "UZUNK\u00d6PR\u00dc VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22263",
+            "il": "ED\u0130RNE",
+            "adi": "HAVSA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "22264",
+            "il": "ED\u0130RNE",
+            "adi": "\u0130PSALA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "23201",
+            "il": "ELAZI\u011e",
+            "adi": "HARPUT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "23280",
+            "il": "ELAZI\u011e",
+            "adi": "HAZAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "24260",
+            "il": "ERZ\u0130NCAN",
+            "adi": "FEVZ\u0130PA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "25251",
+            "il": "ERZURUM",
+            "adi": "AZ\u0130Z\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "25280",
+            "il": "ERZURUM",
+            "adi": "KAZIMKARABEK\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26201",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "\u00c7\u0130FTELER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26202",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "S\u0130VR\u0130H\u0130SAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26252",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "YUNUSEMRE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26253",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "2 EYL\u00dcLVERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26254",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "BATTALGAZ\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "26255",
+            "il": "ESK\u0130\u015eEH\u0130R",
+            "adi": "TA\u015eBA\u015eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27202",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "N\u0130Z\u0130P VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27203",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "\u0130SLAH\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27251",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "SUBURCU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27252",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "\u015eEH\u0130TKAM\u0130L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27253",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "\u015eAH\u0130NBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27254",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "GAZ\u0130KENT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "27255",
+            "il": "GAZ\u0130ANTEP",
+            "adi": "KOZANLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "28260",
+            "il": "G\u0130RESUN",
+            "adi": "G\u0130RESUN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "28261",
+            "il": "G\u0130RESUN",
+            "adi": "BULANCAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "29260",
+            "il": "G\u00dcM\u00dc\u015eHANE",
+            "adi": "G\u00dcM\u00dc\u015eHANE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "30260",
+            "il": "HAKKAR\u0130",
+            "adi": "HAKKAR\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31201",
+            "il": "HATAY",
+            "adi": "23 TEMMUZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31202",
+            "il": "HATAY",
+            "adi": "SAH\u0130L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31203",
+            "il": "HATAY",
+            "adi": "ANTAKYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31260",
+            "il": "HATAY",
+            "adi": "D\u00d6RTYOL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31261",
+            "il": "HATAY",
+            "adi": "KIRIKHAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31262",
+            "il": "HATAY",
+            "adi": "REYHANLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31263",
+            "il": "HATAY",
+            "adi": "SAMANDA\u011e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31280",
+            "il": "HATAY",
+            "adi": "\u015e\u00dcKR\u00dcKANATLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31281",
+            "il": "HATAY",
+            "adi": "AKDEN\u0130Z VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "31290",
+            "il": "HATAY",
+            "adi": "ASIM G\u00dcND\u00dcZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "32201",
+            "il": "ISPARTA",
+            "adi": "DAVRAZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "32260",
+            "il": "MERS\u0130N",
+            "adi": "KAYMAKKAPI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "32261",
+            "il": "MERS\u0130N",
+            "adi": "E\u011e\u0130RD\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "32262",
+            "il": "MERS\u0130N",
+            "adi": "YALVA\u00c7 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33201",
+            "il": "MERS\u0130N",
+            "adi": "ERDEML\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33202",
+            "il": "MERS\u0130N",
+            "adi": "SilFKE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33203",
+            "il": "MERS\u0130N",
+            "adi": "ANAMUR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33204",
+            "il": "MERS\u0130N",
+            "adi": "KIZILMURAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33205",
+            "il": "MERS\u0130N",
+            "adi": "\u015eEH\u0130TKER\u0130M VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33250",
+            "il": "MERS\u0130N",
+            "adi": "\u0130ST\u0130KLAL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33252",
+            "il": "MERS\u0130N",
+            "adi": "URAY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33254",
+            "il": "MERS\u0130N",
+            "adi": "L\u0130MAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "33255",
+            "il": "MERS\u0130N",
+            "adi": "TOROS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34203",
+            "il": "\u0130STANBUL",
+            "adi": "SilVR\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34204",
+            "il": "\u0130STANBUL",
+            "adi": "B\u00dcY\u00dcK\u00c7EKMECE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34205",
+            "il": "\u0130STANBUL",
+            "adi": "\u015e\u0130LE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34206",
+            "il": "\u0130STANBUL",
+            "adi": "\u00c7ATALCA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34231",
+            "il": "\u0130STANBUL",
+            "adi": "BO\u011eAZ\u0130\u00c7\u0130 KURUMLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34232",
+            "il": "\u0130STANBUL",
+            "adi": "MARMARA KURUMLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34233",
+            "il": "\u0130STANBUL",
+            "adi": "ULA\u015eTIRMA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34234",
+            "il": "\u0130STANBUL",
+            "adi": "DAVUTPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34235",
+            "il": "\u0130STANBUL",
+            "adi": "ESENLER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34236",
+            "il": "\u0130STANBUL",
+            "adi": "FAT\u0130H VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34237",
+            "il": "\u0130STANBUL",
+            "adi": "K\u00dc\u00c7\u00dcKK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34238",
+            "il": "\u0130STANBUL",
+            "adi": "LALEL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34239",
+            "il": "\u0130STANBUL",
+            "adi": "MERTER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34240",
+            "il": "\u0130STANBUL",
+            "adi": "MEVLANAKAPI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34241",
+            "il": "\u0130STANBUL",
+            "adi": "RAM\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34242",
+            "il": "\u0130STANBUL",
+            "adi": "SULTANBEYL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34243",
+            "il": "\u0130STANBUL",
+            "adi": "S\u00dcLEYMAN\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34244",
+            "il": "\u0130STANBUL",
+            "adi": "ANADOLU KURUMLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34245",
+            "il": "\u0130STANBUL",
+            "adi": "TUZLA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34246",
+            "il": "\u0130STANBUL",
+            "adi": "KOZYATA\u011eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34247",
+            "il": "\u0130STANBUL",
+            "adi": "MASLAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34248",
+            "il": "\u0130STANBUL",
+            "adi": "Z\u0130NC\u0130RL\u0130KUYU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34249",
+            "il": "\u0130STANBUL",
+            "adi": "\u0130K\u0130TELL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34250",
+            "il": "\u0130STANBUL",
+            "adi": "\u00c7APA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34251",
+            "il": "\u0130STANBUL",
+            "adi": "BE\u015e\u0130KTA\u015e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34252",
+            "il": "\u0130STANBUL",
+            "adi": "\u00dcMRAN\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34253",
+            "il": "\u0130STANBUL",
+            "adi": "YED\u0130TEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34254",
+            "il": "\u0130STANBUL",
+            "adi": "GAYRETTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34255",
+            "il": "\u0130STANBUL",
+            "adi": "ERENK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34256",
+            "il": "\u0130STANBUL",
+            "adi": "H\u0130SAR VER. HAR\u00c7LAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34257",
+            "il": "\u0130STANBUL",
+            "adi": "TUNA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34258",
+            "il": "\u0130STANBUL",
+            "adi": "RIHTIM VER.HAR\u00c7LAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34259",
+            "il": "\u0130STANBUL",
+            "adi": "G\u00dcNG\u00d6REN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34260",
+            "il": "\u0130STANBUL",
+            "adi": "KOCAS\u0130NAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34261",
+            "il": "\u0130STANBUL",
+            "adi": "G\u00dcNE\u015eL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34262",
+            "il": "\u0130STANBUL",
+            "adi": "K\u00dc\u00c7\u00dcKYALI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34263",
+            "il": "\u0130STANBUL",
+            "adi": "PEND\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34264",
+            "il": "\u0130STANBUL",
+            "adi": "BAYRAMPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34265",
+            "il": "\u0130STANBUL",
+            "adi": "BEYAZIT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34266",
+            "il": "\u0130STANBUL",
+            "adi": "BEYO\u011eLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34267",
+            "il": "\u0130STANBUL",
+            "adi": "NURUOSMAN\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34268",
+            "il": "\u0130STANBUL",
+            "adi": "GALATA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34269",
+            "il": "\u0130STANBUL",
+            "adi": "GAZ\u0130OSMANPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34270",
+            "il": "\u0130STANBUL",
+            "adi": "G\u00d6ZTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34271",
+            "il": "\u0130STANBUL",
+            "adi": "HOCAPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34272",
+            "il": "\u0130STANBUL",
+            "adi": "KADIK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34273",
+            "il": "\u0130STANBUL",
+            "adi": "KOCAMUSTAFAPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34274",
+            "il": "\u0130STANBUL",
+            "adi": "MEC\u0130D\u0130YEK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34275",
+            "il": "\u0130STANBUL",
+            "adi": "MERCAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34276",
+            "il": "\u0130STANBUL",
+            "adi": "\u015e\u0130\u015eL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34277",
+            "il": "\u0130STANBUL",
+            "adi": "\u00dcSK\u00dcDAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34278",
+            "il": "\u0130STANBUL",
+            "adi": "HALKALI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34279",
+            "il": "\u0130STANBUL",
+            "adi": "KA\u011eITHANE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34280",
+            "il": "\u0130STANBUL",
+            "adi": "ZEYT\u0130NBURNU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34281",
+            "il": "\u0130STANBUL",
+            "adi": "BEYKOZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34283",
+            "il": "\u0130STANBUL",
+            "adi": "SARIYER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34284",
+            "il": "\u0130STANBUL",
+            "adi": "BAKIRK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34285",
+            "il": "\u0130STANBUL",
+            "adi": "KARTAL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34286",
+            "il": "\u0130STANBUL",
+            "adi": "SULTANAHMET VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34287",
+            "il": "\u0130STANBUL",
+            "adi": "NAK\u0130L VASITALARI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34288",
+            "il": "\u0130STANBUL",
+            "adi": "SARIGAZ\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34289",
+            "il": "\u0130STANBUL",
+            "adi": "DI\u015e T\u0130CARET VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34291",
+            "il": "\u0130STANBUL",
+            "adi": "ATI\u015eALANI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34292",
+            "il": "\u0130STANBUL",
+            "adi": "YAKACIK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34293",
+            "il": "\u0130STANBUL",
+            "adi": "YEN\u0130 BOSNA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34294",
+            "il": "\u0130STANBUL",
+            "adi": "AVCILAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34295",
+            "il": "\u0130STANBUL",
+            "adi": "ADALAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34296",
+            "il": "\u0130STANBUL",
+            "adi": "K\u00dc\u00c7\u00dcK\u00c7EKMECE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34297",
+            "il": "\u0130STANBUL",
+            "adi": "BEYL\u0130KD\u00dcZ\u00dc VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "34230",
+            "il": "\u0130STANBUL",
+            "adi": "B\u00dcY\u00dcKM\u00dcKELLEFLER VERG\u0130 DA\u0130RES\u0130 BA\u015eKANLI\u011eI"
+        },
+        {
+            
+            "kodu": "35201",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BAYINDIR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35202",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BERGAMA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35203",
+            "il": "\u0130ZM\u0130R",
+            "adi": "MENEMEN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35204",
+            "il": "\u0130ZM\u0130R",
+            "adi": "\u00d6DEM\u0130\u015e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35205",
+            "il": "\u0130ZM\u0130R",
+            "adi": "T\u0130RE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35206",
+            "il": "\u0130ZM\u0130R",
+            "adi": "TORBALI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35207",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KEMALPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35208",
+            "il": "\u0130ZM\u0130R",
+            "adi": "URLA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35209",
+            "il": "\u0130ZM\u0130R",
+            "adi": "SEL\u00c7UK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35210",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KINIK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35211",
+            "il": "\u0130ZM\u0130R",
+            "adi": "K\u0130RAZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35212",
+            "il": "\u0130ZM\u0130R",
+            "adi": "\u00c7E\u015eME VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35213",
+            "il": "\u0130ZM\u0130R",
+            "adi": "AL\u0130A\u011eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35215",
+            "il": "\u0130ZM\u0130R",
+            "adi": "MENDERES VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35251",
+            "il": "\u0130ZM\u0130R",
+            "adi": "9 EYL\u00dcL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35252",
+            "il": "\u0130ZM\u0130R",
+            "adi": "YAMANLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35254",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BELKAHVE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35255",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BASMANE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35256",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KAR\u015eIYAKA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35257",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KEMERALTI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35258",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KONAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35259",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KORDON VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35260",
+            "il": "\u0130ZM\u0130R",
+            "adi": "\u015e\u0130R\u0130NYER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35261",
+            "il": "\u0130ZM\u0130R",
+            "adi": "KAD\u0130FEKALE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35262",
+            "il": "\u0130ZM\u0130R",
+            "adi": "TA\u015eITLAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35263",
+            "il": "\u0130ZM\u0130R",
+            "adi": "HASAN TAHS\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35264",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BORNOVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35265",
+            "il": "\u0130ZM\u0130R",
+            "adi": "\u00c7AKABEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35266",
+            "il": "\u0130ZM\u0130R",
+            "adi": "BAL\u00c7OVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35267",
+            "il": "\u0130ZM\u0130R",
+            "adi": "GAZ\u0130EM\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35268",
+            "il": "\u0130ZM\u0130R",
+            "adi": "EGE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "35269",
+            "il": "\u0130ZM\u0130R",
+            "adi": "\u00c7\u0130\u011eL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "36260",
+            "il": "KARS",
+            "adi": "KARS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "37260",
+            "il": "KASTAMONU",
+            "adi": "KASTAMONU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "37261",
+            "il": "KASTAMONU",
+            "adi": "TOSYA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "37262",
+            "il": "KASTAMONU",
+            "adi": "TA\u015eK\u00d6PR\u00dc VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38201",
+            "il": "KAYSER\u0130",
+            "adi": "DEVEL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38202",
+            "il": "KAYSER\u0130",
+            "adi": "PINARBA\u015eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38203",
+            "il": "KAYSER\u0130",
+            "adi": "B\u00dcNYAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38251",
+            "il": "KAYSER\u0130",
+            "adi": "M\u0130MARS\u0130NAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38252",
+            "il": "KAYSER\u0130",
+            "adi": "ERC\u0130YES VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38253",
+            "il": "KAYSER\u0130",
+            "adi": "KALE\u00d6N\u00dc VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "38254",
+            "il": "KAYSER\u0130",
+            "adi": "GEVHER NES\u0130BE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "39260",
+            "il": "KIRKLAREL\u0130",
+            "adi": "KIRKLAREL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "39261",
+            "il": "KIRKLAREL\u0130",
+            "adi": "L\u00dcLEBURGAZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "39262",
+            "il": "KIRKLAREL\u0130",
+            "adi": "BABAESK\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "40260",
+            "il": "KIR\u015eEH\u0130R",
+            "adi": "KIR\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "40261",
+            "il": "KIR\u015eEH\u0130R",
+            "adi": "KAMAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41202",
+            "il": "KOCAEL\u0130",
+            "adi": "ULU\u00c7INAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41203",
+            "il": "KOCAEL\u0130",
+            "adi": "\u0130LYASBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41204",
+            "il": "KOCAEL\u0130",
+            "adi": "G\u00d6LC\u00dcK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41205",
+            "il": "KOCAEL\u0130",
+            "adi": "KARAM\u00dcRSEL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41206",
+            "il": "KOCAEL\u0130",
+            "adi": "K\u00d6RFEZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41207",
+            "il": "KOCAEL\u0130",
+            "adi": "DER\u0130NCE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41252",
+            "il": "KOCAEL\u0130",
+            "adi": "TEPEC\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41253",
+            "il": "KOCAEL\u0130",
+            "adi": "ALEMDAR  VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "41290",
+            "il": "KOCAEL\u0130",
+            "adi": "ACISU  VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42201",
+            "il": "KONYA",
+            "adi": "AK\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42202",
+            "il": "KONYA",
+            "adi": "ERE\u011eL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42204",
+            "il": "KONYA",
+            "adi": "BEY\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42205",
+            "il": "KONYA",
+            "adi": "C\u0130HANBEYL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42206",
+            "il": "KONYA",
+            "adi": "\u00c7UMRA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42207",
+            "il": "KONYA",
+            "adi": "SEYD\u0130\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42208",
+            "il": "KONYA",
+            "adi": "ILGIN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42209",
+            "il": "KONYA",
+            "adi": "KULU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42251",
+            "il": "KONYA",
+            "adi": "SEL\u00c7UK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42252",
+            "il": "KONYA",
+            "adi": "MEVLANA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42253",
+            "il": "KONYA",
+            "adi": "MERAM VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "42254",
+            "il": "KONYA",
+            "adi": "ALAADD\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43201",
+            "il": "K\u00dcTAHYA",
+            "adi": "30 A\u011eUSTOS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43260",
+            "il": "K\u00dcTAHYA",
+            "adi": "GED\u0130Z VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43261",
+            "il": "K\u00dcTAHYA",
+            "adi": "S\u0130MAV VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43262",
+            "il": "K\u00dcTAHYA",
+            "adi": "TAV\u015eANLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43263",
+            "il": "K\u00dcTAHYA",
+            "adi": "EMET VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "43280",
+            "il": "K\u00dcTAHYA",
+            "adi": "\u00c7\u0130Nil VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "44251",
+            "il": "MALATYA",
+            "adi": "FIRAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "44252",
+            "il": "MALATYA",
+            "adi": "BEYDA\u011eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45201",
+            "il": "MAN\u0130SA",
+            "adi": "AKH\u0130SAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45202",
+            "il": "MAN\u0130SA",
+            "adi": "ALA\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45203",
+            "il": "MAN\u0130SA",
+            "adi": "DEM\u0130RC\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45204",
+            "il": "MAN\u0130SA",
+            "adi": "KIRKA\u011eA\u00c7 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45205",
+            "il": "MAN\u0130SA",
+            "adi": "SAL\u0130HL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45206",
+            "il": "MAN\u0130SA",
+            "adi": "SARIG\u00d6L VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45207",
+            "il": "MAN\u0130SA",
+            "adi": "SARUHANLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45208",
+            "il": "MAN\u0130SA",
+            "adi": "SOMA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45209",
+            "il": "MAN\u0130SA",
+            "adi": "TURGUTLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45210",
+            "il": "MAN\u0130SA",
+            "adi": "G\u00d6RDES VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45211",
+            "il": "MAN\u0130SA",
+            "adi": "KULA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45251",
+            "il": "MAN\u0130SA",
+            "adi": "ALAYBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "45252",
+            "il": "MAN\u0130SA",
+            "adi": "MES\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "46201",
+            "il": "KAHRAMANMARA\u015e",
+            "adi": "ASLANBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "46260",
+            "il": "KAHRAMANMARA\u015e",
+            "adi": "ELB\u0130STAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "46261",
+            "il": "KAHRAMANMARA\u015e",
+            "adi": "AF\u015e\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "46262",
+            "il": "KAHRAMANMARA\u015e",
+            "adi": "PAZARCIK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "46280",
+            "il": "KAHRAMANMARA\u015e",
+            "adi": "AKSU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "47260",
+            "il": "MARD\u0130N",
+            "adi": "MARD\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "47261",
+            "il": "MARD\u0130N",
+            "adi": "KIZILTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "47262",
+            "il": "MARD\u0130N",
+            "adi": "NUSAYB\u0130N VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48260",
+            "il": "MU\u011eLA",
+            "adi": "MU\u011eLA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48261",
+            "il": "MU\u011eLA",
+            "adi": "BODRUM VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48262",
+            "il": "MU\u011eLA",
+            "adi": "FETH\u0130YE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48263",
+            "il": "MU\u011eLA",
+            "adi": "K\u00d6YCE\u011e\u0130Z VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48264",
+            "il": "MU\u011eLA",
+            "adi": "M\u0130LAS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48265",
+            "il": "MU\u011eLA",
+            "adi": "MARMAR\u0130S VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "48266",
+            "il": "MU\u011eLA",
+            "adi": "YATA\u011eAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "49260",
+            "il": "MU\u015e",
+            "adi": "MU\u015e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "50260",
+            "il": "NEV\u015eEH\u0130R",
+            "adi": "NEV\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "51260",
+            "il": "N\u0130\u011eDE",
+            "adi": "N\u0130\u011eDE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "51262",
+            "il": "N\u0130\u011eDE",
+            "adi": "BOR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "52201",
+            "il": "ORDU",
+            "adi": "BOZTEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "52260",
+            "il": "ORDU",
+            "adi": "K\u00d6PR\u00dcBA\u015eI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "52261",
+            "il": "ORDU",
+            "adi": "FATSA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "52262",
+            "il": "ORDU",
+            "adi": "\u00dcNYE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "53201",
+            "il": "R\u0130ZE",
+            "adi": "KA\u00c7KAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "53260",
+            "il": "R\u0130ZE",
+            "adi": "YE\u015e\u0130L\u00c7AY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "53261",
+            "il": "R\u0130ZE",
+            "adi": "\u00c7AYEL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "53262",
+            "il": "R\u0130ZE",
+            "adi": "PAZAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "53263",
+            "il": "R\u0130ZE",
+            "adi": "ARDE\u015eEN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54201",
+            "il": "SAKARYA",
+            "adi": "AKYAZI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54202",
+            "il": "SAKARYA",
+            "adi": "GEYVE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54203",
+            "il": "SAKARYA",
+            "adi": "HENDEK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54204",
+            "il": "SAKARYA",
+            "adi": "KARASU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54251",
+            "il": "SAKARYA",
+            "adi": "G\u00dcMR\u00dcK\u00d6N\u00dc VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "54252",
+            "il": "SAKARYA",
+            "adi": "AL\u0130 FUAT CEBESOY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55202",
+            "il": "SAMSUN",
+            "adi": "BAFRA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55203",
+            "il": "SAMSUN",
+            "adi": "\u00c7AR\u015eAMBA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55204",
+            "il": "SAMSUN",
+            "adi": "TERME VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55205",
+            "il": "SAMSUN",
+            "adi": "HAVZA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55251",
+            "il": "SAMSUN",
+            "adi": "19 MAYIS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55252",
+            "il": "SAMSUN",
+            "adi": "GAZ\u0130LER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "55290",
+            "il": "SAMSUN",
+            "adi": "ZAFER VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "56260",
+            "il": "S\u0130\u0130RT",
+            "adi": "S\u0130\u0130RT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "57260",
+            "il": "S\u0130NOP",
+            "adi": "S\u0130NOP VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "57261",
+            "il": "S\u0130NOP",
+            "adi": "BOYABAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "58201",
+            "il": "S\u0130VAS",
+            "adi": "KALE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "58260",
+            "il": "S\u0130VAS",
+            "adi": "\u015eARKI\u015eLA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "58280",
+            "il": "S\u0130VAS",
+            "adi": "S\u0130TE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59201",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "S\u00dcLEYMANPA\u015eA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59260",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "NAMIK KEMAL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59261",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "\u00c7ERKEZK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59262",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "\u00c7ORLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59263",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "HAYRABOLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59264",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "MALKARA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "59265",
+            "il": "TEK\u0130RDA\u011e",
+            "adi": "MURATLI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "60260",
+            "il": "TOKAT",
+            "adi": "TOKAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "60261",
+            "il": "TOKAT",
+            "adi": "ERBAA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "60262",
+            "il": "TOKAT",
+            "adi": "N\u0130KSAR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "60263",
+            "il": "TOKAT",
+            "adi": "TURHAL VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "60264",
+            "il": "TOKAT",
+            "adi": "Z\u0130LE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "61201",
+            "il": "TRABZON",
+            "adi": "HIZIRBEY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "61260",
+            "il": "TRABZON",
+            "adi": "AK\u00c7AABAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "61261",
+            "il": "TRABZON",
+            "adi": "OF VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "61262",
+            "il": "TRABZON",
+            "adi": "VAKFIKEB\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "61280",
+            "il": "TRABZON",
+            "adi": "KARADEN\u0130Z VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "62260",
+            "il": "TUNCEL\u0130",
+            "adi": "TUNCEL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "63201",
+            "il": "\u015eANLIURFA",
+            "adi": "\u015eEH\u0130TL\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "63260",
+            "il": "\u015eANLIURFA",
+            "adi": "S\u0130VEREK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "63261",
+            "il": "\u015eANLIURFA",
+            "adi": "V\u0130RAN\u015eEH\u0130R VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "63262",
+            "il": "\u015eANLIURFA",
+            "adi": "B\u0130REC\u0130K VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "63280",
+            "il": "\u015eANLIURFA",
+            "adi": "TOP\u00c7UMEYDANI VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "64260",
+            "il": "U\u015eAK",
+            "adi": "U\u015eAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "64261",
+            "il": "U\u015eAK",
+            "adi": "BANAZ VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "64262",
+            "il": "U\u015eAK",
+            "adi": "E\u015eME VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "65201",
+            "il": "VAN",
+            "adi": "ERC\u0130\u015e VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "65260",
+            "il": "VAN",
+            "adi": "VAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "66260",
+            "il": "YOZGAT",
+            "adi": "YOZGAT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "66261",
+            "il": "YOZGAT",
+            "adi": "BO\u011eAZLIYAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "66262",
+            "il": "YOZGAT",
+            "adi": "SORGUN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "66263",
+            "il": "YOZGAT",
+            "adi": "YERK\u00d6Y VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "67201",
+            "il": "ZONGULDAK",
+            "adi": "UZUNMEHMET VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "67261",
+            "il": "ZONGULDAK",
+            "adi": "KRDZ.ERE\u011eL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "67263",
+            "il": "ZONGULDAK",
+            "adi": "\u00c7AYCUMA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "67264",
+            "il": "ZONGULDAK",
+            "adi": "DEVREK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "67280",
+            "il": "ZONGULDAK",
+            "adi": "KARAELMAS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "68201",
+            "il": "AKSARAY",
+            "adi": "AKSARAY VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "69201",
+            "il": "BAYBURT",
+            "adi": "BAYBURT VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "70201",
+            "il": "KARAMAN",
+            "adi": "KARAMAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "71201",
+            "il": "KIRIKKALE",
+            "adi": "IRMAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "71202",
+            "il": "KIRIKKALE",
+            "adi": "KALETEPE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "72260",
+            "il": "BATMAN",
+            "adi": "BATMAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "73260",
+            "il": "\u015eIRNAK",
+            "adi": "\u015eIRNAK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "73261",
+            "il": "\u015eIRNAK",
+            "adi": "C\u0130ZRE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "73262",
+            "il": "\u015eIRNAK",
+            "adi": "S\u0130LOP\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "74260",
+            "il": "BARTIN",
+            "adi": "BARTIN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "75201",
+            "il": "ARDAHAN",
+            "adi": "ARDAHAN VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "76201",
+            "il": "I\u011eDIR",
+            "adi": "I\u011eDIR VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "77201",
+            "il": "YALOVA",
+            "adi": "YALOVA VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "78201",
+            "il": "KARAB\u00dcK",
+            "adi": "KARAB\u00dcK VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "78260",
+            "il": "KARAB\u00dcK",
+            "adi": "SAFRANBOLU VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "79201",
+            "il": "KilS",
+            "adi": "KilS VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "80201",
+            "il": "OSMAN\u0130YE",
+            "adi": "OSMAN\u0130YE VERG\u0130 DA\u0130RES"
+        },
+        {
+            
+            "kodu": "80260",
+            "il": "OSMAN\u0130YE",
+            "adi": "KAD\u0130RL\u0130 VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "81260",
+            "il": "D\u00dcZCE",
+            "adi": "D\u00dcZCE VERG\u0130 DA\u0130RES\u0130"
+        },
+        {
+            
+            "kodu": "81261",
+            "il": "D\u00dcZCE",
+            "adi": "AK\u00c7AKOCA VERG\u0130 DA\u0130RES\u0130"
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field_without_label, render_select_field_with_tooltip %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field_with_tooltip %}
+{% from "macros/form_helpers/error_fields.html" import error %}
+{% block context %}
+
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Hakem Ayarları") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            {{ big_flash_message() }}
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form" method="POST" enctype="multipart/form-data">
+                        {{ form.csrf_token() }}
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            {{ render_select_field_with_tooltip(form.proje_personeli_bilgileri_gorunurlugu, title=_("Personel bilgi görünürlüğü")) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            {{ form.beklenen_yanitlama_suresi.label(class="control-label") }}
+                                            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top"
+                                               title
+                                               data-original-title="{{ _("Hakemin kaç gün içinde yanıt vermesi beklenmektedir") }}"></i>
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ render_text_field_without_label(form.beklenen_yanitlama_suresi, type="number", min=0) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.beklenen_yanitlama_suresi_birim(class="form-control")|safe }}
+                                            {{ error(form.beklenen_yanitlama_suresi_birim) }}
+                                        </div>
+                                        {{ error(form.beklenen_yanitlama_suresi) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            {{ form.onceden_uyarma.label(class="control-label") }}
+                                            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top"
+                                               title
+                                               data-original-title="{{ _("Beklenen yanıtlama süresinden ne kadar önce uyarı gönderilmelidir.") }}"></i>
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ render_text_field_without_label(form.onceden_uyarma, type="number", min=0) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.onceden_uyarma_birim(class="form-control")|safe }}
+                                            {{ error(form.onceden_uyarma_birim) }}
+                                        </div>
+                                        {{ error(form.onceden_uyarma) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            {{ form.gecikme_uyarma_suresi.label(class="control-label") }}
+                                            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top"
+                                               title
+                                               data-original-title="{{ _("Beklenen yanıtlama süresinden ne kadar sonra gecikme uyarısı yapılmalıdır.") }}"></i>
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ render_text_field_without_label(form.gecikme_uyarma_suresi, type="number", min=0) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.gecikme_uyarma_suresi_birim(class="form-control")|safe }}
+                                            {{ error(form.gecikme_uyarma_suresi_birim) }}
+                                        </div>
+                                        {{ error(form.gecikme_uyarma_suresi) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            {{ form.gecikme_uyari_tekrar_suresi.label(class="control-label") }}
+                                            <i class="fa fa-question-circle" data-toggle="tooltip"
+                                               data-placement="top"
+                                               title
+                                               data-original-title="{{ _("Gecikme uyarısı ilk uyarıdan sonra ne kadar sürede bir tekrar etmelidir.") }}"></i>
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ render_text_field_without_label(form.gecikme_uyari_tekrar_suresi, type="number", min=0) }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{ form.gecikme_uyari_tekrar_suresi_birim(class="form-control")|safe }}
+                                            {{ error(form.gecikme_uyari_tekrar_suresi_birim) }}
+                                        </div>
+                                        {{ error(form.gecikme_uyari_tekrar_suresi) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    {{ render_select_field_with_tooltip(form.hakemlik_iptal_durumu, title=_("Hakemlik iptalinden sonra hakemin işlem yapabilmesi")) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-center col-md-12">
+                                <button class="btn btn-lg btn-success">{{ _("Kaydet") }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

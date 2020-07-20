@@ -1,0 +1,263 @@
+{% from 'macros/form_helpers/select2_fields.html' import render_select2field %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_field,render_select_field_upper_label %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox %}
+
+
+
+{% macro  kurum_ici_hakem(kurum_ici_hakem_form, url) %}
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form" id="kurum-ici">
+                <div class="form-body">
+                    {{ kurum_ici_hakem_form.csrf_token }}
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            {{ render_select2field(kurum_ici_hakem_form.personel_sec) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            {{ render_select_field_upper_label(kurum_ici_hakem_form.kurum_ici_hakem_turu) }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-actions">
+            <div class="col-md-3">
+                <button class="btn btn-success"
+                        onclick="kurum_ici_hakem_kaydet()">Kaydet
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        kurum_ici_hakem_kaydet = function () {
+            let kayit_url;
+            kayit_url = "{{ url }}";
+            swal({
+                title: "Seçilen personeli hakem olarak kaydetmek istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        $.ajax({
+                            url: kayit_url,
+                            type: "POST",
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                'kurum_ici': $('#kurum-ici').serializeArray()
+                            }),
+                            success: function () {
+                                swal({
+                                    title: "{{ _("İşleminiz başarıyla gerçekleştirildi..!") }}",
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                "{{ url_for('hakem.HakemView:hakem_listele')}}"
+                            },
+                            error: function (err) {
+                                if (err.responseJSON.error_message) {
+                                    swal({
+                                        title: err.responseJSON.error_message,
+                                        icon: "error",
+                                        timer: 4000,
+                                        buttons: false
+                                    });
+                                } else {
+                                    swal({
+                                        title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                        icon: "error",
+                                        timer: 4000,
+                                        buttons: false
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen personeli hakem olarak kaydetmekten vazgeçtiniz.!") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+    </script>
+
+{% endmacro %}
+
+
+{% macro  kurum_disi_hakem(kurum_disi_hakem_form, url) %}
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form" id="kurum-disi">
+                <div class="form-body">
+                    {{ kurum_disi_hakem_form.csrf_token }}
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            {{ render_text_field(kurum_disi_hakem_form.ad) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_text_field(kurum_disi_hakem_form.soyad) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_text_field(kurum_disi_hakem_form.email) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            {{ render_checkbox(kurum_disi_hakem_form.universitede_gorev_almayan) }}
+                        </div>
+                    </div>
+                    <div class="form-group row" id="universite-gorevlisi">
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.universite) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.fakulte) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.bolum) }}
+                        </div>
+                    </div>
+                    <div class="form-group row" id="universite-gorevlisi-degil">
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.kurum) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.daire) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ render_select2field(kurum_disi_hakem_form.birim) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            {{ render_select2field(kurum_disi_hakem_form.unvan) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ render_select_field_upper_label(kurum_disi_hakem_form.hakem_turu) }}
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="form-actions">
+                <button class="btn btn-success"
+                        onclick="kurum_disi_hakem_kaydet()">Kaydet
+                </button>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    {% if kurum_disi_hakem_form.universitede_gorev_almayan.data %}
+                        $('#universite-gorevlisi').hide();
+                    {% else %}
+                        $('#universite-gorevlisi-degil').hide();
+                    {% endif %}
+                    $("input[name='universitede_gorev_almayan']").change(function () {
+                        if ($(this).is(":checked")) {
+                            $('#universite-gorevlisi').hide();
+                            $('#universite-gorevlisi-degil').show();
+                        } else {
+                            $('#universite-gorevlisi').show();
+                            $('#universite-gorevlisi-degil').hide();
+                        }
+                    });
+
+                    kurum_disi_hakem_kaydet = function () {
+                        let kayit_url = '{{ url }}';
+                        swal({
+                            title: "Kurum dışı hakem olarak kaydetmek istediğinize emin misiniz ?",
+                            icon: "warning",
+                            buttons: {
+                                cancel: {
+                                    text: "Vazgeç",
+                                    value: false,
+                                    visible: true,
+                                    closeModal: true,
+                                },
+                                confirm: {
+                                    text: "Kabul Et",
+                                    value: true,
+                                    visible: true,
+                                    closeModal: true
+                                }
+                            }
+                        })
+                            .then((willSave) => {
+                                if (willSave) {
+                                    $.ajax({
+                                        url: kayit_url,
+                                        type: "POST",
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        data: JSON.stringify({
+                                            'kurum_disi': $('#kurum-disi').serializeArray()
+                                        }),
+                                        success: function () {
+                                            swal({
+                                                title: "{{ _("İşleminiz başarıyla gerçekleştirildi..!") }}",
+                                                icon: "success",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                            window.location = "{{ url_for('hakem.HakemView:hakem_listele')}}"
+
+                                        },
+                                        error: function (err) {
+                                            if (err.responseJSON.error_message) {
+                                                swal({
+                                                    title: err.responseJSON.error_message,
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            } else {
+                                                swal({
+                                                    title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                                    icon: "error",
+                                                    timer: 4000,
+                                                    buttons: false
+                                                });
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    swal("{{ _("Seçilen personeli hakem olarak kaydetmekten vazgeçtiniz.!") }}",
+                                        {
+                                            icon: "warning",
+                                            timer: 4000,
+                                            button: false
+
+                                        });
+                                }
+                            });
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
+{% endmacro %}
+
+
+

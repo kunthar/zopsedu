@@ -1,0 +1,70 @@
+{% extends "dashboard_base.html" %}
+{% from 'ozgecmis_sayfalari/akademisyen_ozgecmis_sayfasi_genel.html' import ozgecmis_sayfasi_genel %}
+
+{% macro render_basari_taninirlik(ozgecmis_bilgileri) %}
+    {% if ozgecmis_bilgileri.odulleri %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_oduller(ozgecmis_bilgileri.odulleri) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if ozgecmis_bilgileri.sertifika_calistay_kurs %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_sertifika_calistay(ozgecmis_bilgileri.sertifika_calistay_kurs) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_oduller(oduller) %}
+    {% if oduller %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Ödüller</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for odul in oduller %}
+                <tr>
+                    <td> {{ odul }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_sertifika_calistay(sertifikalari) %}
+    {% if sertifikalari %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Sertifika, Çalıştay ve Kurslar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sertifika in sertifikalari %}
+                <tr>
+                    <td> {{ sertifika }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% block context %}
+    {{ ozgecmis_sayfasi_genel(_("Başarı & Tanınırlık"),
+           render_basari_taninirlik(ozgecmis_bilgileri),
+           ozgecmis_bilgileri.personel_ad_soyad,
+           ozgecmis_bilgileri.avatar,
+           ozgecmis_bilgileri.birim,
+           email_prefix, 7) }}
+{% endblock %}

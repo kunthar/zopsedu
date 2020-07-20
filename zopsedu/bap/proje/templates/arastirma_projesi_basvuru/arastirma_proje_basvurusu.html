@@ -1,0 +1,354 @@
+{% extends "base.html" %}
+{% from 'macros/form_wizard.html' import form_wizard  with context %}
+{% from 'arastirma_projesi_basvuru/genel_bilgiler.html' import render_arastirma_projesi_form_wizard_genel_bilgiler %}
+{% from 'arastirma_projesi_basvuru/proje_elemanlari.html' import render_arastirma_projesi_proje_elemanlari %}
+{% from 'arastirma_projesi_basvuru/butce.html' import render_arastirma_projesi_butce %}
+{% from 'arastirma_projesi_basvuru/diger.html' import render_arastirma_projesi_diger %}
+{% from 'arastirma_projesi_basvuru/ozet_bilgiler.html' import render_arastirma_projesi_form_wizard_ozet_bilgiler %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+
+
+{% block context %}
+
+    {% macro proje_turu_buttonlari() %}
+        {{ yeni_basvuru_formu.proje_turu }}
+        <div class="text-center">
+            <button class="btn btn-success" onclick="open_uyari_modal();">
+                {% if revizyon_bekleniyor_mu %}
+                    {{ _("Revizyonu Tamamla") }}
+                {% else %}
+                    {{ _("Başvuruyu Tamamla") }}
+                {% endif %}
+            </button>
+            {% if not taslak_mi and not revizyon_bekleniyor_mu %}
+                <button class="btn btn-warning" onclick="proje_basvurusu_taslak_kaydet();"
+                >{{ _("Taslak Olarak Kaydet") }}
+                </button>
+            {% endif %}
+            {% if taslak_mi %}
+                <button class="btn btn-info" onclick="proje_basvurusu_taslak_guncelle();"
+                >{{ _("Taslak Güncelle") }}
+                </button>
+            {% endif %}
+        </div>
+    {% endmacro %}
+
+    {% set form_steps = {
+            "steps": [
+                {
+                    "title": _('Genel Bilgiler'),
+                    "step_name": "genel-bilgiler-1",
+                    "form_elements":[
+                        (render_arastirma_projesi_form_wizard_genel_bilgiler(yeni_basvuru_formu.genel_bilgiler), 12)
+                    ]
+                },
+                {
+                    "title": _('Genel Bilgiler 2'),
+                    "step_name": "genel-bilgiler-2",
+                    "form_elements":[
+                        (render_arastirma_projesi_form_wizard_ozet_bilgiler(yeni_basvuru_formu.genel_bilgiler.ozet_bilgiler), 12)
+                    ]
+                },
+                {
+                    "title": _('Proje Personeli'),
+                    "step_name": "proje-personeli",
+                    "form_elements":[
+                        (render_arastirma_projesi_proje_elemanlari(yeni_basvuru_formu.proje_personeli, proje_id, proje_calisanlari, yurutucu_calisan_id, uyari_mesajlari), 12)
+                    ]
+                }
+            ]
+        } %}
+
+    {% if yeni_basvuru_formu.butce and yeni_basvuru_formu.butce.data %}
+        {% set butce = {"title": _('Bütçe'), "step_name": "proje-butce", "form_elements": [(render_arastirma_projesi_butce(yeni_basvuru_formu.butce, uyari_mesajlari), 12)]} %}
+        {{ "" if form_steps['steps'].insert(3, butce) else "" }}
+    {% endif %}
+    {% if yeni_basvuru_formu.diger and (yeni_basvuru_formu.diger.ek_dosyalar or yeni_basvuru_formu.diger.proje_diger or yeni_basvuru_formu.diger.proje_hakem) %}
+        {% set diger= {"title": _('Diğer'), "step_name": "proje-diger", "form_elements":[(render_arastirma_projesi_diger(yeni_basvuru_formu.diger, proje_id, proje_hakem_onerileri, proje_degerlendirmeleri, uyari_mesajlari), 12)]} %}
+        {{ "" if form_steps['steps'].insert(4, diger) else "" }}
+    {% endif %}
+
+    {% macro basvuru_kaydet_sweet_alert() %}
+        <div class="modal fade" id="proje-kaydet-uyari-modal"
+             style="display: none;"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h4 class="modal-title f-s-20 text-red-darker"
+                            id="preview-modal-title">
+                            {{ _("BAP Yetkisili Uyarı Mesajı") }}
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger m-b-0">
+                        <span id="proje-kaydet-uyari-content">
+                            {% if uyari_mesajlari and uyari_mesajlari.gonder_islemi_yapilirken_yurutucuye_gosterilecek_uyari %}
+                                <div class="col-md-12">
+                                    {{ uyari_mesajlari.gonder_islemi_yapilirken_yurutucuye_gosterilecek_uyari | safe }}
+                                </div>
+                            {% else %}
+                                <div class="col-md-12">
+                                <p class="text-black f-s-15 text-center">
+                                    <b>{{ _("Uyarı Mesajı Eklenmedi.") }}</b>
+                                </p>
+                                </div>
+
+                            {% endif %}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button class="btn grey btn-outline-success"
+                                onclick="proje_basvurusu_tamamla({{ revizyon_bekleniyor_mu | tojson }});"
+                                data-dismiss="modal">{{ _("Kaydet") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            {# proje formunu submit etmeyi durdurur(swal açabilmek için bu cozume gidildi. submit işlemi swal icerisinde gerçekleştirildi#}
+            $('#form-wizard').on("submit", function (e) {
+                e.preventDefault();
+            });
+
+            function open_uyari_modal() {
+                $('#proje-kaydet-uyari-modal').modal('show');
+            }
+
+
+            function proje_basvurusu_tamamla(revizyonMu) {
+                let uyariTitle, uyariText;
+                if (revizyonMu) {
+                    uyariTitle = "{{ _("Proje revizyon işlemini tamamlamak üzeresiniz.") }}";
+                    uyariText = "{{ _("Eğer gerekli alanları doldurduysanız revizyon işlemi tamamlanacak. Başvuru tamamlandıktan sonra proje ile ilgili güncelleme yapamazsınız") }}";
+                } else {
+                    uyariTitle = "{{ _("Proje başvurusunu tamamlamak üzeresiniz.") }}";
+                    uyariText = "{{ _("Eğer gerekli alanları doldurduysanız başvurunun tamamlanacak. Başvuru tamamlandıktan sonra proje ile ilgili güncelleme yapamazsınız") }}";
+                }
+                swal({
+                    title: uyariTitle,
+                    text: uyariText,
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            text: "Vazgeç",
+                            value: false,
+                            visible: true,
+                            closeModal: true,
+                        },
+                        confirm: {
+                            text: "Kabul Et",
+                            value: true,
+                            visible: true,
+                            closeModal: true
+                        }
+                    }
+                })
+                    .then((willSave) => {
+                        if (willSave) {
+                            $('#form-wizard').attr('action', "{{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id, revizyon_mu=revizyon_bekleniyor_mu) }}")[0].submit();
+                        }
+                        else {
+                            swal("{{ _("Proje başvurusunu tamamlamaktan vazgeçtiniz") }}",{
+                                icon:"warning",
+                                timer: 4000,
+                                button:false
+
+
+                            });
+                        }
+                    });
+                {#                    formaction={{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id) }}>#}
+                // do some stuff, and if it's okay:
+            }
+
+            function proje_basvurusu_taslak_kaydet() {
+                swal({
+                    title: "{{ _("Taslak Proje Kaydet") }}",
+                    text: "{{ _("Projenizi taslak olarak kaydetmek üzeresiniz. Daha sonra güncelleyip başvurunuzu tamamlayabilirsiniz.") }}",
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            text: "Vazgeç",
+                            value: false,
+                            visible: true,
+                            closeModal: false,
+                        },
+                        confirm: {
+                            text: "Kabul Et",
+                            value: true,
+                            visible: true,
+                            closeModal: false
+                        }
+                    }
+                })
+                    .then((willSave) => {
+                        if (willSave) {
+                            $('#form-wizard').attr('action', "{{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id, taslak_mi=True) }}")[0].submit();
+                        }
+                        else {
+                            swal("{{ _("Proje taslağı kaydetmekten vazgeçtiniz") }}",{
+                                icon:"warning",
+                                timer:4000,
+                                button:false
+
+                            });
+                        }
+                    });
+                {#                    formaction={{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id) }}>#}
+                // do some stuff, and if it's okay:
+            }
+
+            function proje_basvurusu_taslak_guncelle() {
+                swal({
+                    title: "{{ _("Taslak Proje Güncelle") }}",
+                    text: "{{ _("Proje taslağını güncellemek üzeresiniz. Gerekli alanlari ekledikten sonra başvurunuzu tamamlayabilirsiniz.") }}",
+                    icon: "warning",
+                    buttons: {
+                        cancel: {
+                            text: "Vazgeç",
+                            value: false,
+                            visible: true,
+                            closeModal: false,
+                        },
+                        confirm: {
+                            text: "Kabul Et",
+                            value: true,
+                            visible: true,
+                            closeModal: false
+                        }
+                    }
+                })
+                    .then((willSave) => {
+                        if (willSave) {
+                            $('#form-wizard').attr('action', "{{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id, taslak_mi=True) }}")[0].submit();
+                        }
+                        else {
+                            swal("{{ _("Proje taslağını güncellemekten vazgeçtiniz") }}",{
+                                icon:"warning",
+                                timer:4000,
+                                button:false
+                            });
+                        }
+                    });
+            }
+        </script>
+    {% endmacro %}
+
+
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Yeni Başvuru") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="number-tabs">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                {{ form_wizard(form_steps, proje_turu_buttonlari(), navigate_steps=True, form_sweet_alert_macro=basvuru_kaydet_sweet_alert) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% if uyari_mesajlari and (uyari_mesajlari.basvuru_yapilmadan_gelecek_uyari or uyari_mesajlari.proje_yurutucusu_icin_yardim_mesaji or proje_tur_dict.proje_turu_aciklama) %}
+        <div class="modal fade" id="uyari-mesajlari-modal"
+             style="display: none; padding-left: 0px;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger m-b-0">
+                            {% if proje_tur_dict.proje_turu_aciklama %}
+                                <h5><i class="fa fa-info-circle"></i>{{ _("Proje Türü Özeti") }}
+                                </h5>
+                                <p>  {{ proje_tur_dict.proje_turu_aciklama | safe }} </p>
+                                <hr>
+                            {% endif %}
+                            {% if uyari_mesajlari.basvuru_yapilmadan_gelecek_uyari %}
+                                <br>
+                                <h5><i class="fa fa-info-circle"></i>{{ _("Uyarı Mesajı") }}</h5>
+                                <p>  {{ uyari_mesajlari.basvuru_yapilmadan_gelecek_uyari | safe }} </p>
+                                <hr>
+                            {% endif %}
+                            {% if uyari_mesajlari.proje_yurutucusu_icin_yardim_mesaji %}
+                                <br>
+                                <h5><i class="fa fa-info-circle"></i>{{ _("Yardım Mesajı") }}</h5>
+                                <p>  {{ uyari_mesajlari.proje_yurutucusu_icin_yardim_mesaji  | safe }} </p>
+                                <hr>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                {#$("#uyari-mesajlari-modal-content").html('');#}
+                $('#uyari-mesajlari-modal').modal('show');
+            });
+
+        </script>
+    {% endif %}
+    {% if hata_mesajlari %}
+        <div class="modal fade" id="hata-mesajlari-modal" style="display: none;"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h4 class="modal-title f-s-20 text-red-darker"
+                            id="preview-modal-title">
+                            {{ _("Proje Başvurusunu Tamamlayabilmek İçin Hatalari Gideriniz") }}
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ render_alert_list(hata_mesajlari) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                {#$("#uyari-mesajlari-modal-content").html('');#}
+                $('#hata-mesajlari-modal').modal('show');
+            });
+        </script>
+    {% endif %}
+
+{% endblock %}

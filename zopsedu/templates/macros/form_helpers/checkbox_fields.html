@@ -1,0 +1,26 @@
+{#checkbox field label solda olacak sekilde yazar#}
+{% macro render_checkbox(field) %}
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+        {{ field(**kwargs)|safe }}
+        {{ field.label(class="control-label") }}
+    </div>
+{% endmacro %}
+
+{#checkbox field labelsız#}
+{% macro render_checkbox_without_label(field) %}
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+        {{ field(**kwargs)|safe }}
+    </div>
+{% endmacro %}
+
+
+{#checkbox field label solda olacak sekilde ve tooltipli yazar#}
+{% macro render_checkbox_with_tooltip(field,title) %}
+    <div class="form-check abc-checkbox abc-checkbox-primary">
+        {{ field(**kwargs)|safe }}
+        {{ field.label(class="control-label") }}
+        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+           data-original-title="{{ title }}"></i>
+    </div>
+{% endmacro %}
+

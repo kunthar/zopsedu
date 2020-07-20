@@ -1,0 +1,12 @@
+{% include "navbar.html" without context %}
+{% extends "index.html" %}
+{% block body %}
+    <form action="/file/upload" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <label for="file1">Sablon yukle: </label>
+        <input id="file1" type="file" name="file1"><br/>
+        <label for="file2">Sablon yukle: </label>
+        <input id="file2" type="file" name="file2"><br/>
+        <input type="submit" value="Upload">
+    </form>
+{% endblock %}

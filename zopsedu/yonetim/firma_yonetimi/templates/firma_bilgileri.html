@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+    <div class="content">
+    <div class="row">
+        <div class="col-md-12 ui-sortable">
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        {{ _("Firma Detay") }}
+                    </h4>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-items">
+                            <a href="#default-tab-1" data-toggle="tab" class="nav-link show active"
+                               role="tab">
+                                <span class="d-sm-none">Firma Bil...</span>
+                                <span class="d-sm-block d-none">{{ _("Firma Bilgileri") }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                     <div class="alert alert-info fadeIn">
+                    <span class="close" data-dismiss="alert">×</span>
+                    <div class="row">
+                        <ul class="fa-ul m-l-20">
+                            <li>
+                                    <span class="fa-li"><i
+                                            class="fas fa-info-circle"></i></span>
+                                {{ _("Firma bilgilerinde güncellenebilir alanlar ") }}
+                                <i class="fa fa-asterisk"></i>
+                                {{ _("ile işaretlenmiştir.") }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {{ big_flash_message() }}
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                            <form action="{{ url_for('firma_yonetimi.firma_detay_guncelle', firma_id=firma.id) }}"
+                                  method="post">
+                                {{ form.csrf_token() }}
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Ad") }}</label>
+                                    <div class="col-md-6">
+                                     <span class="form-control m-b-5">
+                                         {{ firma.adi }}
+                                    </span>
+
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Telefon")
+                                        }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                    <span class="m-b-5">
+                                        {{ form.telefon(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("E-mail") }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                    <span class="m-b-5">
+                                        {{ form.email(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Vergi Kimlik
+                                        Numarasi") }}</label>
+                                    <div class="col-md-6">
+                                    <span class="form-control m-b-5">
+                                      {{ firma.vergi_kimlik_numarasi }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Faaliyet Belgesi
+                                        Veriliş Tarihi") }}</label>
+                                    <div class="col-md-6">
+                                    <span class="form-control m-b-5">
+                                      {{ '{: %d.%m.%Y}'.format(firma.faaliyet_belgesi_verilis_tarihi) }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Adres") }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                    <span class="m-b-5">
+                                        {{ form.adres(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Firma Faaliyet Belgesi") }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                    <span class="m-b-5">
+                                        {{ form.firma_faaliyet_belgesi_id(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Yetkili Ad")
+                                        }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                     <span class="m-b-5">
+                                         {{ form.yetkili_adi(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Yetkili Soyad")
+                                        }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                     <span class="m-b-5">
+                                         {{ form.yetkili_soyadi(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">{{ _("Yetkili Email")
+                                        }} <i class="fa fa-asterisk"></i></label>
+                                    <div class="col-md-6">
+                                   <span class="m-b-5">
+                                       {{ form.yetkili_email(class='form-control') }}
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 d-flex justify-content-center mt-3">
+                                    <button class="btn btn-success">{{ _("Kaydet") }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,212 @@
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+{% macro render_arastirma_projesi_butce(form, uyari_mesajlari) %}
+    <section>
+        <div class="card">
+            <div class="content-header row">
+                <div class="content-header-left col-md-8 col-12 mb-2">
+                    <h5 class="content-header-title mb-0 d-inline-block">    {{ form.form_title }}
+                        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                           data-original-title="{{ _('Projenize destek veren kuruluş bilgilerini belirtiniz.') }}"></i>
+                    </h5>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_alert_list(form.form_description_list) }}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for form_field in form %}
+                                {% if form_field.type == "FormField" %}
+                                    {% set headers = [
+                                    (form_field.alimlar[0].ad.label.text, 400),
+                            (form_field.alimlar[0].gerekce.label.text, 500),
+                            (form_field.alimlar[0].onerilen_miktar.label.text,300),
+                            (form_field.alimlar[0].birim.label.text,300),
+                            (form_field.alimlar[0].onerilen_yil_1.label.text,300),
+                            (form_field.alimlar[0].onerilen_yil_2.label.text,300),
+                            (form_field.alimlar[0].onerilen_yil_3.label.text,300)
+                        ] %}
+
+                                    {% set initial_data = [] %}
+                                    {% set contents = [] %}
+                                    {% for alim in form_field.alimlar %}
+                                        {% set data = [
+                                alim.ad,
+                                alim.gerekce,
+                                alim.onerilen_miktar,
+                                alim.birim,
+                                alim.onerilen_yil_1,
+                                alim.onerilen_yil_2,
+                                alim.onerilen_yil_3] %}
+                                        {% do initial_data.append(data) %}
+                                        {% if loop.index == loop.length %}
+                                            {% do contents.extend( [
+                                    form_field.alimlar[loop.index - 1].ad,
+                                    form_field.alimlar[loop.index - 1].gerekce,
+                                    form_field.alimlar[loop.index - 1].onerilen_miktar,
+                                    form_field.alimlar[loop.index - 1].birim,
+                                    form_field.alimlar[loop.index - 1].onerilen_yil_1,
+                                    form_field.alimlar[loop.index - 1].onerilen_yil_2,
+                                    form_field.alimlar[loop.index - 1].onerilen_yil_3]) %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    <h6 class="form-section"> {{ form_field.butce_kalemi_adi.data }}</h6>
+                                    <div class="alert alert-alert fadeIn">
+                                        <span class="close" data-dismiss="alert">×</span>
+                                        <div class="row">
+                                            <i class="fa fa-info-circle fa-2x pull-left m-l-10 m-r-10"></i>
+                                            <ul class="fa-ul m-l-20">
+                                                <li>
+                                        <span class="fa-li"><i
+                                                class="fs fa-check-square"></i></span>
+                                                    {{ _("En Fazla Ayırabileceginiz
+                                        Bütce : ") }} {{ form_field.butce_ust_limiti.data | currency }}
+                                                </li>
+                                                <li>
+                                        <span class="fa-li"><i
+                                                class="fas fa-check-square"></i></span>
+                                                    {{ _("En Az Ayırabileceginiz Bütce : ") }} {{ form_field.butce_alt_limiti.data | currency }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        {{ dynamic_field_list(headers, contents, initial_data, button_name = _("Ekle")) }}
+                                        <table aria-hidden="true" class="table table-bordered"
+                                               style="font-weight: bold;">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>{{ _('1. yıl') }}</th>
+                                                <th>{{ _('2. yıl') }}</th>
+                                                <th>{{ _('3. yıl') }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="odd gradeX" align="center">
+                                                <td>{{ _('Yıllara Göre Bütçe Toplamı') }}</td>
+                                                <td><input class="money" name="total_yil_1" type='text'
+                                                           value="0,00" disabled
+                                                           title=""/></td>
+                                                <td><input class="money" name="total_yil_2" type='text'
+                                                           value="0,00" disabled
+                                                           title=""/></td>
+                                                <td><input class="money" name="total_yil_3" type='text'
+                                                           value="0,00" disabled
+                                                           title=""/></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <table aria-hidden="true" class="table table-bordered"
+                                   style="border: 1px solid #e2e7eb; font-weight: bold;">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>{{ _('1. yıl') }}</th>
+                                    <th>{{ _('2. yıl') }}</th>
+                                    <th>{{ _('3. yıl') }}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="odd gradeX" align="center">
+                                    <td>{{ _('Yıllara Göre Genel Bütçe Toplamı') }}</td>
+                                    <td><input class="money" name="total_yillar_1" type='text' value="0,00"
+                                               disabled title=""/></td>
+                                    <td><input class="money" name="total_yillar_2" type='text' value="0,00"
+                                               disabled title=""/></td>
+                                    <td><input class="money" name="total_yillar_3" type='text' value="0,00"
+                                               disabled title=""/></td>
+                                </tr>
+                                <tr class="odd gradeX" align="center">
+                                    <td>{{ _('Genel Bütçe Toplamı') }}</td>
+                                    <td colspan="3"><input class="money" name="total_sum" type='text' value="0"
+                                                           disabled title=""/></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function changeValue (items, changeField) {
+            let tempValue = 0;
+            $.each(items, function (value) {
+                $(this).mask("###0.00", {reverse: true});
+                if (this.value) {
+                    tempValue += parseFloat($(this).val());
+                }
+                $(this).mask("#.##0,00", {reverse: true});
+            });
+            changeField.val(tempValue.toFixed(2));
+            changeField.trigger("input");
+        };
+
+        $(".table.table-striped.table-bordered").on("input", ".money", function (e) {
+            let year = parseInt(e.target.name.slice(-1));
+            // sum of each YEAR X on the same table
+            let totalYearX = $(e.target).parents().eq(5).find('input[name="total_yil_' + year + '"]');
+            let yearsX = $(e.target).parents().eq(2).find('input[name*="yil_' + year + '"]');
+            changeValue(yearsX, totalYearX);
+
+            // sum of all YEAR X from all tables
+            let yearsSumX = $('input[name="total_yillar_' + year + '"]');
+            let totalYearsX = $('input[name*="total_yil_' + year + '"]');
+            changeValue(totalYearsX, yearsSumX);
+
+            // sum of all years from all tables
+            let totalYears = $('input[name*="total_yillar_"]');
+            let totalSum = $('input[name="total_sum"]');
+            changeValue(totalYears, totalSum);
+        });
+        $(document).ready(function () {
+            $('.money').trigger('input');
+        });
+    </script>
+    {% if uyari_mesajlari and uyari_mesajlari.butce_ekrani_bilgilendirme %}
+        {{ proje_butce_ekrani_uyari_mesaji(uyari_mesajlari) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro proje_butce_ekrani_uyari_mesaji(uyari_mesajlari) %}
+    <div class="modal fade" id="butce-ekrani-uyari-mesaji-modal"
+         style="display: none; padding-left: 0px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger m-b-0">
+                        <br>
+                        <h5>
+                            <i class="fa fa-info-circle"></i>{{ _("Bütçe Ekranı Uyarı Mesajı") }}
+                        </h5>
+                        <p>  {{ uyari_mesajlari.butce_ekrani_bilgilendirme  | safe }} </p>
+                        <hr>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).on("click", '#step-tab-proje-butce', function () {
+            $('#butce-ekrani-uyari-mesaji-modal').modal('show');
+        });
+    </script>
+{% endmacro %}

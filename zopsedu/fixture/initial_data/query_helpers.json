@@ -1,0 +1,170 @@
+{
+  "query_helper": [
+    {
+      "id": 1,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_proje_with_id",
+      "function_arg_list": [
+        "proje_id"
+      ]
+    },
+    {
+      "id": 2,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_firma_teklif_with_related_field",
+      "function_arg_list": [
+        "teklif_id"
+      ]
+    },
+    {
+      "id": 3,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_with_related_field",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 4,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_with_related_field_with_mkk",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 5,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_yaklasik_maaliyet_icmal_sablonu",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 6,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_malzeme_dilekcesi",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 7,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_olur_formu",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 8,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_onay_formu",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 9,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_komisyon_tutanagi",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 10,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_satinalma_for_siparis_formu",
+      "function_arg_list": [
+        "satinalma_id"
+      ]
+    },
+    {
+      "id": 11,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_muhasebe_fisi_bilgileri",
+      "function_arg_list": [
+        "muhasebe_fis_id"
+      ]
+    },
+    {
+      "id": 12,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_toplanti_with_gundem",
+      "function_arg_list": [
+        "toplanti_id"
+      ]
+    },
+    {
+      "id": 13,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_proje_oneri_formu_info",
+      "function_arg_list": [
+        "proje_id"
+      ]
+    },
+    {
+      "id": 14,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_proje_with_butce",
+      "function_arg_list": [
+        "proje_id"
+      ]
+    },
+    {
+      "id": 15,
+      "module_name": "BAP",
+      "sub_module_name": "BAP",
+      "class_name": "BapQueryHelpers",
+      "import_path": "zopsedu.bap.lib.query_helpers",
+      "function_name": "get_proje_with_hakem",
+      "function_arg_list": [
+        "proje_id",
+        "hakem_id"
+      ]
+    }
+  ]
+}

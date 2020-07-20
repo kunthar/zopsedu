@@ -1,0 +1,178 @@
+{% extends "anasayfa_base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field_without_label %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+{% block extra_alt_css %}
+     <link href="{{ url_for('static', filename = 'assets/zopsedu/css/zopsedu-anasayfa.css') }}?version={{ get_app_version() }}"
+              rel="stylesheet"/>
+    <style>
+
+        html {
+            height: auto;
+        }
+
+    </style>
+{% endblock %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Firma Kayıt") }}</h3>
+        </div>
+    </div>
+    <section id="bilgilendirme" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="alert alert-danger alert-dismissible mb-2" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul class="fa-ul m-l-20">
+                        <li>
+                            <i class="ft-alert-triangle"></i>
+                            {{ firma_kayit_formu.bilgi_notu | safe }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="content-body">
+        <section id="page-firma-bilgileri" class="row">
+            <div class="col-md-12">
+                <form class="form" method="POST" enctype="multipart/form-data">
+                    {{ firma_kayit_formu.csrf_token() }}
+                    {{ big_flash_message() }}
+                    <div class="form-body">
+                        <section id="genel-form" class="card">
+                            <h4 class="form-section">{{ _("Firma Bilgileri") }}</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.adi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.adi) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.adres.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.adres) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.vergi_kimlik_numarasi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.vergi_kimlik_numarasi, class="form-control vergi-kimlik-no-mask") }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.firma_faaliyet_belgesi_id.label }}</label>
+                                        <div class="col-md-8 d-flex justify-content-center">
+                                            {{ render_text_field_without_label(firma_kayit_formu.firma_faaliyet_belgesi_id) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.faaliyet_belgesi_verilis_tarihi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.faaliyet_belgesi_verilis_tarihi) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.vergi_dairesi_id.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.vergi_dairesi_id) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.iban.label }}</label>
+                                        <div class="col-md-8 d-flex justify-content-center">
+                                            {{ render_text_field_without_label(firma_kayit_formu.iban, class="iban-mask form-control") }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.banka_sube_adi.label }}</label>
+                                        <div class="col-md-8 d-flex justify-content-center">
+                                            {{ render_text_field_without_label(firma_kayit_formu.banka_sube_adi) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.email.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.email) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.telefon.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.telefon) }}
+                                        </div>
+                                    </div>
+                                    <h4 class="form-section">{{ _('Yetkili Bilgileri') }}</h4>
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_adi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_adi) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_soyadi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_soyadi) }}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_user_bilgileri.yetkili_email.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_user_bilgileri.yetkili_email) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_user_bilgileri.yetkili_kullanici_adi.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_user_bilgileri.yetkili_kullanici_adi) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_user_bilgileri.password.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_user_bilgileri.password, type="password") }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">{{ firma_kayit_formu.yetkili_user_bilgileri.re_password.label }}</label>
+                                        <div class="col-md-8">
+                                            {{ render_text_field_without_label(firma_kayit_formu.yetkili_user_bilgileri.re_password, type="password") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="form-actions">
+                        <div class="text-center col-md-12">
+                            <button class="btn btn-success"
+                                    formaction="{{ url_for('firma.BapFirmaIslemleriView:firma_kaydet') }}">{{ _("Kaydet") }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

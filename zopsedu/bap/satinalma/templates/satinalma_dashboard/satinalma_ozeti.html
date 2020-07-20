@@ -1,0 +1,250 @@
+{% extends "dashboard_base.html" %}
+{% from 'satinalma_dashboard/satinalma_dashboard_genel.html' import satinalma_dashboard_genel %}
+{% from 'macros/durum_degisim.html' import print_column_data, is_data_exist, boolean_to_text, gorevli_ad_soyad, satinalma_state %}
+
+
+
+{% if satinalma.durumu.current_app_state.value == 'Sonlanmış' %}
+    {% set alert_color = "alert-danger" %}
+    {% set alert_color_border = "border-left-danger" %}
+
+{% endif %}
+{% if satinalma.durumu.current_app_state.value == 'Sürmekte Olan' %}
+    {% set alert_color = "alert-success" %}
+    {% set alert_color_border = "border-left-success" %}
+
+{% endif %}
+{% if satinalma.durumu.current_app_state.value == 'Başvuru / Kabul' %}
+    {% set alert_color = "alert-warning" %}
+    {% set alert_color_border = "border-left-warning" %}
+{% endif %}
+
+
+{% macro satinalma_dashboard_ozeti() %}
+    <section id="page-tabs" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active show" id="active-tab" data-toggle="tab" href="#satinalma-bilgileri"
+                           aria-controls="active" aria-expanded="true">{{ _('Satınalma Bilgileri') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="link-tab" data-toggle="tab" href="#proje-bilgileri"
+                           aria-controls="link" aria-expanded="false">{{ _('Proje Bilgileri') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="link-tab" data-toggle="tab" href="#satinalma-durumlari"
+                           aria-controls="link" aria-expanded="false">{{ _('Satınalma Durumları') }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="page-tab-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="tab-content px-1">
+                    <div role="tabpanel" class="tab-pane active" id="satinalma-bilgileri" aria-expanded="true">
+                        <section id="satinalma-ozet-card">
+                            <div class="card {{ alert_color_border }} border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Satınalma Bilgileri') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="card  box-shadow-0 {{ alert_color }}">
+                                            <div class="card-content collapse show">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Satınalma Durumu') }} </b></p>
+                                                            <p class="card-text"> {{ satinalma.durumu.description }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Satınalma Süreci') }} </b></p>
+                                            <p class="card-text"> {{ satinalma.durumu.current_app_state.value }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b> </b></p>
+                                            <p class="card-text"> {{ satinalma.durumu.state_code }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Kabul Edilen Butcesi') }} </b></p>
+                                            <p class="card-text"> {{ toplam_butce | tr_currency if toplam_butce else "-" }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Kullanılan Butcesi') }} </b></p>
+                                            <p class="card-text"> {{ kullanilan_butce | tr_currency if kullanilan_butce else "-" }}</p>
+                                        </div>
+
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Rezerv Butcesi') }} </b></p>
+                                            <p class="card-text"> {{ rezerv_butce | tr_currency if rezerv_butce else "-" }}</p>
+                                        </div>
+
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Kullanılabilir Butcesi') }} </b></p>
+                                            <p class="card-text"> {{ kullanilabilir_butce | tr_currency if kullanilabilir_butce else "-" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="tab-pane" id="proje-bilgileri">
+                        <section id="proje-bilgileri-ozet-card">
+                            <div class="card border-left-info border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Proje Bilgileri') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Numarası') }} </b></p>
+                                            <p class="card-text"> {{ proje.proje_no }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Yürütücüsü') }}</b></p>
+                                            <p class="card-text">
+                                                {{ proje.proje_yurutucu.personel.person.ad }}
+                                                {{ _(' ') }}
+                                                {{ proje.proje_yurutucu.personel.person.soyad }}
+                                            </p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Proje Başlığı') }}</b></p>
+                                            <p class="card-text">{{ proje.proje_basligi }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b> {{ _('Proje Türü / Numarası') }}</b></p>
+                                            <p class="card-text">{{ proje.proje_proje_turu.ad }}
+                                                / {{ proje.proje_proje_turu.tur_kodu }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Kabul Edilen Başlam Tarihi') }}  </b></p>
+                                            <p class="card-text"> {{ date_to_string(proje.kabul_edilen_baslama_tarihi) if proje.kabul_edilen_baslama_tarihi else "-" }}</p>
+                                        </div>
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Fakülte') }}  </b></p>
+                                            <p class="card-text"> {{ proje.fakulte.ad }}</p>
+                                        </div>
+
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Bölüm') }}</b></p>
+                                            <p class="card-text">{{ proje.bolum.ad }}</p>
+                                        </div>
+
+                                        <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                            <p class="card-text"><b>{{ _('Ana Bilim Dalı ') }}</b></p>
+                                            <p class="card-text">{{ proje.ana_bilim_dali.ad }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="tab-pane" id="satinalma-durumlari">
+                        <section id="proje-durumlari-card">
+                            <div class="card border-left-danger border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Satınalma Durumları') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="nav-vertical">
+                                            <ul class="nav nav-tabs nav-left nav-border-left">
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size active"
+                                                       id="satinalma-durumlari-detay-tab"
+                                                       data-toggle="tab"
+                                                       href="#satinalma-durumlari-detay"
+                                                       aria-expanded="false">{{ _('Satınalma Durumları') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="satinalma-islemleri-detay-tab"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#satinalma-islemleri-detay"
+                                                       aria-expanded="false">{{ _('Satınalma İşlemleri') }}</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content px-1">
+                                                <div role="tabpanel" class="tab-pane active show"
+                                                     id="satinalma-durumlari-detay"
+                                                     aria-expanded="true"
+                                                     aria-labelledby="baseVerticalLeft1-tab1">
+                                                    <table class="table table-sm table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <td>{{ _("Durum Kodu") }}</td>
+                                                            <td>{{ _("Durum Açıklama") }}</td>
+                                                            <td>{{ _("Durum Grubu") }}</td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for satinalma_durum in satinalma_durumlari %}
+                                                            <tr>
+                                                                <td>{{ satinalma_durum.state_code }}</td>
+                                                                <td>{{ satinalma_durum.state_description }}</td>
+                                                                <td>{{ satinalma_durum.current_app_state.value }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="satinalma-islemleri-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab2">
+                                                    <table class="table table-sm table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <td>{{ _("İşlem Kodu") }}</td>
+                                                            <td>{{ _("İşlem Açıklama") }}</td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for satinalma_islem in satinalma_islemleri %}
+                                                            <tr>
+                                                                <td>{{ satinalma_islem.action_code }}</td>
+                                                                <td>{{ satinalma_islem.action_description }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endmacro %}
+
+{% block context %}
+
+    {{ satinalma_dashboard_genel(_("Satınalma Özeti"),
+           satinalma_dashboard_ozeti(),
+           satinalma,
+           proje,
+           satinalma_id,
+           states_info,
+           actions_info) }}
+
+{% endblock %}

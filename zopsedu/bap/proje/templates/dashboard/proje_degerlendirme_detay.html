@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% from 'macros/proje_dashboard.html' import proje_dashboard_genel, gorevli_ad_soyad %}
+{% from 'macros/proje_dashboard.html' import is_data_exist, boolean_to_text, print_column_data %}
+
+
+{% macro render_field_data_and_label(field) %}
+    <div class="col-md-6">
+        <div>
+            {{ field.label(class="control-label f-s-15", style="color: #00acac") }}
+        </div>
+        <div class="f-s-12">
+            {% if field.data == "evet" %}
+                {{ _("Evet") }}
+            {% elif field.data == "hayir" %}
+                {{ _("Hayır") }}
+            {% elif field.data == "kismen" %}
+                {{ _("Kısmen") }}
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% block context %}
+    <div class="content">
+        <div class="panel panel-inverse p-15">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="{{ url_for('proje.degerlendirme_listele', proje_id=proje_id) }}"><button class="btn btn-xs btn-grey">{{ _("Proje Değerlendirmeleri Sayfasına Git") }}</button></a>
+                </div>
+                <h4 class="panel-title">{{ _("Değerlendirme Detay") }}</h4>
+            </div>
+            <div class="panel-body bg-white-transparent-9 text-black-lighter">
+                <div class="row mt-2">
+                    {{ render_field_data_and_label(degerlendirme_form.proje_konusu) }}
+                    {{ render_field_data_and_label(degerlendirme_form.proje_amaci) }}
+                </div>
+                <div class="row mt-3">
+                    {{ render_field_data_and_label(degerlendirme_form.proje_bilimsel) }}
+                    {{ render_field_data_and_label(degerlendirme_form.proje_katki) }}
+                </div>
+                <div class="row mt-3">
+                    {{ render_field_data_and_label(degerlendirme_form.proje_temeli) }}
+                    {{ render_field_data_and_label(degerlendirme_form.proje_metot) }}
+                </div>
+                <div class="row mt-3">
+                    {{ render_field_data_and_label(degerlendirme_form.proje_arastirma) }}
+                    {{ render_field_data_and_label(degerlendirme_form.proje_takvimi) }}
+                </div>
+                <div class="row mt-3">
+                    {{ render_field_data_and_label(degerlendirme_form.sarf_techizat) }}
+                    {{ render_field_data_and_label(degerlendirme_form.sanayi) }}
+                </div>
+                <div class="row mt-3">
+                    {{ render_field_data_and_label(degerlendirme_form.etik_kurul) }}
+                    <div class="col-md-6">
+                        <div>
+                            <label class="f-s-15" style="color: #00acac">
+                                {{ _("Görüş / Öneri / Değişiklik") }}
+                            </label>
+                        </div>
+                        <div class="f-s-12">
+                            {{ degerlendirme_form.gorus_oneri_degisiklik.data }}
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="row">
+                        <div class="col-md-6 f-s-15 mt-3">
+                            <div>
+                                <h3 style="color: #00acac">Değerlendirme Sonucu</h3>
+                            </div>
+                            {{ degerlendirme_form.degerlendirme_sonucu.data }}
+                        </div>
+                        <div class="row col-md-6 mt-4">
+                            {% if degerlendirme_form.dosya_id.data %}
+                                <a class="f-s-15 text-red-darker" id="download-file-{{ degerlendirme_form.dosya_id.data }}"
+                                   href="{{ url_for("FileView:file_download", file_id=degerlendirme_form.dosya_id.data) }}">{{ _("Değerlendirmeye İlişkin Ek Dosya İndir") }}</a>
+{#                                href="/file/download/{{ degerlendirme_form.dosya_id.data }}">{{ _("Değerlendirmeye İlişkin Ek Dosya İndir") }}</a>#}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+{#file upload field label solda olacak sekilde yazar#}
+{% macro render_fileupload_field(field) %}
+    {{ field.label(class="control-label") }}
+    {{ field(**kwargs)|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+{#file upload field label solda olacak sekilde ve tooltipli yazar#}
+{% macro render_fileupload_field_with_tooltip(field, title) %}
+    {{ field.label(class="control-label") }}
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+       data-original-title="{{ title }}"></i>
+    {{ field(class="mt-1")|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+{#özel bir tasarıma sahip file uploader :) #}
+{% macro custom_file_upload(field) %}
+    <label class="custom-file-upload">
+        {{ field }}
+        {{ error(field) }}
+    </label>
+{% endmacro %}
+
+{#çok acayip bir file uploader :) #}
+{% macro default_file(field) %}
+    <input type="file" name="{{ field.name }}" id="{{ field.id }}" class="btn"/>
+    {% if field.data %}
+        <a class="btn btn-link btn-xs"
+           onclick="showInfo_{{ field.id | replace('-', '_') }}(this);">Info <i
+                class="fa fa-arrow-right"></i></a>
+        <div id="div_{{ field.id }}"></div>
+        <script>
+            function showInfo_{{ field.id | replace('-', '_') }}(that) {
+                if ($(that).parentsUntil("tbody").last().find('input')[0].value) {
+                    if ($('#div_{{ field.id }}')[0].innerHTML.trim() === '') {
+                        $.ajax({
+                            url: '/file/information/{{ field.data }}'
+                        }).done(function (data) {
+                            console.log($('#div_{{ field.id }}')[0]);
+                            $('#div_{{ field.id }}')[0].innerHTML = 'Dosya Ismi: <strong>'
+                                + data['name'] + '</strong>' +
+                                '<br> Yükleme Zamanı: <strong>' + data['uploadedAt'] + '</strong>';
+                        });
+                    } else {
+                        $('#div_{{ field.id }}').is(":visible") ?
+                            $('#div_{{ field.id }}').hide() : $('#div_{{ field.id }}').show();
+                    }
+                }
+            }
+        </script>
+    {% endif %}
+{% endmacro %}

@@ -1,0 +1,17 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+
+{#currency field label solda olacak sekilde ve tooltipli yazar#}
+{% macro render_currency_field_with_tooltip(field, title) %}
+    {{ field.label(class="control-label") }}
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+       data-original-title="{{ title }}"></i>
+    {{ field(class="form-control width-full money", **kwargs)|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+{#currencyfield labelsız yazar#}
+{% macro render_currency_field_without_label(field) %}
+        {{ field(class="form-control width-full money", **kwargs)|safe }}
+        {{ error(field) }}
+{% endmacro %}

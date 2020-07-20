@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Proje Türleri") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a class="btn btn-success"
+                   href="{{ url_for('proje.proje_turu') }}">
+                    <b>{{ _("Yeni Proje Türü Ekle") }}</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="page-tabs" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ big_flash_message() }}
+                    {{ render_alert_list(uyarilar) }}
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a href="#nav-tab-guncel-proje-turleri"
+                               data-toggle="tab"
+                               class="nav-link active show">{{ _("Güncel Proje Türleri") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nav-tab-eski-versiyon-proje-turleri" data-toggle="tab"
+                               class="nav-link" aria-controls="active"
+                               aria-expanded="true">{{ _("Eski Versiyon Proje Türleri") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nav-tab-taslak-proje-turleri" data-toggle="tab" id="link-tab"
+                               aria-controls="link"
+                               aria-expanded="false"
+                               class="nav-link">{{ _("Taslak Proje Türleri") }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="page-tab-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="tab-content px-1">
+                        <div role="tabpanel" class="tab-pane active"
+                             id="nav-tab-guncel-proje-turleri">
+                            {{ render_guncel_proje_turleri(proje_turleri) }}
+                        </div>
+
+                        <div class="tab-pane" id="nav-tab-eski-versiyon-proje-turleri">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ render_eski_versiyon_proje_turleri(proje_turleri) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane"
+                             id="nav-tab-taslak-proje-turleri">
+                            {{ render_taslak_proje_turleri(taslak_proje_turleri) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-1") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-2") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-3") }}
+
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    </script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}
+
+{% macro render_guncel_proje_turleri(proje_turleri) %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="data-table_wrapper"
+                 class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <table id="data-table-1"
+                       class="table table-striped table-bordered"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                            width="5%">{{ _("#") }}
+                        </th>
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                            width="5%">{{ _("Kodu") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Ad") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Kategori") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Proje Tipi") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                            width="5%">{{ _("Güncel mi?") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                            width="5%">{{ _("Aktif mi ?") }}
+                        </th>
+                        <th class="all" width="5%">{{ _("Düzenle") }}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set counter = ["1"] %}
+                    {% for p in proje_turleri %}
+                        {% if p.guncel_mi == True %}
+                            <tr class="odd" role="row">
+                                <td class="sorting_1">{{ counter|length }}</td>
+                                <td class="sorting_1">{{ p.tur_kodu }}</td>
+                                <td class="sorting_1">{{ p.ad }}</td>
+                                <td class="sorting_1">{{ p.kategori.value }}</td>
+                                <td class="sorting_1">{{ p.proje_tipi.value }}</td>
+                                <td class="sorting_1">{{ _("Evet") if p.guncel_mi else _("Hayır") }}</td>
+                                <td class="sorting_1">{{ _("Evet") if p.basvuru_aktif_mi else _("Hayır") }}</td>
+                                <td><a href="{{ url_for('proje.proje_turu_with_id', proje_turu_id=p.id) }}">
+                                    <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span>
+                                </a>
+                                </td>
+                            </tr>
+                            {% do counter.append("1") %}
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+{% macro render_eski_versiyon_proje_turleri(eski_versiyon_proje_turleri) %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="data-table_wrapper"
+                 class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <table id="data-table-2"
+                       class="table table-striped table-bordered"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+
+                    <tr role="row">
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("#") }}
+                        </th>
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Kodu") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Ad") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Kategori") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Proje Tipi") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Güncel mi?") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Aktif mi ?") }}
+                        </th>
+                        <th class="all">{{ _("Görüntüle") }}
+                        </th>
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    {% set counter = ["1"] %}
+                    {% for p in eski_versiyon_proje_turleri %}
+                        {% if p.guncel_mi == False %}
+
+                            <tr class="odd" role="row">
+                                <td class="sorting_1">{{ counter|length }}</td>
+                                <td class="sorting_1">{{ p.tur_kodu }}</td>
+                                <td class="sorting_1">{{ p.ad }}</td>
+                                <td class="sorting_1">{{ p.kategori.value }}</td>
+                                <td class="sorting_1">{{ p.proje_tipi.value }}</td>
+                                <td class="sorting_1">{{ _("Evet") if p.guncel_mi else _("Hayır") }}</td>
+                                <td class="sorting_1">{{ _("Evet") if p.basvuru_aktif_mi else _("Hayır") }}</td>
+                                <td><a href="{{ url_for('proje.proje_turu_with_id', proje_turu_id=p.id) }}">
+                                    <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span></a>
+                                </td>
+                            </tr>
+                            {% do counter.append("1") %}
+                        {% endif %}
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+{% macro render_taslak_proje_turleri(taslak_proje_turleri) %}
+    <div class="row">
+        <div class="col-md-12">
+            <div id="data-table_wrapper"
+                 class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                <table id="data-table-3"
+                       class="table table-striped table-bordered"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("#") }}
+                        </th>
+                        <th class="all sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Taslak Sahibi") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Proje Türü Adı") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Proje Türü Kategori") }}
+                        </th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                            rowspan="1"
+                            colspan="1" aria-sort="ascending"
+                            aria-label="Rendering engine: activate to sort column descending"
+                        >{{ _("Kayıt Tarihi") }}
+                        <th class="all">{{ _('Düzenle') }}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% set counter = ["1"] %}
+                    {% for p in taslak_proje_turleri %}
+                        <tr class="odd" role="row">
+                            <td class="sorting_1">{{ counter |length }}</td>
+                            <td class="sorting_1">{{ p.user.person.ad }} {{ p.user.person.soyad }}</td>
+                            <td class="sorting_1">{{ p.taslak.ad }}</td>
+                            <td class="sorting_1">{{ p.taslak.kategori }}</td>
+                            <td class="sorting_1">{{ p.created_at }}</td>
+                            <td><a href="{{ url_for('proje.proje_turu_get_taslak_with_id', taslak_id=p.id) }}">
+                                <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span>
+                            </a>
+                            </td>
+                        </tr>
+                        {% do counter.append("1") %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

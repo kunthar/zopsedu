@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% from 'macros/_formhelpers.html' import render_text_field %}
+{% from 'macros/_formhelpers.html' import render_radio_button %}
+{% from 'macros/_formhelpers.html' import render_datetime_field %}
+{% from 'macros/_formhelpers.html' import render_checkbox %}
+{% from 'macros/form_wizard.html' import form_wizard %}
+
+
+
+{% block context %}
+    <!-- begin #content -->
+    <div id="content" class="content">
+        <form method="post" action="kaydet">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="panel form-group p-15">
+                <div class="text-center">
+                    <legend>Student Information Form</legend>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            {{ render_text_field(form.name) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.surname) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.identification_no) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.registration_no) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_radio_button(form.gender) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.nationality) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.home_institution) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.field_code) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.preceding_education) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.total_national_credits) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.total_ects) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.instruction_language) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.gpa) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_radio_button(form.language_level) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            {{ render_text_field(form.host_institution) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.contact) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.contact_host_institution) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.scholarship_sum) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.advance_payment) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.final_payment) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_datetime_field(form.start_date_of_study) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_datetime_field(form.finish_date_of_study) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_radio_button(form.level_of_degree) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_checkbox(form.has_the_student_ever_attended_mep) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_checkbox(form.has_the_student_ever_attended_eep) }}
+                        </div>
+                        <div class="panel">
+                            {{ render_text_field(form.notes) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="input-group-append justify-content-end">
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

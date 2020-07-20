@@ -1,0 +1,299 @@
+{% macro custom_serverside_table(endpoint, id="data-table",ara_button_id="ara",temizle_button_id="temizle",search_form_id="search-form",responsive=1, with_buttons=True) %}
+    <script>
+        $(document).ready(function () {
+                var options = {
+                    id: "{{ id }}",
+                    language: {
+                        decimal: "{% trans %},{% endtrans %}",
+                        emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                        info: "{% trans %}_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                        infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                        infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                        infoPostFix: "",
+                        thousands: "{% trans %}.{% endtrans %}",
+                        lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                        loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                        processing: "{% trans %}İşleniyor...{% endtrans %}",
+                        search: "{% trans %}Ara:{% endtrans %}",
+                        zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                        paginate: {
+                            first: "{% trans %}İlk{% endtrans %}",
+                            last: "{% trans %}Son{% endtrans %}",
+                            next: "{% trans %}Sonraki{% endtrans %}",
+                            previous: "{% trans %}Önceki{% endtrans %}"
+                        },
+                        aria: {
+                            sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                            sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                        },
+                        buttons: {
+                            copy: "{% trans %}Kopyala{% endtrans %}",
+                            copyTitle: "{% trans %}Panoya Kopyala{% endtrans %}",
+                            copySuccess: {
+                                _: "{% trans %}%d satır kopyalandı{% endtrans %}",
+                                1: "{% trans %}1 satır kopyalandı{% endtrans %}"
+                            },
+                            print: "{% trans %}Yazdır{% endtrans %}",
+                            colvis: "{% trans %}Alan Seç{% endtrans %}"
+                        }
+                    },
+                    buttons: [{
+                        extend: "copy",
+                        className: "btn btn-secondary buttons-copy buttons-html5",
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }, {
+                        extend: "csv",
+                        className: "btn btn-secondary buttons-csv buttons-html5",
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }, {
+                        extend: "excel",
+                        className: "btn btn-secondary buttons-excel buttons-html5",
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }, {
+                        extend: "pdf",
+                        className: "btn btn-secondary buttons-pdf buttons-html5",
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }, {
+                        extend: "print",
+                        className: "btn btn-secondary buttons-print buttons-html5",
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    }, "colvis"]
+                };
+
+                var tableObj = $("#" + options.id);
+                search_datatable();
+
+                function search_datatable(searchForm) {
+                    tableObj.DataTable({
+                        language: options.language,
+                        dom: "{% if with_buttons %}B{% endif %}frtip",
+                        buttons: options.buttons,
+                        paging: true,
+                        responsive: {{ responsive }},
+                        processing: true,
+                        serverSide: true,
+                        searching: false,
+                        ajax: {
+                            url: "{{endpoint}}",
+                            type: "POST",
+                            data: searchForm
+                        }
+                    });
+                }
+
+                function formSerializer(formArray) {
+                    var returnArray = {};
+                    for (var i = 0; i < formArray.length; i++) {
+                        returnArray[formArray[i]['name']] = formArray[i]['value'];
+                    }
+                    return returnArray;
+                }
+
+                $('{{ ara_button_id }}').click(function () {
+                    let form = formSerializer($('{{search_form_id}}').serializeArray());
+
+                    tableObj.DataTable().destroy();
+                    search_datatable(form);
+
+                });
+
+                $('{{ temizle_button_id }}').click(function () {
+                    tableObj.DataTable().destroy();
+                    $('{{search_form_id}}').trigger('reset');
+                    search_datatable();
+                });
+
+            }
+        )
+    </script>
+{% endmacro %}
+
+
+
+{% macro custom_serverside_table_without_buttons(endpoint, id="data-table",ara_button_id="ara",temizle_button_id="temizle",search_form_id="search-form",responsive=1, with_buttons=True) %}
+    <script>
+        $(document).ready(function () {
+                var options = {
+                    id: "{{ id }}",
+                    language: {
+                        decimal: "{% trans %},{% endtrans %}",
+                        emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                        info: "{% trans %}_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                        infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                        infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                        infoPostFix: "",
+                        thousands: "{% trans %}.{% endtrans %}",
+                        lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                        loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                        processing: "{% trans %}İşleniyor...{% endtrans %}",
+                        search: "{% trans %}Ara:{% endtrans %}",
+                        zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                        paginate: {
+                            first: "{% trans %}İlk{% endtrans %}",
+                            last: "{% trans %}Son{% endtrans %}",
+                            next: "{% trans %}Sonraki{% endtrans %}",
+                            previous: "{% trans %}Önceki{% endtrans %}"
+                        },
+                        aria: {
+                            sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                            sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                        },
+                    },
+                    buttons: []
+                };
+
+                var tableObj = $("#" + options.id);
+                search_datatable();
+
+                function search_datatable(searchForm) {
+                    tableObj.DataTable({
+                        language: options.language,
+                        dom: "{% if with_buttons %}B{% endif %}frtip",
+                        buttons: options.buttons,
+                        paging: true,
+                        responsive: {{ responsive }},
+                        processing: true,
+                        serverSide: true,
+                        searching: false,
+                        ajax: {
+                            url: "{{endpoint}}",
+                            type: "POST",
+                            data: searchForm
+                        }
+                    });
+                }
+
+                function formSerializer(formArray) {
+                    var returnArray = {};
+                    for (var i = 0; i < formArray.length; i++) {
+                        returnArray[formArray[i]['name']] = formArray[i]['value'];
+                    }
+                    return returnArray;
+                }
+
+                $('{{ ara_button_id }}').click(function () {
+                    let form = formSerializer($('{{search_form_id}}').serializeArray());
+
+                    tableObj.DataTable().destroy();
+                    search_datatable(form);
+
+                });
+
+                $('{{ temizle_button_id }}').click(function () {
+                    tableObj.DataTable().destroy();
+                    $('{{search_form_id}}').trigger('reset');
+                    search_datatable();
+                });
+
+            }
+        )
+    </script>
+{% endmacro %}
+
+{% macro serverside_table(endpoint, id="data-table", responsive=1, with_buttons=False) %}
+    <script>
+        $(document).ready(
+            function () {
+                let options = {
+                    id: "{{ id }}",
+                    language: {
+                        decimal: "{% trans %},{% endtrans %}",
+                        emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                        info: "{% trans %}_TOTAL_ kayıttan _START_ -_END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                        infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                        infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                        infoPostFix: "",
+                        thousands: "{% trans %}.{% endtrans %}",
+                        lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                        loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                        processing: "{% trans %}İşleniyor...{% endtrans %}",
+                        search: "{% trans %}Ara:{% endtrans %}",
+                        zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                        paginate: {
+                            first: "{% trans %}İlk{% endtrans %}",
+                            last: "{% trans %}Son{% endtrans %}",
+                            next: "{% trans %}Sonraki{% endtrans %}",
+                            previous: "{% trans %}Önceki{% endtrans %}"
+                        },
+                        aria: {
+                            sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                            sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                        },
+                        buttons: {
+                            copy: "{% trans %}Kopyala{% endtrans %}",
+                            copyTitle: "{% trans %}Panoya Kopyala{% endtrans %}",
+                            copySuccess: {
+                                _: "{% trans %}%d satır kopyalandı{% endtrans %}",
+                                1: "{% trans %}1 satır kopyalandı{% endtrans %}"
+                            },
+                            print: "{% trans %}Yazdır{% endtrans %}"
+                        }
+                    },
+                    buttons: []
+                };
+                let tableObj = $("#" + options.id);
+                let table = tableObj.DataTable({
+                    language: options.language,
+                    dom: "Bfrtip",
+                    bFilter:false,
+                    buttons: options.buttons,
+                    responsive: {{ responsive }},
+                    "processing": true,
+                    "serverSide": true,
+                    ajax: {
+                        url: "{{ endpoint }}",
+                        type: "POST",
+                        data: function (args) {
+                            return {"args": JSON.stringify(args)};
+                        }
+                    }
+                });
+                let columnSearch = $.fn.dataTable.util.throttle(
+                    function (col, val) {
+                        table.column(col).search(val).draw();
+                    },
+                    1000
+                );
+                let filter_tr = $('<tr></tr>');
+                filter_tr.attr('role', 'row');
+                let head = tableObj.find('thead');
+                let footSearchNeeded = false;
+                head.find('th').each(function (i) {
+                    let content = $('<th></th>');
+                    let thisJquery = $(this);
+                    let title = thisJquery.text();
+                    if (thisJquery.hasClass("searchableColumn")) {
+                        content.append($('<input type="text" placeholder="' + title + '" />')
+                            .on('keyup', function () {
+                                columnSearch(i, this.value);
+                            }));
+                        footSearchNeeded = true;
+                    }
+                    content.attr('style', thisJquery.attr('style'));
+                    filter_tr.append(content);
+                });
+                if (footSearchNeeded) {
+                    head.append(filter_tr);
+                }
+                table.on('responsive-resize.dt', function (e, datatable, columns) {
+                    columns.forEach(function (is_visible, index) {
+                        $.each($('tr', datatable.table().header()), function () {
+                            let col = $($(this).children()[index]);
+                            is_visible === true ? col.show() : col.hide();
+                        });
+                    });
+                });
+            }
+        )
+    </script>
+{% endmacro %}

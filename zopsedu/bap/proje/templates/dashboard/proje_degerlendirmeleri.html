@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+
+{% set states_info = next_states_info %}
+{% set actions_info = actions_info %}
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% macro proje_dashboard_hakem_degerlendirmeleri() %}
+
+    <section class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <table id="data-table"
+                       class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                       role="grid"
+                       aria-describedby="data-table_info" style="width: 100%">
+                    <thead>
+                    <tr role="row">
+                        {% if yetkili_mi %}
+                            <th>{{ _("Hakem Ad Soyad") }}</th>
+                        {% endif %}
+                        <th>{{ _("Değerlendirme Sonucu") }}</th>
+                        <th>{{ _("Rapor Tipi") }}</th>
+                        <th class="all">{{ _("İşlemler") }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for degerlendirme in proje_degerlendirmeleri %}
+                        <tr class="odd" role="row">
+                            {% if yetkili_mi %}
+                                <td>
+                                    {{ degerlendirme.hakem_ad_soyad }}
+                                </td>
+                            {% endif %}
+                            <td>
+                                {{ degerlendirme.degerlendirme_sonucu.value }}
+                            </td>
+                            <td>
+                                {{ degerlendirme.rapor_tipi.value }}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-info dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false"><i
+                                            class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                    </button>
+                                    <div class="dropdown-menu arrow">
+                                        {% if degerlendirme.degerlendirilen_rapor_file_id %}
+                                            <a class="dropdown-item"
+                                               href="{{ url_for('FileView:file_download', file_id=degerlendirme.degerlendirilen_rapor_file_id) }}">
+                                                {{ _("Rapor") }}
+                                            </a>
+                                        {% endif %}
+
+                                        {% if degerlendirme.degerlendirme_incelendi_mi %}
+                                            <a class="dropdown-item" href="#"
+                                               data-toggle="modal"
+                                               onclick="degerlendirmeOku({{ degerlendirme.degerlendirme_id | tojson }})"
+                                            >
+                                                {{ _("Değerlendirme Detay") }}</a>
+                                        {% endif %}
+                                        {% if yetkili_mi and not degerlendirme.degerlendirme_incelendi_mi %}
+                                            <li>
+                                                <a class="dropdown-item" href="#"
+                                                   data-toggle="modal"
+                                                   onclick="degerlendirmeGuncelleGet({{ degerlendirme.degerlendirme_id | tojson }})"
+                                                >
+                                                    {{ _("Değerlendirmeyi Düzenle") }}</a>
+                                            </li>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="modal fade" id="rapor-degerlendirmesi-oku-modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="rapor_turu"></h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Gönderim Tarihi : ') }}</label>
+                                <label id="gonderim_tarihi"></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>{{ _('Değerlendirme Sonucu : ') }} </label>
+                                <label id="degerlendirme_sonuc"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div id="metin" class="col-md-12">
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="modal-footer">
+                            <button type="button" class="btn grey btn-outline-warning"
+                                    data-dismiss="modal">{{ ("Kapat") }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end #content -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {{ degerlendirme_guncelle_modal() }}
+    {{ hakem_degerlendirmesi_oku() }}
+    {{ degerlendirmeyi_incele() }}
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table") }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endmacro %}
+
+{% macro hakem_degerlendirmesi_oku() %}
+    <script>
+        $(document).ready(function () {
+            degerlendirmeModalSelector = {
+                'rapor_turu': $('#rapor_turu'),
+                'gonderim_tarihi': $('#gonderim_tarihi'),
+                'degerlendirme_sonuc': $('#degerlendirme_sonuc'),
+                'metin': $('#metin'),
+                'modal': $('#rapor-degerlendirmesi-oku-modal')
+            };
+
+            function reset_modal() {
+                degerlendirmeModalSelector.rapor_turu.empty();
+                degerlendirmeModalSelector.gonderim_tarihi.empty();
+                degerlendirmeModalSelector.degerlendirme_sonuc.empty();
+                degerlendirmeModalSelector.metin.empty();
+
+            }
+
+            degerlendirmeOku = function (degerlendirme_id) {
+                let degerlendirmeId, url;
+                degerlendirmeId = degerlendirme_id;
+                url = "{{ url_for('proje.hakem_rapor_gorusleri_oku', degerlendirme_id=-1) }}";
+                url = url.replace("-1", degerlendirmeId);
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        reset_modal();
+                        degerlendirmeModalSelector.rapor_turu.append(data.degerlendirme.rapor_turu);
+                        degerlendirmeModalSelector.gonderim_tarihi.append(data.degerlendirme.gonderim_tarihi);
+                        degerlendirmeModalSelector.degerlendirme_sonuc.append(data.degerlendirme.degerlendirme_sonucu);
+                        degerlendirmeModalSelector.metin.append(data.degerlendirme.metin);
+                        degerlendirmeModalSelector.modal.modal('show');
+                    },
+                    error: function (error) {
+                        swal("{{ _("Bir Hata oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                            icon: "error",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+            };
+        });
+    </script>
+{% endmacro %}
+
+{% set degerlendirme_duzenle_button = "degerlendirme-duzenle-button" %}
+{% macro degerlendirme_guncelle_modal() %}
+    <div class="modal fade" id="degerlendirme-guncelle">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="degerlendirme_guncelle_rapor_turu"></h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        {{ degerlendirme_guncelleme_formu.csrf_token }}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Gönderim Tarihi : ') }}</label>
+                                <label id="degerlendirme_guncelle_tarihi"></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>{{ _('Değerlendirme Sonucu : ') }} </label>
+                                <label id="degerlendirme_guncelle_sonuc"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div id="degerlendirme-guncelle-body" class="col-md-12">
+                                {{ degerlendirme_guncelleme_formu.degerlendirme_metni }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="modal-footer">
+                            <button type="button" class="btn grey btn-outline-warning"
+                                    data-dismiss="modal">{{ _("Kapat") }}
+                            </button>
+                            <button id="{{ degerlendirme_duzenle_button }}"
+                                    class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro degerlendirmeyi_incele() %}
+    <script>
+        $(document).ready(function () {
+
+            degerlendirmeGuncelleModalSelector = {
+                'rapor_turu': $('#degerlendirme_guncelle_rapor_turu'),
+                'gonderim_tarihi': $('#degerlendirme_guncelle_tarihi'),
+                'degerlendirme_sonuc': $('#degerlendirme_guncelle_sonuc'),
+                'modal': $('#degerlendirme-guncelle'),
+                "guncelleSummernote": $('[name={{ degerlendirme_guncelleme_formu.degerlendirme_metni.name }}]'),
+            };
+
+            function resetDegerlendirmeGuncelleModal() {
+                degerlendirmeGuncelleModalSelector.rapor_turu.empty();
+                degerlendirmeGuncelleModalSelector.gonderim_tarihi.empty();
+                degerlendirmeGuncelleModalSelector.degerlendirme_sonuc.empty();
+                degerlendirmeGuncelleModalSelector.guncelleSummernote.summernote("code", "");
+
+            }
+
+            degerlendirmeGuncelleGet = function (degerlendirme_id) {
+                let degerlendirmeId, url, degerlendirmeGuncelleUrl;
+                resetDegerlendirmeGuncelleModal();
+                degerlendirmeId = degerlendirme_id;
+                degerlendirmeGuncelleUrl = "{{ url_for('proje.ProjeDegerlendirmeView:degerlendirme_guncelle', degerlendirme_id=-1) }}";
+                degerlendirmeGuncelleUrl = degerlendirmeGuncelleUrl.replace("-1", degerlendirmeId);
+                url = "{{ url_for('proje.hakem_rapor_gorusleri_oku', degerlendirme_id=-1) }}";
+                url = url.replace("-1", degerlendirmeId);
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        degerlendirmeGuncelleModalSelector.rapor_turu.append(data.degerlendirme.rapor_turu);
+                        degerlendirmeGuncelleModalSelector.gonderim_tarihi.append(data.degerlendirme.gonderim_tarihi);
+                        degerlendirmeGuncelleModalSelector.degerlendirme_sonuc.append(data.degerlendirme.degerlendirme_sonucu);
+                        degerlendirmeGuncelleModalSelector.guncelleSummernote.summernote("code", data.degerlendirme.metin);
+                        $('#{{ degerlendirme_duzenle_button }}').attr('formaction', degerlendirmeGuncelleUrl);
+                        degerlendirmeGuncelleModalSelector.modal.modal('show');
+                    },
+                    error: function (error) {
+                        swal("{{ _("Bir Hata oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                            icon: "error",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+            };
+        });
+    </script>
+{% endmacro %}
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Değerlendirme Listesi"),
+           proje_dashboard_hakem_degerlendirmeleri(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu,
+           atanmis_hakem_mi=atanmis_hakem_mi) }}
+{% endblock %}

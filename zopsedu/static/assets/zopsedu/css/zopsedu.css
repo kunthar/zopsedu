@@ -1,0 +1,57 @@
+html{
+    font-family: Roboto;
+    font-size:11px;
+}
+
+.fa-in-button {
+    color: white;
+}
+
+.word-break {
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    word-wrap: break-word; /* IE */
+    word-break: break-all;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .printable, .printable * {
+        visibility: visible;
+    }
+
+}
+
+html body a {
+    color: #134c64
+}
+
+.nav-link-fixed-size {
+    min-width: 12.5rem !important;
+}
+
+.navigation, .navigation .navigation-header {
+    font-family: Roboto;
+}
+
+.collapse-bg-color {
+    background-color: #5e6e73 !important;
+}
+
+.dashboard-ozet-red{
+    background-color: #E76F7D !important;
+}
+
+.dashboard-ozet-yellow{
+    background-color: #F6BB61 !important;
+}
+
+
+

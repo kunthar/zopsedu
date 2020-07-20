@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field_upper_label %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Toplantı Listesi") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <button type="button" class="btn btn-success"
+                        data-toggle="modal" data-target="#toplanti_ekle_modal">
+                    {{ _("Toplantı Ekle") }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="toplanti-arama-alani">
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <div id="aramaAlani">
+                            {% if form %}
+                                <form class="form" id="detayli-arama-form">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{ form.csrf_token }}
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ form.date.toplanti_tarihi.label }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        {{ form.date.toplanti_tarihi(class="form-control") }}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        {{ form.date.toplanti_tarihi_option(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ form.toplanti_durumu.label }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        {{ form.toplanti_durumu(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <button id="ara" class="btn btn-search btn-success m-r">Ara</button>
+                                    <button id="temizle" class="btn btn-clear btn-warning">Temizle</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-toplanti-listesi" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ big_flash_message() }}
+                    {{ render_toplanti_listesi_data_table() }}
+                    {{ render_toplanti_ekle_modal() }}
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end #content -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import custom_serverside_table %}
+    {{ custom_serverside_table(endpoint=url_for('toplanti.toplanti_search'), id="data-table-1",ara_button_id="#ara",temizle_button_id="#temizle",search_form_id='#detayli-arama-form') }}
+
+{% endblock %}
+
+{% macro render_toplanti_listesi_data_table() %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                   role="grid">
+                <thead>
+                <tr role="row">
+                    <th>{{ _('#') }}
+                    </th>
+                    <th>{{ _('Toplantı Tarihi') }}
+                    </th>
+                    <th>{{ _('Toplantı Durumu') }}
+                    </th>
+                    <th>{{ _('Ekleyen') }}
+                    </th>
+                    <th class="all">{{ _('Kısa Bilgi') }}
+                    </th>
+                    <th class="all">{{ _('Düzenle') }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if toplanti_listesi %}
+                    {% for item, kabul, ret, degerlendirilmedi in toplanti_listesi %}
+
+                        <tr class="gradeA odd" role="row">
+                            <td>
+                                {{ loop.index }}
+                            </td>
+
+                            <td>
+                                {% if item.toplanti_tarihi %}
+                                    {{ '{:%d.%m.%Y}'.format(item.toplanti_tarihi) }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {{ item.toplanti_durumu.value }}
+                            </td>
+                            <td>
+                                {{ item.ekleyen.person.ad + ' ' + item.ekleyen.person.soyad }}
+                            </td>
+                            <td>
+                                {% if kabul == None %}
+                                    {% set kabul = 0 %}
+                                {% endif %}
+                                {% if ret == None %}
+                                    {% set ret = 0 %}
+                                {% endif %}
+                                {% if degerlendirilmedi == None %}
+                                    {% set degerlendirilmedi = 0 %}
+                                {% endif %}
+
+                                {{ degerlendirilmedi | string + " Değerlendirilmedi, " if degerlendirilmedi else "" }} {{ kabul }}
+                                Kabul ve {{ ret }} Ret
+                            </td>
+                            <td>
+                                <a class="detail_arrow"
+                                   href="{{ url_for('toplanti.toplanti_gundem_listele', toplanti_id=item.id) }}">
+                                    <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_toplanti_ekle_modal() %}
+    <div class="modal fade text-left" id="toplanti_ekle_modal" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <form action="{{ url_for('toplanti.ekle') }}" method="post">
+                    {{ toplanti_ekle_form.csrf_token() }}
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ toplanti_ekle_form.toplanti_tarihi.label }}
+                                {{ toplanti_ekle_form.toplanti_tarihi }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ render_select_field_upper_label(toplanti_ekle_form.toplanti_durumu) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        {{ toplanti_ekle_form.ekle(class="btn btn-outline-success") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

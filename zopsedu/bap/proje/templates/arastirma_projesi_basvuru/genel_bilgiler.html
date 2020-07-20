@@ -1,0 +1,181 @@
+{% from 'macros/form_helpers/datetime_fields.html' import render_datetime_field, render_datetime_field_with_tooltip %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_field, render_select_field_with_tooltip %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field, render_text_field_with_tooltip,render_text_field_without_label %}
+{% from 'macros/form_helpers/select2_fields.html' import render_select2field_with_tooltip %}
+
+{% macro render_arastirma_proje_genel_bilgiler_panel(form) %}
+    <section>
+        <div class="card">
+            <h6 class="form-section">{{ form.form_title }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _('Proje hakkında genel bilgileri belirtiniz.') }}"></i>
+            </h6>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 form-group mt-2">
+                            <div class="mb-3">
+                                {{ render_text_field_with_tooltip(form.proje_basligi,
+                    title=_('Proje başlğınızı belirtiniz.')) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ render_text_field_with_tooltip(form.project_title,
+                    title=_('Proje başlığınızı ingilizce olarak belirtiniz.')) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ render_text_field_with_tooltip(form.anahtar_kelimeler,
+                    title=_('Projenizi ifade eden anahtar kelimeleri belirtiniz.')) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 form-group">
+                            <div class="mt-3">
+                                {{ render_select_field_with_tooltip(form.etik_kurul_izin_belgesi,
+                        title=_('Etik kurulu izin belgesi gerekliliğini seçiniz.')) }}
+                                {#                    {{ render_select_field_with_tooltip(form.proje_turu_read_only,#}
+                                {#                    title=_('Projenizin türünü seçiniz.')) }}#}
+                            </div>
+                            <div class="mt-3">
+                                {{ render_select_field_with_tooltip(form.proje_disiplinler_arasi_mi,
+                    title=_('Projenizin disiplinler arası olup olmadığını belirtiniz.') ) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 form-group">
+                            <div class="form-group row">
+                                <div class="col-md-6 mt-3">
+                                    {{ form.proje_suresi.label }}
+                                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                                       data-original-title="{{ _('Projenizin ne kadar süreceğini belirtiniz.') }}"></i>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    {{ render_text_field_without_label(form.proje_suresi, type="number", min=0) }}
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    {{ form.proje_suresi_birimi.label }}
+                                    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                                       data-original-title="{{ _('Proje süresi biriminizi seçin.') }}"></i>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    {{ render_text_field_without_label(form.proje_suresi_birimi) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%- endmacro %}
+
+{% macro render_arastirma_proje_fakulte_bilgileri(form) %}
+    <section>
+        <div class="card">
+            <h6 class="form-section">{{ form.form_title }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _('Projenizin yürütüleceği akademik birim hakkında bilgileri belirtiniz.') }}"></i>
+            </h6>
+        </div>
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        {{ render_select2field_with_tooltip(form.proje_fakulte,
+                    title=_('Projenin yürütüleceği fakülteyi seçiniz.')) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ render_select2field_with_tooltip(form.proje_bolum,
+                   title=_('Projenin yürütüleceği bölümü seçiniz.')) }}
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        {{ render_select2field_with_tooltip(form.proje_ana_bilim_dali,
+                    title=_('Projenin yürütüleceği anabilim dalını seçiniz.')) }}
+                    </div>
+                    {#                <div class="col-md-6">#}
+                    {#                    {{ render_select2field_with_tooltip(form.proje_bilim_dali,#}
+                    {#                        title=_('Proje bilim dalını seçiniz.')) }}#}
+                    {#                </div>#}
+                </div>
+            </div>
+        </div>
+    </section>
+{%- endmacro %}
+
+{% macro render_arastirma_proje_onaylayan_yetkili(form) %}
+    <section>
+        <div class="card">
+            <h6 class="form-section">{{ form.form_title }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _('Projenizi onaylayan yetkiliyi seçiniz.') }}"></i>
+            </h6>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div class="row">
+                        <div class="col-md-6 mt-2">
+                            {{ render_select2field_with_tooltip(form.onaylayan_yetkili_id,
+                title="Onaylayan Yetkili") }}
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            {{ render_datetime_field_with_tooltip(form.onay_tarihi,
+                title=_('Projenizin onaylandığı tarihi seçiniz.')) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_arastirma_proje_destekleyen_kurulus(form) %}
+    <section>
+        <div class="card">
+            <h6 class="form-section">{{ form.form_title }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _('Projenize destek veren kuruluş bilgilerini belirtiniz.') }}"></i>
+            </h6>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.adi,
+                    title=_('Projenizi destekleyen kuruluşun adını belirtiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.telefon,
+                    title=_('Projenizi destekleyen kuruluşun telefonunu belirtiniz.'),
+                            class="form-control tr-phone-mask") }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.yetkili_ad_soyad,
+                    title=_('Projenizi destekleyen kuruluş ile irtibat kurduğunuz yetkilinin adını ve soyadını belirtiniz.')) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 form-group">
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.adres,
+                    title=_('Projenizi destekleyen kuruluşun adresini belirtiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.eposta,
+                     title=_('Projenizi destekleyen kuruluşun eposta bilgisini belirtiniz.')) }}
+                            </div>
+                            <div class="mt-2">
+                                {{ render_text_field_with_tooltip(form.yetkili_gorev,
+                     title=_('Projenizi destekleyen kuruluş ile irtibat kurduğunuz yetkilinin görevini belirtiniz.')) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_arastirma_projesi_form_wizard_genel_bilgiler(form) %}
+    {{ render_arastirma_proje_genel_bilgiler_panel(form.genel_bilgiler) }}
+    {{ render_arastirma_proje_fakulte_bilgileri(form.fakulte) }}
+    {{ render_arastirma_proje_onaylayan_yetkili(form.onaylayan_yetkili) }}
+    {{ render_arastirma_proje_destekleyen_kurulus(form.destekleyen_kurulus) }}
+{% endmacro %}

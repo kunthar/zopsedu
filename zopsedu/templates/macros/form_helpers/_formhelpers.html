@@ -1,0 +1,93 @@
+
+{#================================OTHERS BUNLARI KİM KULLANIYOR :)===========================================#}
+
+{% macro render_boolean(field) %}
+    {% if field %}
+        Evet
+    {% else %}
+        Hayir
+    {% endif %}
+{% endmacro %}
+
+{% macro link_to_somewhere(description_before_link, link_text, url) %}
+    <h6 class="text-md-center">
+        {{ description_before_link }}<a href="{{ url }}">{{ link_text }}</a>
+    </h6>
+{% endmacro %}
+
+{% macro render_alert(text, type) %}
+    <div class="alert alert-{{ type }} semi-bold" role="alert">
+        {{ text }}
+    </div>
+{% endmacro %}
+
+{% macro render_title(text) %}
+    <h4 class="mb-3 mt-3">
+        {{ text }}
+    </h4>
+{% endmacro %}
+
+{% macro render_thank_you(header) %}
+    <div class="jumbotron m-b-0 text-center">
+        <h2 class="text-inverse">{{ header }}</h2>
+    </div>
+{% endmacro %}
+
+{% macro render_language_level_text(field) %}
+    <h6>
+        The level of language competence in <span class="col-auto"
+                                                  style="display: inline-grid">{{ field }}</span>
+        [the
+        main language of instruction] that the student already
+        has or agrees to acquire by the start of the study period is:
+    </h6>
+{% endmacro %}
+
+{% macro field_with_validation(field) %}
+    <div class="form-group">
+        <div class="col-md-6 col-sm-6">
+            {% set parsley_id = range(1, 51) | random %}
+            {{ field(**{'class':'form-control', 'placeholder':'Required', 'data-parsley-required':'true', 'data-parsley-id': parsley_id })|safe }}
+            {% if field.errors %}
+                <ul class="parsley-errors-list filled" id="parsley-id-{{ parsley_id }}">
+                    {% for error in field.errors %}
+                        <li class="parsley-required">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+
+{#===================================================================================================#}
+
+
+
+{% macro render_alert_list(alert_list) %}
+    <div class="card">
+        <div class="card-content collapse show">
+            <div class="card-body">
+                <div class="alert alert-danger alert-dismissible mb-2" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul class="fa-ul m-l-20">
+                        {% for descs in alert_list %}
+                            <li>
+                                <i class="ft-alert-triangle"></i>
+                                {{ descs | safe }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+

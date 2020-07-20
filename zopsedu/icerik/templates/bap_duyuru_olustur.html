@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from 'macros/form_helpers/datetime_fields.html' import render_datetime_field %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_tag %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox %}
+{% from 'macros/form_helpers/text_fields.html' import  render_text_field %}
+{% from 'macros/form_helpers/datetime_fields.html' import  render_datetime_field %}
+{% from "macros/form_helpers/_formhelpers.html" import render_alert_list %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Duyuru Oluştur") }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="description" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ render_alert_list(duyuru_formu.form_information_list) }}
+                    {{ big_flash_message() }}
+                </div>
+            </div>
+        </section>
+        <div class="card">
+            <div class="card-header">
+                <div class="btn-group float-md-right">
+                    <a href="{{ url_for('icerik.BapDuyuruView:bap_duyuru_listele') }}">
+                        <button class="btn btn-success">{{ _("Duyuru Listesi") }}</button>
+                    </a>
+                </div>
+            </div>
+            <section class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <form class="form" method="POST">
+                            {{ duyuru_formu.csrf_token }}
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <div class="col-md-4">
+                                        {{ render_checkbox(duyuru_formu.aktif_mi) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{ render_checkbox(duyuru_formu.on_sayfa_gorunurlugu) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        {{ render_datetime_field(duyuru_formu.baslangic_tarihi) }}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {{ render_datetime_field(duyuru_formu.bitis_tarihi) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        {{ render_text_field(duyuru_formu.baslik) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        {{ duyuru_formu.icerik }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    <button class="btn btn-success"
+                                            formaction="{{ url_for('icerik.bap_duyuru_olustur') }}">{{ _("Kaydet") }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+
+{% block extra_alt_css %}
+    <link href="{{ url_for('static', filename = 'assets/plugins/jstree/css/style.min.css') }}"
+          rel="stylesheet"/>
+
+     <link href="{{ url_for('static', filename = 'assets/plugins/jstree/css/jstree-style.css') }}"
+          rel="stylesheet"/>
+{% endblock %}
+
+{% block extra_alt_scripts %}
+    <script src="{{ url_for('static', filename = 'assets/plugins/jstree/js/jstree.js') }}"></script>
+        <script src="{{ url_for('static', filename = 'assets/plugins/jstree/js/jstree-init.js') }}"></script>
+
+{% endblock %}
+
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Yeni Rol") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="rol-ekle-isim-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        {{ form.rol_adi.label }}
+                                        {{ form.rol_adi(class="form-control **{required:true}", id="rol_adi") }}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="rol-ekle-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="jstree-checkable">{{ _("Rol İzinleri") }}</label>
+                            <div id="jstree-checkable"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row pull-right">
+            <div class="mr-2">
+                <a href="{{ url_for('yetki_yonetimi.RolView:rolleri_listele') }}"
+                   class="form-control btn btn-warning">{{ form.iptal.label.text }}</a>
+            </div>
+            <div class="mr-2">
+                <button class="form-control btn btn-success"
+                        onclick="submitTree()">{{ form.kaydet.label.text }}</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script>
+        var tree = JSON.parse({{ tree | tojson | safe}});
+        TreeView.init(tree);
+
+        function submitTree() {
+            var checked_ids = [];
+            $("#jstree-checkable").jstree("get_selected", true).forEach(function (node) {
+                checked_ids.push(node.text);
+            });
+            var url = "{{ url_for('.yeni_rol_ekle') }}";
+            var rolAdi = $('#rol_adi').val();
+            if (!rolAdi) {
+                swal("{{ _("Rol adi boş olamaz!") }}", {
+                    icon: "error",
+                    timer: 4000,
+                    buttons: false
+                });
+            } else {
+                var data = {
+                    "selected_permissions": checked_ids,
+                    "rol_adi": rolAdi
+                };
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function () {
+                        var redirectUrl = "{{ url_for('yetki_yonetimi.RolView:rolleri_listele') }}";
+                        swal("{{ _("Rol başarıyla eklendi!") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            buttons: false
+                        }).then(function () {
+                            window.location.replace(redirectUrl);
+                        });
+                    },
+                    error: function () {
+                        var redirectUrl = "{{ url_for('yetki_yonetimi.RolView:rolleri_listele') }}";
+                        swal("{{ _("Rol eklenemedi!") }}", {
+                            icon: "error",
+                            timer: 4000,
+                            buttons: false
+                        }).then(function () {
+                            window.location.replace(redirectUrl);
+                        });
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

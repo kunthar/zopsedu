@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block extra_alt_scripts %}
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script>
+        App.setPageTitle('Form Elements');
+        App.restartGlobalFunction();
+    </script>
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}
+
+{% block context %}
+    <div id="content" class="content">
+        <form method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                {{ form.note }}
+                {{ form.save(class='btn btn-sm btn-primary m-r-10') }}
+        </form>
+    </div>
+    <!-- end #content -->
+{% endblock %}

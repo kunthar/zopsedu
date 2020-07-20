@@ -1,0 +1,60 @@
+{
+  "sabit_butce_kalemi": [
+    {
+      "adi": "Yolluk",
+      "analitik_kodu": "03.03"
+    },
+    {
+      "adi": "Hizmet Alımı",
+      "analitik_kodu": "03.05"
+    },
+    {
+      "adi": "Diğer Hizmet Alımı",
+      "analitik_kodu": "03.05.09"
+    },
+    {
+      "adi": "Tüketime Yönelik Mal ve Malzeme Alımı",
+      "analitik_kodu": "03.02"
+    },
+    {
+      "adi": "Menkul Mal, Gayrimaddi Hak Alımı, Bakım ve Onarım Giderleri",
+      "analitik_kodu": "03.07"
+    },
+    {
+      "adi": "Mamul Mal Alımı",
+      "analitik_kodu": "06.01"
+    },
+    {
+      "adi": "Gayrimenkul Mal Alım, Bakım ve Onarım Giderleri",
+      "analitik_kodu": "03.08"
+    },
+    {
+      "adi": "Gayrimenkul Hak Alım, Yazılım Alımları",
+      "analitik_kodu": "06.03"
+    },
+    {
+      "adi": "Personel Giderleri",
+      "analitik_kodu": "01.01"
+    },
+    {
+      "adi": "Kurs Katılımı ve Eğitim Giderleri",
+      "analitik_kodu": "630.03.05.09.03"
+    },
+    {
+      "adi": "Kurum Hissesi",
+      "analitik_kodu": "630.99"
+    },
+    {
+      "adi": "Temsil ve Tanıtma Giderleri",
+      "analitik_kodu": "630.03.06"
+    },
+    {
+      "adi": "Burslar ve Harçlıklar",
+      "analitik_kodu": "05.04.01"
+    },
+    {
+      "adi": "Gayrimenkul Sermaye Üretim Giderleri",
+      "analitik_kodu": "06.05"
+    }
+  ]
+}

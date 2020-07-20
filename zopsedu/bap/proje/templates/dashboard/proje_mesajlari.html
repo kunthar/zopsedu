@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from 'macros/durum_degisim.html' import proje_state, print_column_data, is_data_exist, boolean_to_text, gorevli_ad_soyad %}
+
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% macro proje_mesajlari_macro() %}
+    <section class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                    <table id="data-table"
+                           class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                           role="grid"
+                           aria-describedby="data-table_info" style="width: 100%">
+                        <thead>
+                        <tr role="row">
+                            {#                                    <th class="all" style="width: 20px;">#}
+                            {#                                        <input type="checkbox" name="checkedAll" id="checkedAll"/>#}
+                            {#                                    </th>#}
+                            <th style="width: 20px;">{{ _('Okunma Durumu') }}
+                            </th>
+                            <th
+                                style="width: 180px;">{{ _('Gönderen') }}
+                            </th>
+                            <th
+                                style="width: 500px;">{{ _('Konu') }}
+                            </th>
+                            <th
+                                style="width: 100px;">{{ _('Gönderim Tarihi') }}
+                            </th>
+                            <th
+                                style="width: 100px;">{{ _('Mesaj Tipi') }}
+                            </th>
+                            <th class="all"
+                                style="width: 100px;">{{ _('Oku') }}
+                            </th>
+                            <!-- <th
+                                        style="width: 100px;">
+                                        {{ _('Sil') }}
+                                    </th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for m in proje_mesajlari %}
+                            <tr>
+                                {#                                        <td ><input type="checkbox" name="checkAll"#}
+                                {#                                                                                  class="checkSingle"#}
+                                {#                                                                                  value="{{ m.id }}"/></td>#}
+                                <td id="mesaj{{ m.id }}" data-search="{{ m.okundu }}">
+                                    {% if m.okundu %}
+                                        <i class="fa fa-2x fa-envelope-open"></i>
+                                    {% else %}
+                                        <i class="fa fa-2x fa-envelope" style="color:orange"></i>
+                                    {% endif %}
+                                </td>
+                                <td
+                                    id="name">{{ m.gonderen_kisi.ad + " " + m.gonderen_kisi.soyad }}</td>
+                                <td >{{ m.baslik }}</td>
+                                <td class="sorting_1"
+                                    tabindex="0">{{ m.gonderim_zamani.strftime('%d-%m-%Y') }}</td>
+                                <td class="sorting_1"
+                                    tabindex="0"> {{ m.mesaj_tipi.value }}</td>
+                                <td >
+                                    <a href="#mesaj-oku-modal"
+                                       class="btn btn-success m-t-10"
+                                       data-toggle="modal"
+                                       data-target="#mesaj-oku-modal"
+                                       onclick="mesaj_oku({{ m.id }}, {{ proje.id }});">
+                                        Oku
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+
+        <div class="modal fade" id="mesaj-oku-modal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Gelen Kutusu Detay</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>{{ _('Gönderim Tarihi : ') }}</label>
+                                <label id="gonderim_tarihi"></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>{{ _('Okunma Tarihi : ') }}</label>
+                                <label id="okunma_tarihi"></label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>{{ _('IP Adresi : ') }} </label>
+                                <label id="ip_addresi"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{ _('Gönderen Ad Soyad : ') }}</label>
+                                <label id="gonderen_kisi_ad_soyad"> </label>
+                            </div>
+                            <div class="col-md-6">
+                                <label>{{ _('Gönderen Eposta : ') }}</label>
+                                <label id="gonderen_kisi_birincil_eposta"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{ _('Konu : ') }}</label>
+                                <label id="baslik"></label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div id="metin" class="col-md-12">
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div id="mesaj_ek" class="col-md-9">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="modal-footer">
+                            <button type="button" class="btn grey btn-outline-warning"
+                                    data-dismiss="modal">{{ _("Kapat") }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end #content -->
+    <script>
+
+        modalSelector2 = {
+            'gonderim_tarihi': $('#gonderim_tarihi'),
+            'okunma_tarihi': $('#okunma_tarihi'),
+            'ip_addresi': $('#ip_addresi'),
+            'gonderen_kisi_ad_soyad': $('#gonderen_kisi_ad_soyad'),
+            'gonderen_kisi_birincil_eposta': $('#gonderen_kisi_birincil_eposta'),
+            'baslik': $('#baslik'),
+            'metin': $('#metin'),
+            'mesaj_ek': $('#mesaj_ek'),
+        };
+
+        function reset_modal() {
+            modalSelector2.gonderim_tarihi.empty();
+            modalSelector2.okunma_tarihi.empty();
+            modalSelector2.ip_addresi.empty();
+            modalSelector2.gonderen_kisi_ad_soyad.empty();
+            modalSelector2.gonderen_kisi_birincil_eposta.empty();
+            modalSelector2.baslik.empty();
+            modalSelector2.metin.empty();
+            modalSelector2.mesaj_ek.empty();
+        }
+
+        mesaj_oku = function (m, p) {
+            let url, mesajId, projeId;
+            mesajId = m;
+            projeId = p;
+            url = "{{ url_for('proje.proje_mesaj_detay', mesaj_id=-1, proje_id=-2) }}";
+            url = url.replace("-1", mesajId);
+            url = url.replace("-2", projeId);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    reset_modal();
+                    modalSelector2.gonderim_tarihi.append(data.mesaj.gonderim_tarihi);
+                    modalSelector2.okunma_tarihi.append(data.mesaj.okunma_tarihi);
+                    modalSelector2.ip_addresi.append(data.mesaj.okunma_ip_adresi);
+                    modalSelector2.gonderen_kisi_ad_soyad.append(data.mesaj.gonderen_kisi_ad_soyad);
+                    modalSelector2.gonderen_kisi_birincil_eposta.append(data.mesaj.gonderen_kisi_birincil_eposta);
+                    modalSelector2.baslik.append(data.mesaj.baslik);
+                    modalSelector2.metin.append(data.mesaj.metin);
+                    modalSelector2.mesaj_ek.append(data.mesaj.mesaj_ek);
+                    $('#mesaj' + mesajId).empty();
+                    $('#mesaj' + mesajId).html('<i class=\"fa fa-2x fa-envelope-open\"></i>');
+                },
+                error: function () {
+                    swal("{{ _("Mesaj Detaylarına Erişilirken Hata Oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+        };
+    </script>
+
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search() }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+
+
+{% endmacro %}
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Mesajları"),
+           proje_mesajlari_macro(),
+           proje,
+           next_states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu) }}
+{% endblock %}

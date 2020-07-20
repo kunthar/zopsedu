@@ -1,0 +1,605 @@
+    {% extends "dashboard_base.html" %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from "sablon_preview_modal.html" import render_sablon_with_values_modal %}
+
+
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{% set atanmis_hakem_mi = fullfills(atanmis_hakem) %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% if proje_durum.current_app_state.value == 'Sonlanmış' %}
+    {% set alert_color = "alert-danger" %}
+    {% set alert_color_border = "border-left-danger" %}
+
+{% endif %}
+{% if proje_durum.current_app_state.value == 'Sürmekte Olan' %}
+    {% set alert_color = "alert-success" %}
+    {% set alert_color_border = "border-left-success" %}
+
+{% endif %}
+{% if proje_durum.current_app_state.value == 'Başvuru / Kabul' %}
+    {% set alert_color = "alert-warning" %}
+    {% set alert_color_border = "border-left-warning" %}
+{% endif %}
+
+
+{% macro proje_dashboard_ozeti() %}
+    <section id="page-tabs" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active show" id="active-tab" data-toggle="tab"
+                           href="#proje-bilgileri"
+                           aria-controls="active"
+                           aria-expanded="true">{{ _('Proje Bilgileri') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="link-tab" data-toggle="tab" href="#proje-detaylari"
+                           aria-controls="link" aria-expanded="false">{{ _('Proje Detayları') }}</a>
+                    </li>
+                    {% if yurutucu_mu or yetkili_mi %}
+                        <li class="nav-item">
+                            <a class="nav-link" id="link-tab" data-toggle="tab"
+                               href="#uyari-mesajlari"
+                               aria-controls="link"
+                               aria-expanded="false">{{ _('Uyarı Mesajları') }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" id="link-tab" data-toggle="tab" href="#proje-durumlari"
+                           aria-controls="link" aria-expanded="false">{{ _('Proje Durumları') }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="page-tab-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="tab-content px-1">
+                    <div role="tabpanel" class="tab-pane active" id="proje-bilgileri"
+                         aria-expanded="true">
+                        <section id="proje-bilgileri-ozet-card">
+                            <div class="card {{ alert_color_border }} border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Proje Bilgileri') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="card  box-shadow-0 {{ alert_color }}">
+                                            <div class="card-content collapse show">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-9">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Proje Durumu') }} </b></p>
+                                                            <p class="card-text"> {{ proje_durum.description }}</p>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            {% if yurutucu_mu or yetkili_mi %}
+                                                                {% if proje.proje_sozlesme_id %}
+                                                                    <p>
+                                                                        <a href="{{ url_for('FileView:file_download', file_id=proje.proje_sozlesme_id) }}">
+                                                                            <button class="btn btn-info">
+                                                                                {{ _("Sözleşme İndir") }}
+                                                                            </button>
+                                                                        </a>
+                                                                    </p>
+                                                                {% else %}
+                                                                    <p class="card-text">
+                                                                        {{ _("Sözleşme Yüklenmedi") }}
+                                                                    </p>
+                                                                {% endif %}
+
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% if yurutucu_mu or yetkili_mi %}
+                                                    {% if proje.proje_durumu_id == 8 %}
+                                                        <div class="card-body">
+                                                            <div class="alert alert-danger alert-dismissible mb-2"
+                                                                 role="alert">
+                                                                <p class="card-text"> Proje sözleşme
+                                                                    şablonunu önizleyip çıktısını
+                                                                    alabilirsiniz.</p>
+                                                                {{ render_sablon_with_values_modal() }}
+                                                                <div class="row">
+                                                                    <div class="col-md-6 text-left">
+                                                                        <a href="#render-sablon-modal"
+                                                                           class="btn btn-info"
+                                                                           onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', sablon_id=sozlesme_sablon_id, proje_id=proje.id) }}');">
+                                                                            Sözleşme Şablonu Önizle
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <button type="button"
+                                                                                class="btn btn-info"
+                                                                                data-toggle="modal"
+                                                                                data-target="#proje-sozlesmesi-yukle-modal">
+                                                                            {{ _("Sözleşme Yükle") }}
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                {{ proje_sozlesmesi_ekle_modal() }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card {{ alert_color_border }} border-left-2">
+                                        <div class="card-content collapse show">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Proje Numarası') }} </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ proje.proje_no }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Kabul Edilen Butce') }} </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ toplam_butce | tr_currency  if toplam_butce else "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b> {{ _('Proje Türü') }}</b>
+                                                            </p>
+                                                            <p class="card-text">{{ proje.proje_proje_turu.ad }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Kullanılan  Butce') }} </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ kullanilan_butce | tr_currency  if kullanilan_butce else "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Proje Yürütücüsü') }}</b>
+                                                            </p>
+                                                            <p class="card-text">
+                                                                {{ proje.proje_yurutucu.personel.person.ad }}
+                                                                {{ _(' ') }}
+                                                                {{ proje.proje_yurutucu.personel.person.soyad }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Rezerv Bütçe') }} </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ rezerv_butce | tr_currency  if rezerv_butce else "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Kabul Edilen Başlam Tarihi / Proje Süresi') }}  </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ date_to_string(proje.kabul_edilen_baslama_tarihi) if proje.kabul_edilen_baslama_tarihi else "-" }}
+                                                                / {{ proje.proje_suresi }} {{ proje.proje_suresi_birimi.value }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="border-bottom-grey">
+                                                            <p class="card-text">
+                                                                <b>{{ _('Kullanılabilir Butcesi') }} </b>
+                                                            </p>
+                                                            <p class="card-text"> {{ kullanilabilir_butce | tr_currency  if kullanilabilir_butce else "-" }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card {{ alert_color_border }} border-left-2">
+                                        <div class="card-content collapse show">
+                                            <div class="card-body">
+                                                <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                                    <p class="card-text">
+                                                        <b>{{ _('Proje Başlığı') }}  </b>
+                                                    </p>
+                                                    <p class="card-text"> {{ proje.proje_basligi }}</p>
+                                                </div>
+                                                <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                                    <p class="card-text">
+                                                        <b>{{ _('Fakülte') }}  </b></p>
+                                                    <p class="card-text"> {{ proje.fakulte.ad }}</p>
+                                                </div>
+                                                <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                                    <p class="card-text"><b>{{ _('Bölüm') }}</b>
+                                                    </p>
+                                                    <p class="card-text">{{ proje.bolum.ad }}</p>
+                                                </div>
+                                                <div class="card border-bottom-grey box-shadow-0 border-bottom">
+                                                    <p class="card-text">
+                                                        <b>{{ _('Ana Bilim Dalı ') }}</b></p>
+                                                    <p class="card-text">{{ proje.ana_bilim_dali.ad }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="tab-pane" id="proje-detaylari">
+                        <section id="proje-detaylari-ozet-card">
+                            <div class="card border-left-danger border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Proje Detayları') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="nav-vertical">
+                                            <ul class="nav nav-tabs nav-left nav-border-left">
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size active"
+                                                       id="proje-ozeti-detay-tab" data-toggle="tab"
+                                                       href="#proje-ozeti-detay"
+                                                       aria-expanded="false">{{ _('Proje Özeti') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="literatur-ozeti-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#literatur-ozeti-detay"
+                                                       aria-expanded="false">{{ _('Literatür Özeti') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="amac-kapsam-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#amac-kapsam-detay"
+                                                       aria-expanded="false">{{ _('Amaç, Konu ve Kapsam') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="gerec-yontem-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#gerec-yontem-detay"
+                                                       aria-expanded="false">{{ _('Materyal ve Yöntem') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="arastirma-olanaklari-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#arastirma-olanaklari-detay"
+                                                       aria-expanded="false">{{ _('Araştırma Olanakları') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="beklenen-bilimsel-katki-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#beklenen-bilimsel-katki-detay"
+                                                       aria-expanded="false">{{ _('Yaygın Etki') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="calisma-takvimi-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#uygulama-plani-detay"
+                                                       aria-expanded="false">{{ _('Çalışma Takvimi') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="anahtar-kelimeler-detay-tab3"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#anahtar-kelimeler-detay"
+                                                       aria-expanded="false">{{ _('Anahtar Kelimeler') }}</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content px-1">
+                                                <div role="tabpanel" class="tab-pane active show"
+                                                     id="proje-ozeti-detay"
+                                                     aria-expanded="true"
+                                                     aria-labelledby="baseVerticalLeft1-tab1">
+                                                    {% if proje.ozet %}
+                                                        <p> {{ proje.ozet | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane" id="literatur-ozeti-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab2">
+                                                    {% if proje.literatur_ozet %}
+                                                        <p> {{ proje.literatur_ozet | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane" id="amac-kapsam-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+                                                    {% if proje.amac_kapsam %}
+                                                        <p> {{ proje.amac_kapsam | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane" id="gerec-yontem-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+                                                    {% if proje.gerec_yontem %}
+                                                        <p> {{ proje.gerec_yontem | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane"
+                                                     id="arastirma-olanaklari-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+                                                    {% if proje.arastirma_olanaklari %}
+                                                        <p> {{ proje.arastirma_olanaklari | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane"
+                                                     id="beklenen-bilimsel-katki-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+                                                    {% if proje.beklenen_bilimsel_katki %}
+                                                        <p> {{ proje.beklenen_bilimsel_katki | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane" id="uygulama-plani-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+
+                                                    {% if proje.uygulama_plani %}
+                                                        <p> {{ proje.uygulama_plani | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tab-pane" id="anahtar-kelimeler-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab3">
+                                                    {% if proje.anahtar_kelimeler %}
+                                                        <p> {{ proje.anahtar_kelimeler | safe }} </p>
+                                                    {% else %}
+                                                        <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    {% if yurutucu_mu or yetkili_mi %}
+                        <div class="tab-pane" id="uyari-mesajlari">
+                            <section id="uyari-mesajlari-ozet-card">
+                                <div class="card border-left-danger border-left-2">
+                                    <div class="card-header">
+                                        <h4 class="card-title">{{ _('Uyarı Mesajları') }}</h4>
+                                    </div>
+                                    <div class="card-content collapse show">
+                                        <div class="card-body">
+                                            <div class="nav-vertical">
+                                                <ul class="nav nav-tabs nav-left nav-border-left">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link nav-link-fixed-size active"
+                                                           id="basvuru-sonrasi-tab"
+                                                           data-toggle="tab"
+                                                           href="#basvuru-sonrasi"
+                                                           aria-expanded="false">{{ _('Başvuru Sonrası') }}</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link nav-link-fixed-size"
+                                                           id="ara-rapor-sonrasi3"
+                                                           data-toggle="tab"
+                                                           aria-controls="tabVerticalLeft13"
+                                                           href="#ara-rapor-sonrasi"
+                                                           aria-expanded="false">{{ _('Ara Rapor') }}</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link nav-link-fixed-size"
+                                                           id="sonuc-rapor-sonrasi-tab3"
+                                                           data-toggle="tab"
+                                                           aria-controls="tabVerticalLeft13"
+                                                           href="#sonuc-rapor-sonrasi"
+                                                           aria-expanded="false">{{ _('Sonuç Rapor') }}</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content px-1">
+                                                    <div class="tab-pane" id="basvuru-sonrasi">
+                                                        {% if genel_uyari_mesajlari.basvuru_tamamlandiktan_sonra_bilgilendirme %}
+                                                            <p> {{ genel_uyari_mesajlari.basvuru_tamamlandiktan_sonra_bilgilendirme | safe }} </p>
+                                                        {% else %}
+                                                            <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="tab-pane" id="ara-rapor-sonrasi"
+                                                         aria-labelledby="baseVerticalLeft1-tab3">
+                                                        {% if genel_uyari_mesajlari.ara_rapor_uyari %}
+                                                            <p> {{ genel_uyari_mesajlari.ara_rapor_uyari | safe }} </p>
+                                                        {% else %}
+                                                            <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div role="tabpanel"
+                                                         class="tab-pane active show"
+                                                         id="sonuc-rapor-sonrasi"
+                                                         aria-expanded="true"
+                                                         aria-labelledby="baseVerticalLeft1-tab1">
+                                                        {% if genel_uyari_mesajlari.sonuc_raporu_uyari %}
+                                                            <p> {{ genel_uyari_mesajlari.sonuc_raporu_uyari | safe }} </p>
+                                                        {% else %}
+                                                            <p> {{ _('Girilmiş bilgi bulunmamaktadır ') }} </p>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    {% endif %}
+                    <div class="tab-pane" id="proje-durumlari">
+                        <section id="proje-durumlari-card">
+                            <div class="card border-left-danger border-left-2">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ _('Proje Durumları') }}</h4>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body">
+                                        <div class="nav-vertical">
+                                            <ul class="nav nav-tabs nav-left nav-border-left">
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size active"
+                                                       id="proje-durumlari-detay-tab"
+                                                       data-toggle="tab"
+                                                       href="#proje-durumlari-detay"
+                                                       aria-expanded="false">{{ _('Proje Durumları') }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link nav-link-fixed-size"
+                                                       id="proje-islemleri-detay-tab"
+                                                       data-toggle="tab"
+                                                       aria-controls="tabVerticalLeft13"
+                                                       href="#proje-islemleri-detay"
+                                                       aria-expanded="false">{{ _('Proje İşlemleri') }}</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content px-1">
+                                                <div role="tabpanel" class="tab-pane active show"
+                                                     id="proje-durumlari-detay"
+                                                     aria-expanded="true"
+                                                     aria-labelledby="baseVerticalLeft1-tab1">
+                                                    <table class="table table-sm table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <td>{{ _("Durum Kodu") }}</td>
+                                                            <td>{{ _("Durum Açıklama") }}</td>
+                                                            <td>{{ _("Durum Grubu") }}</td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for proje_durum in proje_durumlari %}
+                                                            <tr>
+                                                                <td>{{ proje_durum.state_code }}</td>
+                                                                <td>{{ proje_durum.state_description }}</td>
+                                                                <td>{{ proje_durum.current_app_state.value }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane" id="proje-islemleri-detay"
+                                                     aria-labelledby="baseVerticalLeft1-tab2">
+                                                    <table class="table table-sm table-bordered table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                            <td>{{ _("İşlem Kodu") }}</td>
+                                                            <td>{{ _("İşlem Açıklama") }}</td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for proje_islem in proje_islemleri %}
+                                                            <tr>
+                                                                <td>{{ proje_islem.action_code }}</td>
+                                                                <td>{{ proje_islem.action_description }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endmacro %}
+
+{% macro proje_sozlesmesi_ekle_modal() %}
+    <div class="modal fade" id="proje-sozlesmesi-yukle-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ _("Proje Sözleşmesi Yükleyiniz") }}</h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <form method="POST" enctype="multipart/form-data"
+                      action="{{ url_for('proje.sozlesme_yukle', proje_id=proje.id) }}">
+                    <div class="modal-body row">
+                        <div class="col-md-12 m-t-10">
+                            {{ render_text_field_with_tooltip(sozlesme_ekle_form.sozlesme_file,
+                                     title="Proje sözleşmesi yükleyiniz") }}
+                            {{ sozlesme_ekle_form.csrf_token() }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button id="sozlesme-kaydet"
+                                class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Özeti"),
+           proje_dashboard_ozeti(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu,
+           atanmis_hakem_mi=atanmis_hakem_mi) }}
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "dashboard_base.html" %}
+{% from 'ozgecmis_sayfalari/akademisyen_ozgecmis_sayfasi_genel.html' import ozgecmis_sayfasi_genel %}
+
+{% macro render_kisisel_bilgiler(ozgecmis_bilgileri) %}
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_ogrenim_bilgisi(ozgecmis_bilgileri.ogrenim_bilgisi) }}
+            </div>
+        </div>
+    </section>
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_tezler(ozgecmis_bilgileri.tezleri) }}
+            </div>
+        </div>
+    </section>
+    {#                {{ render_akademik_gorevler(ozgecmis_bilgileri.akademik_gorevler) }}#}
+{% endmacro %}
+
+{% macro render_tezler(tezler) %}
+    {% if tezler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Yaptığı Tezler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tez in tezler %}
+                <tr>
+                    <td> {{ tez }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_ogrenim_bilgisi(ogrenim_bilgileri) %}
+    {% if ogrenim_bilgileri %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Eğitim Bilgileri</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ogrenim_bilgisi in ogrenim_bilgileri %}
+                <tr>
+                    <td> {{ ogrenim_bilgisi }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_akademik_gorevler(akademik_gorevler) %}
+    {% if akademik_gorevler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Üniversite</th>
+                <th>Akademik Birim</th>
+                <th>Ünvan</th>
+                <th>Başlangıc Tarihi</th>
+                <th>Bitiş Tarihi</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for akademik_gorev in akademik_gorevler %}
+                <tr>
+                    <td> {{ akademik_gorev.UNIV_BIRIM_ADI }} </td>
+                    <td> {{ akademik_gorev.BOLUMBILGISI }}
+                        / {{ akademik_gorev.FAKULTEBILGISI }} </td>
+                    <td> {{ akademik_gorev.KADRO_UNVAN_ADI }} </td>
+                    <td> {{ akademik_gorev.BASTAR1 }} </td>
+                    <td> {{ akademik_gorev.BITTAR1 if akademik_gorev.BITTAR1 else "-" }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% block context %}
+    {{ ozgecmis_sayfasi_genel(_("Kişisel Bilgiler"),
+           render_kisisel_bilgiler(ozgecmis_bilgileri),
+           ozgecmis_bilgileri.personel_ad_soyad,
+           ozgecmis_bilgileri.avatar,
+           ozgecmis_bilgileri.birim,
+           email_prefix, 2) }}
+{% endblock %}

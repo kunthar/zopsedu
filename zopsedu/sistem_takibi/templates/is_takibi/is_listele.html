@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _('İş Takip Listesi') }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div id="data-table_wrapper"
+                         class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table id="data-table"
+                               class="table table-striped table-bordered dataTable no-footer dtr-inline"
+                               role="grid"
+                               aria-describedby="data-table_info" style="width: 100%;">
+                            <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="0.5"
+                                    colspan="0.5" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                >Durum Kodu
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                >Açıklama
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                >Params
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="data-table"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending"
+                                >Başlangıç Tarihi
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="data-table"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending"
+                                >Sonraki Çalışma Tarihi
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="data-table"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending"
+                                >Tetikleyen
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="data-table"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending"
+                                >Türü
+                                </th>
+                                <th class="sorting all" tabindex="0" aria-controls="data-table"
+                                    rowspan="1" colspan="1"
+                                    aria-label="Engine version: activate to sort column ascending">İşlemler
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function is_baslat(job_id) {
+            console.log(job_id);
+            job = {"job_id": job_id};
+            console.log(job);
+            swal({
+                title: "Bu işi başlatmak istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Başlat",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willStart) => {
+                    if (willStart) {
+                        $.ajax({
+                            url: "{{ url_for('sistem_takibi.is_baslat') }}",
+                            type: "POST",
+                            contentType: 'application/json',
+                            data: JSON.stringify(job),
+                            dataType: 'json',
+                            success: function (response) {
+                                swal("{{ _("Seçilen iş başarıyla başlatıldı!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location = "{{ url_for('sistem_takibi.IsTakipView:is_listele') }}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: "{{ _("Seçilen iş başlatılamadı!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen işi başlatmaktan vazgectiniz!") }}",{
+                            icon:"warning",
+                            timer:4000,
+                            button:false
+                        });
+                    }
+                });
+        }
+
+
+        function is_durdur(job_id) {
+            data = {job_id: job_id};
+            swal({
+                title: "Bu işi durdurmak istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Durdur",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willStart) => {
+                    if (willStart) {
+                        $.ajax({
+                            url: "{{ url_for('sistem_takibi.is_durdur') }}",
+                            type: "POST",
+                            contentType: 'application/json',
+                            data: JSON.stringify({"job_id": job_id}),
+                            dataType: 'json',
+                            success: function (response) {
+                                swal("{{ _("Seçilen iş başarıyla durduruldu!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location = "{{ url_for('sistem_takibi.IsTakipView:is_listele') }}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: "{{ _("Seçilen iş durdurulamadı!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen işi durdurmaktan vazgectiniz!") }}",
+                            {
+                                icon:"warning",
+                                timer: 4000,
+                                button:false
+                            }
+                    );
+                    }
+                });
+        }
+
+        function is_sil(job_id) {
+            console.log(job_id);
+            data = {job_id: job_id};
+            swal({
+                title: "Bu işi silmek istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Sil",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willStart) => {
+                    if (willStart) {
+                        $.ajax({
+                            url: "{{ url_for('sistem_takibi.is_bitir') }}",
+                            type: "POST",
+                            contentType: 'application/json',
+                            data: JSON.stringify({"job_id": job_id}),
+                            dataType: 'json',
+                            success: function (response) {
+                                swal("{{ _("Seçilen iş başarıyla silindi!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location = "{{ url_for('sistem_takibi.IsTakipView:is_listele') }}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: "{{ _("Seçilen iş silinemedi!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen işi silmekten vazgectiniz!") }}",{
+                            icon:"warning",
+                            timer:4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+    </script>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import serverside_table %}
+    {{ serverside_table(endpoint=url_for("sistem_takibi.IsTakipView:data_table"), responsive=1, with_buttons=False) }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}

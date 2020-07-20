@@ -1,0 +1,777 @@
+{% extends "base.html" %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip,render_text_field,render_text_field_with_tooltip %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox_with_tooltip %}
+{% from 'macros/form_helpers/currency_fields.html' import render_currency_field_with_tooltip,render_currency_field_without_label %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_tag,render_select_field_with_tooltip %}
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list %}
+{% from "sablon_preview_modal.html" import render_sablon_preview_modal %}
+{% from 'macros/form_helpers/datetime_fields.html' import render_datetime_field %}
+{% from 'macros/form_helpers/file_upload_fields.html' import render_fileupload_field %}
+{% from 'macros/utils/dataTables/fill_table.html' import fill_table %}
+{% from "macros/utils/flask_messages/flask_messages.html" import flash_message, flash_message_with_category %}
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{% from 'macros/form_helpers/_formhelpers.html' import field_with_validation %}
+
+{% from 'macros/form_wizard.html' import form_wizard  with context %}
+
+
+
+{% macro dosya_dynamic_field() %}
+    {% set tooltip_titles = [
+                        "",
+                        _("Proje başvurusu esnasında görünecek dosya adı"),
+                        _("Proje başvurusu esnasında görünecek dosya açıklaması"),
+                        _("Proje başvurusu esnasında dosya yüklemek zorunlu mu ?"),
+                        _("Proje içerik dosyası mı ?"),
+                        _("Başvuru sonrası belgenin çıktısı alınacak mı?"),
+                        _("Dosya yükleyiniz"),
+    ] %}
+    {% set headers = [  ("#",50),
+                        (proje_turu_formu.ek_dosyalar[0].belge.adi.label.text,100),
+                        (proje_turu_formu.ek_dosyalar[0].belge.aciklama.label.text,100),
+                        (proje_turu_formu.ek_dosyalar[0].zorunlu_mu.label.text,100),
+                        (proje_turu_formu.ek_dosyalar[0].proje_icerik_dosyasi_mi.label.text,100),
+                        (proje_turu_formu.ek_dosyalar[0].belgenin_ciktisi_alinacak_mi.label.text,100),
+                        (proje_turu_formu.ek_dosyalar[0].belge.file_id.label.text,100)
+                        ] %}
+
+    {% set initial_data = [] %}
+    {% set contents = [] %}
+    {% for field_list in proje_turu_formu.ek_dosyalar %}
+        {% set data = [
+                       field_list.ek_dosya_id,
+                       field_list.belge.adi,
+                       field_list.belge.aciklama,
+                       field_list.zorunlu_mu,
+                       field_list.proje_icerik_dosyasi_mi,
+                       field_list.belgenin_ciktisi_alinacak_mi,
+                       field_list.belge.file_id] %}
+        {% do initial_data.append(data) %}
+        {% if loop.index == loop.length %}
+            {% do contents.extend( [
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].ek_dosya_id,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].belge.adi,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].belge.aciklama,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].zorunlu_mu,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].proje_icerik_dosyasi_mi,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].belgenin_ciktisi_alinacak_mi,
+                                proje_turu_formu.ek_dosyalar[loop.index - 1].belge.file_id]) %}
+        {% endif %}
+    {% endfor %}
+
+    {{ dynamic_field_list(headers, contents, initial_data, button_name = _("Dosya Ekle"), tooltip_titles = tooltip_titles) }}
+{% endmacro %}
+
+{% macro cikti_ekle_dynamic_field() %}
+    {% set tooltip_titles = [
+                      "",
+                      _("Çıktı adı belirtiniz"),
+                      _("Çıktı belirlemek için şablon türü seçiniz"),
+                      _("Proje başvurusundan sonra belgenin çıktısı alınacak mı?"),
+                      _("Çıktı kimler için görünür olacak"),
+                      ] %}
+
+    {% set headers = [("#",50),
+                      (proje_turu_formu.ciktilar[0].adi.label,100),
+                      (proje_turu_formu.ciktilar[0].cikti_sablonu_id.label,100),
+                      (proje_turu_formu.ciktilar[0].belge_ciktisi_alinacak_mi.label,100),
+                      (proje_turu_formu.ciktilar[0].gorunurluk.label,100)
+                      ] %}
+
+    {% set initial_data = [] %}
+    {% set contents = [] %}
+    {% for field_list in proje_turu_formu.ciktilar %}
+        {% set data = [field_list.cikti_id,
+                       field_list.adi,
+                       field_list.cikti_sablonu_id,
+                       field_list.belge_ciktisi_alinacak_mi,
+                       field_list.gorunurluk,
+                       ] %}
+        {% do initial_data.append(data) %}
+        {% if loop.index == loop.length %}
+            {% do contents.extend(data) %}
+        {% endif %}
+    {% endfor %}
+
+    {{ dynamic_field_list(headers, contents, initial_data, button_name = _("Çıktı Ekle"), tooltip_titles = tooltip_titles) }}
+
+{% endmacro %}
+
+{% macro form_with_preview_button(form_field, title) %}
+    {% set id = uuid() %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_field.label(class="control-label") }}
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+               data-original-title="{{ title }}"></i>
+        </div>
+        <div class="col-md-10">
+            {{ form_field(class="form-control width-full", **kwargs)|safe }}
+            {{ error(form_field) }}
+        </div>
+        <div class="col-md-2">
+            <a onclick="getSablonId(this);"
+               id="preview-button-{{ id }}">
+                <button class="btn btn-info"> {{ _("Ön İzle") }}</button>
+            </a>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_butce_kalemleri(butce_kalemleri) %}
+    <ul class="parsley-errors-list filled">
+        {% for butce_kalemi in butce_kalemleri %}
+            {% if butce_kalemi.butce_alt_limiti.errors %}
+                <li class="parsley-required">
+                    <b>{{ butce_kalemi.butce_kalemi_adi.data }}:</b> {{ butce_kalemi.butce_alt_limiti.errors[0] }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th>
+                <span>
+                    #
+                </span>
+            </th>
+            <th>
+                {{ _("Tercih") }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _("Proje türüne eklenmesini istediğiniz kalemleri işaretleyiniz") }}"></i>
+            </th>
+            <th>
+                {{ _("Bütçe Kalemleri") }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _("Bütçe kalemi ismi") }}"></i>
+            </th>
+            <th>
+                {{ _("Min. Bütçe") }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _("En az ayrılabilecek bütçe") }}"></i>
+            </th>
+            <th>
+                {{ _("Max. Bütçe") }}
+                <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                   data-original-title="{{ _("En fazla ayrılabilecek bütçe") }}"></i>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for butce_kalemi in butce_kalemleri %}
+            <tr>
+                <td>{{ butce_kalemi.gider_siniflandirma_id }}</td>
+                <td>{{ butce_kalemi.secili_mi(class="butce_kalem") }}</td>
+                <td><h5 class="text-black">
+                    {{ butce_kalemi.butce_kalemi_adi }}</h5>
+                    <p>{{ butce_kalemi.butce_kalemi_adi.data }}</p></td>
+                <td>
+                    {{ render_currency_field_without_label(butce_kalemi.butce_alt_limiti) }}
+                </td>
+                <td>
+                    {{ render_currency_field_without_label(butce_kalemi.butce_ust_limiti) }}
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{% block context %}
+    {% macro proje_turu_buttonlari() %}
+        <div class="text-center">
+            {% if not proje_turu_id %}
+                <button class="btn btn-success" onclick="proje_turu_kaydet();">
+                    {{ _('Kaydet') }}
+                </button>
+            {% endif %}
+            {% if not taslak_id and not proje_turu_id %}
+                <button class="btn btn-warning"
+                        onclick="proje_turu_taslak_kaydet();">
+                    {{ _('Taslak Olarak Kaydet') }}
+                </button>
+            {% endif %}
+            {% if taslak_id %}
+                <button class="btn btn-success"
+                        onclick="proje_turu_taslak_guncelle_with_taslak_id({{ taslak_id }});">
+                    {{ _('Taslak Güncelle') }}
+                </button>
+            {% endif %}
+            {% if proje_turu_id and guncel_mi and not basvuru_yapilmis_mi %}
+                <button class="btn btn-success" type="submit"
+                        onclick="proje_turu_guncelle_with_proje_turu_id({{ proje_turu_id }})">
+                    {{ _('Güncelle') }}
+
+                </button>
+            {% endif %}
+            {% if proje_turu_id and guncel_mi %}
+                <button class="btn btn-success" type="submit"
+                        onclick="proje_turu_versiyonla({{ proje_turu_id }});">
+                    {{ _('Versiyonla') }}
+                </button>
+            {% endif %}
+        </div>
+    {% endmacro %}
+    {#    todo: ek dosyalar bolumunden is zmanai fieldi( otomasyonda bununla alakali bolum gelince eklenecek) ve ek dosya yuklenebilirmi(ne ise yaradigini anlamadik) secenegi kaldirildi#}
+    {#                        (render_checkbox_with_tooltip(proje_turu_formu.is_zaman_plani_otomasyon_icerisinde_doldurulsun_mu,#}
+    {#                                                      title=_("İş zamanı planı otomasyon içerisinde doldurulacak mı.(Çıktılar bölümünde 'iş zaman çizelgesi şablonu' eklenmelidir")), 4),#}
+    {#                        (render_checkbox_with_tooltip(proje_turu_formu.ek_dosya_yuklenebilir_mi,#}
+    {#                                                      title=_("Yürütücü proje başvurusu esnasında ek dosya yükleyebilir mi")), 4),#}
+    {% set form_steps = {
+            "steps": [
+                {
+                    "title": _('Genel'),
+                    "form_elements":[
+                        (render_text_field_with_tooltip(proje_turu_formu.ad,
+                                                        title=_("Proje türü için bir ad giriniz")), 6),
+                        (render_select_tag(proje_turu_formu.kategori,
+                                           title=_("Proje türü kagegorisi seçiniz")), 6),
+                        (render_datetime_field(proje_turu_formu.basvuru_baslama_tarihi,
+                                               title=_("Proje türü için başvuru başlama tarihi")), 6),
+                        (render_datetime_field(proje_turu_formu.basvuru_bitis_tarihi,
+                                               title=_("Proje türü için başvuru bitiş tarihi")), 6),
+                        (render_select_tag(proje_turu_formu.ek_sure_talep_tipi,
+                                           title=_("Proje süresi için ek talep tipi")), 6),
+                        (render_text_field_with_tooltip(proje_turu_formu.ek_sure_talep_degeri,
+                                                        title=_("Süre ek talep değeri"),
+                                                        type="number",
+                                                        min=0) , 6),
+                         (render_text_field_with_tooltip(proje_turu_formu.sure_birimi,
+                                                        title=_("Proje süre birimi")
+                                                        ), 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.sure_alt_limiti,
+                                                        title=_("Proje türüne başvurabilmek için proje süre alt limiti"),
+                                                        type="number", min=0), 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.sure_ust_limiti,
+                                                        title=_("Proje türüne başvurabilmek için proje süre üst limiti"),
+                                                        type="number", min=0), 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.basvuru_hakem_oneri_sayisi,
+                                                        title=_("Proje başvurusu için hakem öneri sayısı"),
+                                                        type="number",
+                                                        min=0), 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.proje_mali_destek_suresi,
+                                                        title=_("Sadece yüksek lisans ve doktora/uzmanlık projeleri için"),
+                                                        type="number", min=0), 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.mali_destek_suresi_birimi,
+                                                        title=_("Mali destek süresi birimi")), 4),
+                        (render_checkbox_with_tooltip(proje_turu_formu.ek_sureler_proje_sure_limitine_dahil_mi,
+                                                      title=_("Proje ek süre talepleri proje türü süre üst limitine dahil mi?")) , 4),
+                        (render_checkbox_with_tooltip(proje_turu_formu.hakem_onerilsin_mi,
+                                                      title=_("Proje yürütücüsü başvuru esnasında hakem önerisin mi?")), 4),
+                        (render_checkbox_with_tooltip(proje_turu_formu.basvuru_aktif_mi,
+                                                      title=_("Aktif olmayan proje türlerine başvuru yapılamaz.
+                                                               Bir proje türüne başvuru yapıldıktan sonra aktif olma seçeneği
+                                                               kaldırılırsa var olan projeler başvuru sürecine devam eder ama
+                                                               proje türü yeni başvuru kabul etmez.")) , 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.proje_turu_aciklama,
+                                                        title=_("Projeye başvuracak yürütücüler için lüften proje türünü açıklayan bilgilendirici bir metin ekleyiniz."),
+                                                        type="textarea",
+                                                        rows=8), 12),
+                    ]
+                },
+
+                {
+                    "title": _('Form / Rapor'),
+                    "form_elements":[
+                        (form_with_preview_button(proje_turu_formu.sozlesme_sablon_id, title=_("Sözleşme Şablonu")), 12),
+                        (form_with_preview_button(proje_turu_formu.oneri_sablon_id,
+                                                  title=_("Öneri şablonu")), 12),
+                        (form_with_preview_button(proje_turu_formu.hakem_degerlendirme_sablon_id,
+                                                  title=_("Proje hakem değerlendirme şablonu")), 12),
+                        (form_with_preview_button(proje_turu_formu.hakem_ara_rapor_sablon_id ,
+                                                  title=_("Proje hakem ara rapor şablonu")) , 12),
+                        (form_with_preview_button(proje_turu_formu.hakem_sonuc_rapor_sablon_id ,
+                                                  title=_("Proje Hakem sonuç raporu şablonu")) , 12),
+                        (form_with_preview_button(proje_turu_formu.ara_rapor_sablon_id,
+                                                  title=_("Proje ara rapor şablonu")), 12),
+                        (form_with_preview_button(proje_turu_formu.sonuc_raporu_sablon_id,
+                                                  title=_("Proje sonuç raporu şablonu")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.rapor_araligi_birimi,
+                                                      title=_("Rapor aralığı birimi")) , 6),
+
+                        (render_text_field_with_tooltip(proje_turu_formu.rapor_araligi_suresi,
+                                                      title=_("Eğer rapor gerekli ise proje yürütücüsünün hangi sıklıkla rapor yüklemesi gerektiğini seçiniz"),
+                                                      type="number", min="0") , 6),
+                         (render_text_field_with_tooltip(proje_turu_formu.sonuc_raporu_icin_ek_sure_birimi,
+                                                      title=_("Sonuç raporu ek süre birimini seçiniz")) , 6),
+                        (render_text_field_with_tooltip(proje_turu_formu.sonuc_raporu_icin_ek_sure,
+                                                      title=_("Sonuç raporu için ek süre verilecekse değer giriniz"),
+                                                      type="number", min="0") , 6),
+                        (render_text_field_with_tooltip(proje_turu_formu.rapor_gecikme_mail_suresi_birimi,
+                                                      title=_("Rapor gecikme mail süresi birimi")) , 6),
+                        (render_text_field_with_tooltip(proje_turu_formu.rapor_gecikme_mail_suresi,
+                                                      title=_("Rapor gecikmelerinde yürütücüye hangi sıklıkla mail atılsın"),
+                                                      type="number", min="0") , 6),
+
+                        (render_checkbox_with_tooltip(proje_turu_formu.proje_ek_talepleri_icin_rapor_kontrolu_yapilacak_mi,
+                                                      title=_("Proje ek talepleri için rapor kontrolü yapılacak mı")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.herkese_acik_proje_listesinde_yer_alacak_mi,
+                                                      title=_("Proje türüne yapılan proje başvuruları anasayfada
+                                                               bulunan projeler listesinde yer alacak mı")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.hakem_degerlendirmesi_gerekli_mi,
+                                                      title=_("Proje için hakem değerlendirmesi gerekli mi")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.ara_rapor_gerekli_mi,
+                                                      title=_("Proje ara raporu gerekli mi")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.sonuc_raporu_gerekli_mi,
+                                                      title=_("Proje sonuç raporu gerekli mi?")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.rapor_gecikmelerinde_satinalma_yapabilecek_mi,
+                                                      title=_("Proje yürütücüsü rapor geciktirdigi zaman satınalma talebi yapabilecek mi ?")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.rapor_gecikmelerinde_yolluk_talebi_yapabilecek_mi,
+                                                      title=_("Proje yürütücüsü rapor geciktirdigi zaman yolluk talebi yapabilecek mi ?")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.rapor_gecikmelerinde_ek_talep_yapabilecek_mi,
+                                                      title=_("Proje yürütücüsü rapor geciktirdigi zaman ek talep yapabilecek mi ?")) , 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.sonuc_raporu_sonrasi_islem_yapilsin_mi,
+                                                      title=_("Proje yürütücüsü sonuç raporu yükledikten sonra işlem yapabilsin mi ?")) , 6),
+                    ]
+                },
+
+                {
+                    "title": _('Bütçe'),
+                    "form_elements":[
+                        (render_text_field_with_tooltip(proje_turu_formu.gelir_kasasi_id,
+                        title=_("Proje türüne üzerinden yapılan proje başvurularının bütçelerinin bağlı olacağı kasayı seçiniz")), 12),
+                        (render_currency_field_with_tooltip(proje_turu_formu.butce_ayarlari.butce_alt_limiti,
+                                                        title=_("Proje türüne başvuracak projelerin bütçe alt limiti")), 6),
+                        (render_currency_field_with_tooltip(proje_turu_formu.butce_ayarlari.butce_ust_limiti,
+                                                        title=_("Proje türüne başvuracak projelerin bütçe üst limiti")), 6),
+                        (render_select_tag(proje_turu_formu.butce_ayarlari.ek_butce_talep_tipi,
+                                           title=_("Proje başvurusu için bütçe ek talep tipi. Bu değer, yaptığınız seçime göre toplam bütçenin yüzde olarak veya ")), 6),
+                        (render_text_field_with_tooltip(proje_turu_formu.butce_ayarlari.ek_butce_talep_degeri,
+                                                        title=_("Ek bütçe talep değeri"),
+                                                        type="number",
+                                                        min=0), 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.butce_ayarlari.ek_butce_proje_butce_limitine_dahil_mi,
+                                                      title=_("Proje ek bütçe talepleri proje türü bütçe üst limitine dahil mi?")), 6),
+                        (render_checkbox_with_tooltip(proje_turu_formu.butce_ayarlari.kalemlere_ait_butce_yillara_gore_verilebilecek_mi,
+                                                      title=_("Proje başvurusu esnasında bütçe yıllara göre verilebilecek mi")), 6),
+                        (render_select_tag(proje_turu_formu.butce_tercihi,
+                                           title=_("")) , 12),
+                        (render_butce_kalemleri(proje_turu_formu.butce_kalemleri) , 12),
+                    ]
+                },
+
+                {
+                    "title": _('Ek Dosyalar'),
+                    "form_elements":[
+                        (render_checkbox_with_tooltip(proje_turu_formu.proje_yurutucusu_ek_dosyalar_ekleyebilir_mi,
+                                                      title=_("Proje yürütücüsü proje başvurusu yaparken ek dosyalar ekleyebilir mi?")), 12),
+                        (dosya_dynamic_field(), 12),
+                        (form_with_preview_button(proje_turu_formu.cikti_secenekleri,
+                                                  title=_("Çıktı seçeneklerini önizlemek içindir.")), 12),
+                        (cikti_ekle_dynamic_field(), 12),
+                    ]
+                },
+
+                {
+                    "title": _('Personel'),
+                    "form_elements":[
+                        (render_checkbox_with_tooltip(proje_turu_formu.personel_ayarlari.ozgecmis_yuklenmesi_zorunlu_mu,
+                                                      title=_("Proje personelleri için başvuru esnasında özgeçmiş yüklemek zorunlu mu?")) , 4),
+                        (render_checkbox_with_tooltip(proje_turu_formu.personel_ayarlari.dosya_olarak_ozgecmis_yuklenebilir_mi,
+                                                      title=_("Proje personelleri için yüklenecek özgeçmiş dosya olarak yüklenebilir mi?")) , 4),
+                        (render_checkbox_with_tooltip(proje_turu_formu.personel_ayarlari.banka_bilgilerini_girmek_zorunlu_mu,
+                                                      title=_("Proje başvurusu sırasında proje personelleri için banka bilgilerini girmek zorunlu mu?")) , 4),
+                        (render_select_tag(proje_turu_formu.personel_ayarlari.yardimci_arastirmaci_secenekleri,
+                                           title=_("Proje başvurusu personel seçeneği")) , 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.personel_ayarlari.yardimci_arastirmaci_alt_limiti,
+                                                        title=_("Eğer yardımcı araştırmacı seçeneği sınırlı seçilirse bu alanı doldurmanız gerekir?"),
+                                                        type="number",
+                                                        min=0) , 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.personel_ayarlari.yardimci_arastirmaci_ust_limiti,
+                                                        title=_("Eğer yardımcı araştırmacı seçeneği sınırlı seçilirse bu alanı doldurmanız gerekir?"),
+                                                        type="number",
+                                                        min=0) , 4),
+                        (render_text_field_with_tooltip(proje_turu_formu.personel_ekrani_bilgilendirme_mesaji,
+                                                        title=_("Proje başvurusu personel ekranı yürütücü uyarı/bilgilendirme mesajı?"),
+                                                        type="textarea",
+                                                        rows=6 ), 12),
+                    ]
+                },
+
+                {
+                    "title": _('Bilgi Mesajları'),
+                    "form_elements":[
+                        (render_text_field_with_tooltip(proje_turu_formu.butce_ekrani_bilgilendirme,
+                                                        title=_("Proje başvurusu esnasında bütçe ekranı yürütücü uyarı/bilgilendirme mesajı"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.proje_yurutucusu_icin_yardim_mesaji,
+                                                        title=_("Proje başvurusu ana ekran yürütücü uyarı/yardım mesajı"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.basvuru_yapilmadan_gelecek_uyari,
+                                                        title=_("Proje başvurusu yapılmadan yürütücü için uyarı mesajı"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.basvuru_tamamlandiktan_sonra_bilgilendirme,
+                                                        title=_("Proje başvurusu başarılı bir şekilde tamamlandığında yürütücüye gösterilecek bilgilendirme mesajı"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.gonder_islemi_yapilirken_yurutucuye_gosterilecek_uyari,
+                                                        title=_("Proje başvurusu tamamlanırken yürütücüye gösterilecek uyarı mesajı"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.hakem_onerisi_bilgilendirme,
+                                                        title=_("Proje başvurusu esnasında yürütücü için hakem önerisi yapacağı
+                                                                 zaman görecegi bilgilendirme metni giriniz"),
+                                                        type="textarea",
+                                                        rows=8 ), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.ara_rapor_uyari,
+                                                        type="textarea",
+                                                        rows=8 ,
+                                                        title=_("Proje yürütücüsü için ara rapor uyarı/bilgilendirme mesajı")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.sonuc_raporu_uyari,
+                                                        type="textarea",
+                                                        rows=8,
+                                                        title=_("Proje yürütücüsü için sonuç raporu uyarı/bilgilendirme mesajı")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.yurutucu_proje_sozlesme_bekleme_mesaji,
+                                                        type="textarea",
+                                                        rows=8,
+                                                        title=_("Proje yürütücüsü için sözleşme bekleme mesajı")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.degerlendirme_ekraninda_bilgi_notu,
+                                                        type="textarea",
+                                                        rows=8,
+                                                        title=_("Hakem Değerlendirme Ekranı Bilgi Notu")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.degerlendirme_sonunda_bilgi_notu,
+                                                        type="textarea",
+                                                        rows=8,
+                                                        title=_("Değerlendirme Sonunda Bilgi Notu")), 12),
+                        (render_text_field_with_tooltip(proje_turu_formu.ek_dosyalar_ekrani_bilgilendirme,
+                                                        title=_("Proje başvurusu ek dosyalar ekranı bilgilendirme mesajı"),
+                                                        type="textarea",
+                                                        rows=8), 12),
+                    ]
+                }
+            ],
+            "hidden_fields":[
+                (proje_turu_formu.ara_sonuc_raporu_dosya_id , 6),
+                (proje_turu_formu.sonuc_raporu_dosya_id, 4),
+            ]
+        } %}
+    <div class="content-body">
+        <section id="number-tabs">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                {{ form_wizard(form_steps, proje_turu_buttonlari(), navigate_steps=True) }}
+                                {{ render_sablon_preview_modal(is_button_active=False) }}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+        {# proje formunu submit etmeyi durdurur(swal açabilmek için bu cozume gidildi. submit işlemi swal icerisinde gerçekleştirildi#}
+        $('#form-wizard').on("submit", function (e) {
+            e.preventDefault();
+        });
+
+        function open_uyari_modal() {
+            $('#proje-kaydet-uyari-modal').modal('show');
+        }
+
+
+        function proje_turu_kaydet() {
+            swal({
+                title: "{{ _("Proje türünü oluşturmak üzeresiniz.") }}",
+                text: "{{ _("Eğer gerekli alanları doldurduysanız proje türü oluşturulacak")}}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        swal("{{ _("Proje türü  başarıyla kaydedildi") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            button: false
+                        });
+                        $('#form-wizard').attr('action', "{{ url_for('proje.proje_turu_kaydet') }}")[0].submit();
+                        {#$('form').submit();#}
+                    } else {
+                        swal("{{ _("Proje türünü kaydetmekten vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+            {#                    formaction={{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id) }}>#}
+            // do some stuff, and if it's okay:
+        }
+
+
+        function proje_turu_taslak_kaydet() {
+            swal({
+                title: "{{ _("Proje Turu Taslak Kaydet") }}",
+                text: "{{ _("Proje türünüzü taslak olarak kaydetmek üzeresiniz.") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: false,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: false
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        swal("{{ _("Proje türü taslak başarıyla kaydedildi") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            button: false
+                        });
+                        $('#form-wizard').attr('action', "{{ url_for('proje.proje_turu_taslak_kaydet') }}")[0].submit();
+
+                        {#$('form').submit();#}
+                    } else {
+                        swal("{{ _("Proje türü taslağı kaydetmekten vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+            {#                    formaction={{ url_for('proje.yeni_proje_kaydet', proje_id=proje_id) }}>#}
+            // do some stuff, and if it's okay:
+        }
+
+        function proje_turu_taslak_guncelle_with_taslak_id(taslak_id) {
+            let taslakId, url;
+            taslakId = taslak_id;
+            url = "{{ url_for('proje.proje_turu_taslak_guncelle_with_id', taslak_id=-1) }}";
+            url = url.replace("-1", taslakId);
+            swal({
+                title: "{{ _("Taslak Güncelle") }}",
+                text: "{{ _("Proje türü taslağını güncellemek üzeresiniz.") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: false,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: false
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        swal("{{ _("Proje türü taslak başarıyla güncellendi") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            button: false
+                        });
+                        $('#form-wizard').attr('action', url)[0].submit();
+                        {#$('form').submit();#}
+                    } else {
+                        swal("{{ _("Proje türü taslağını güncellemekten vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+
+        function proje_turu_guncelle_with_proje_turu_id(proje_turu_id) {
+            let url, projeTuruId;
+
+            projeTuruId = proje_turu_id;
+            url = "{{ url_for('proje.proje_turu_guncelle_with_id', proje_turu_id=-1) }}";
+            url = url.replace("-1", projeTuruId);
+
+            swal({
+                title: "{{ _("Proje Türü Güncelle") }}",
+                text: "{{ _("Proje türünü güncellemek üzeresiniz.") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        swal("{{ _("Proje türü başarıyla güncellendi") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            button: false
+                        });
+                        $('#form-wizard').attr('action', url)[0].submit();
+                    } else {
+                        swal("{{ _("Proje türünü güncellemekten vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+
+        function proje_turu_versiyonla(proje_turu_id) {
+            let url, projeTuruId;
+            projeTuruId = proje_turu_id;
+            console.log(projeTuruId);
+            url = "{{ url_for('proje.proje_turu_kaydet', id=-1 )}}";
+            url = url.replace("-1", projeTuruId);
+
+            swal({
+                title: "{{ _("Proje Türü Versiyonla") }}",
+                text: "{{ _("Proje türünü versiyonlamak üzeresiniz.") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        swal("{{ _("Proje türü başarıyla versiyonlandı") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            button: false
+                        });
+
+                        $('#form-wizard').attr('action', url)[0].submit();
+                    } else {
+                        swal("{{ _("Proje türü taslağını versiyonlamaktan vazgeçtiniz") }}",
+                            {
+                                icon: "warning",
+                                timer: 4000,
+                                button: false
+                            });
+                    }
+                });
+        }
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            getSablonId = function (button) {
+                let sablonId;
+                sablonId = $(button.parentElement.parentElement).find("select").val()
+                previewAction(sablonId);
+            };
+
+            $("input.butce_kalem_ust_limit").focusout(function () {
+                var alt = $(this).parent().prev().children("input.butce_kalem_alt_limit");
+                var cb = $(this).parent().prev(4).find("input.butce_kalem");
+                butce_limitleri_kontrol(alt, $(this), cb);
+
+            });
+
+            function butce_limitleri_kontrol(alt, ust, cb) {
+                if (parseInt(alt.val()) >= parseInt(ust.val())) {
+                    setTimeout(function () {
+                        swal("Bütçe limitlerini kontrol edin. Alt limit, " +
+                            "üst limitten büyük olamaz.")
+                    }, 4000);
+                    cb.prop('checked', false);
+                    return
+                }
+                cb.prop('checked', true);
+
+            }
+
+        });
+    </script>
+    {% if hata_mesajlari %}
+        <div class="modal fade" id="hata-mesajlari-modal" style="display: none;"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h4 class="modal-title f-s-20 text-red-darker"
+                            id="preview-modal-title">
+                            {{ _("Proje Türünü Oluşturmak İçin Hatalari Gideriniz") }}
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger m-b-0">
+                        <span id="hata-mesajlari-modal-content">
+                            {% for mesaj in hata_mesajlari %}
+                                <div class="col-md-12">
+                                <p class="text-center f-s-15 text-black">
+                                    <b>{{ mesaj | safe }}</b>
+                                </p>
+                                </div>
+                            {% endfor %}
+                        </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                {#$("#uyari-mesajlari-modal-content").html('');#}
+                $('#hata-mesajlari-modal').modal('show');
+            });
+        </script>
+    {% endif %}
+
+{% endblock %}

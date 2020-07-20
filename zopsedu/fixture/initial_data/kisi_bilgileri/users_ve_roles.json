@@ -1,0 +1,1594 @@
+{
+  "user": [
+    {
+      "id": "1",
+      "username": "anonymous",
+      "password": null,
+      "email": null,
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 2,
+      "username": "system_user",
+      "password": "59466e1de2c380cf876650ac245a76fa19453b7898cf7ee393d732f71fcd2de938b56d6f602bbf4b37b839fc48aa5520268142681a267ee1d803f249c187d485",
+      "email": "sistem_user@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 3,
+      "username": "bap_yetkilisi",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "bap@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 4,
+      "username": "bap_ou_1",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "bap_oe_1@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 5,
+      "username": "bap_hakem_1",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "bap_hakem@harran.edu.tr"
+    },
+    {
+      "id": 6,
+      "username": "bap_admin",
+      "password": "59466e1de2c380cf876650ac245a76fa19453b7898cf7ee393d732f71fcd2de938b56d6f602bbf4b37b839fc48aa5520268142681a267ee1d803f249c187d485",
+      "email": "bap_admin@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 10,
+      "username": "rektor",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "rektor@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 11,
+      "username": "harici_ou_1",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "harici_oe1@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 12,
+      "username": "aybeyaz",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "aybeyaz@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 13,
+      "username": "alaybeyi",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "alaybeyi@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    },
+    {
+      "id": 14,
+      "username": "aaktimur",
+      "password": "bf4a39aa92aaeb74c0e60ac3496ca23232a7e638df23c2ff7845b320892c4524800aadf43393ca947dc1ef5fd8f33786d76e4db506764ee13a2875986750524f",
+      "email": "aaktimur@harran.edu.tr",
+      "profile_photo": null,
+      "avatar": null
+    }
+  ],
+  "role": [
+    {
+      "id": "1",
+      "name": "anonymous"
+    },
+    {
+      "id": "2",
+      "name": "BAP Yetkilisi"
+    },
+    {
+      "id": "3",
+      "name": "Öğretim Üyesi"
+    },
+    {
+      "id": "4",
+      "name": "BAP Hakem"
+    },
+    {
+      "id": "5",
+      "name": "BAP Admin"
+    },
+    {
+      "id": "6",
+      "name": "Harici Öğretim Üyesi"
+    },
+    {
+      "id": "7",
+      "name": "BAP Firma"
+    },
+    {
+      "id": "8",
+      "name": "Rektör"
+    }
+  ],
+  "user_role": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "role_id": 1,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 2,
+      "user_id": 3,
+      "role_id": 2,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 3,
+      "user_id": 4,
+      "role_id": 3,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 4,
+      "user_id": 5,
+      "role_id": 4,
+      "birim_id": 1,
+      "rol_tipi": "harici",
+      "is_default": false
+    },
+    {
+      "id": 5,
+      "user_id": 6,
+      "role_id": 5,
+      "birim_id": 1,
+      "rol_tipi": "harici",
+      "is_default": false
+    },
+    {
+      "id": 6,
+      "user_id": 11,
+      "role_id": 6,
+      "birim_id": 1,
+      "rol_tipi": "harici",
+      "is_default": false
+    },
+    {
+      "id": 7,
+      "user_id": 10,
+      "role_id": 8,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 12,
+      "user_id": 12,
+      "role_id": 2,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 13,
+      "user_id": 13,
+      "role_id": 2,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    },
+    {
+      "id": 14,
+      "user_id": 14,
+      "role_id": 2,
+      "birim_id": 1,
+      "rol_tipi": "personel",
+      "is_default": false
+    }
+  ],
+  "role_permission": [
+    {
+      "id": 2,
+      "permission_id": 1000,
+      "role_id": 5
+    },
+    {
+      "id": 3,
+      "permission_id": 1001,
+      "role_id": 5
+    },
+    {
+      "id": 4,
+      "permission_id": 1002,
+      "role_id": 5
+    },
+    {
+      "id": 5,
+      "permission_id": 1003,
+      "role_id": 5
+    },
+    {
+      "id": 6,
+      "permission_id": 1004,
+      "role_id": 5
+    },
+    {
+      "id": 7,
+      "permission_id": 1005,
+      "role_id": 5
+    },
+    {
+      "id": 8,
+      "permission_id": 1006,
+      "role_id": 5
+    },
+    {
+      "id": 9,
+      "permission_id": 1007,
+      "role_id": 5
+    },
+    {
+      "id": 10,
+      "permission_id": 1008,
+      "role_id": 5
+    },
+    {
+      "id": 11,
+      "permission_id": 1009,
+      "role_id": 5
+    },
+    {
+      "id": 16,
+      "permission_id": 1014,
+      "role_id": 5
+    },
+    {
+      "id": 17,
+      "permission_id": 1015,
+      "role_id": 5
+    },
+    {
+      "id": 18,
+      "permission_id": 1016,
+      "role_id": 5
+    },
+    {
+      "id": 19,
+      "permission_id": 1017,
+      "role_id": 5
+    },
+    {
+      "id": 22,
+      "permission_id": 1020,
+      "role_id": 5
+    },
+    {
+      "id": 23,
+      "permission_id": 1021,
+      "role_id": 5
+    },
+    {
+      "id": 25,
+      "permission_id": 1023,
+      "role_id": 5
+    },
+    {
+      "id": 26,
+      "permission_id": 1024,
+      "role_id": 5
+    },
+    {
+      "id": 27,
+      "permission_id": 1025,
+      "role_id": 5
+    },
+    {
+      "id": 28,
+      "permission_id": 1026,
+      "role_id": 5
+    },
+    {
+      "id": 29,
+      "permission_id": 1027,
+      "role_id": 5
+    },
+    {
+      "id": 30,
+      "permission_id": 1028,
+      "role_id": 5
+    },
+    {
+      "id": 32,
+      "permission_id": 1029,
+      "role_id": 5
+    },
+    {
+      "id": 33,
+      "permission_id": 1030,
+      "role_id": 5
+    },
+    {
+      "id": 34,
+      "permission_id": 1031,
+      "role_id": 5
+    },
+    {
+      "id": 36,
+      "permission_id": 1032,
+      "role_id": 5
+    },
+    {
+      "id": 37,
+      "permission_id": 1033,
+      "role_id": 5
+    },
+    {
+      "id": 38,
+      "permission_id": 1034,
+      "role_id": 5
+    },
+    {
+      "id": 39,
+      "permission_id": 1035,
+      "role_id": 5
+    },
+    {
+      "id": 40,
+      "permission_id": 1036,
+      "role_id": 5
+    },
+    {
+      "id": 41,
+      "permission_id": 1037,
+      "role_id": 5
+    },
+    {
+      "id": 42,
+      "permission_id": 1038,
+      "role_id": 5
+    },
+    {
+      "id": 43,
+      "permission_id": 1039,
+      "role_id": 5
+    },
+    {
+      "id": 44,
+      "permission_id": 1040,
+      "role_id": 5
+    },
+    {
+      "id": 45,
+      "permission_id": 1041,
+      "role_id": 5
+    },
+    {
+      "id": 46,
+      "permission_id": 1042,
+      "role_id": 5
+    },
+    {
+      "id": 47,
+      "permission_id": 1043,
+      "role_id": 5
+    },
+    {
+      "id": 48,
+      "permission_id": 1044,
+      "role_id": 5
+    },
+    {
+      "id": 49,
+      "permission_id": 1045,
+      "role_id": 5
+    },
+    {
+      "id": 50,
+      "permission_id": 1046,
+      "role_id": 5
+    },
+    {
+      "id": 51,
+      "permission_id": 1047,
+      "role_id": 5
+    },
+    {
+      "id": 52,
+      "permission_id": 1048,
+      "role_id": 5
+    },
+    {
+      "id": 55,
+      "permission_id": 1051,
+      "role_id": 5
+    },
+    {
+      "id": 56,
+      "permission_id": 1052,
+      "role_id": 5
+    },
+    {
+      "id": 57,
+      "permission_id": 1053,
+      "role_id": 5
+    },
+    {
+      "id": 58,
+      "permission_id": 1054,
+      "role_id": 5
+    },
+    {
+      "id": 59,
+      "permission_id": 1055,
+      "role_id": 5
+    },
+    {
+      "id": 60,
+      "permission_id": 1056,
+      "role_id": 5
+    },
+    {
+      "id": 61,
+      "permission_id": 1057,
+      "role_id": 5
+    },
+    {
+      "id": 62,
+      "permission_id": 2000,
+      "role_id": 5
+    },
+    {
+      "id": 63,
+      "permission_id": 2001,
+      "role_id": 5
+    },
+    {
+      "id": 64,
+      "permission_id": 2002,
+      "role_id": 5
+    },
+    {
+      "id": 65,
+      "permission_id": 2004,
+      "role_id": 5
+    },
+    {
+      "id": 66,
+      "permission_id": 2005,
+      "role_id": 5
+    },
+    {
+      "id": 67,
+      "permission_id": 2006,
+      "role_id": 5
+    },
+    {
+      "id": 68,
+      "permission_id": 2007,
+      "role_id": 5
+    },
+    {
+      "id": 69,
+      "permission_id": 2008,
+      "role_id": 5
+    },
+    {
+      "id": 70,
+      "permission_id": 2009,
+      "role_id": 5
+    },
+    {
+      "id": 71,
+      "permission_id": 3000,
+      "role_id": 5
+    },
+    {
+      "id": 72,
+      "permission_id": 3001,
+      "role_id": 5
+    },
+    {
+      "id": 75,
+      "permission_id": 4000,
+      "role_id": 5
+    },
+    {
+      "id": 76,
+      "permission_id": 4001,
+      "role_id": 5
+    },
+    {
+      "id": 77,
+      "permission_id": 4002,
+      "role_id": 5
+    },
+    {
+      "id": 78,
+      "permission_id": 4003,
+      "role_id": 5
+    },
+    {
+      "id": 79,
+      "permission_id": 5000,
+      "role_id": 5
+    },
+    {
+      "id": 81,
+      "permission_id": 5002,
+      "role_id": 5
+    },
+    {
+      "id": 82,
+      "permission_id": 5003,
+      "role_id": 5
+    },
+    {
+      "id": 83,
+      "permission_id": 5004,
+      "role_id": 5
+    },
+    {
+      "id": 84,
+      "permission_id": 5005,
+      "role_id": 5
+    },
+    {
+      "id": 85,
+      "permission_id": 5006,
+      "role_id": 5
+    },
+    {
+      "id": 86,
+      "permission_id": 5007,
+      "role_id": 5
+    },
+    {
+      "id": 88,
+      "permission_id": 5009,
+      "role_id": 5
+    },
+    {
+      "id": 90,
+      "permission_id": 5011,
+      "role_id": 5
+    },
+    {
+      "id": 91,
+      "permission_id": 5012,
+      "role_id": 5
+    },
+    {
+      "id": 92,
+      "permission_id": 5013,
+      "role_id": 5
+    },
+    {
+      "id": 93,
+      "permission_id": 5014,
+      "role_id": 5
+    },
+    {
+      "id": 94,
+      "permission_id": 5015,
+      "role_id": 5
+    },
+    {
+      "id": 95,
+      "permission_id": 5016,
+      "role_id": 5
+    },
+    {
+      "id": 96,
+      "permission_id": 5017,
+      "role_id": 5
+    },
+    {
+      "id": 97,
+      "permission_id": 5018,
+      "role_id": 5
+    },
+    {
+      "id": 98,
+      "permission_id": 5019,
+      "role_id": 5
+    },
+    {
+      "id": 99,
+      "permission_id": 1000,
+      "role_id": 2
+    },
+    {
+      "id": 100,
+      "permission_id": 1001,
+      "role_id": 2
+    },
+    {
+      "id": 101,
+      "permission_id": 1002,
+      "role_id": 2
+    },
+    {
+      "id": 102,
+      "permission_id": 1003,
+      "role_id": 2
+    },
+    {
+      "id": 103,
+      "permission_id": 1004,
+      "role_id": 2
+    },
+    {
+      "id": 104,
+      "permission_id": 1005,
+      "role_id": 2
+    },
+    {
+      "id": 105,
+      "permission_id": 1006,
+      "role_id": 2
+    },
+    {
+      "id": 106,
+      "permission_id": 1007,
+      "role_id": 2
+    },
+    {
+      "id": 107,
+      "permission_id": 1008,
+      "role_id": 2
+    },
+    {
+      "id": 108,
+      "permission_id": 1009,
+      "role_id": 2
+    },
+    {
+      "id": 113,
+      "permission_id": 1014,
+      "role_id": 2
+    },
+    {
+      "id": 114,
+      "permission_id": 1015,
+      "role_id": 2
+    },
+    {
+      "id": 115,
+      "permission_id": 1016,
+      "role_id": 2
+    },
+    {
+      "id": 116,
+      "permission_id": 1017,
+      "role_id": 2
+    },
+    {
+      "id": 118,
+      "permission_id": 1020,
+      "role_id": 2
+    },
+    {
+      "id": 119,
+      "permission_id": 1021,
+      "role_id": 2
+    },
+    {
+      "id": 121,
+      "permission_id": 1023,
+      "role_id": 2
+    },
+    {
+      "id": 122,
+      "permission_id": 1024,
+      "role_id": 2
+    },
+    {
+      "id": 123,
+      "permission_id": 1025,
+      "role_id": 2
+    },
+    {
+      "id": 124,
+      "permission_id": 1026,
+      "role_id": 2
+    },
+    {
+      "id": 125,
+      "permission_id": 1027,
+      "role_id": 2
+    },
+    {
+      "id": 126,
+      "permission_id": 1028,
+      "role_id": 2
+    },
+    {
+      "id": 127,
+      "permission_id": 1029,
+      "role_id": 2
+    },
+    {
+      "id": 128,
+      "permission_id": 1030,
+      "role_id": 2
+    },
+    {
+      "id": 129,
+      "permission_id": 1031,
+      "role_id": 2
+    },
+    {
+      "id": 130,
+      "permission_id": 1032,
+      "role_id": 2
+    },
+    {
+      "id": 131,
+      "permission_id": 1033,
+      "role_id": 2
+    },
+    {
+      "id": 132,
+      "permission_id": 1034,
+      "role_id": 2
+    },
+    {
+      "id": 133,
+      "permission_id": 1035,
+      "role_id": 2
+    },
+    {
+      "id": 134,
+      "permission_id": 1036,
+      "role_id": 2
+    },
+    {
+      "id": 135,
+      "permission_id": 1037,
+      "role_id": 2
+    },
+    {
+      "id": 136,
+      "permission_id": 1038,
+      "role_id": 2
+    },
+    {
+      "id": 137,
+      "permission_id": 1039,
+      "role_id": 2
+    },
+    {
+      "id": 138,
+      "permission_id": 1040,
+      "role_id": 2
+    },
+    {
+      "id": 139,
+      "permission_id": 1041,
+      "role_id": 2
+    },
+    {
+      "id": 140,
+      "permission_id": 1042,
+      "role_id": 2
+    },
+    {
+      "id": 141,
+      "permission_id": 1043,
+      "role_id": 2
+    },
+    {
+      "id": 142,
+      "permission_id": 1044,
+      "role_id": 2
+    },
+    {
+      "id": 143,
+      "permission_id": 1045,
+      "role_id": 2
+    },
+    {
+      "id": 144,
+      "permission_id": 1046,
+      "role_id": 2
+    },
+    {
+      "id": 145,
+      "permission_id": 1047,
+      "role_id": 2
+    },
+    {
+      "id": 146,
+      "permission_id": 1048,
+      "role_id": 2
+    },
+    {
+      "id": 149,
+      "permission_id": 1051,
+      "role_id": 2
+    },
+    {
+      "id": 150,
+      "permission_id": 1052,
+      "role_id": 2
+    },
+    {
+      "id": 151,
+      "permission_id": 1053,
+      "role_id": 2
+    },
+    {
+      "id": 152,
+      "permission_id": 1054,
+      "role_id": 2
+    },
+    {
+      "id": 153,
+      "permission_id": 1055,
+      "role_id": 2
+    },
+    {
+      "id": 154,
+      "permission_id": 1056,
+      "role_id": 2
+    },
+    {
+      "id": 155,
+      "permission_id": 1057,
+      "role_id": 2
+    },
+    {
+      "id": 156,
+      "permission_id": 2000,
+      "role_id": 2
+    },
+    {
+      "id": 157,
+      "permission_id": 2001,
+      "role_id": 2
+    },
+    {
+      "id": 158,
+      "permission_id": 2002,
+      "role_id": 2
+    },
+    {
+      "id": 159,
+      "permission_id": 2004,
+      "role_id": 2
+    },
+    {
+      "id": 160,
+      "permission_id": 2005,
+      "role_id": 2
+    },
+    {
+      "id": 161,
+      "permission_id": 2006,
+      "role_id": 2
+    },
+    {
+      "id": 162,
+      "permission_id": 2007,
+      "role_id": 2
+    },
+    {
+      "id": 163,
+      "permission_id": 2008,
+      "role_id": 2
+    },
+    {
+      "id": 164,
+      "permission_id": 2009,
+      "role_id": 2
+    },
+    {
+      "id": 165,
+      "permission_id": 3000,
+      "role_id": 2
+    },
+    {
+      "id": 166,
+      "permission_id": 3001,
+      "role_id": 2
+    },
+    {
+      "id": 167,
+      "permission_id": 4000,
+      "role_id": 2
+    },
+    {
+      "id": 168,
+      "permission_id": 4001,
+      "role_id": 2
+    },
+    {
+      "id": 169,
+      "permission_id": 4002,
+      "role_id": 2
+    },
+    {
+      "id": 170,
+      "permission_id": 4003,
+      "role_id": 2
+    },
+    {
+      "id": 171,
+      "permission_id": 5000,
+      "role_id": 2
+    },
+    {
+      "id": 173,
+      "permission_id": 5002,
+      "role_id": 2
+    },
+    {
+      "id": 174,
+      "permission_id": 5003,
+      "role_id": 2
+    },
+    {
+      "id": 175,
+      "permission_id": 5004,
+      "role_id": 2
+    },
+    {
+      "id": 176,
+      "permission_id": 5005,
+      "role_id": 2
+    },
+    {
+      "id": 177,
+      "permission_id": 5006,
+      "role_id": 2
+    },
+    {
+      "id": 178,
+      "permission_id": 5007,
+      "role_id": 2
+    },
+    {
+      "id": 180,
+      "permission_id": 5009,
+      "role_id": 2
+    },
+    {
+      "id": 182,
+      "permission_id": 5011,
+      "role_id": 2
+    },
+    {
+      "id": 183,
+      "permission_id": 5012,
+      "role_id": 2
+    },
+    {
+      "id": 184,
+      "permission_id": 5013,
+      "role_id": 2
+    },
+    {
+      "id": 185,
+      "permission_id": 5014,
+      "role_id": 2
+    },
+    {
+      "id": 186,
+      "permission_id": 5015,
+      "role_id": 2
+    },
+    {
+      "id": 187,
+      "permission_id": 5016,
+      "role_id": 2
+    },
+    {
+      "id": 188,
+      "permission_id": 5017,
+      "role_id": 2
+    },
+    {
+      "id": 189,
+      "permission_id": 5018,
+      "role_id": 2
+    },
+    {
+      "id": 190,
+      "permission_id": 5019,
+      "role_id": 2
+    },
+    {
+      "id": 191,
+      "permission_id": 1019,
+      "role_id": 3
+    },
+    {
+      "id": 192,
+      "permission_id": 1020,
+      "role_id": 3
+    },
+    {
+      "id": 193,
+      "permission_id": 1021,
+      "role_id": 3
+    },
+    {
+      "id": 195,
+      "permission_id": 1023,
+      "role_id": 3
+    },
+    {
+      "id": 196,
+      "permission_id": 1024,
+      "role_id": 3
+    },
+    {
+      "id": 197,
+      "permission_id": 1027,
+      "role_id": 3
+    },
+    {
+      "id": 198,
+      "permission_id": 1028,
+      "role_id": 3
+    },
+    {
+      "id": 199,
+      "permission_id": 1029,
+      "role_id": 3
+    },
+    {
+      "id": 200,
+      "permission_id": 1030,
+      "role_id": 3
+    },
+    {
+      "id": 201,
+      "permission_id": 1031,
+      "role_id": 3
+    },
+    {
+      "id": 202,
+      "permission_id": 1032,
+      "role_id": 3
+    },
+    {
+      "id": 203,
+      "permission_id": 1033,
+      "role_id": 3
+    },
+    {
+      "id": 204,
+      "permission_id": 1034,
+      "role_id": 3
+    },
+    {
+      "id": 205,
+      "permission_id": 1035,
+      "role_id": 3
+    },
+    {
+      "id": 206,
+      "permission_id": 1036,
+      "role_id": 3
+    },
+    {
+      "id": 207,
+      "permission_id": 1040,
+      "role_id": 3
+    },
+    {
+      "id": 208,
+      "permission_id": 2000,
+      "role_id": 3
+    },
+    {
+      "id": 209,
+      "permission_id": 2001,
+      "role_id": 3
+    },
+    {
+      "id": 210,
+      "permission_id": 2002,
+      "role_id": 3
+    },
+    {
+      "id": 211,
+      "permission_id": 2001,
+      "role_id": 3
+    },
+    {
+      "id": 212,
+      "permission_id": 2004,
+      "role_id": 3
+    },
+    {
+      "id": 213,
+      "permission_id": 2005,
+      "role_id": 3
+    },
+    {
+      "id": 214,
+      "permission_id": 2006,
+      "role_id": 3
+    },
+    {
+      "id": 215,
+      "permission_id": 2007,
+      "role_id": 3
+    },
+    {
+      "id": 216,
+      "permission_id": 2008,
+      "role_id": 3
+    },
+    {
+      "id": 217,
+      "permission_id": 2009,
+      "role_id": 3
+    },
+    {
+      "id": 218,
+      "permission_id": 2000,
+      "role_id": 4
+    },
+    {
+      "id": 219,
+      "permission_id": 2001,
+      "role_id": 4
+    },
+    {
+      "id": 220,
+      "permission_id": 2002,
+      "role_id": 4
+    },
+    {
+      "id": 221,
+      "permission_id": 2001,
+      "role_id": 4
+    },
+    {
+      "id": 222,
+      "permission_id": 2004,
+      "role_id": 4
+    },
+    {
+      "id": 223,
+      "permission_id": 2005,
+      "role_id": 4
+    },
+    {
+      "id": 224,
+      "permission_id": 2006,
+      "role_id": 4
+    },
+    {
+      "id": 225,
+      "permission_id": 2007,
+      "role_id": 4
+    },
+    {
+      "id": 226,
+      "permission_id": 2008,
+      "role_id": 4
+    },
+    {
+      "id": 227,
+      "permission_id": 2009,
+      "role_id": 4
+    },
+    {
+      "id": 228,
+      "permission_id": 1020,
+      "role_id": 4
+    },
+    {
+      "id": 229,
+      "permission_id": 1018,
+      "role_id": 4
+    },
+    {
+      "id": 230,
+      "permission_id": 2000,
+      "role_id": 6
+    },
+    {
+      "id": 231,
+      "permission_id": 2001,
+      "role_id": 6
+    },
+    {
+      "id": 232,
+      "permission_id": 2002,
+      "role_id": 6
+    },
+    {
+      "id": 233,
+      "permission_id": 2001,
+      "role_id": 6
+    },
+    {
+      "id": 234,
+      "permission_id": 2004,
+      "role_id": 6
+    },
+    {
+      "id": 235,
+      "permission_id": 2005,
+      "role_id": 6
+    },
+    {
+      "id": 236,
+      "permission_id": 2006,
+      "role_id": 6
+    },
+    {
+      "id": 237,
+      "permission_id": 2007,
+      "role_id": 6
+    },
+    {
+      "id": 238,
+      "permission_id": 2008,
+      "role_id": 6
+    },
+    {
+      "id": 239,
+      "permission_id": 2009,
+      "role_id": 6
+    },
+    {
+      "id": 240,
+      "permission_id": 1020,
+      "role_id": 6
+    },
+    {
+      "id": 241,
+      "permission_id": 1018,
+      "role_id": 6
+    },
+    {
+      "id": 242,
+      "permission_id": 2010,
+      "role_id": 2
+    },
+    {
+      "id": 243,
+      "permission_id": 2010,
+      "role_id": 3
+    },
+    {
+      "id": 244,
+      "permission_id": 2010,
+      "role_id": 4
+    },
+    {
+      "id": 245,
+      "permission_id": 2010,
+      "role_id": 5
+    },
+    {
+      "id": 246,
+      "permission_id": 2010,
+      "role_id": 6
+    },
+    {
+      "id": 247,
+      "permission_id": 2010,
+      "role_id": 7
+    },
+    {
+      "id": 248,
+      "permission_id": 1010,
+      "role_id": 7
+    },
+    {
+      "id": 249,
+      "permission_id": 1011,
+      "role_id": 7
+    },
+    {
+      "id": 250,
+      "permission_id": 1012,
+      "role_id": 7
+    },
+    {
+      "id": 251,
+      "permission_id": 1013,
+      "role_id": 7
+    },
+    {
+      "id": 252,
+      "permission_id": 1058,
+      "role_id": 5
+    },
+    {
+      "id": 253,
+      "permission_id": 1059,
+      "role_id": 5
+    },
+    {
+      "id": 254,
+      "permission_id": 1060,
+      "role_id": 5
+    },
+    {
+      "id": 255,
+      "permission_id": 1061,
+      "role_id": 5
+    },
+    {
+      "id": 256,
+      "permission_id": 1058,
+      "role_id": 2
+    },
+    {
+      "id": 257,
+      "permission_id": 1059,
+      "role_id": 2
+    },
+    {
+      "id": 258,
+      "permission_id": 1060,
+      "role_id": 2
+    },
+    {
+      "id": 259,
+      "permission_id": 1061,
+      "role_id": 2
+    },
+    {
+      "id": 260,
+      "permission_id": 1062,
+      "role_id": 2
+    },
+    {
+      "id": 261,
+      "permission_id": 1062,
+      "role_id": 5
+    },
+    {
+      "id": 262,
+      "permission_id": 1049,
+      "role_id": 2
+    },
+    {
+      "id": 263,
+      "permission_id": 1049,
+      "role_id": 5
+    },
+    {
+      "id": 264,
+      "permission_id": 2011,
+      "role_id": 2
+    },
+    {
+      "id": 265,
+      "permission_id": 2011,
+      "role_id": 3
+    },
+    {
+      "id": 266,
+      "permission_id": 2011,
+      "role_id": 4
+    },
+    {
+      "id": 267,
+      "permission_id": 2011,
+      "role_id": 5
+    },
+    {
+      "id": 268,
+      "permission_id": 2011,
+      "role_id": 6
+    },
+    {
+      "id": 269,
+      "permission_id": 2011,
+      "role_id": 7
+    },
+    {
+      "id": 270,
+      "permission_id": 2012,
+      "role_id": 2
+    },
+    {
+      "id": 271,
+      "permission_id": 2012,
+      "role_id": 3
+    },
+    {
+      "id": 272,
+      "permission_id": 2012,
+      "role_id": 4
+    },
+    {
+      "id": 273,
+      "permission_id": 2012,
+      "role_id": 5
+    },
+    {
+      "id": 274,
+      "permission_id": 2012,
+      "role_id": 6
+    },
+    {
+      "id": 275,
+      "permission_id": 2012,
+      "role_id": 7
+    },
+    {
+      "id": 276,
+      "permission_id": 1031,
+      "role_id": 4
+    },
+    {
+      "id": 277,
+      "permission_id": 1034,
+      "role_id": 4
+    },
+    {
+      "id": 278,
+      "permission_id": 2013,
+      "role_id": 2
+    },
+    {
+      "id": 279,
+      "permission_id": 2013,
+      "role_id": 5
+    },
+    {
+      "id": 280,
+      "permission_id": 6000,
+      "role_id": 2
+    },
+    {
+      "id": 281,
+      "permission_id": 6001,
+      "role_id": 2
+    },
+    {
+      "id": 282,
+      "permission_id": 6000,
+      "role_id": 3
+    },
+    {
+      "id": 283,
+      "permission_id": 6001,
+      "role_id": 3
+    },
+    {
+      "id": 284,
+      "permission_id": 6000,
+      "role_id": 5
+    },
+    {
+      "id": 285,
+      "permission_id": 6001,
+      "role_id": 5
+    },
+    {
+      "id": 286,
+      "permission_id": 5020,
+      "role_id": 5
+    },
+    {
+      "id": 287,
+      "permission_id": 5021,
+      "role_id": 5
+    },
+    {
+      "id": 289,
+      "permission_id": 5020,
+      "role_id": 2
+    },
+    {
+      "id": 290,
+      "permission_id": 5021,
+      "role_id": 2
+    },
+    {
+      "id": 291,
+      "permission_id": 5010,
+      "role_id": 2
+    },
+    {
+      "id": 292,
+      "permission_id": 5010,
+      "role_id": 5
+    }
+  ],
+  "person": [
+    {
+      "id": 11,
+      "user_id": 11,
+      "ikametgah_adresi_id": 5,
+      "ikincil_adres_id": 5,
+      "ad": "Vildan",
+      "soyad": "Yurtsever",
+      "birincil_eposta": "vildan.yurtsever@gmail.com",
+      "ikincil_eposta": "vildan.yurtsever@yahoo.com",
+      "tckn": "24980523672",
+      "kimlik_cuzdani_seri": "N12",
+      "kimlik_cuzdani_seri_no": 423,
+      "kayitli_oldugu_il": "Bursa",
+      "kayitli_oldugu_ilce": "Nilüfer",
+      "kayitli_oldugu_mahalle_koy": "Beşevler",
+      "kayitli_oldugu_cilt_no": 15,
+      "kayitli_oldugu_aile_sira_no": 2,
+      "kayitli_oldugu_sira_no": 123,
+      "kimlik_cuzdani_verildigi_yer": "Bursa",
+      "kimlik_cuzdani_verilis_nedeni": "Kayıp",
+      "kimlik_cuzdani_kayit_no": 11,
+      "kimlik_cuzdani_verilis_tarihi": "2011-04-08",
+      "ana_adi": "Fatma",
+      "baba_adi": "Mustafa",
+      "dogum_tarihi": "1961-10-10",
+      "dogum_yeri": "Bursa",
+      "uyruk": "T.C",
+      "cinsiyet": "kadin",
+      "kan_grubu": "b_negatif",
+      "medeni_hali": "evli",
+      "cep_telefonu": "5438903421",
+      "ev_tel_no": "3123246354",
+      "ehliyet": "A1"
+    }
+  ],
+  "harici_ogretim_elemani": [
+    {
+      "id": 11,
+      "person_id": 11,
+      "oda_no": 1234512,
+      "oda_tel_no": 2342341,
+      "web_sitesi": "www.harici.com.tr",
+      "yayinlar": "A placeat cum perspiciatis laboriosam mo_0",
+      "projeler": "A placeat cum perspiciatis laboriosam mo_0",
+      "biyografi": "A placeat cum perspiciatis laboriosam mo_0",
+      "notlar": "A placeat _0",
+      "engelli_durumu": false,
+      "aktif_mi": true,
+      "unvan": 1,
+      "akademik_yayinlari": "A placeat cum perspiciatis laboriosam molestiae itaque tempora accusantium numquam odio no_0"
+    }
+  ],
+  "hakem": [
+    {
+      "id": 11,
+      "person_id": 11,
+      "unvan": 2,
+      "kurum_ici": false,
+      "hakem_turu": "hakem",
+      "universite_id": "1",
+      "fakulte_id": "10",
+      "bolum_id": "10"
+    }
+  ],
+  "odeme_bilgileri": [
+    {
+      "id": 11,
+      "person_id": 11,
+      "banka_adi": "BANKA BANKASI",
+      "sube_adi": "BANKA ŞUBESİ",
+      "sube_kod": 123123,
+      "hesap_no": 2131,
+      "iban_no": "TR0123123123123"
+    }
+  ]
+}

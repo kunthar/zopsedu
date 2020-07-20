@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block context %}
+<div id="content" class="content">
+
+    <form method="post">
+        <table style="width:100%">
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>{{ person.name }}</td>
+            </tr>
+        </table>
+        <input id="submit" type="submit" name="save">
+    </form>
+</div>
+{% endblock %}

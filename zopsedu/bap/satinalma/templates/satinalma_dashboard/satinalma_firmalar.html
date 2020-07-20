@@ -1,0 +1,479 @@
+{% extends "base.html" %}
+{% from 'satinalma_dashboard/satinalma_dashboard_genel.html' import satinalma_dashboard_genel %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+{% macro satinalma_dashboard_firmalar() %}
+
+    <section id="page-tabs" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                {{ render_alert_list(information_form.genel_uyari_mesajlari) }}
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a href="#nav-tab-firma-teklifleri"
+                           data-toggle="tab"
+                           class="nav-link {{ "active show" if satinalma.durum_id < 40 else "" }}">{{ _("Firma Teklifleri") }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-tab-firma-teklif-dosyalari" data-toggle="tab"
+                           class="nav-link" aria-controls="active" aria-expanded="true">{{ _("Teklif Dosyaları") }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-tab-kabul-edilen-teklifler" data-toggle="tab" id="link-tab"
+                           aria-controls="link"
+                           aria-expanded="false"
+                           class="nav-link {{ "active show" if satinalma.durum_id >= 40 else "" }}">{{ _("Kabul Edilen Teklifler") }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-tab-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="tab-content px-1">
+                    <div role="tabpanel" class="tab-pane {{ "active" if satinalma.durum_id < 40 else "" }}"
+                         id="nav-tab-firma-teklifleri">
+                        {{ render_firma_teklifleri(firma_teklifleri, information_form.firma_teklifleri_information) }}
+                        {{ firma_teklifi_kabul_et() }}
+                        {{ firma_teklif_tekniksartname_degerlendirme() }}
+                    </div>
+
+                    <div class="tab-pane" id="nav-tab-firma-teklif-dosyalari">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ render_firma_teklif_dosyalari(firma_teklif_dosyalari) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane  {{ "active " if satinalma.durum_id >= 40 else "" }}"
+                         id="nav-tab-kabul-edilen-teklifler">
+                        {{ render_kabul_edilen_firma_teklifleri(siparis_takip_data, information_form.kabul_edilen_teklifler_information) }}
+                        {{ kabul_edilen_teklifi_sil() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-1") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-2") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-3") }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    </script>
+{% endmacro %}
+
+{% macro firma_teklif_tekniksartname_degerlendirme() %}
+    <script>
+        function firmaTeklifTeknikSartnameDegerlendirme(firmaAdi, projeKalemAdi, satinalmaTalepKalemId, firmaTeklifId, degerlendirmeUygunMu) {
+            let degerlendirUrl, mesajMetni;
+            mesajMetni = "uygun değil";
+            degerlendirUrl = "{{ url_for('satinalma.SatinalmaFirmalar:firma_tekllif_teknik_sartname_degerlendirmesi',
+                                         satinalma_id=satinalma_id,
+                                         talep_kalemi_id=-1,
+                                         firma_teklif_kalemi_id=-2) }}";
+
+            if (degerlendirmeUygunMu) {
+                mesajMetni = "uygun"
+            }
+
+
+            degerlendirUrl = degerlendirUrl.replace("-1", satinalmaTalepKalemId);
+            degerlendirUrl = degerlendirUrl.replace("-2", firmaTeklifId);
+            swal(projeKalemAdi + "isimli talep kalemine " + firmaAdi + " firması tarafından yapılan teklifi durumunu teknik şartnameye " + mesajMetni + " olarak değiştirmek üzeresiniz.", {
+                title: "Yapılan işlemi sonuçlandırmak üzeresiniz",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: degerlendirUrl,
+                            type: "POST",
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify({"uygunMu": degerlendirmeUygunMu}),
+                            success: function (response) {
+                                swal("{{ _("İşlem başarıyla gerçekleştirildi.") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.reload(true);
+                            },
+                            error: function (result) {
+                                let errorMessage;
+                                errorMessage = result.responseJSON.error_message;
+                                swal({
+                                    title: errorMessage || "{{ _("Beklenmedik bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Firma teklifi teknik şartname uygunluk durumunu degiştirmekten vazgeçtiniz") }}",{
+                            icon:"warning",
+                            timer:4000,
+                            button:false
+                        });
+                    }
+                });
+        }
+    </script>
+{% endmacro %}
+
+
+{% macro firma_teklifi_kabul_et() %}
+    <script>
+        function firmaTeklifKabulEt(firmaAdi, projeKalemAdi, satinalmaTalepKalemId, firmaTeklifId) {
+            let kabulEtUrl;
+            kabulEtUrl = "{{ url_for('satinalma.SatinalmaFirmalar:firma_teklif_kabul_et', satinalma_id=satinalma_id,
+                                                                                          talep_kalemi_id=-1,
+                                                                                          firma_teklif_kalemi_id=-2) }}";
+            kabulEtUrl = kabulEtUrl.replace("-1", satinalmaTalepKalemId);
+            kabulEtUrl = kabulEtUrl.replace("-2", firmaTeklifId);
+            swal(projeKalemAdi + "isimli talep kalemine " + firmaAdi + " firması tarafından yapılan teklifi kabul etmek istediğinize eminmisiniz", {
+                title: "İlgili teklifi kabul etmek üzeresiniz.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: kabulEtUrl,
+                            type: "POST",
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify({}),
+                            success: function (response) {
+                                swal("{{ _("Seçilen firma teklifi başarıyla kaydedilmiştir.") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.reload(true);
+                            },
+                            error: function (result) {
+                                let errorMessage;
+                                errorMessage = result.responseJSON.error_message;
+                                swal({
+                                    title: errorMessage || "{{ _("Beklenmedik bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen firma teklifini kaydetmekten vazgeçtiniz") }}",{
+                            icon:"warning",
+                            timer: 4000,
+                            button: false
+
+                        });
+                    }
+                });
+        }
+    </script>
+{% endmacro %}
+
+{% macro kabul_edilen_teklifi_sil() %}
+    <script>
+        function kabulEdilenTeklifiSil(firmaAdi, projeKalemAdi, siparisId) {
+            let silUrl;
+            silUrl = "{{ url_for('satinalma.SatinalmaFirmalar:firma_teklif_sil', satinalma_id=satinalma_id, siparis_takip_id=-1) }}";
+            silUrl = silUrl.replace("-1", siparisId);
+            swal(projeKalemAdi + "isimli talep kalemine " + firmaAdi + " firması tarafından yapılan teklifi çıkarmak istediğinize eminmisiniz", {
+                title: "Kabul edilen teklifi silmek üzeresiniz.",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: silUrl,
+                            type: "DELETE",
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify({}),
+                            success: function (response) {
+                                swal("{{ _("Seçilen teklif kabul edilen teklifler arasından başarıyla çıkarılmıştır") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.reload(true);
+                            },
+                            error: function (result) {
+                                let errorMessage;
+                                errorMessage = result.responseJSON.error_message;
+                                swal({
+                                    title: errorMessage || "{{ _("Beklenmedik bir hata meydana geldi. Lütfen daha sonra tekrar deneyiniz.") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen firma teklifini silmekten vazgeçtiniz") }}",{
+                            icon:"warning",
+                            timer: 4000,
+                            button:false
+                        });
+                    }
+                });
+        }
+    </script>
+{% endmacro %}
+
+{% macro render_firma_teklifleri(firma_teklifleri, firma_teklifleri_information) %}
+    {{ render_alert_list(firma_teklifleri_information) }}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid"
+                   aria-describedby="data-table_info" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th>{{ _("#") }}</th>
+                    <th>{{ _("Kalem Adı") }}</th>
+                    <th>{{ _("Kalem Açıklama") }}</th>
+                    <th>{{ _("Miktar") }}</th>
+                    <th>{{ _("Firma Adı") }}</th>
+                    <th>{{ _("Marka/Model") }}</th>
+                    <th>{{ _("Teklif(KDV Hariç)") }}</th>
+                    <th>{{ _("KDV Oranı") }}</th>
+                    <th>{{ _("Teklif (KDV Dahil)") }}</th>
+                    <th>{{ _("Teslim Süresi(Gün)") }}</th>
+                    <th>{{ _("Teknik Şartname Uygunluğu") }}</th>
+                    {% if satinalma.durum_id == 39 %}
+                        <th class="all">{{ _("işlemler") }}</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for firma_teklif in firma_teklifleri %}
+                    <tr class="odd" role="row">
+                        <td> {{ loop.index }} </td>
+                        <td> {{ firma_teklif.kalem_adi }} </td>
+                        <td> {{ firma_teklif.kalem_aciklama }} </td>
+                        <td> {{ firma_teklif.miktar }} {{ firma_teklif.birim }}</td>
+                        <td> {{ firma_teklif.firma_adi }} </td>
+                        <td> {{ firma_teklif.marka_model }} </td>
+                        <td> {{ firma_teklif.teklif | tr_currency }} </td>
+                        <td> {{ firma_teklif.kdv_orani }} </td>
+                        <td> {{ firma_teklif.kdv_dahil_teklif | tr_currency }} </td>
+                        <td> {{ firma_teklif.teslimat_suresi }} </td>
+                        <td> {{ firma_teklif.teknik_sartname_uygunlugu.value }} </td>
+                        {% if satinalma.durum_id == 39 %}
+                            <td>
+
+                                <div class="btn-group">
+                                    <button class="btn btn-info dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                            class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                    </button>
+                                    <div class="dropdown-menu arrow">
+                                        {% if firma_teklif.teknik_sartname_uygunlugu.name == "uygun" %}
+                                            <a class="dropdown-item"
+                                               onclick="firmaTeklifKabulEt('{{ firma_teklif.firma_adi }}',
+                                                       '{{ firma_teklif.kalem_adi }}',
+                                                       '{{ firma_teklif.satinalma_talep_kalem_id }}',
+                                                       '{{ firma_teklif.firma_teklif_kalemi_id }}')"
+                                            >
+                                                {{ _("Teklifi Kabul Et") }}
+                                            </a>
+                                        {% endif %}
+                                        {% if firma_teklif.teknik_sartname_uygunlugu.name == "uygun_degil" or firma_teklif.teknik_sartname_uygunlugu.name == "degerlendirilmedi" %}
+                                            <a class="dropdown-item"
+                                               onclick="firmaTeklifTeknikSartnameDegerlendirme('{{ firma_teklif.firma_adi }}',
+                                                       '{{ firma_teklif.kalem_adi }}',
+                                                       '{{ firma_teklif.satinalma_talep_kalem_id }}',
+                                                       '{{ firma_teklif.firma_teklif_kalemi_id }}',
+                                                       true)">
+                                                {{ _("Teknik Şartnameye Uygundur") }}
+                                            </a>
+                                        {% endif %}
+                                        {% if firma_teklif.teknik_sartname_uygunlugu.name == "uygun" or firma_teklif.teknik_sartname_uygunlugu.name == "degerlendirilmedi" %}
+                                            <a class="dropdown-item"
+                                               onclick="firmaTeklifTeknikSartnameDegerlendirme('{{ firma_teklif.firma_adi }}',
+                                                       '{{ firma_teklif.kalem_adi }}',
+                                                       '{{ firma_teklif.satinalma_talep_kalem_id }}',
+                                                       '{{ firma_teklif.firma_teklif_kalemi_id }}',
+                                                       false)">
+                                                {{ _("Teknik Şartnameye Uygun Değil") }}
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% macro render_firma_teklif_dosyalari(firma_teklif_dosyalari) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-2"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid"
+                   aria-describedby="data-table_info" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th style="width: 30%;">{{ _("Firma Adı") }}
+                    </th>
+                    <th style="width: 30%">{{ _("Açıklama") }}
+                    </th>
+                    <th style="width: 20%">{{ _("Kategorisi") }}
+                    </th>
+                    <th style="width: 20%;">{{ _("Dosya") }}
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for firma_teklif_dosya in firma_teklif_dosyalari %}
+                    <tr class="odd" role="row">
+                        <td> {{ firma_teklif_dosya.firma_adi }}</td>
+                        <td> {{ firma_teklif_dosya.aciklama }}</td>
+                        <td> {{ firma_teklif_dosya.dosya_kategorisi }}</td>
+                        <td>
+                            <a href="{{ url_for('FileView:file_download', file_id=firma_teklif_dosya.file_id) }}">
+                                <button class="btn btn-info">
+                                    {{ _("İndir") }}
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endmacro %}
+
+{% macro render_kabul_edilen_firma_teklifleri(kabul_edilen_firma_teklifleri, kabul_edilen_teklifler_info) %}
+    {{ render_alert_list(kabul_edilen_teklifler_info) }}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-3"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid"
+                   aria-describedby="data-table_info" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th>{{ _("Kalem Adı") }}</th>
+                    <th>{{ _("Kalem Açıklama") }}</th>
+                    <th>{{ _("Miktar") }}</th>
+                    <th>{{ _("Firma Adı") }}</th>
+                    <th>{{ _("Marka/Model") }}</th>
+                    <th>{{ _("Teklif(KDV Hariç)") }}</th>
+                    <th>{{ _("KDV Oranı") }}</th>
+                    <th>{{ _("Teklif (KDV Dahil)") }}</th>
+                    <th>{{ _("Teslim Süresi(Gün)") }}</th>
+                    <th>{{ _("Sipariş Durumu") }}</th>
+                    {% if satinalma.durum_id == 39 %}
+                        <th class="all">{{ _("İşlemler") }}</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for kabul_edilen_teklif in kabul_edilen_firma_teklifleri %}
+                    <tr class="odd" role="row">
+                        <td> {{ kabul_edilen_teklif.kalem_adi }} </td>
+                        <td> {{ kabul_edilen_teklif.kalem_aciklama }} </td>
+                        <td> {{ kabul_edilen_teklif.miktar }} {{ kabul_edilen_teklif.birim }}</td>
+                        <td> {{ kabul_edilen_teklif.firma_adi }} </td>
+                        <td> {{ kabul_edilen_teklif.marka_model }} </td>
+                        <td> {{ kabul_edilen_teklif.teklif | currency }} </td>
+                        <td> {{ kabul_edilen_teklif.kdv_orani }} </td>
+                        <td> {{ kabul_edilen_teklif.kdv_dahil_teklif | currency }} </td>
+                        <td> {{ kabul_edilen_teklif.teslimat_suresi }} </td>
+                        <td> {{ kabul_edilen_teklif.siparis_durumu }} </td>
+                        {% if satinalma.durum_id == 39 %}
+                            <td>
+                                <a
+                                        onclick="kabulEdilenTeklifiSil('{{ kabul_edilen_teklif.firma_adi }}',
+                                                '{{ kabul_edilen_teklif.kalem_adi }}',
+                                                '{{ kabul_edilen_teklif.siparis_takip_id }}')"
+                                        class="btn btn-sm btn-icon btn-danger"><i
+                                        class="fa fa-trash fa-sm"></i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block context %}
+
+    {{ satinalma_dashboard_genel(_("Firma Teklifleri"),
+           satinalma_dashboard_firmalar(),
+           satinalma,
+           proje,
+           satinalma_id,
+           states_info,
+           actions_info) }}
+
+{% endblock %}

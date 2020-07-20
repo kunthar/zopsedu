@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field2,render_text_field %}
+{% from "macros/form_helpers/checkbox_fields.html" import render_checkbox %}
+{% from "macros/form_helpers/error_fields.html" import error %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Otomasyan Ayarları") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <form class="form" method="POST" enctype="multipart/form-data">
+            <section id="page-tabs" class="card">
+                {{ big_flash_message() }}
+                <div class="card-content">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                                <a href="#genel-bilgileri"
+                                   data-toggle="tab"
+                                   class="nav-link active show">{{ _("Genel Bilgiler") }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#eposta-ayarlari" data-toggle="tab"
+                                   class="nav-link" aria-controls="active"
+                                   aria-expanded="true">{{ _("E-posta Ayarları") }}</a>
+                            </li>
+                            {% if is_ebys_enable() %}
+                                <li class="nav-item">
+                                    <a href="#ebys-ayarlari" data-toggle="tab"
+                                       class="nav-link" aria-controls="active"
+                                       aria-expanded="true">{{ _("Envision EBYS Ayarları") }}</a>
+                                </li>
+                            {% endif %}
+
+                            {#                        <li class="nav-item">#}
+                            {#                            <a href="#hakem-ayarlari" data-toggle="tab" id="link-tab"#}
+                            {#                               aria-controls="link"#}
+                            {#                               aria-expanded="false"#}
+                            {#                               class="nav-link">{{ _("Hakem Ayarları") }}</a>#}
+                            {#                        </li>#}
+                            {#                        <li class="nav-item">#}
+                            {#                            <a href="#diger-ayarlar" data-toggle="tab" id="link-tab"#}
+                            {#                               aria-controls="link"#}
+                            {#                               aria-expanded="false"#}
+                            {#                               class="nav-link">{{ _("Diğer Ayarlar") }}</a>#}
+                            {#                        </li>#}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="page-tab-content" class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="tab-content px-1">
+
+                            <div role="tabpanel" class="tab-pane active"
+                                 id="genel-bilgileri">
+                                {{ genel_bilgiler(form.site_ayarlari) }}
+                            </div>
+                            <div class="tab-pane" id="eposta-ayarlari">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ render_mail_sunucu_form(form.mail_sunucu_ayarlari) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if is_ebys_enable() %}
+                                <div class="tab-pane" id="ebys-ayarlari">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ render_ebys_ayarlari(form.ebys_ayarlari) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {#                        <div class="tab-pane" id="hakem-ayarlari">#}
+                            {#                            <div class="row">#}
+                            {#                                <div class="col-md-12">#}
+                            {##}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                        </div>#}
+                            {#                        <div class="tab-pane" id="diger-ayarlar">#}
+                            {#                            <div class="row">#}
+                            {#                                <div class="col-md-12">#}
+                            {##}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#
+                                                </div>#}
+
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    <button class="btn btn-success"
+                                            formaction="{{ url_for('.kaydet') }}">{{ _("Kaydet") }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% macro genel_bilgiler(site_ayarlari) %}
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-body">
+        <section id="sa-genel-form" class="card">
+            <h4 class="form-section">{{ _("Genel Bilgiler") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.site_adi.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.site_adi(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.universite_id.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.universite_id(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.bap_kisa_adi.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.bap_kisa_adi(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4">{{ site_ayarlari.genel.logo.label }}</label>
+                        <div class="col-md-8">
+                            <div>
+                                <img class="img-fluid" style="max-width: 60%"
+                                     src="{{ logo_url | default(get_logo_url()) | default(url_for('static', filename = 'assets/img/brand-logo2.png'), true) }}">
+                            </div>
+                            <div class="row" style="padding-top: 10px">
+                                {{ site_ayarlari.genel.logo(style="margin:0 auto;", **kwargs)|safe }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.sehir.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.sehir(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.adres.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.adres(class="form-control", rows="5", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.telefon.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.telefon(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.genel.faks.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.genel.faks(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="sy-genel-form" class="card">
+            <h4 class="form-section">{{ _("Sözleşme Yetkilisi") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.sozlesme_yetkilisi.gorevi.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.sozlesme_yetkilisi.gorevi(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.sozlesme_yetkilisi.adi_soyadi.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.sozlesme_yetkilisi.adi_soyadi(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="yoksis-bilgileri-form" class="card">
+            <h4 class="form-section">{{ _("Yöksis Bilgileri") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_kullanici_adi.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_kullanici_adi(class="form-control", **kwargs)|safe }}
+                            {{ error(site_ayarlari.yoksis_kullanici_bilgisi.yoksis_kullanici_adi) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password(class="form-control",placeholder=_('Parola Giriniz'), **kwargs)|safe }}
+                            {{ error(site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password_repeat.label }}</label>
+                        <div class="col-md-8">
+                            {{ site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password_repeat(class="form-control",placeholder=_('Parolayı tekrar giriniz'), **kwargs)|safe }}
+                            {{ error(site_ayarlari.yoksis_kullanici_bilgisi.yoksis_password_repeat) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endmacro %}
+
+
+{% macro render_mail_sunucu_form(mail_sunucu_form) %}
+
+    <div class="form-body">
+        <section id="ms-ayari" class="card">
+            <h4 class="form-section">{{ _("Mail Sunucu Giriş Bilgileri") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ mail_sunucu_form.mail_username.label }}</label>
+                        <div class="col-md-8">
+                            {{ mail_sunucu_form.mail_username(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ mail_sunucu_form.mail_password.label }}</label>
+                        <div class="col-md-8">
+                            {{ mail_sunucu_form.mail_password(class="form-control",placeholder=_('Parolayı değiştirmek için yeni parolayı girin.'), **kwargs)|safe }}
+                            {{ error(mail_sunucu_form.mail_password) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ mail_sunucu_form.mail_password_repeat.label }}</label>
+                        <div class="col-md-8">
+                            {{ mail_sunucu_form.mail_password_repeat(class="form-control",placeholder=_('Parolayı değiştirmek için yeni parolayı tekrar girin.'), **kwargs)|safe }}
+                            {{ error(mail_sunucu_form.mail_password_repeat) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="form-section">{{ _("Mail Sunucu Bağlantı Ayarları") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label">{{ mail_sunucu_form.mail_server.label }}</label>
+                        <div class="col-md-6">
+                            {{ mail_sunucu_form.mail_server(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label">{{ mail_sunucu_form.mail_port.label }}</label>
+                        <div class="col-md-6">
+                            {{ mail_sunucu_form.mail_port(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-6 col-form-label">{{ mail_sunucu_form.mail_default_sender.label }}</label>
+                        <div class="col-md-6">
+                            {{ mail_sunucu_form.mail_default_sender(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-8 col-form-label">{{ mail_sunucu_form.mail_max_emails.label }}</label>
+                        <div class="col-md-4">
+                            {{ mail_sunucu_form.mail_max_emails(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">{{ render_checkbox(mail_sunucu_form.mail_use_tls, style='padding-top:0px;') }}</div>
+                        <div class="col-md-6">{{ render_checkbox(mail_sunucu_form.mail_use_ssl, style='padding-top:0px;') }}</div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <button type="button" class="swal-button swal-button--confirm btn btn-danger"
+                                    onclick="mail_test_et()"> Test Et
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function mail_test_et() {
+                        $.ajax({
+                            url: "{{ url_for('bap_yonetimi.mail_test') }}",
+                            type: "POST",
+                            dataType: 'json',
+                            contentType: "application/json",
+                            data: JSON.stringify({
+                                'mail-ayarlari-form': $("form").serializeArray()
+                            }),
+                            success: function () {
+                                swal("{{ _("E-posta sunucusu ayarları doğrulanmıştır.") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            },
+                            error: function (err) {
+                                console.log(err.responseJSON.error_message);
+                                swal({
+                                    title: err.responseJSON.error_message,
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    }
+                </script>
+            </div>
+        </section>
+    </div>
+
+{% endmacro %}
+
+
+{% macro render_ebys_ayarlari(ebys_form) %}
+
+    <div class="form-body">
+        <section id="eb-ayari" class="card">
+            <h4 class="form-section">{{ _("Elektronik Belge Yönetim Sistemi") }}</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ ebys_form.p_user_id.label }}</label>
+                        <div class="col-md-8">
+                            {{ ebys_form.p_user_id(class="form-control", type='number', **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ ebys_form.p_token.label }}</label>
+                        <div class="col-md-8">
+                            {{ ebys_form.p_token(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ ebys_form.integration_url.label }}</label>
+                        <div class="col-md-8">
+                            {{ ebys_form.integration_url(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ ebys_form.system_integration_url.label }}</label>
+                        <div class="col-md-8">
+                            {{ ebys_form.system_integration_url(class="form-control", **kwargs)|safe }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label">{{ ebys_form.docdefid.label }}</label>
+                        <div class="col-md-8">
+
+                            {{ ebys_form.docdefid(class="form-control",type='number',  **kwargs)|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endmacro %}
+
+
+

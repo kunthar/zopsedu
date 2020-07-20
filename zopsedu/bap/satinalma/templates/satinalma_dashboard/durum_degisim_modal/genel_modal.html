@@ -1,0 +1,12 @@
+{% from 'macros/durum_degisim.html' import satinalma_bilgileri,genel_islemler,email_checker %}
+
+<form id="satinalma_durum_degistir">
+    {{ form.csrf_token }}
+    <div>
+        {{ satinalma_bilgileri(
+        form,proje_numarasi,proje_adi,app_state_description) }}
+    </div>
+    {{ genel_islemler(form) }}
+    {{ email_checker(form) }}
+
+</form>

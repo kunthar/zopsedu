@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from 'macros/_formhelpers.html' import inline_login_form %}
+{% from 'macros/select2.html' import select2 %}
+{% from 'macros/summernote.html' import render_summernote %}
+
+{% block extra_alt_scripts %}
+{% endblock %}
+
+{% block context %}
+    <!-- begin #content -->
+    <div id="content" class="content">
+        <!-- begin breadcrumb -->
+        <ol class="breadcrumb pull-right">
+            <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:;">Form Stuff</a></li>
+            <li class="breadcrumb-item active">Form Elements</li>
+        </ol>
+        <!-- end breadcrumb -->
+
+        <!-- begin page-header -->
+        <h1 class="page-header">Form Elements
+            <small>header small text goes here...</small>
+        </h1>
+        <!-- end page-header -->
+
+        {{ inline_login_form(form) }}
+        
+        {{ render_summernote(summernote) }}
+
+        <hr>
+
+        {% include "form_samples/login_form.html" %}
+
+        {% include "form_samples/input_types.html" %}
+
+        {% include "form_samples/form_buttons.html" %}
+
+    </div>
+    <!-- end #content -->
+{% endblock %}

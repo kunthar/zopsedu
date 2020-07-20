@@ -1,0 +1,52 @@
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+
+{% macro render_arastirma_projesi_form_wizard_ozet_bilgiler(form) %}
+    <section>
+        <div class="card">
+            <div class="content-header row">
+                <div class="content-header-left col-md-8 col-12 mb-2">
+                    <h5 class="content-header-title mb-0 d-inline-block">    {{ form.form_title }}
+                        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+                           data-original-title="{{ _('Proje hakkında genel bilgileri belirtiniz.') }}"></i>
+                    </h5>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ render_text_field_with_tooltip(form.ozet,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Proje özeti giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.literatur_ozet,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Proje literatür özeti giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.amac_kapsam,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Projenin amaç ve kapsamını giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.gerec_yontem,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Projenin gereç ve yöntemini giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.arastirma_olanaklari,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Projenin araştırma olanaklarını giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.beklenen_bilimsel_katki,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Projeden beklenen bilimsel katkiyi giriniz")) }}
+                            {{ render_text_field_with_tooltip(form.uygulama_plani,
+                                              type="textarea",
+                                              rows=12,
+                                              title=_("Proje uygulama planını ekleyiniz.")) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endmacro %}

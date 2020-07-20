@@ -1,0 +1,22 @@
+{
+  "butce": [
+    {
+      "created_at": "2018-12-28 07:07:31",
+      "updated_at": "2018-12-28 07:07:31",
+      "id": 1,
+      "proje_turu_id": 1,
+      "butce_alt_limiti": 100000,
+      "butce_ust_limiti": 200000,
+      "ek_butce_talep_tipi": "yok",
+      "ek_butce_talep_degeri": 0,
+      "ek_butce_proje_butce_limitine_dahil_mi": false,
+      "kalemlere_ait_butce_yillara_gore_verilebilecek_mi": false,
+      "kalemlere_ait_kdv_girilsin_mi": false,
+      "kalemlere_ait_butce_kodlari_girilsin_mi": false
+
+    }
+
+  ]
+}
+
+

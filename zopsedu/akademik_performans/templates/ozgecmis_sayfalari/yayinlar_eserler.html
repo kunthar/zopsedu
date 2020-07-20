@@ -1,0 +1,120 @@
+{% extends "dashboard_base.html" %}
+{% from 'ozgecmis_sayfalari/akademisyen_ozgecmis_sayfasi_genel.html' import ozgecmis_sayfasi_genel %}
+
+{% macro render_yayinlar_eserler(ozgecmis_bilgileri) %}
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_sci_indexlenmis_makaleler(ozgecmis_bilgileri.makale_sci) }}
+            </div>
+        </div>
+    </section>
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_diger_makaleler(ozgecmis_bilgileri.makale_diger) }}
+            </div>
+        </div>
+    </section>
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_bildiriler(ozgecmis_bilgileri.bildirileri) }}
+            </div>
+        </div>
+    </section>
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_kitaplar(ozgecmis_bilgileri.kitaplari) }}
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+{% macro render_sci_indexlenmis_makaleler(sci_makaleler) %}
+    {% if sci_makaleler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>SCI,SSCI,AHCI İndexlerine Giren Dergilerde Yayınlanan Makaleler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for makale in sci_makaleler %}
+                <tr>
+                    <td> {{ makale[0] }} {{ makale[1] | safe if makale[1] else "" }} {{ makale[2] | safe if makale[2] else "" }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_diger_makaleler(diger_makaleler) %}
+    {% if diger_makaleler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Diğer Dergilerde Yayınlanan Makaleler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for makale in diger_makaleler %}
+                <tr>
+                    <td> {{ makale[0] }} {{ makale[1] if makale[1] | safe else "" }} {{ makale[2] | safe if makale[2] else "" }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_bildiriler(bildiriler) %}
+    {% if bildiriler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Bildiriler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for bildiri in bildiriler %}
+                <tr>
+                    <td> {{ bildiri }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_kitaplar(kitaplar) %}
+    {% if kitaplar %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Kitaplar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for kitap in kitaplar %}
+                <tr>
+                    <td> {{ kitap }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+
+
+{% block context %}
+    {{ ozgecmis_sayfasi_genel(_("Yayınlar&Eserler"),
+           render_yayinlar_eserler(ozgecmis_bilgileri),
+           ozgecmis_bilgileri.personel_ad_soyad,
+           ozgecmis_bilgileri.avatar,
+           ozgecmis_bilgileri.birim,
+           email_prefix, 4) }}
+{% endblock %}

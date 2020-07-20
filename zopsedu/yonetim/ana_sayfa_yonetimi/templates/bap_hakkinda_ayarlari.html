@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">  {{ _("BAP Hakkında Ayarları") }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <div class="card">
+            {{ big_flash_message() }}
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="tab-pane" id="nav-tab-fonksiyonel-kodlar"
+                         aria-labelledby="base-nav-tab-fonksiyonel-kodlar">
+                        <form class="form" method="POST" enctype="multipart/form-data"
+                              action="{{ url_for("ana_sayfa_yonetimi.BapHakkindaAyarlarView:bap_hakkinda_ayarlar_kaydet") }}">
+                            <div class="form-body">
+                                <input type="hidden" name="csrf_token"
+                                       value="{{ csrf_token() }}"/>
+                                {{ bap_hakkinda.bap_hakkinda_metni }}
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    <button class="btn btn-success">{{ _("Kaydet") }}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

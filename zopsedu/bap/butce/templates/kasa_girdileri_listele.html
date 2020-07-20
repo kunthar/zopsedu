@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+{% from 'macros/form_helpers/currency_fields.html' import render_currency_field_with_tooltip %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">  {{ _("Kasa Girdileri") }} </h3>
+        </div>
+        {% if current_year == kasa_girdileri.mali_yil %}
+            <div class="content-header-right col-md-4 col-12">
+                <div class="btn-group float-md-right">
+                    <button id="girdi-ekle" class="btn btn-success" data-toggle="modal" data-target="#kasa-girdi-modal">
+                        {{ _("Kasaya Girdi Ekle") }}</button>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="content-body">
+        <section id="page-kasa-girdileri" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ kasa_girdileri_listele(kasa_girdileri) }}
+                    {{ girdi_ekle(kasa_girdi_formu, kasa_id) }}
+                    {{ girdi_sil() }}
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- end #content -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init %}
+    {{ table_manage_buttons_init(id="data-table-1") }}
+{% endblock %}
+
+{% macro kasa_girdileri_listele(kasa_girdileri) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                   role="grid" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th>{{ _("#") }}</th>
+                    <th>{{ _("Açıklama") }}</th>
+                    <th>{{ _("Tutar") }}</th>
+                    <th>{{ _("Tarih") }}</th>
+                    <th>{{ _("Kasa") }}</th>
+                    <th>{{ _("Mali Yıl") }}</th>
+                    <th class="all" >{{ _("Sil") }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for kasa_girdisi in kasa_girdileri.girdiler %}
+                    <tr class="odd" role="row">
+                        <td>{{ loop.index }}</td>
+                        <td>{{ kasa_girdisi.aciklama }}</td>
+                        <td>{{ kasa_girdisi.tutar | currency }}</td>
+                        <td>{{ datetime_to_string(kasa_girdisi.created_at) }}</td>
+                        <td>{{ kasa_girdileri.adi }}</td>
+                        <td>{{ kasa_girdileri.mali_yil }}</td>
+                        <td>
+                            <a
+                                    onclick="butceGirdiSil('{{ kasa_girdisi.id }}')"
+                                    class="btn btn-icon btn-danger">
+                                <span class="float-left detail_edit fa-in-button fa ft-trash fa-1x m-l-10"></span>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro girdi_ekle(girdi_formu, kasa_id) %}
+    <div class="modal fade text-left" id="kasa-girdi-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ _("Kasaya Girdi Ekle") }}</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-md-12 mb-2">
+                            {{ render_text_field_with_tooltip(girdi_formu.aciklama,
+                               title=_('Girdi için açıklama giriniz.')) }}
+                        </div>
+                        <div class="col-md-12">
+                            {{ render_currency_field_with_tooltip(girdi_formu.tutar,
+                               title=_('Girdi tutari giriniz')) }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button id="kasa-girdi-kaydet" type="button"
+                                class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        girdiEkleSelector = {
+            "aciklamaSelector": $('[name={{ girdi_formu.aciklama.name }}]'),
+            "tutarSelector": $('#{{ girdi_formu.tutar.name }}'),
+            "modalSelector": $('#kasa-girdi-modal')
+        };
+
+        function resetGirdiModal() {
+            girdiEkleSelector.aciklamaSelector.val("");
+            girdiEkleSelector.tutarSelector.val("");
+        }
+
+        function getGirdiData() {
+            return {
+                "aciklama": girdiEkleSelector.aciklamaSelector.val(),
+                "tutar": girdiEkleSelector.tutarSelector.val(),
+            }
+        }
+
+        $(document).on("click", '#girdi-ekle', function () {
+            resetGirdiModal();
+            girdiEkleSelector.modalSelector.modal("show");
+        });
+
+
+        $('#kasa-girdi-kaydet').click(function () {
+            let kaydetUrl, tutar, aciklama;
+
+            kaydetUrl = "{{ url_for('butce.GenelButceOzetiView:kasa_girdi_ekle', kasa_id=kasa_id) }}";
+            aciklama = getGirdiData().aciklama;
+            tutar = getGirdiData().tutar;
+
+            if (typeof aciklama === 'undefined' || aciklama === null || aciklama === "" || typeof tutar === 'undefined' || tutar === null || tutar === "") {
+                swal("{{ _("Girdi ekleyebilmek için bütün alanları doldurmanız gerekir") }}", {
+                    icon: "warning",
+                    timer: 4000,
+                    buttons: false
+                });
+            } else {
+                $.ajax({
+                    url: kaydetUrl,
+                    type: 'POST',
+                    data: JSON.stringify(getGirdiData()),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        swal("{{ _("Kasa girdisi başarıyla eklenmiştir") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            buttons: false
+                        });
+                        window.location.reload(true);
+                        {#window.location = "{{ url_for('butce.GenelButceOzetiView:kasa_girdileri_listele') }}"#}
+                    },
+                    error: function (result) {
+                        let errorMessage;
+                        errorMessage = result.responseJSON.error_message;
+                        swal({
+                            title: "{{ _("Girdi eklenirken sorun oluştu") }}",
+                            icon: "error",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+            }
+        });
+
+    </script>
+{% endmacro %}
+
+{% macro girdi_sil() %}
+    <script>
+
+        function butceGirdiSil(girdiId) {
+            let silUrl;
+            silUrl = "{{ url_for('butce.GenelButceOzetiView:kasa_girdi_sil', girdi_id=-1) }}";
+            silUrl = silUrl.replace("-1", girdiId);
+            swal(" {{ _("Kasadan bütçe girdisi silebilmeniz için girdi tutarı kadar kasada kullanılabilir bütçe olması gerekir") }}", {
+                title: "Kasa girdisini silmek istediğinize eminmisiniz",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: silUrl,
+                            type: "POST",
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: JSON.stringify({}),
+                            success: function (response) {
+                                swal("{{ _("Seçilen kasa girdisi başarıyla silindi") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.reload(true);
+                            },
+                            error: function (result) {
+                                let errorMessage;
+                                errorMessage = result.responseJSON.error_message;
+                                swal({
+                                    title: errorMessage || "{{ _("Bir hata meydana geldi!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Seçilen kasa girdisini silmekten vazgeçtiniz") }}",
+                            {
+                                icon:"warning",
+                                timer:4000,
+                                button:false
+
+                            }
+
+                        );
+                    }
+                });
+        }
+    </script>
+{% endmacro %}

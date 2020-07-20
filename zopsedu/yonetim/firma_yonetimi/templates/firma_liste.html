@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">{{ _("Firma Listesi") }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="page-tabs" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a href="#nav-tab-kabul-edilen-firmalar"
+                               data-toggle="tab"
+                               class="nav-link active show">{{ _("Kabul Edilen Firmalar") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nav-tab-onay-bekleyen-firmalar" data-toggle="tab"
+                               class="nav-link" aria-controls="active"
+                               aria-expanded="true">{{ _("Onay Bekleyen Firmalar") }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nav-tab-reddedilen-firmalar" data-toggle="tab" id="link-tab"
+                               aria-controls="link"
+                               aria-expanded="false"
+                               class="nav-link">{{ _("Reddedilen Firmalar") }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-tab-content" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="tab-content px-1">
+                        <div role="tabpanel" class="tab-pane active"
+                             id="nav-tab-kabul-edilen-firmalar">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ render_kabul_edilen_firmalar(kabul_edilen_firmalar) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-tab-onay-bekleyen-firmalar">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ render_onay_bekleyen_firmalar(onay_bekleyen_firmalar) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-tab-reddedilen-firmalar">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {{ render_reddedilen_firmalar(reddedilen_firmalar) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {{ render_firma_onay_script() }}
+    {{ render_firma_reddet_script() }}
+
+    <!-- end #content -->
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-onay-bekleyen-firmalar") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-kabul-edilen-firmalar") }}
+    {{ table_manage_buttons_init_without_search(id="data-table-reddedilen-firmalar") }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            let table = $($.fn.dataTable.tables(true)).DataTable();
+            table.fixedHeader.adjust();
+            table.columns.adjust();
+
+        });
+    </script>
+{% endblock %}
+
+{% macro render_onay_bekleyen_firmalar(onay_bekleyen_firma_listesi) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-onay-bekleyen-firmalar"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    {{ render_table_rows() }}
+                </tr>
+                </thead>
+                <tbody>
+                {% for firma in onay_bekleyen_firma_listesi %}
+                    <tr id="tr-{{ firma.id }}" class="gradeA odd" role="row">
+                        <td>{{ loop.index }}
+                        </td>
+                        <td>{{ firma.adi }}
+                        </td>
+                        <td>{{ firma.telefon }}
+                        </td>
+                        <td>{{ firma.email }}
+                        </td>
+                        <td>
+                            {% if firma.faaliyet_belgesi_verilis_tarihi %}
+                                {{ date_to_string(firma.faaliyet_belgesi_verilis_tarihi) }}
+                            {% endif %}
+                        </td>
+                        <td>{{ firma.adres }}
+                        </td>
+                        <td class="sorting_1"
+                            tabindex="0">{{ firma.yetkili_ad_soyad }}
+                        </td>
+                        <td>{{ firma.user.username }}
+                        <td>{{ firma.user.email }}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false"><i
+                                        class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                </button>
+                                <div class="dropdown-menu arrow">
+                                    <a class="dropdown-item"
+                                       href="{{ url_for('firma_yonetimi.firma_faaliyet_belgesi_indir', firma_id=firma.id) }}">
+                                        {{ _("Faaliyet Belgesini İndir") }}
+                                    </a>
+                                    <a class="dropdown-item" onclick="firma_onay('{{ firma.id }}');">
+                                        {{ _("Firmayı Onayla") }}
+                                    </a>
+                                    <a class="dropdown-item" onclick="firma_red('{{ firma.id }}');">
+                                        {{ _("Firmayı Reddet") }}
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_reddedilen_firmalar(reddedilen_firma_listesi) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-reddedilen-firmalar"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    {{ render_table_rows() }}
+                </tr>
+                </thead>
+                <tbody>
+                {% for firma in reddedilen_firma_listesi %}
+                    <tr id="tr-{{ firma.id }}" class="gradeA odd" role="row">
+                        <td>{{ loop.index }}
+                        </td>
+                        <td>{{ firma.adi }}
+                        </td>
+                        <td>{{ firma.telefon }}
+                        </td>
+                        <td>{{ firma.email }}
+                        </td>
+                        <td>
+                            {% if firma.faaliyet_belgesi_verilis_tarihi %}
+                                {{ date_to_string(firma.faaliyet_belgesi_verilis_tarihi) }}
+                            {% endif %}
+                        </td>
+                        <td>{{ firma.adres }}
+                        </td>
+                        <td class="sorting_1"
+                            tabindex="0">{{ firma.yetkili_ad_soyad }}
+                        </td>
+                        <td>{{ firma.user.username }}
+                        <td>{{ firma.user.email }}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false"><i
+                                        class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                </button>
+                                <div class="dropdown-menu arrow">
+                                    <a class="dropdown-item"
+                                       href="{{ url_for('firma_yonetimi.firma_faaliyet_belgesi_indir', firma_id=firma.id) }}">
+                                        {{ _("Faaliyet Belgesini İndir") }}
+                                    </a>
+                                    <a class="dropdown-item" onclick="firma_onay('{{ firma.id }}');">
+                                        {{ _("Firmayı Onayla") }}
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_kabul_edilen_firmalar(kabul_edilen_firma_listesi) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-kabul-edilen-firmalar"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    {{ render_table_rows() }}
+                </tr>
+                </thead>
+                <tbody>
+                {% for firma in kabul_edilen_firma_listesi %}
+                    <tr id="tr-{{ firma.id }}" class="gradeA odd" role="row">
+                        <td>{{ loop.index }}
+                        </td>
+                        <td>{{ firma.adi }}
+                        </td>
+                        <td>{{ firma.telefon }}
+                        </td>
+                        <td>{{ firma.email }}
+                        </td>
+                        <td>
+                            {% if firma.faaliyet_belgesi_verilis_tarihi %}
+                                {{ date_to_string(firma.faaliyet_belgesi_verilis_tarihi) }}
+                            {% endif %}
+                        </td>
+                        <td>{{ firma.adres }}
+                        </td>
+                        <td class="sorting_1"
+                            tabindex="0">{{ firma.yetkili_ad_soyad }}
+                        </td>
+                        <td>{{ firma.user.username }}
+                        <td>{{ firma.user.email }}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false"><i
+                                        class="icon-settings mr-1 all"></i>{{ _("İşlemler") }}
+                                </button>
+                                <div class="dropdown-menu arrow">
+                                    <a class="dropdown-item"
+                                       href="{{ url_for('firma_yonetimi.firma_faaliyet_belgesi_indir', firma_id=firma.id) }}">
+                                        {{ _("Faaliyet Belgesini İndir") }}
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_firma_onay_script() %}
+    <script>
+        function firma_onay(firmaId) {
+            let data, onayUrl;
+            data = JSON.stringify({"onay": "1"});
+            onayUrl = "{{ url_for('firma_yonetimi.BapFirmaView:firma_onay', firma_id=-1) }}";
+            onayUrl = onayUrl.replace("-1", firmaId);
+            swal({
+                title: "Seçilen firmayı onaylamak istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Onayla",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willConfirm) => {
+                    if (willConfirm) {
+                        $.ajax({
+                            url: onayUrl,
+                            type: "POST",
+                            dataType: 'json',
+                            data: data,
+                            contentType: "application/json",
+                            success: function (response) {
+                                swal("{{ _("Seçilen firma onaylanmıştır!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.href = "{{ url_for('firma_yonetimi.BapFirmaView:firma_liste') }}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: "{{ _("Seçilen firma onaylanamadı!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Firmayı onaylamaktan vazgectiniz!") }}",{
+                            icon:"warning",
+                            timer: 4000,
+                            button:false
+                        });
+                    }
+                });
+        }
+
+
+    </script>
+{% endmacro %}
+
+{% macro render_firma_reddet_script() %}
+    <script>
+        function firma_red(firmaId) {
+            let data, reddetUrl;
+            data = JSON.stringify({"onay": "0"});
+            reddetUrl = "{{ url_for('firma_yonetimi.BapFirmaView:firma_onay', firma_id=-1) }}";
+            reddetUrl = reddetUrl.replace("-1", firmaId);
+            swal({
+                title: "Seçilen firmayı reddetmek istediğinize emin misiniz ?",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Reddet",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willConfirm) => {
+                    if (willConfirm) {
+                        $.ajax({
+                            url: reddetUrl,
+                            type: "POST",
+                            dataType: 'json',
+                            data: data,
+                            contentType: "application/json",
+                            success: function (response) {
+                                swal("{{ _("Seçilen firma reddedilmiştir!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location.href = "{{ url_for('firma_yonetimi.BapFirmaView:firma_liste') }}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: "{{ _("Seçilen firma reddedilemedi!") }}",
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Firmayı reddetmekten vazgectiniz!") }}",{
+                            icon:"warning",
+                            timer:4000,
+                            button: false
+                        });
+                    }
+                });
+        }
+    </script>
+{% endmacro %}
+
+{% macro render_table_rows() %}
+    <th style="width: 5%">{{ _("#") }}</th>
+    <th style="width: 10%">{{ _("Ad") }}</th>
+    <th style="width: 5%">{{ _("Telefon") }}</th>
+    <th style="width: 10%">{{ _("E-mail") }}</th>
+    <th style="width: 5%;">{{ _("Faaliyet Belgesi Veriliş Tarihi") }}</th>
+    <th style="width: 25%;">{{ _("Adres") }}</th>
+    <th style="width: 10%">{{ _("Yetkili") }}</th>
+    <th style="width: 10%">{{ _("Bap Kullanıcı Adı") }}</th>
+    <th style="width: 10%">{{ _("Yetkili Email") }}</th>
+    <th style="width: 10%">{{ _("İşlemler") }}</th>
+
+{% endmacro %}

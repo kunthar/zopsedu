@@ -1,0 +1,78 @@
+{
+  "genel_ayarlar": [
+    {
+      "created_at": "2018-12-11 22:15:21.975485",
+      "updated_at": "2018-12-11 22:16:16.230587",
+      "id": 1,
+      "universite_id": 113746,
+      "bap_hakem": null,
+      "bap_rapor": null,
+      "bap_satinalma": null,
+      "bap_proje": null,
+      "bap_sms": null,
+      "bap_butce": {
+        "fonksiyonel_kodlar": [
+          {
+            "kod": "09.08.08.01",
+            "aciklama": "Bap Ana Kasa",
+            "csrf_token": ""
+          }
+        ]
+      },
+      "bap_email": null,
+      "bap_ek_talep": null,
+      "bap_diger": null,
+      "aktif_mi": false
+    },
+    {
+      "created_at": "2018-12-11 22:16:16.235820",
+      "updated_at": "2018-12-11 22:16:16.235849",
+      "id": 2,
+      "universite_id": 113746,
+      "bap_hakem": null,
+      "bap_rapor": null,
+      "bap_satinalma": null,
+      "bap_proje": null,
+      "bap_sms": null,
+      "bap_butce": {
+        "fonksiyonel_kodlar": [
+          {
+            "kod": "09.08.08.01",
+            "aciklama": "Bap Ana Kasa",
+            "csrf_token": ""
+          },
+          {
+            "kod": "09.08.08.02",
+            "aciklama": "DPT Kasası",
+            "csrf_token": ""
+          }
+        ],
+        "kurum_adi": "Harran Üniversitesi",
+        "kurum_kodu": "38.32.00.01",
+        "birim_adi": "Özel Kalem",
+        "birim_kodu": "901",
+        "muhasebe_birimi_adi": "Muhasebe",
+        "muhasebe_birimi_kodu": "42770",
+        "kurum_banka_bilgisi": {
+          "hesap_adi": "",
+          "iban": "",
+          "banka_adi": "",
+          "banka_subesi": "",
+          "vergi_no": "",
+          "vergi_dairesi_id": null,
+          "csrf_token": ""
+        },
+        "kdv_kodlari": {
+          "kdv_tevkifat_kodu": "",
+          "kdv_tevkifat_adi": "",
+          "kdv_tevkifat_orani": "",
+          "csrf_token": ""
+        }
+      },
+      "bap_email": null,
+      "bap_ek_talep": null,
+      "bap_diger": null,
+      "aktif_mi": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{% macro print_button(selectorToExport) %}
+    {% set form_uuid = uuid() %}
+
+    <button class="btn btn-info btn-block" onclick="exportPrint_{{ form_uuid }}();">
+        <i class="fa fa-print"></i>
+        {{ _("Yazdır") }}</button>
+    <script>
+        function exportPrint_{{ form_uuid }}() {
+            $("{{ selectorToExport }}").addClass('printable');
+            window.print();
+            $("{{ selectorToExport }}").removeClass('printable');
+        }
+    </script>
+{% endmacro %}

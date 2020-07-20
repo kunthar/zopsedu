@@ -1,0 +1,80 @@
+{% extends "dashboard_base.html" %}
+{% from 'ozgecmis_sayfalari/akademisyen_ozgecmis_sayfasi_genel.html' import ozgecmis_sayfasi_genel %}
+
+{% macro render_kisisel_bilgiler(ozgecmis_bilgileri) %}
+    <section id="kisisel-bilgiler-content" class="card">
+        <div class="card-content collapse show">
+            <div class="card-body card-dashboard">
+                {{ render_kimlik_iletisim_bilgileri(ozgecmis_bilgileri) }}
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+
+
+{% macro render_kimlik_iletisim_bilgileri(kimlik_bilgileri) %}
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                Hitap Ünvan :
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.unvan }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                Birim:
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.birim }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                Eposta Adresi:
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.birincil_eposta }} | {{ kimlik_bilgileri.ikincil_eposta }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                Web Sayfası:
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.web_sayfasi if kimlik_bilgileri.web_sayfasi else "-" }}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                Oda Telefon:
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.oda_tel if kimlik_bilgileri.oda_tel else "-"}}
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                Oda No:
+            </div>
+            <div class="col-md-9">
+                {{ kimlik_bilgileri.oda_no if kimlik_bilgileri.oda_no else "-"}}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+{% block context %}
+    {{ ozgecmis_sayfasi_genel(_("Kimlik & İletişim Bilgileri"),
+           render_kisisel_bilgiler(ozgecmis_bilgileri),
+           ozgecmis_bilgileri.personel_ad_soyad,
+           ozgecmis_bilgileri.avatar,
+           ozgecmis_bilgileri.birim,
+           email_prefix, 1) }}
+{% endblock %}

@@ -1,0 +1,239 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{#
+    Geliştirici isterse select menüsündeki istediği itemi disabled yapabilir (listede görünür ama unclickable),
+    Aynı zamanda seçilen item'in response'u "selected:true" olmalıdır. Exm response:
+
+{
+  "results": [
+    {
+      "id": 1,
+      "text": "Option 1"
+    },
+    {
+      "id": 2,
+      "text": "Option 2",
+      "selected": true
+    },
+    {
+      "id": 3,
+      "text": "Option 3",
+      "disabled": true
+    }
+  ]
+}
+
+    Geliştirici isterse select list'i gruplayabilir. Exm response:
+
+{
+  "results": [
+    {
+      "text": "Group 1",
+      "children" : [
+        {
+            "id": 1,
+            "text": "Option 1.1"
+        },
+        {
+            "id": 2,
+            "text": "Option 1.2"
+        }
+      ]
+    },
+    {
+      "text": "Group 2",
+      "children" : [
+        {
+            "id": 3,
+            "text": "Option 2.1"
+        },
+        {
+            "id": 4,
+            "text": "Option 2.2"
+        }
+      ]
+    }
+  ],
+  "paginate": {
+    "more": true
+  }
+}
+#}
+
+{% macro select2(field, url=None, placeholder="Ara", min_input_len=3, multiple=False, dependent=None, choices=None, disabled=False, birim_tipi=None, kurum_ici = False) %}
+    {% set id=uuid() %}
+    {% set page_size = 20 %}
+    <div class="row">
+        <div class="col-12 ui-sortable">
+            {% if multiple %}
+                <select id="{{ id }}" name="{{ field.name }}[]" node="{{ field.node_name | safe }}"
+                        multiple="multiple" title="multi" style="width: 100% !important;">
+            {% else %}
+                <select id="{{ id }}" class="col-12" name="{{ field.name }}" title="single"
+                        node="{{ field.node_name | safe }}">
+            {% endif %}
+            </select>
+            {% if field.errors %}
+                <ul class="parsley-errors-list filled">
+                    {% for error in field.errors %}
+                        <li class="parsley-required">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    {#    !!!! div silinmeyecek dynamic field list icin gerekli !!!!#}
+    <div>
+        {#    !!!! div silinmeyecek dynamic field list icin gerekli !!!!#}
+        <script>
+            $(document).ready(function () {
+                let $select = $('#{{ id }}');
+                {% if dependent %}
+                    $select.select2({
+                        width: "100%",
+                        language: "tr",
+                        placeholder: "{{ placeholder }}",
+                        minimumInputLength: {{ min_input_len }},
+                        {% if disabled %}
+                            disabled: true,
+                        {% endif %}
+                        escapeMarkup: function (markup) {
+                            return markup;
+                        }
+                    });
+                    let dependentChoices = {{ choices | tojson }};
+                    if (dependentChoices) {
+                        let d_level = dependentChoices.filter(function (data) {
+                            return data.id == $("select[node='{{ dependent }}']")[0].value
+                        })[0];
+                        if (!d_level) {
+                            d_level = dependentChoices.filter(function (data) {
+                                return data.id == $("label[for='{{ dependent }}']").prev().prev().find('select')[0].value
+                            })[0]['sub'];
+                            d_level = d_level.filter(function (data) {
+                                return data.id == $("select[node='{{ dependent }}']")[0].value
+                            })[0];
+                        }
+                        d_level['sub'].forEach(function (opt) {
+                            $select.append($('<option>', {
+                                value: opt['id'],
+                                text: opt['text']
+                            }));
+                        });
+                    }
+
+
+                    $("select[node='{{ dependent }}']").on("select2:selecting", function (e) {
+                        $select[0].value = null;
+                        $select[0].options.length = 0;
+                    });
+
+
+                    $("select[node='{{ dependent }}']").on('change', function () {
+                    if($("select[node='{{ dependent }}']")[0].value != ''){
+                    if (dependentChoices) {
+                    let d_level = dependentChoices.filter(function (data) {
+                        return data.id == $("select[node='{{ dependent }}']")[0].value
+                    })[0];
+                    if (!d_level) {
+                        d_level = dependentChoices.filter(function (data) {
+                            return data.id == $("label[for='{{ dependent }}']").prev().prev().find('select')[0].value
+                        })[0]['sub'];
+                        d_level = d_level.filter(function (data) {
+                            return data.id == $("select[node='{{ dependent }}']")[0].value
+                        })[0];
+                    }
+                    d_level['sub'].forEach(function (opt) {
+                        $select.append($('<option>', {
+                            value: opt['id'],
+                            text: opt['text']
+                        }));
+                    });
+                } else {
+                {% endif %}
+            $select.select2({
+                width: "100%",
+                language: "tr",
+                placeholder: "{{ placeholder }}",
+                minimumInputLength: {{ min_input_len }},
+                {% if url %}
+                    ajax: {
+                        type: "POST",
+                        url: "{{ url }}", // url for json response
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                                page: params.page || 1,
+                                page_size: {{ page_size }},
+                                kurum_ici: {{ kurum_ici | tojson }},
+                                birim_tipi: "{{ birim_tipi  }}",
+                                initial_val: {{ field.data | default("null", true) }},
+                                {% if dependent %}
+                                    dependant_value: $("select[node='{{ dependent }}']")[0].value
+                                {% endif %}
+                            };
+                        },
+                        processResults: function (data, params) {
+                            params.page = params.page || 1;
+                            return {
+                                results: data.items,
+                                pagination: {
+                                    more: (params.page * {{ page_size }}) < data.total_count
+                                }
+                            };
+                        },
+                        cache: true
+                    },
+                {% endif %}
+                {% if disabled %}
+                    disabled: true,
+                {% endif %}
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+            {% if dependent %}
+                }
+                $select.trigger("change");
+                }
+                });
+            {% else %}
+                let choices = {{ choices | tojson }};
+                if (choices) {
+                    choices.forEach(function (opt) {
+                        $select.append($('<option>', {
+                            value: opt['id'],
+                            text: opt['text']
+                        }));
+                    });
+                }
+            {% endif %}
+                {% if url and field.data %}
+                    $.ajax({ // make the request for the selected data object
+                        type: 'POST',
+                        url: "{{ url }}",
+                        dataType: 'json',
+                        data: {
+                            page: 1,
+                            page_size: 1,
+                            initial_val: {{ field.data }},
+                            {% if dependent %}
+                                dependent_value: $("select[node='{{ dependent }}']")[0].value
+                            {% endif %}
+                        }
+                    }).done(function (data) {
+                        if (data.items.length > 0) {
+                            let $option = $('<option selected>Loading...</option>').val({{ field.data }});
+                            $option.text(data.items[0].text);
+
+                            $select.append($option).trigger("change");
+                        }
+                    });
+                {% endif %}
+            });
+        </script>
+        {#    !!!! div silinmeyecek dynamic field list icin gerekli !!!!#}
+    </div>
+    {#    !!!! div silinmeyecek dynamic field list icin gerekli !!!!#}
+{% endmacro %}

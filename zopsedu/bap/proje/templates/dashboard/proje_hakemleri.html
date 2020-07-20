@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/checkbox_fields.html" import render_checkbox_with_tooltip %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field_with_tooltip %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from 'macros/durum_degisim.html' import  print_column_data %}
+
+{% set states_info = next_states_info %}
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% macro proje_hakem_yaz(ad=None,
+                         soyad=None,
+                         unvan=None,
+                         kurum_ici_mi=None,
+                         birim=None,
+                         eposta=None,
+                         is_telefonu=None,
+                         cep_telefonu=None,
+                         proje_hakem_id=None) %}
+    <div class="col-md-6">
+        <div class="card">
+            <div class="text-center">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename = 'assets/img/user-13.jpg') }}"
+                         class="rounded-circle  height-150" alt="Card image">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ ad }} {{ soyad }}</h4>
+                    <h6 class="card-subtitle text-muted">{{ kurum_ici_mi }}</h6>
+                </div>
+                <div class="card-body">
+                    {% if proje_hakem_id %}
+                        <button type="button" class="btn btn-danger mr-1"
+                                onclick='projeHakemSil({{ proje_hakem_id }}, "{{ ad }}", "{{ soyad }}");'>
+                            {{ _("Proje Hakemleri Arasından Çıkar") }}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="list-group list-group-flush">
+                {{ print_column_data(unvan, _("Ünvan")) }}
+                {{ print_column_data(birim, _("Birim")) }}
+                {{ print_column_data(is_telefonu, _("İş Telefonu")) }}
+                {{ print_column_data(cep_telefonu, _("Cep Telefonu")) }}
+                {{ print_column_data(eposta, _("E-posta")) }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{# proje başvurusu esnasında proje yurutucusu tarafindan onerilen hakemleri listeler#}
+{% macro render_hakem_onerileri_table(hakem_onerileri) %}
+    <table id="data-table"
+           class="table table-striped table-bordered dataTable no-footer dtr-inline"
+           role="grid"
+           aria-describedby="data-table_info"
+           style="width: 100%;">
+        <thead>
+        <tr role="row">
+            <th>{{ _("Ad") }}</th>
+            <th>{{ _("Soyad") }}</th>
+            <th>{{ _("Email") }}</th>
+            <th>{{ _("Kurum İçi") }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hakem_oneri in hakem_onerileri %}
+            <tr>
+                {% if hakem_oneri.ogretim_elemani_id %}
+                    <td>{{ hakem_oneri.ogretim_elemani.personel.person.ad }}</td>
+                    <td>{{ hakem_oneri.ogretim_elemani.personel.person.soyad }}</td>
+                    <td>{{ hakem_oneri.ogretim_elemani.personel.person.birincil_eposta or hakem_oneri.ogretim_elemani.personel.person.ikincil_eposta }}</td>
+                    <td> {{ _("Evet") }}</td>
+                {% else %}
+                    <td>{{ hakem_oneri.ad }}</td>
+                    <td>{{ hakem_oneri.soyad }}</td>
+                    <td>{{ hakem_oneri.email }}</td>
+                    <td> {{ _("Hayır") }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{# proje teklifini kabul etmiş hakemleri listeler#}
+{% macro render_proje_hakemleri(proje_hakemleri) %}
+    {% for proje_hakem in proje_hakemleri %}
+        {% if proje_hakem.davet_durumu.name == "kabul_edildi" %}
+            {% if proje_hakem.hakem.kurum_ici %}
+                {#        hakem kurum içi bir kisi ise#}
+                {{ proje_hakem_yaz(
+                    proje_hakem.hakem.person.ad,
+                    proje_hakem.hakem.person.soyad,
+                    proje_hakem.hakem.person.personel.hitap_unvan.ad,
+                    _("Kurum İçi Hakem"),
+                    proje_hakem.hakem.person.personel.birimi.ad,
+                    proje_hakem.hakem.person.birincil_eposta or hakem.person.ikincil_eposta,
+                    proje_hakem.hakem.person.personel.oda_tel_no,
+                    proje_hakem.hakem.person.cep_telefonu,
+                    proje_hakem.id) }}
+            {% else %}
+                {#        hakem kurum dışı bir kisi ise#}
+                {{ proje_hakem_yaz(
+                    proje_hakem.hakem.person.ad,
+                    proje_hakem.hakem.person.soyad,
+                    proje_hakem.hakem.hitap_unvan.ad,
+                    _("Kurum Dışı Hakem"),
+                    proje_hakem.hakem.universite.ad,
+                    proje_hakem.hakem.person.birincil_eposta or proje_hakem.hakem.person.ikincil_eposta,
+                    "-",
+                    proje_hakem.hakem.person.cep_telefonu,
+                    proje_hakem.id) }}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{# proje teklifini reddeden, henuz yanıtlanmamış, ve daha önce proje hakemi olup çıkarılan hakemleri listeler#}
+{% macro render_proje_hakem_diger(proje_hakemleri) %}
+    <table id="data-table-2"
+           class="table table-striped table-bordered dataTable no-footer dtr-inline"
+           role="grid"
+           aria-describedby="data-table_info"
+           style="width: 100%;">
+        <thead>
+
+        <tr role="row">
+            <th>{{ _("Ad") }}</th>
+            <th>{{ _("Soyad") }}</th>
+            <th>{{ _("Email") }}</th>
+            <th>{{ _("Kurum İçi") }}</th>
+            <th>{{ _("Durum") }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for proje_hakem in proje_hakemleri %}
+            <tr>
+                {% if not proje_hakem.davet_durumu.name == "kabul_edildi" %}
+                    <td>{{ proje_hakem.hakem.person.ad }}</td>
+                    <td>{{ proje_hakem.hakem.person.soyad }}</td>
+                    <td>{{ proje_hakem.hakem.person.birincil_eposta or proje_hakem.hakem.person.ikincil_eposta }}</td>
+                    {% if proje_hakem.hakem.kurum_ici %}
+                        <td> {{ _("Evet") }}</td>
+                    {% else %}
+                        <td> {{ _("Hayır") }}</td>
+                    {% endif %}
+                    <td>{{ proje_hakem.davet_durumu.value }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}
+
+{% macro render_proje_hakemleri_dashboard() %}
+    {% set hakem_ekle_modal_id = "proje-hakem-ekle-modal" %}
+    {{ big_flash_message() }}
+    <section id="page-tabs" class="card">
+        <div class="card-header">
+            <div class="btn-group float-md-right">
+                <a href="#{{ hakem_ekle_modal_id }}" data-toggle="modal">
+                    <button class="btn btn-success">{{ _("Hakem Ekle") }}</button>
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="nav-item"><a href="#proje-hakemleri"
+                                        data-toggle="tab"
+                                        class="nav-link active">{{ _("Proje Hakemleri") }}</a>
+                </li>
+                {% if hakem_onerileri %}
+                    <li class="nav-item"><a href="#hakem-onerileri"
+                                            data-toggle="tab"
+                                            class="nav-link">{{ _("Hakem Önerileri") }}</a>
+                    </li>
+                {% endif %}
+                {% if proje_hakemleri %}
+                    <li class="nav-item"><a href="#hakem-diger"
+                                            data-toggle="tab"
+                                            class="nav-link">{{ _("Diğer") }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </section>
+    <section id="page-tab-content">
+        <div class="tab-content px-1">
+            <div class="tab-pane fade active show"
+                 id="proje-hakemleri">
+                <div class="row">
+                    {{ render_proje_hakemleri(proje_hakemleri) }}
+                </div>
+            </div>
+            {% if hakem_onerileri %}
+                <div class="tab-pane card"
+                     id="hakem-onerileri">
+                    <div class="card-content">
+                        <div class="card-body">
+                            {{ render_hakem_onerileri_table(hakem_onerileri) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if proje_hakemleri %}
+                <div class="tab-pane card"
+                     id="hakem-diger">
+                    <div class="card-content">
+                        <div class="card-body">
+                            {{ render_proje_hakem_diger(proje_hakemleri) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <div class="modal fade" id="{{ hakem_ekle_modal_id }}" style="display: none;"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="preview-modal-title">{{ _('Hakem Ekle') }}</h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                {{ hakem_ekle_form.csrf_token }}
+                <div class="modal-body">
+                    {{ render_text_field_with_tooltip(hakem_ekle_form.hakem_id, _("Sistemden Hakem Seçiniz")) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                    <a id="proje-hakem-kaydet-button"
+                       href="#"
+                       onclick="projeHakemEkle();">
+                        <button type="button"
+                                class="btn btn-outline-success">{{ _("Kaydet") }}</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            projeHakemEkle = function () {
+                let hakemAtamaUrl, hakemId;
+                hakemId = $('#{{ hakem_ekle_modal_id }} [name={{ hakem_ekle_form.hakem_id.name }}]').val();
+                if (!(typeof hakemId !== 'undefined' && hakemId.length > 0)) {
+                    swal("{{ _("Önce hakem seçmelisiniz!") }}", {
+                        icon: "warning",
+                        timer: 4000,
+                        buttons: false
+                    });
+                } else {
+                    hakemAtamaUrl = "{{ url_for('proje.ProjeHakemView:proje_hakemi_ekle', proje_id=proje.id, hakem_id=-1) }}";
+                    hakemAtamaUrl = hakemAtamaUrl.replace("-1", hakemId);
+                    $.ajax({
+                        url: hakemAtamaUrl,
+                        type: 'POST',
+                        success: function (result) {
+                            swal("{{ _("Seçilen hakeme proje hakemi olma teklifi gönderildi.") }}", {
+                                icon: "success",
+                                timer: 4000,
+                                buttons: false
+                            });
+                            location.reload();
+
+                        },
+                        error: function (result) {
+                            let errorMessage;
+                            errorMessage = result.responseJSON.error_message;
+                            swal({
+                                title: errorMessage,
+                                text: errorMessage,
+                                icon: "error",
+                                timer: 4000,
+                                buttons: false
+                            });
+                        }
+                    });
+
+                }
+            };
+
+            projeHakemSil = function (projeHakemId, hakemAd, hakemSoyad) {
+                let projeHakemSilUrl, ad, soyad;
+                ad = hakemAd;
+                soyad = hakemSoyad;
+                projeHakemSilUrl = "{{ url_for("proje.ProjeHakemView:proje_hakem_sil", proje_id=proje.id, proje_hakem_id=-1) }}"
+                projeHakemSilUrl = projeHakemSilUrl.replace("-1", projeHakemId);
+                swal({
+                    title: ad + soyad + " " + "{{ _("adlı hakem projenin hakemleri arasından çıkarılacak.") }}",
+                    text: "{{ _("Yeni hakem eklemek için butonu kullanabilirsiniz.") }}",
+                    icon: "error",
+                    buttons: {
+                        cancel: {
+                            text: "{{ _("Vazgeç") }}",
+                            value: false,
+                            visible: !0,
+                            closeModal: !0
+                        },
+                        confirm: {
+                            text: "{{ _("Kabul Et") }}",
+                            value: true,
+                            visible: !0,
+                            closeModal: false
+                        }
+                    }
+                }).then(function (willDelete) {
+                    // secilen hakemin silinmesi icin bir request gönderir.
+                    if (willDelete) {
+                        $.ajax({
+                            url: projeHakemSilUrl,
+                            type: 'DELETE',
+                            dataType: 'json',
+                            success: function () {
+                                swal(ad + " " + soyad + " " + "{{ _("adlı hakem proje hakemleri arasından başarıyla çıkarıldı!") }}", {
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+
+                                location.reload();
+                            },
+                            error: function () {
+                                swal(ad + " " + soyad + " " + "{{ _("adlı hakem proje hakemleri arasından çıkarılmaya çalışılırken bir hata oluştu!") }}", {
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal(ad + " " + soyad + " " + "{{ _("adlı hakem proje hakemleri arasından çıkarmaktan vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+
+                        });
+                    }
+                });
+            };
+        })
+    </script>
+{% endmacro %}
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Hakemleri"),
+           render_proje_hakemleri_dashboard(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu) }}
+{% endblock %}

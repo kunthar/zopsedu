@@ -1,0 +1,18 @@
+html{
+    font-family: Roboto;
+    font-size:14px;
+}
+
+.navbar-content-background{
+    background: #dcdcdc;
+}
+
+.dark-nav-link-color{
+    color:#f6f6f6 !important;
+
+}
+
+.header-navbar .navbar-container ul.nav li>a.nav-link {
+    font-size: 0.9rem;
+}
+

@@ -1,0 +1,79 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALL_IMPORT_PATH_OF_ENDPOINTS_CACHE_KEY	config.py	/^    ALL_IMPORT_PATH_OF_ENDPOINTS_CACHE_KEY = "ImportPathsOfEndpoints"$/;"	v	class:BaseConfig
+ALL_PERMISSIONS_CACHE_KEY	config.py	/^    ALL_PERMISSIONS_CACHE_KEY = "Permissions"$/;"	v	class:BaseConfig
+BABEL_DEFAULT_LOCALE	config.py	/^    BABEL_DEFAULT_LOCALE = 'tr'$/;"	v	class:BaseConfig
+BABEL_TRANSLATION_DIRECTORIES	config.py	/^    BABEL_TRANSLATION_DIRECTORIES = 'locale'$/;"	v	class:BaseConfig
+BASE_DIR	config.py	/^    BASE_DIR = os.readlink(BASE_DIR)$/;"	v
+BASE_DIR	config.py	/^BASE_DIR = os.getenv("BASE_DIR", os.path.dirname(os.path.abspath(__file__)))$/;"	v
+BaseConfig	config.py	/^class BaseConfig(object):$/;"	c
+CACHE_FORM_PREFIX	config.py	/^    CACHE_FORM_PREFIX = "ZOPSEDU:FORMS:{form_name}"$/;"	v	class:BaseConfig
+CONFIG	config.py	/^CONFIG = {$/;"	v
+CRUD_LOG	config.py	/^    CRUD_LOG = False if os.getenv('CRUD_LOG', True) == 'False' else True$/;"	v	class:ProductionConfig
+CRUD_LOG	config.py	/^    CRUD_LOG = False$/;"	v	class:DevelopmentConfig
+CRUD_LOG	config.py	/^    CRUD_LOG = os.getenv('CRUD_LOG', False)$/;"	v	class:BaseConfig
+DATETIME_FORMAT	config.py	/^    DATETIME_FORMAT = "%d.%m.%Y %H:%M"$/;"	v	class:BaseConfig
+DATE_FORMAT	config.py	/^    DATE_FORMAT = "%d.%m.%Y"$/;"	v	class:BaseConfig
+DEBUG	config.py	/^    DEBUG = False$/;"	v	class:BaseConfig
+DEBUG	config.py	/^    DEBUG = True$/;"	v	class:DevelopmentConfig
+DEPOT_STORAGE_PATH	config.py	/^    DEPOT_STORAGE_PATH = "{}\/{}".format(BASE_DIR, 'uploads')$/;"	v	class:BaseConfig
+DevelopmentConfig	config.py	/^class DevelopmentConfig(BaseConfig):$/;"	c
+EBYS	config.py	/^    EBYS = "EBYS"$/;"	v	class:BaseConfig
+EBYS_PASSWORD_ENC	config.py	/^    EBYS_PASSWORD_ENC = os.getenv('EBYS_PASSWORD_ENC', '\/xIs77+\/0Ow5dFXdXTVmKQ==')$/;"	v	class:BaseConfig
+EBYS_USERNAME_ENC	config.py	/^    EBYS_USERNAME_ENC = os.getenv('EBYS_USERNAME_ENC', 'jIzfg\/iiqj5u0kKuEVErcg==')$/;"	v	class:BaseConfig
+ENABLED_MODULES	config.py	/^    ENABLED_MODULES = [$/;"	v	class:BaseConfig
+MAIL_DEFAULT_SENDER	config.py	/^    MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER', 'mail@username.x')$/;"	v	class:BaseConfig
+MAIL_MAX_EMAILS	config.py	/^    MAIL_MAX_EMAILS = os.getenv('MAIL_MAX_EMAILS', None)$/;"	v	class:BaseConfig
+MAIL_PASSWORD	config.py	/^    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', 'password')$/;"	v	class:BaseConfig
+MAIL_PORT	config.py	/^    MAIL_PORT = os.getenv('MAIL_PORT', '587')$/;"	v	class:BaseConfig
+MAIL_SERVER	config.py	/^    MAIL_SERVER = os.getenv('MAIL_SERVER', 'mail.server.x')$/;"	v	class:BaseConfig
+MAIL_SUPPRESS_SEND	config.py	/^    MAIL_SUPPRESS_SEND = int(os.getenv('MAIL_SUPPRESS_SEND', 1))$/;"	v	class:BaseConfig
+MAIL_USERNAME	config.py	/^    MAIL_USERNAME = os.getenv('MAIL_USERNAME', 'mail@username.x')$/;"	v	class:BaseConfig
+MAIL_USE_SSL	config.py	/^    MAIL_USE_SSL = int(os.getenv('MAIL_USE_SSL', 0))$/;"	v	class:BaseConfig
+MAIL_USE_TLS	config.py	/^    MAIL_USE_TLS = int(os.getenv('MAIL_USE_TLS', 0))$/;"	v	class:BaseConfig
+MODULE_NAMES	config.py	/^    MODULE_NAMES = [$/;"	v	class:BaseConfig
+PERMISSIONS_OF_ENDPOINT_CACHE_KEY	config.py	/^    PERMISSIONS_OF_ENDPOINT_CACHE_KEY = "Permissions:{endpoint}"$/;"	v	class:BaseConfig
+ProductionConfig	config.py	/^class ProductionConfig(BaseConfig):$/;"	c
+REDIS_HOST	config.py	/^    REDIS_HOST = 'localhost'$/;"	v	class:BaseConfig
+REDIS_PASSWORD	config.py	/^    REDIS_PASSWORD = None$/;"	v	class:BaseConfig
+REDIS_PORT	config.py	/^    REDIS_PORT = 6379$/;"	v	class:BaseConfig
+REDIS_URL	config.py	/^    REDIS_URL = "redis:\/\/{}:6379\/0".format(os.getenv('REDIS_HOST', 'localhost'))$/;"	v	class:BaseConfig
+ROLES_PERMISSIONS_CACHE_KEY	config.py	/^    ROLES_PERMISSIONS_CACHE_KEY = "Roles:{role_id}:Permissions"$/;"	v	class:BaseConfig
+SECRET_KEY	config.py	/^    SECRET_KEY = "Zr4t7w!z%C*F-JaNdRgUkXp2s5v8x\/A?D(G+KbPeShVmYq3t6w9z$B&E)H@McQfT"$/;"	v	class:BaseConfig
+SECRET_KEY	config.py	/^    SECRET_KEY = "development"$/;"	v	class:DevelopmentConfig
+SECRET_SALT_KEY	config.py	/^    SECRET_SALT_KEY = "aPdSgVkYp3s6v9y$B?E(H+MbQeThWmZq4t7w!z%C*F)J@NcRfUjXn2r5u8x\/A?D("$/;"	v	class:BaseConfig
+SECRET_SALT_KEY	config.py	/^    SECRET_SALT_KEY = "development"$/;"	v	class:DevelopmentConfig
+SERVER_NAME	config.py	/^    SERVER_NAME = os.getenv('SERVER_NAME', 'localhost:5000')$/;"	v	class:BaseConfig
+SESSION_CACHE_KEY_PREFIX	config.py	/^    SESSION_CACHE_KEY_PREFIX = "Sessions"$/;"	v	class:BaseConfig
+SESSION_COOKIE_EXPIRES	config.py	/^    SESSION_COOKIE_EXPIRES = 500$/;"	v	class:BaseConfig
+SESSION_COOKIE_EXPIRES	config.py	/^    SESSION_COOKIE_EXPIRES = 60 * 60 * 50$/;"	v	class:DevelopmentConfig
+SESSION_COOKIE_EXPIRES	config.py	/^    SESSION_COOKIE_EXPIRES = 8 * 60 * 60$/;"	v	class:ProductionConfig
+SESSION_TIMEOUT	config.py	/^    SESSION_TIMEOUT = 500$/;"	v	class:BaseConfig
+SESSION_TIMEOUT	config.py	/^    SESSION_TIMEOUT = 60 * 60 * 50$/;"	v	class:DevelopmentConfig
+SESSION_TIMEOUT	config.py	/^    SESSION_TIMEOUT = 8 * 60 * 60$/;"	v	class:ProductionConfig
+SQLALCHEMY_DATABASE_URI	config.py	/^    SQLALCHEMY_DATABASE_URI = 'postgresql:\/\/zopsedu:zopsedu@localhost:5432\/zopsedu'$/;"	v	class:DevelopmentConfig
+SQLALCHEMY_DATABASE_URI	config.py	/^    SQLALCHEMY_DATABASE_URI = 'postgresql:\/\/{}:{}@{}\/{}'.format($/;"	v	class:ProductionConfig
+SQLALCHEMY_ECHO	config.py	/^    SQLALCHEMY_ECHO = False$/;"	v	class:BaseConfig
+SQLALCHEMY_ECHO	config.py	/^    SQLALCHEMY_ECHO = True$/;"	v	class:DevelopmentConfig
+SQLALCHEMY_TRACK_MODIFICATIONS	config.py	/^    SQLALCHEMY_TRACK_MODIFICATIONS = False$/;"	v	class:BaseConfig
+SQLALCHEMY_TRACK_MODIFICATIONS	config.py	/^    SQLALCHEMY_TRACK_MODIFICATIONS = False$/;"	v	class:DevelopmentConfig
+SUB_MODULE_NAMES	config.py	/^    SUB_MODULE_NAMES = [$/;"	v	class:BaseConfig
+SYSTEM_USER_EMAIL	config.py	/^    SYSTEM_USER_EMAIL = "system_user@zopsedu.com"$/;"	v	class:BaseConfig
+SYSTEM_USER_NAME	config.py	/^    SYSTEM_USER_NAME = "system_user"$/;"	v	class:BaseConfig
+TESTING	config.py	/^    TESTING = False$/;"	v	class:BaseConfig
+TESTING	config.py	/^    TESTING = True$/;"	v	class:TestingConfig
+TOKEN_CACHE_KEY_PREFIX	config.py	/^    TOKEN_CACHE_KEY_PREFIX = "Tokens"$/;"	v	class:BaseConfig
+TOKEN_HEADER	config.py	/^    TOKEN_HEADER = 'X-Auth-Token'$/;"	v	class:BaseConfig
+TestingConfig	config.py	/^class TestingConfig(DevelopmentConfig):$/;"	c
+UNIVERSITE_CONFIG_ID	config.py	/^    UNIVERSITE_CONFIG_ID = 0$/;"	v	class:BaseConfig
+UNIVERSITE_ID	config.py	/^    UNIVERSITE_ID = "UniversiteId"$/;"	v	class:BaseConfig
+USER_LAST_LOGIN_ROLE_ID_CACHE_KEY	config.py	/^    USER_LAST_LOGIN_ROLE_ID_CACHE_KEY = "User:{user_id}:LastLoginRoleId"$/;"	v	class:BaseConfig
+USER_LAST_LOGIN_ROLE_NAME_CACHE_KEY	config.py	/^    USER_LAST_LOGIN_ROLE_NAME_CACHE_KEY = "User:{user_id}:LastLoginRoleName"$/;"	v	class:BaseConfig
+VERSION	config.py	/^    VERSION = '0.4.1.4'$/;"	v	class:BaseConfig
+WTF_I18N_ENABLED	config.py	/^    WTF_I18N_ENABLED = True$/;"	v	class:BaseConfig
+configure_app	config.py	/^def configure_app(app):$/;"	f
+os	config.py	/^import os$/;"	i

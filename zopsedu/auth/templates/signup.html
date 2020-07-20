@@ -1,0 +1,117 @@
+{% extends "index.html" %}
+{#{%  from "macros/utils.html" import flash_message %}#}
+
+{% block body %}
+    <div class="pace-top bg-white">
+        <!-- begin #page-loader -->
+        <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+        <!-- end #page-loader -->
+
+        <!-- begin #page-container -->
+        <div id="page-container" class="fade">
+            <!-- begin register -->
+            <div class="register register-with-news-feed">
+                <!-- begin news-feed -->
+                <div class="news-feed">
+                    <div class="news-image"
+                         style="background-image: url({{ url_for('static', filename = 'assets/img/login-bg-13.jpg') }})"></div>
+                    <div class="news-caption">
+                        <img style="width: 35%; height: 35%"
+                             src="{{ url_for('static', filename = 'assets/img/brand-logo2.png') }}" alt="Zopsedu">
+                    </div>
+                </div>
+                <!-- end news-feed -->
+                <!-- begin right-content -->
+                <div class="right-content">
+                    <!-- begin register-header -->
+                    <h1 class="register-header">
+                        <div class="brand">
+                            <img style="text-align: center; width: 55%; height: 55%"
+                                 src="{{ url_for('static', filename = 'assets/img/brand-logo2.png') }}" alt="Zopsedu">
+                            <h3>{{ args['title'] }}</h3>
+                        </div>
+                    </h1>
+                    <!-- end register-header -->
+                    <!-- begin register-content -->
+                    <div class="register-content">
+                        <form method="POST" class="margin-bottom-0">
+                            {{ form.csrf_token }}
+                            <label class="control-label">{{ form.username.label }} <span
+                                    class="text-danger">*</span></label>
+                            <div class="row m-b-15">
+                                <div class="col-md-12">
+                                    {{ form.username(**{'class':'form-control'}) | safe }}
+                                    {% if form.username.errors %}
+                                        <ul class="parsley-errors-list filled">
+                                            {% for error in form.username.errors %}
+                                                <li class="parsley-required">{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <label class="control-label">{{ form.email.label }} <span
+                                    class="text-danger">*</span></label>
+                            <div class="row m-b-15">
+                                <div class="col-md-12">
+                                    {{ form.email(**{'class':'form-control'}) | safe }}
+                                    {% if form.email.errors %}
+                                        <ul class="parsley-errors-list filled">
+                                            {% for error in form.email.errors %}
+                                                <li class="parsley-required">{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <label class="control-label">{{ form.password.label }} <span
+                                    class="text-danger">*</span></label>
+                            <div class="row m-b-15">
+                                <div class="col-md-12">
+                                    {{ form.password(**{'class':'form-control'}) | safe }}
+                                    {% if form.password.errors %}
+                                        <ul class="parsley-errors-list filled">
+                                            {% for error in form.password.errors %}
+                                                <li class="parsley-required">{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="checkbox m-b-15">
+                                {% set checkbox_id = uuid() %}
+                                <label for="agreement_checkbox">
+                                    {{ form.accept_tos(**{'checked':'true', 'id': checkbox_id }) }}
+                                    <a href="javascript:;">{{ form.accept_tos.label }}</a>
+                                </label>
+                                {% if form.accept_tos.errors %}
+                                    <ul class="parsley-errors-list filled">
+                                        {% for error in form.accept_tos.errors %}
+                                            <li class="parsley-required">{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                            <div class="register-buttons">
+                                {{ form.submit(**{'class':'btn btn-primary btn-block btn-lg'}) | safe }}
+                            </div>
+                            <hr/>
+                            <p class="text-center text-grey-darker">
+                                <a href="http://www.zopsedu.org" target="_blank">Zopsedu</a>
+                            </p>
+                        </form>
+                    </div>
+                    <!-- end register-content -->
+                    <p class="text-center text-grey-darker">
+                        Powered by <a href="http://www.zetaops.io" target="_blank">Zetaops</a>
+                    </p>
+                </div>
+                <!-- end right-content -->
+            </div>
+            <!-- end register -->
+        </div>
+        <!-- end page container -->
+
+    </div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+{% macro kayit_detay_yaz(label, data) %}
+    <div class="col-md-6 border">
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <label>{{ label }}</label>
+            </div>
+            <div class="col-md-8">
+                <p class="f-s-15 word-break">{{ data if data else "-" }}</p>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Kullanıcı Aktivitesi Detayı") }} </h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('sistem_takibi.KayitGecmisiView:kayit_gecmisi_goruntule') }}">
+                    <button class="btn btn-success">
+                        {{ _("Aktivite Listesi") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        {{ kayit_detay_yaz(_("Açıklama :"), result[0].ekstra_mesaj) }}
+                        {{ kayit_detay_yaz(_("Zaman :"), result[0].zaman.strftime("%d.%m.%Y  %H:%M:%S")) }}
+                        {{ kayit_detay_yaz(_("Kullanıcı :"), result.person_ad + " " + result.person_soyad) }}
+                        {{ kayit_detay_yaz(_("Kullanıcı Adı :"), result.username) }}
+                        {{ kayit_detay_yaz(_("Rol Ismi :"), result.role_name) }}
+                        {{ kayit_detay_yaz(_("Kullanıcı Adı(Kayıt Oluştuğu Sırada) :"), result[0].username) }}
+                        {{ kayit_detay_yaz(_("Rol Ismi(Kayıt Oluştuğu Sırada) :"), result[0].role_name) }}
+                        {{ kayit_detay_yaz(_("Id :"), result[0].id) }}
+                        {{ kayit_detay_yaz(_("User Id :"), result[0].user_id) }}
+                        {{ kayit_detay_yaz(_("Role Id :"), result[0].role_id) }}
+                        {{ kayit_detay_yaz(_("Nesne :"), result[0].nesne) }}
+                        {{ kayit_detay_yaz(_("Nesne Id :"), result[0].nesne_id) }}
+                        {{ kayit_detay_yaz(_("Etkilenen Nesne :"), result[0].etkilenen_nesne) }}
+                        {{ kayit_detay_yaz(_("Etkilenen Nesne Id :"), result[0].etkilenen_nesne_id) }}
+                        {{ kayit_detay_yaz(_("Remote Ip :"), result[0].remote_ip) }}
+                        {{ kayit_detay_yaz(_("Tarayıcı Bilgisi :"), result[0].tarayici_bilgisi) }}
+                        {{ kayit_detay_yaz(_("Host :"), result[0].host) }}
+                        {{ kayit_detay_yaz(_("Origin :"), result[0].origin) }}
+                        {{ kayit_detay_yaz(_("Referer :"), result[0].referer) }}
+                        {{ kayit_detay_yaz(_("Endpoint Url :"), result[0].endpoint_url) }}
+                        {{ kayit_detay_yaz(_("Method :"), result[0].method) }}
+                        {{ kayit_detay_yaz(_("User Role Id :"), result[0].user_role_id) }}
+                        {{ kayit_detay_yaz(_("Session :"), result[0].session) }}
+                        {{ kayit_detay_yaz(_("Context :"), result[0].context) }}
+
+                        {% if result[0].cookie %}
+                            <div class="col-md-6 border">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label>{{ _("Cookie :") }}</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        {% set cookie_list = result[0].cookie.split(";") %}
+                                        {% for cookie in cookie_list %}
+                                            <p class="f-s-15 word-break">{{ cookie }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

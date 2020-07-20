@@ -1,0 +1,51 @@
+{
+  "site_ayarlari": [
+    {
+      "created_at": "2018-12-11 20:58:59.776643",
+      "updated_at": "2018-12-11 20:58:59.776658",
+      "id": 1,
+      "module": null,
+      "universite_id": 113746,
+      "sub_module": null,
+      "params": {
+        "site_ayarlari": {
+          "genel": {
+            "site_adi": "bap.harran.edu.tr",
+            "universite_id": "113746",
+            "bap_kisa_adi": "Bap Harran",
+            "sehir": "Şanlıurfa",
+            "adres": "Şanlıurfa-Mardin Karayolu üzeri 18.Km Şanlıurfa/Türkiye",
+            "telefon": "+90 414 318 30 00",
+            "faks": "+90 414 318 31 90"
+          },
+          "sozlesme_yetkilisi": {
+            "gorevi": "",
+            "adi_soyadi": ""
+          }
+        },
+        "mail_sunucu_ayarlari": {
+          "mail_server": "smtp.mailgun.org",
+          "mail_port": 587,
+          "mail_use_tls": true,
+          "mail_use_ssl": false,
+          "mail_username": "postmaster@mg.zetaops.io",
+          "mail_default_sender": "postmaster@mg.zetaops.io",
+          "mail_max_emails": 20
+        },
+        "ebys_ayarlari": {
+          "p_user_id": 10250,
+          "p_token": "a02a9381b269445f833abe4e4c3ecdc62c379601ecf64c9f81ae609ebba427d1",
+          "integration_url": "http://uni01.cbksoft.com/enVision-ws-Unitasarim/integration.asmx?WSDL",
+          "system_integration_url": "http://uni01.cbksoft.com/enVision-ws-Unitasarim/system_integration.asmx?WSDL",
+          "docdefid": 137
+        },
+        "mail_password": "gAAAAABcI4NqyhtJ7tpGXzqHvilCnAiWqX3ZESUxfQB5wlN5U56okOe4yedSOZZMhcBGEduMxHGLB1S",
+        "deleted_at": null,
+        "deleted": null,
+        "logo": null,
+        "yoksis_kullanici_no": null,
+        "yoksis_password": null
+      }
+    }
+  ]
+}

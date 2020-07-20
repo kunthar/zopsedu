@@ -1,0 +1,156 @@
+{% extends "dashboard_base.html" %}
+{% from 'ozgecmis_sayfalari/akademisyen_ozgecmis_sayfasi_genel.html' import ozgecmis_sayfasi_genel %}
+
+{% macro render_mesleki_deneyim(ozgecmis_bilgileri) %}
+    {% if ozgecmis_bilgileri.akademik_unvanlar_gorevler %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_akademik_gorevler(ozgecmis_bilgileri.akademik_unvanlar_gorevler) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if ozgecmis_bilgileri.akademik_unvanlar_gorevler %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_idari_gorevler(ozgecmis_bilgileri.idari_gorevler) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if ozgecmis_bilgileri.akademik_unvanlar_gorevler %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_universite_disi_deneyim(ozgecmis_bilgileri.uni_disi_deneyimler) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if ozgecmis_bilgileri.akademik_unvanlar_gorevler %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_dersler(ozgecmis_bilgileri.dersler) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if ozgecmis_bilgileri.akademik_unvanlar_gorevler %}
+        <section id="kisisel-bilgiler-content" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_yonettigi_tezler(ozgecmis_bilgileri.yonettigi_tezleri) }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_akademik_gorevler(akademik_gorevler) %}
+    {% if akademik_gorevler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Akademik Görevler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for akademik_gorev in akademik_gorevler %}
+                <tr>
+                    <td> {{ akademik_gorev }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_idari_gorevler(idari_gorevler) %}
+    {% if idari_gorevler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>İdari Görevler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for idari_gorev in idari_gorevler %}
+                <tr>
+                    <td> {{ idari_gorev }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_universite_disi_deneyim(uni_disi_deneyimler) %}
+    {% if uni_disi_deneyimler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Üniversite Dışı Deneyimler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for uni_disi_deneyim in uni_disi_deneyimler %}
+                <tr>
+                    <td> {{ uni_disi_deneyim }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_dersler(dersleri) %}
+    {% if dersleri %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Verdiği Dersler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ders in dersleri %}
+                <tr>
+                    <td> {{ ders }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+{% macro render_yonettigi_tezler(yonettigi_tezler) %}
+    {% if yonettigi_tezler %}
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Yönettiği Tezler</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for yonettigi_tez in yonettigi_tezler %}
+                <tr>
+                    <td> {{ yonettigi_tez }} </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endmacro %}
+
+
+
+{% block context %}
+    {{ ozgecmis_sayfasi_genel(_("Mesleki Deneyim"),
+           render_mesleki_deneyim(ozgecmis_bilgileri),
+           ozgecmis_bilgileri.personel_ad_soyad,
+           ozgecmis_bilgileri.avatar,
+           ozgecmis_bilgileri.birim,
+           email_prefix, 3) }}
+{% endblock %}

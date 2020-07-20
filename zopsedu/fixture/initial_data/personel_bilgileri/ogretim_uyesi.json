@@ -1,0 +1,105 @@
+{
+  "ogretim_elemani": [
+    {
+      "created_at": "2018-12-11 19:57:19.744291",
+      "updated_at": "2018-12-11 19:57:19.744302",
+      "id": 4,
+      "personel_id": 4,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 3837,
+      "yok_ozgecmis_bilgileri_var_mi": true,
+      "ebys_id": 10299,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.783791",
+      "updated_at": "2018-12-11 19:57:19.783799",
+      "id": 9,
+      "personel_id": 9,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 542,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.780851",
+      "updated_at": "2018-12-11 19:57:19.780859",
+      "id": 8,
+      "personel_id": 8,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 542,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.787006",
+      "updated_at": "2018-12-11 19:57:19.787015",
+      "id": 10,
+      "personel_id": 10,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 542,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.747565",
+      "updated_at": "2018-12-11 19:57:19.747574",
+      "id": 5,
+      "personel_id": 5,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 3837,
+      "yok_ozgecmis_bilgileri_var_mi": true,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.770227",
+      "updated_at": "2018-12-11 19:57:19.770255",
+      "id": 6,
+      "personel_id": 6,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 542,
+      "yok_ozgecmis_bilgileri_var_mi": true,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.730057",
+      "updated_at": "2018-12-11 19:57:19.730064",
+      "id": 1,
+      "personel_id": 1,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 3837,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.739884",
+      "updated_at": "2018-12-11 19:57:19.739893",
+      "id": 3,
+      "personel_id": 3,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 3837,
+      "yok_ozgecmis_bilgileri_var_mi": true,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.735541",
+      "updated_at": "2018-12-11 19:57:19.735550",
+      "id": 2,
+      "personel_id": 2,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 3837,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    },
+    {
+      "created_at": "2018-12-11 19:57:19.777565",
+      "updated_at": "2018-12-11 19:57:19.777573",
+      "id": 7,
+      "personel_id": 7,
+      "harici_ogretim_elamani_id": null,
+      "unvan": 542,
+      "yok_ozgecmis_bilgileri_var_mi": false,
+      "ozgemis_bilgileri_guncelleme_tarihi": null
+    }
+  ]
+}

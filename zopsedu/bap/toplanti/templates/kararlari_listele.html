@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field_upper_label %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field, render_text_field_without_label %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Karar Listesi") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_karar_filter_form() }}
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_karar_listesi_data_table() }}
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end #content -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import custom_serverside_table %}
+    {{ custom_serverside_table(endpoint=url_for('toplanti.karar_search'), id="data-table-1",ara_button_id="#ara",temizle_button_id="#temizle",search_form_id='#detayli-arama-form') }}
+{% endblock %}
+
+{% macro render_karar_listesi_data_table() %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                   role="grid" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th>{{ _("S. No") }}</th>
+                    <th>{{ _("Toplantı Tarihi") }}
+                    </th>
+                    <th>{{ _("Karar Sıra No.") }}
+                    </th>
+                    <th>{{ _("Proje No.") }}
+                    </th>
+                    <th>{{ _("Karar Durumu") }}
+                    </th>
+                    <th>{{ _("Yürütücü/Araştırmacı") }}
+                    </th>
+                    <th>{{ _("Gündem Tipi") }}
+                    </th>
+                    <th class="all">{{ _("Karar Metni") }}
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_karar_filter_form() %}
+
+    <section id="karar-arama-alani">
+        <div class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div id="aramaAlani">
+                        {% if form %}
+                            <form class="form" id="detayli-arama-form">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ form.csrf_token }}
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ form.ara_text.label }}
+                                                </div>
+                                                <div class="col-md-5">
+                                                    {{ form.ara_text(class="form-control") }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ form.gundem_tipi.label }}
+                                                </div>
+                                                <div class="col-md-5">
+                                                    {{ form.gundem_tipi(class="form-control") }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ form.tarih_arama.toplanti_tarihi.label }}
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    {{ form.tarih_arama.toplanti_tarihi }}
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        {{ form.tarih_arama.toplanti_tarihi_option(class="form-control") }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <button id="ara" class="btn btn-search btn-success m-r">{{ _('Ara') }}</button>
+                                <button id="temizle" class="btn btn-clear btn-warning">{{ _('Temizle') }}</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endmacro %}

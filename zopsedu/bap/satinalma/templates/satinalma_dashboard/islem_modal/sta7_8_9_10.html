@@ -1,0 +1,112 @@
+{% from 'macros/durum_degisim.html' import satinalma_bilgileri,genel_islemler,email_checker %}
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+
+<form id="satinalma_durum_degistir">
+    {{ form.csrf_token }}
+    <div>
+        {{ satinalma_bilgileri(
+        form,proje_numarasi,proje_adi,app_state_description) }}
+    </div>
+    <div class="card border-left-danger border-left-2">
+        {{ form.csrf_token }}
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="active-tab" data-toggle="tab" href="#islemler"
+                           aria-controls="active" aria-expanded="true">{{ _('İşlemler') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="link-tab" data-toggle="tab" href="#bildirimler" aria-controls="link"
+                           aria-expanded="false">{{ _('Bildirimler') }}</a>
+                    </li>
+                </ul>
+                <div class="tab-content px-1 pt-1">
+                    <div role="tabpanel" class="tab-pane show active" id="islemler" aria-labelledby="active-tab"
+                         aria-expanded="true">
+                        {{ render_alert_list(form.uyari_mesajlari) }}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="data-table_wrapper"
+                                     class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <table id="data-table"
+                                           class="table table-striped table-bordered"
+                                           role="grid"
+                                           aria-describedby="data-table_info" style="width: 100%">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">{{ _("Seçiniz") }}
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">{{ _("Firma Adı") }}
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">{{ _("Proje Kalemi") }}
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                                rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending">{{ _("Miktar") }}
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for siparis in form.siparisler %}
+                                            <tr class="gradeA odd" role="row">
+                                                <td>{{ siparis.secili_mi }} {{ siparis.siparis_id }}</td>
+                                                <td>
+                                                    {{ siparis.firma_adi.data }}
+                                                    {{ siparis.firma_adi }}
+                                                </td>
+                                                <td>
+                                                    {{ siparis.proje_kalemi_adi.data }}
+                                                    {{ siparis.proje_kalemi_adi }}
+                                                </td>
+                                                <td>
+                                                    {{ siparis.talep_miktari.data }}
+                                                    {{ siparis.talep_miktari }}
+                                                    {{ siparis.birim }}
+                                                    {{ siparis.birim.data }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="bildirimler" role="tabpanel" aria-labelledby="link-tab"
+                         aria-expanded="false">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ error(form.bap_admin_log) }}
+                                {{ form.bap_admin_log.label }}
+                                {{ form.bap_admin_log }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ error(form.yurutucu_log) }}
+                                {{ form.yurutucu_log.label }}
+                                {{ form.yurutucu_log }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ email_checker(form) }}
+</form>
+{% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+{{ table_manage_buttons_init_without_search() }}

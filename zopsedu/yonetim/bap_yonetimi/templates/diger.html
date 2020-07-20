@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/checkbox_fields.html" import render_checkbox_with_tooltip %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field_with_tooltip %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Diğer Ayarları") }}</h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            {{ big_flash_message() }}
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form" action="{{ url_for('bap_yonetimi.DigerAyarlariView:diger_post') }}"
+                          method="POST"
+                          enctype="multipart/form-data">
+                        {{ diger_formu.csrf_token() }}
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {#                                        {{ render_text_field_with_tooltip(diger_formu.diger.tubitak_dergileri_tesvik_sorgulama_username,#}
+                                    {#                                                                        title=_("Uyarılar yürütücünün ikincil mail adresine gönderilsin mi?")) }}#}
+                                    {{ render_checkbox_with_tooltip(diger_formu.diger.tamamlanan_projelerde_yurutucu_gorunsun_mu,
+                                                                        title=_("Anasayfa tamamlanan projeler listesinde yürütücü görünsün mü?")) }}
+                                    {{ render_checkbox_with_tooltip(diger_formu.diger.proje_personel_ekleme_emaili_gonderilsin_mi,
+                                                                        title=_("Proje personeli ekleme emaili gönderilsin mi?")) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {#                                        {{ render_text_field_with_tooltip(diger_formu.diger.tubitak_dergileri_tesvik_sorgulama_password,#}
+                                    {#                                                                        title=_("TUBİTAK dergiler teşvik sorgulamak için kullanılacak parola")) }}#}
+                                    {{ render_checkbox_with_tooltip(diger_formu.diger.proje_personel_cikartma_emaili_gonderilsin_mi,
+                                                                        title=_("Proje personeli çıkartma emaili gönderilsin mi?")) }}
+                                    {{ render_checkbox_with_tooltip(diger_formu.diger.uyarilar_yurutucunun_ikincil_emailine_gonderilsin_mi,
+                                                                        title=_("TUBİTAK dergiler teşvik sorgulamak için kullanılacak isim")) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="col-md-12 d-flex justify-content-center mt-3">
+                                <button class="btn btn-success"
+                                        formaction="{{ url_for("bap_yonetimi.DigerAyarlariView:diger_post") }}">{{ _("Kaydet") }}</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "anasayfa_base.html" %}
+
+{% block context %}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ _('Duyurular') }}</h4>
+                                <table class="table table-striped m-b-0"
+                                       id="bursiyerler-tablo"
+                                       style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for duyuru in bap_duyurular %}
+                                        <tr>
+                                            <td> {{ duyuru.baslik }} </td>
+                                            <td>
+                                                <a href="{{ url_for("anasayfa.bap_duyuru_detay", duyuru_id=duyuru.id) }}">
+                                                    <span class="fa fa-arrow-circle-right fa-2x "></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr id="empty-row">
+                                            <td colspan="3">{{ _("Henüz duyuru eklenmedi.") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="text-center">
+                                    <a href="{{ url_for("anasayfa.bap_duyuru_listele") }}">
+                                        <button class="btn btn-info"> {{ _("Tüm Duyurular") }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-content collapse show">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ _('Satınalma Duyuruları') }}</h4>
+                                <table class="table table-striped m-b-0"
+                                       style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for duyuru in satinalma_duyurular %}
+                                        <tr>
+                                            <td>{{ duyuru.baslik }} </td>
+                                            <td>
+                                                <a href="{{ url_for("anasayfa.BapAnasayfaView:satinalma_duyuru_detay", duyuru_id=duyuru.id) }}">
+                                                    <span class="fa fa-arrow-circle-right fa-2x "></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr id="empty-row">
+                                            <td colspan="3">{{ _("Henüz duyuru eklenmedi.") }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="text-center">
+                                    <a href="{{ url_for("anasayfa.BapAnasayfaView:bap_satinalma_listele") }}">
+                                        <button class="btn btn-info"> {{ _("Tüm Satınalma Duyuruları") }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <a href="{{ url_for('firma.BapFirmaIslemleriView:get_firma_kayit') }}" class="btn btn-social btn-block mb-1 btn-outline-github">
+                        <i class="icons8-checked-user-male"></i>
+                        {{ _('Firma Kayıt') }}
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <a href="{{ url_for("proje.BapProjeleriAramaView:bap_projeleri_listele") }}"
+                       class="btn btn-social btn-block mb-1 btn-outline-github">
+                        <i class="icons8-clear-search"></i>
+                        {{ _('Proje Ara') }}
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <a href="#" class="btn btn-social btn-block mb-1 btn-outline-github">
+                        <i class="icons8-advanced-search"></i>
+                        {{ _('Makine Teçhizat Ara') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">  {{ route_name }} </h3>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <div class="card">
+            <div class="card-header">
+                <div class="btn-group float-md-right">
+                    <button onclick="rapor_ekle();" class="btn btn-success">{{ button_name }}</button>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                {{ big_flash_message() }}
+                <div class="card-body card-dashboard">
+                    <div id="data-table_wrapper"
+                         class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="data-table"
+                                       class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                                       role="grid">
+                                    <thead>
+                                    <tr role="row">
+                                        <th width="8%">{{ _("#") }}</th>
+                                        <th>{{ _("Dosya") }}</th>
+                                        <th width="5%"> {{ _("Sil") }} </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for dosya in dosyalar %}
+                                        <tr>
+                                            <td>{{ loop.index }} </td>
+                                            <td>
+                                                <div class="document-name attached-document clearfix">
+                                                    <form method="post">
+                                                        <input type="hidden" name="csrf_token"
+                                                               value="{{ csrf_token() }}"/>
+                                                        <button class="btn btn-link"
+                                                                id="ek_{{ dosya.file_id }}"
+                                                                name="ek_{{ dosya.file_id }}"
+                                                                value="{{ dosya.file_id }}"
+                                                                style="white-space: normal;"
+                                                                formaction="{{ url_for('ana_sayfa_yonetimi.dosya_indir',
+                                                                 belge_id= dosya.file_id ) }}">
+                                                            {{ dosya.file.content.file.filename }}
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="button"
+                                                        class="btn btn-icon btn-danger fa fa-trash-o height-30 width-30"
+                                                        onclick="delete_rapor('{{ dosya.id }}')">
+
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="belge-ekle-modal" aria-hidden="true">
+            <div class="modal-dialog modal-xs">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h4 class="modal-title f-s-20 text-red-darker"
+                            id="preview-modal-title">
+                            {{ _("Belge Ekle") }}
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <form class="form" method="POST" enctype="multipart/form-data" action="{{ route }}">
+                        <div class="modal-body">
+                            <div class="form-body">
+                                {{ ana_sayfa_dosyalari.csrf_token() }}
+                                {{ ana_sayfa_dosyalari.file_id }}
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn grey btn-outline-warning"
+                                    data-dismiss="modal">{{ _("Kapat") }}
+                            </button>
+                            <button class="btn btn-outline-success">{{ _("Kaydet") }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search_without_buttons %}
+    {{ table_manage_buttons_init_without_search_without_buttons() }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        let rapor_ekle = function () {
+            $('#belge-ekle-modal').modal('show');
+        };
+
+        let delete_rapor = function (file_id) {
+            swal("Dosyayı silmek istediğinize emin misiniz?", {
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: "{{ url_for('ana_sayfa_yonetimi.dosya_sil') }}",
+                            type: 'POST',
+                            data: JSON.stringify({
+                                "file_id": file_id,
+                            }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: 'json',
+                            success: function (result)
+                            {
+                              window.location.reload();
+
+                            },
+                            error: function () {
+                                swal("{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz") }}", {
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Dosyayı silmekten vazgeçtiniz") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            button: false
+                        });
+                    }
+                });
+        };
+    </script>
+
+{% endblock %}

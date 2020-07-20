@@ -1,0 +1,398 @@
+{% extends "index.html" %}
+{% from 'macros/content_element.html' import navbar %}
+
+{% block extra_css %}
+    {% block extra_alt_css %}
+    {% endblock %}
+{% endblock %}
+{% block extra_scripts %}
+    {% block extra_alt_scripts %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block body %}
+    <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click"
+          data-menu="vertical-menu" data-col="2-columns">
+
+
+    <nav class="header-navbar navbar-expand-sm navbar navbar-with-menu fixed-top navbar-brand-center navbar-light">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item mobile-menu d-md-none mr-auto">
+                        <a class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#"><i
+                                class="ft-menu font-large-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% set logo = get_logo_url() %}
+                        <a class="navbar-brand" href="/">
+                            {% if logo %}
+                                <img class="brand-logo" src="{{ logo }}"/>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
+                                                      data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+                        <li class="nav-item d-none d-md-block"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#"><i
+                                class="ft-menu"> </i></a>
+                        </li>
+                    </ul>
+                    {% if is_role('anonymous') %}
+                        <ul class="nav navbar-nav float-right">
+                            <a class="nav-link" href="{{ url_for("auth.login") }}">
+                                {{ _("Giriş Yap") }}
+                                <i class="ft-chevron-right"></i>
+                            </a>
+                        </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav float-right">
+                            <li class="dropdown dropdown-user nav-item">
+                                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                    <span class="user-name">{{ session['user_ad_soyad'] }}</span>
+                                    <span class="user-name">Rolü : {{ session['current_role_name'] }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ url_for('auth.AuthView:logout') }}">
+                                        <i class="ft-power"></i> {{ _('Çıkış Yap') }} </a>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
+        <div class="main-menu-content ps-container ps-theme-light ps-active-y">
+            <ul class="navigation navigation-main" id="main-menu-navigation">
+                <li id="-mesaj-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Bilimsel Yayınlar</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Bilimsel Projeler</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Atıflar ve Tanınırlık</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Patent</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Ödüller</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Bilimsel Faaliyetler</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Bilimsel Etkinlikler</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Personel</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Öğrenci Başarısı</span>
+                    </a>
+                </li>
+                <li id="-bap-yetkilisi-kontrol-paneli-" class="nav-item">
+                    <a href="/rektor-kokpiti">
+                        <span class="menu-title">Proje Durumları</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-8 col-12 mb-2">
+                    <h3 class="content-header-title mb-0 d-inline-block">  {{ _("Rektör Kokpiti") }} </h3>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="btn-group float-md-right">
+                            <button onclick="akademik_performans_analizi();" class="btn btn-danger">{{ _('Akademik Performans Analizi Çalıştır') }}</button>
+                        </div>
+                    </div>
+                    <div class="card-content collapse show">
+                        <div class="card-body card-dashboard">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6" style="max-height:100%">
+                                            <div class="card-body">
+                                                <canvas id="myChart" width="100%" height="50px"></canvas>
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        var ctx = document.getElementById("myChart").getContext('2d');
+                                                        var myChart = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                labels: ["2013", "2014", "2015", "2016", "2017", "2018"],
+                                                                datasets: [{
+                                                                    label: '# Yayın Sayıları',
+                                                                    data: [12, 19, 3, 5, 2, 3],
+                                                                    backgroundColor: [
+                                                                        'rgba(255, 99, 132, 0.2)',
+                                                                        'rgba(54, 162, 235, 0.2)',
+                                                                        'rgba(255, 206, 86, 0.2)',
+                                                                        'rgba(75, 192, 192, 0.2)',
+                                                                        'rgba(153, 102, 255, 0.2)',
+                                                                        'rgba(255, 159, 64, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                        'rgba(255,99,132,1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true
+                                                                        }
+                                                                    }]
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="max-height:100%">
+                                            <div class="card-body">
+                                                <canvas id="myChart2" width="100%" height="50px"></canvas>
+                                                    <script>
+                                                    $(document).ready(function () {
+                                                        var ctx = document.getElementById("myChart2").getContext('2d');
+                                                        var myChart2 = new Chart(ctx, {
+                                                            type: 'pie',
+                                                            data: {
+                                                                labels: ["Mühendislik", "Sosyal Bilimler", "Matematik", "Fizik", "Malzeme B.", "Bilgisayar B."],
+                                                                datasets: [{
+                                                                    label: 'Alanlara Göre Yayın Sayılarının Dağılımı',
+                                                                    data: [12, 19, 3, 5, 2, 3],
+                                                                    backgroundColor: [
+                                                                        'rgba(255, 99, 132, 0.2)',
+                                                                        'rgba(54, 162, 235, 0.2)',
+                                                                        'rgba(255, 206, 86, 0.2)',
+                                                                        'rgba(75, 192, 192, 0.2)',
+                                                                        'rgba(153, 102, 255, 0.2)',
+                                                                        'rgba(255, 159, 64, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                        'rgba(255,99,132,1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true
+                                                                        }
+                                                                    }]
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                     </div>
+                                          <div class="row">
+                                        <div class="col-md-6" style="max-height:100%">
+                                            <div class="card-body">
+                                                <canvas id="myChart4" width="100%" height="50px"></canvas>
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        var ctx = document.getElementById("myChart4").getContext('2d');
+                                                        var myChart4 = new Chart(ctx, {
+                                                            type: 'pie',
+                                                            data: {
+                                                                labels: ["Prof. Dr.", "Doç.Dr.", "Dr.Öğr.Üy", "Diğer"],
+                                                                datasets: [{
+                                                                    label: '# Akademik Personel Dağılımı',
+                                                                    data: [12, 19, 3, 5],
+                                                                    backgroundColor: [
+                                                                        'rgba(255, 99, 132, 0.2)',
+                                                                        'rgba(54, 162, 235, 0.2)',
+                                                                        'rgba(255, 206, 86, 0.2)',
+                                                                        'rgba(255, 159, 64, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                        'rgba(255,99,132,1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true
+                                                                        }
+                                                                    }]
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" style="max-height:100%">
+                                            <div class="card-body">
+                                                <canvas id="myChart3" width="100%" height="50px"></canvas>
+                                                    <script>
+                                                    $(document).ready(function () {
+                                                        var ctx = document.getElementById("myChart3").getContext('2d');
+                                                        var myChart3 = new Chart(ctx, {
+                                                            type: 'bar',
+                                                            data: {
+                                                                labels: ["2013", "2014", "2015", "2016", "2017", "2018"],
+                                                                datasets: [{
+                                                                    label: '# Yıllara Göre Atıf Sayıları',
+                                                                    data: [12, 19, 3, 5, 8, 19],
+                                                                    backgroundColor: [
+                                                                        'rgba(255, 99, 132, 0.2)',
+                                                                        'rgba(54, 162, 235, 0.2)',
+                                                                        'rgba(255, 206, 86, 0.2)',
+                                                                        'rgba(75, 192, 192, 0.2)',
+                                                                        'rgba(153, 102, 255, 0.2)',
+                                                                        'rgba(255, 159, 64, 0.2)'
+                                                                    ],
+                                                                    borderColor: [
+                                                                        'rgba(255,99,132,1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                    ],
+                                                                    borderWidth: 1
+                                                                }]
+                                                            },
+                                                            options: {
+                                                                scales: {
+                                                                    yAxes: [{
+                                                                        ticks: {
+                                                                            beginAtZero: true
+                                                                        }
+                                                                    }]
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="akademik-analiz-modal" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h4 class="modal-title f-s-20 text-red-darker"
+                            id="preview-modal-title">
+                            {{ _("Akademik Analiz Sonuçları") }}
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Analiz Sonuçları, Negatif Değişimler</h4>
+                        <ul>
+                            <li>2014 yılı Matematik Bölümü yapılan sayısı 23, 2018 yılı yapılan yayın sayısı 4.</li>
+                            <li>Sosyal Bilimler öğrenci başarımı 2018 yılında geçmiş 4 yıla göre %8 azalmıştır.</li>
+                            <li>Hakemli dergi yayınları 2018 yılında, önceki 4 yıla göre %6 düşmüştür</li>
+                            <li>Fizik Bölümü Bilimsel Araştırma Projeleri sayısı önceki 4 yıla göre %4 düşmüştür.</li>
+                        </ul>
+                        <h4>Analiz Sonuçları, Pozitif Değişimler</h4>
+                        <ul>
+                            <li>Bilgisayar Bilimleri ulusal yayın sayısı son 4 yıla oranla %18 artmıştır. 46 yayın.</li>
+                            <li>Bilgisayar Bilimleri öğrenci başarımı son 4 yıla oranla %36 artmıştır. Öğrenci başarımı kıstasları için <a href="basarim">bakınız.</a></li>
+                            <li>2018 yılında, başarıyla gerçekleştirilmiş Bilimsel Araştırma Arojeleri toplamda %18 artmıştır. Toplam 58 proje.</li>
+                            <li>2018 yılında, Doktora BAP Araştırmaları %22 artmıştır. Toplam 45 proje.</li>
+                        </ul>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let akademik_performans_analizi = function(){
+            $('#akademik-analiz-modal').modal('show');
+        }
+
+    </script>
+
+    <footer class="footer footer-static footer-light navbar-border">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+            <span
+                    class="float-md-left d-block d-md-inline-block">&copy<a
+                    class="text-bold-800 grey darken-2"
+                    href="http://www.zopsedu.com/" target="_blank">  Zetaops  </a> Tüm hakları saklıdır. </span>
+        </p>
+    </footer>
+
+{% endblock %}

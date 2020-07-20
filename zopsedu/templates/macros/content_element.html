@@ -1,0 +1,322 @@
+{% macro menu(current_menu) %}
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                {%- for item in current_menu.children recursive -%}
+                    {%- if item.visible -%}
+                        {% if item.children %}
+                            <li id="{{ item.url | replace("/", "-") }}"
+                                class="nav-item has-sub
+                                  {% if request.path != '/' and item.url == request.path %}
+                                     active
+                                    {% endif %}
+                                    ">
+                                <a href="#">
+                                    <i class="{{ menu_icon()[0][item.text] }}"></i>
+                                    <span class="{{ menu_icon()[1][item.text] }}">{{ item.text }}</span>
+                                </a>
+                                {% else %}
+                            <li id="{{ item.url | replace("/", "-") }}"
+                                class=" nav-item {% if request.path != '/' and item.url == request.path %}
+                                     active
+                                    {% endif %}
+                                    ">
+                            <a href="{{ item.url }}">
+                                <i class="{{ menu_icon()[0][item.text] }}"></i>
+                                <span class="{{ menu_icon()[1][item.text] }}">{{ item.text }}</span>
+                            </a>
+                        {% endif %}
+                    {%- if item.children -%}
+                        <ul class="menu-content">
+                            {{ loop(item.children) }}
+                        </ul>
+                    {%- endif -%}
+                    </li>
+                    {%- endif -%}
+                {%- endfor -%}
+            </ul>
+        </div>
+    </div>
+    <script>
+        let li = $("li.active");
+        if (li.length == 0) {
+            let li_id = window.localStorage.getItem("menu-item");
+            li = $("#" + li_id);
+            li.css("active");
+        } else {
+            window.localStorage.setItem("menu-item", li.attr('id'));
+        }
+        let parents = li.parentsUntil("ul.navigation");
+        parents.each(function () {
+            if ($(this).hasClass("has-sub")) {
+                $(this).addClass("open");
+            }
+        });
+    </script>
+{% endmacro %}
+
+{% macro navbar() %}
+    <nav class="header-navbar navbar-expand-sm navbar navbar-with-menu fixed-top navbar-brand-center navbar-light">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item mobile-menu d-md-none mr-auto">
+                        <a class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#"><i
+                                class="ft-menu font-large-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% set logo = get_logo_url() %}
+                        <a class="navbar-brand" href="/" style="padding: 0px;">
+                            {% if logo %}
+                                <img src="{{ logo }}" style="height: 40px;  margin-top:10px; margin-bottom:10px;"/>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item d-md-none">
+                        <a class="nav-link open-navbar-container" data-toggle="collapse"
+                           data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+                        <li class="nav-item d-none d-md-block"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#"><i
+                                class="ft-menu"> </i></a>
+                        </li>
+                    </ul>
+                    {% if is_role('anonymous') %}
+                        <ul class="nav navbar-nav float-right">
+                            <a class="nav-link" href="{{ url_for("auth.login") }}" style="font-size:1.2rem;">
+                                {{ _("Giriş Yap") }}
+                                <img src="{{ url_for('static', filename = 'assets/img/icons8-enter-50.png') }}" style="width: 28px;">
+                            </a>
+                        </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav float-right">
+                            <li class="dropdown dropdown-notification nav-item">
+                                <a class="nav-link nav-link-label" href="{{ url_for('mesaj.MesajView:gelen_kutusu') }}">
+                                    <i class="ficon ft-bell"></i>
+                                    <span id="unread_message_count"
+                                          class="badge badge-pill badge-default badge-danger badge-default badge-up">
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="dropdown dropdown-user nav-item">
+                                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                           <span class="avatar avatar-online">
+                                                 {% set avatar = get_avatar_url() %}
+                                               {% if avatar %}
+                                                   <img src="{{ avatar }}" alt="avatar"/>
+                                               {% else %}
+                                                   <img src="{{ url_for('static', filename = 'assets/img/user-13.jpg') }}"
+                                                        alt="avatar">
+                                               {% endif %}
+                                           </span>
+                                    <span class="user-name">{{ session['user_ad_soyad'] }}</span>
+                                    <span class="user-name">Rolü : {{ session['current_role_name'] }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.profil_goruntule') }}">
+                                        {{ _('Profili Görüntüle') }} </a>
+                                    <a class="dropdown-item"
+                                       href="{{ url_for('kullanici_profil.KullaniciProfilView:ozgecmis_goruntule') }}">
+                                        {{ _('Özgeçmişi Görüntüle') }}</a>
+                                    <a class="dropdown-item" href="{{ url_for('mesaj.MesajView:gelen_kutusu') }}">
+                                        {{ _('Gelen Kutusu') }}</a>
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.rol_degistir') }}">
+                                        {{ _('Rol Değiştir') }} </a>
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.parola_degistir') }}">
+                                        {{ _('Parola Değiştir') }} </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ url_for('auth.AuthView:logout') }}">
+                                        <i class="ft-power"></i> {{ _('Çıkış Yap') }} </a>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <script>
+            if ("{{ session['is_authenticated'] }}" === "True") {
+                $.ajax({
+                    url: "{{ url_for('kullanici_profil.okunmamis_mesaj_sayisi') }}"
+                }).done(function (data) {
+                    $("#unread_message_count").hide();
+                    if (data.okunmamis_mesaj_sayisi !== 0) {
+                        $("#unread_message_count").show();
+                        $("#unread_message_count").empty();
+                        $("#unread_message_count").append(data.okunmamis_mesaj_sayisi);
+                    }
+                    if (data.avatar_url !== "None") {
+                        $(".avatar").attr("src", data.avatar_url)
+                    }
+                });
+            }
+        </script>
+    </nav>
+{% endmacro %}
+
+
+{% macro anasayfa_navbar() %}
+    <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-static-top navbar-light navbar-border navbar-brand-center"
+         style="min-height: 7.00rem;">
+        <div class="navbar-wrapper">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item mobile-menu d-md-none mr-auto">
+                        <a class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#"><i
+                                class="ft-menu font-large-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% set logo = get_logo_url() %}
+                        <a class="navbar-brand" href="/" style="padding: 0px;">
+                            {% if logo %}
+                                <img src="{{ logo }}" style="height: 40px;  margin-top:10px; margin-bottom:10px;"/>
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-container content">
+                <div class="collapse navbar-collapse" id="navbar-mobile">
+                    <ul class="nav navbar-nav mr-auto float-left">
+                        <li class="nav-item d-none d-md-block"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs is-active" href="#">
+                            </a>
+                        </li>
+                    </ul>
+                    {% if is_role('anonymous') %}
+                        <ul class="nav navbar-nav float-right">
+                            <a class="nav-link" href="{{ url_for("auth.login") }}" style="font-size:1.2rem;">
+                                {{ _("Giriş Yap") }}
+                                <img src="{{ url_for('static', filename = 'assets/img/icons8-enter-50.png') }}" style="width: 28px;">
+                            </a>
+                        </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav float-right">
+                            <li class="dropdown dropdown-notification nav-item">
+                                <a class="nav-link nav-link-label" href="{{ url_for('mesaj.MesajView:gelen_kutusu') }}">
+                                    <i class="ficon ft-bell"></i>
+                                    <span id="unread_message_count"
+                                          class="badge badge-pill badge-default badge-danger badge-default badge-up">
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="dropdown dropdown-user nav-item">
+                                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                           <span class="avatar avatar-online">
+                                                 {% set avatar = get_avatar_url() %}
+                                               {% if avatar %}
+                                                   <img src="{{ avatar }}" alt="avatar"/>
+                                               {% else %}
+                                                   <img src="{{ url_for('static', filename = 'assets/img/user-13.jpg') }}"
+                                                        alt="avatar">
+                                               {% endif %}
+                                           </span>
+                                    <span class="user-name">{{ session['user_ad_soyad'] }}</span>
+                                    <span class="user-name">Rolü : {{ session['current_role_name'] }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.profil_goruntule') }}">
+                                        {{ _('Profili Görüntüle') }} </a>
+                                    <a class="dropdown-item"
+                                       href="{{ url_for('kullanici_profil.KullaniciProfilView:ozgecmis_goruntule') }}">
+                                        {{ _('Özgeçmişi Görüntüle') }}</a>
+                                    <a class="dropdown-item" href="{{ url_for('mesaj.MesajView:gelen_kutusu') }}">
+                                        {{ _('Gelen Kutusu') }}</a>
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.rol_degistir') }}">
+                                        {{ _('Rol Değiştir') }} </a>
+                                    <a class="dropdown-item" href="{{ url_for('kullanici_profil.parola_degistir') }}">
+                                        {{ _('Parola Değiştir') }} </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ url_for('auth.AuthView:logout') }}">
+                                        <i class="ft-power"></i> {{ _('Çıkış Yap') }} </a>
+                                </div>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <script>
+            if ("{{ session['is_authenticated'] }}" === "True") {
+                $.ajax({
+                    url: "{{ url_for('kullanici_profil.okunmamis_mesaj_sayisi') }}"
+                }).done(function (data) {
+                    $("#unread_message_count").hide();
+                    if (data.okunmamis_mesaj_sayisi !== 0) {
+                        $("#unread_message_count").show();
+                        $("#unread_message_count").empty();
+                        $("#unread_message_count").append(data.okunmamis_mesaj_sayisi);
+                    }
+                    if (data.avatar_url !== "None") {
+                        $(".avatar").attr("src", data.avatar_url)
+                    }
+                });
+            }
+        </script>
+    </nav>
+
+    <div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-fixed navbar-light navbar-without-dd-arrow navbar-shadow"
+         role="navigation" data-menu="menu-wrapper" style="min-height: 6.00rem; background: #1d2b36;">
+        <div class="navbar-container main-menu-content container center-layout" data-menu="menu-container">
+            <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapAnasayfaView:bap_anasayfa') }}">
+                        <span>{{ _('Anasayfa') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapAnasayfaView:akademisyen_ozgecmis') }}">
+                        <span>{{ _('Akademisyen Özgeçmiş') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapKomisyonuView:bap_komisyonu')}}">
+                        <span>{{ _('BAP Komisyonu') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapFormBelgelerView:bap_belgeler')}}">
+                        <span>{{ _('Formlar ve Belgeler') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapHakkindaView:bap_hakkinda')}}">
+                        <span>{{ _('BAP Hakkında') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapFaaliyetRaporlariView:bap_rapor')}}">
+                        <span>{{ _('BAP Faaliyet Raporları') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapIletisimView:bap_iletisim')}}">
+                        <span>{{ _('İletişim') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class=" nav-link dark-nav-link-color" href="#">
+                        <span>{{ _('BAP Takvim') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="#">
+                        <span>{{ _('Yardım') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dark-nav-link-color" href="{{ url_for('anasayfa.BapMevzuatView:bap_mevzuat') }}">
+                        <span>{{ _('Mevzuat') }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endmacro %}

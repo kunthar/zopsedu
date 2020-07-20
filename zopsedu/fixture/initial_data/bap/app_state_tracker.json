@@ -1,0 +1,16 @@
+{
+  "app_state_tracker": [{
+
+    "created_at": "2019-01-04 10:56:55",
+    "updated_at": "2019-01-04 10:56:55",
+    "id": 1,
+    "apscheduler_job_id": null,
+    "state_id":1,
+    "params": {"proje_id": 1},
+    "date": "2019-01-04 13:56:55",
+    "description": "Başvuru yapıldı, ıslak/dijital imzalı belgelerin BAP Koordinatörlüğüne teslim edilmesi bekleniyor",
+    "job_type":"project_state_change",
+    "triggered_by": 4
+
+  }]
+}

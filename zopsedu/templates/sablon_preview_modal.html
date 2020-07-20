@@ -1,0 +1,152 @@
+{% from "macros/utils/print_button/browser_print.html" import print_button %}
+{% from "macros/utils/print_button/pdf.html" import pdf_download_button %}
+{% from "macros/utils/print_button/word.html" import word_download_button %}
+{% from "macros/utils/print_button/ebys.html" import ebys_button %}
+
+{% macro render_sablon_preview_modal(is_button_active=True) %}
+    <script>
+        $(document).ready(function () {
+            previewAction = function (id) {
+                let url;
+                $("#preview-modal-content").empty();
+                url = "{{ url_for('SablonView:sablon_onizle_indir', sablon_id=-1) }}";
+                url = url.replace("-1", id);
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        if (result.file_url) {
+                            let link = document.createElement("a");
+                            link.href = result.file_url;
+                            link.setAttribute("download", "");
+                            link.click();
+                            link.remove();
+                        } else {
+                            $("#preview-modal-content").html(result);
+                            $('#sablon-preview-modal').modal('show')
+                        }
+                    }
+                });
+            };
+        });
+    </script>
+
+    <div class="modal fade text-left" id="sablon-preview-modal" style="display: none;"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% if is_button_active %}
+                        {{ word_download_button('#preview-modal-content') }}
+                        {{ pdf_download_button('#preview-modal-content') }}
+                        {{ print_button('#preview-modal-content') }}
+                    {% endif %}
+                    <h4 class="modal-title" id="preview-modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <span id="preview-modal-content">
+
+                        </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}
+
+
+{% macro render_sablon_with_values_modal(is_button_active=True) %}
+    <script>
+        $(document).ready(function () {
+            renderSablon = function (sablonRenderUrl, sablonTypeId, ebysQueryId) {
+                let url;
+                let sablonId = sablonTypeId;
+                let ebysId = ebysQueryId;
+                if (!ebysId) {
+                    $('#ebys-enable').hide();
+
+                } else {
+                    $('#ebys-enable').show();
+                }
+                $("#render-sablon-modal-content").empty();
+                url = sablonRenderUrl;
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        if (result.file_url) {
+                            let link = document.createElement("a");
+                            link.href = result.file_url;
+                            link.setAttribute("download", "");
+                            link.click();
+                            link.remove();
+                        } else {
+                            $("#render-sablon-modal-content").html(result);
+                            $("#sablon_type_id").empty();
+                            $("#ebys_query_id").empty();
+                            $("#sablon_type_id").val(sablonId);
+                            $("#ebys_query_id").val(ebysId);
+
+                            $('#render-sablon-modal').modal('show')
+                        }
+                    }
+                });
+            };
+        });
+    </script>
+
+    <div class="modal modal-message fade" id="render-sablon-modal" style="display: none;"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="render-sablon-modal-title"></h4>
+                    {% if is_button_active %}
+                        <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-md-2.3">
+                                    {{ word_download_button('#render-sablon-modal-content') }}
+                                </div>
+                                <div class="col-md-2">
+                                    {{ pdf_download_button('#render-sablon-modal-content') }}
+                                </div>
+                                <div class="col-md-2">
+                                    {{ print_button('#render-sablon-modal-content') }}
+                                </div>
+                                {% if is_ebys_enable() %}
+                                    <div id="ebys-enable" class="col-md-2.3">
+                                        <input type="hidden" id="sablon_type_id" value=""/>
+                                        <input type="hidden" id="ebys_query_id" value=""/>
+                                        {{ ebys_button('#render-sablon-modal-content') }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <span id="render-sablon-modal-content">
+
+                        </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}

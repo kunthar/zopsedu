@@ -1,0 +1,289 @@
+{# proje dashboard ile alakalı olan sayfaları render etmek icin burada olusturulan macro kullanılacaktır#}
+
+{% macro dashboard_menu_item(url, aciklama) %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a class="f-s-12 text-black-darker" href="{{ url }}">{{ aciklama }}</a>
+    </li>
+{% endmacro %}
+
+
+{% macro proje_dashboard_genel(panel_header,
+                               panel_data_macro,
+                               proje,
+                               states_info,
+                               actions_info,
+                               yetkili_mi=False,
+                               yurutucu_mu=False,
+                               atanmis_hakem_mi=False) %}
+    {% set proje_id=proje.id %}
+    {% set proje_yurutucusu = proje.proje_yurutucu.personel.person.ad + " " + proje.proje_yurutucu.personel.person.soyad %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">{{ panel_header }}</h3>
+            <div class="row breadcrumbs-top d-inline-block">
+                <div class="breadcrumb-wrapper col-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            {{ proje.proje_yurutucu.personel.person.ad }}
+                            {{ _(' ') }}
+                            {{ proje.proje_yurutucu.personel.person.soyad }}
+                        </li>
+                        <li class="breadcrumb-item">
+                            {{ proje.proje_no }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            {% if is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+                <form>
+                    <input type="hidden" id="action_code" value=""/>
+                    <div class="btn-group float-md-right">
+                        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <i class="ft-settings"></i>
+                            {{ _("İşlemler") }}
+                        </button>
+                        <div class="dropdown-menu arrow">
+                            <h6 class="dropdown-header"><b>{{ _('Proje Durum Değişimleri') }}</b></h6>
+                            {% if states_info | length == 0 %}
+                                <h8 class="dropdown-header">{{ _('Uygun durum bulunmamaktadır') }}</h8>
+                            {% endif %}
+                            {% for state in states_info %}
+                                <button id="{{ state.state_code }}"
+                                        class="dropdown-item" type="button"
+                                        style=" cursor:pointer;"
+                                        onclick="proje_islemleri_get(id);">
+                                    {{ state.state_code + " - " + state.description }}
+                                </button>
+                            {% endfor %}
+                            <h6 class="dropdown-header"><b>{{ _('Proje İşlemleri') }}</b></h6>
+                            {% if actions_info | length == 0 %}
+                                <h8 class="dropdown-header">{{ _('Uygun işlem bulunmamaktadır') }}</h8>
+                            {% endif %}
+                            {% for action in actions_info %}
+                                <button id="{{ action.action_code }}"
+                                        class="dropdown-item" type="button"
+                                        style=" cursor:pointer;"
+                                        onclick="proje_islemleri_get(id);">
+                                    {{ action.action_code + " - " + action.description }}
+                                </button>
+                            {% endfor %}
+                        </div>
+                        <div class="modal" id="durum-degistir-modal">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">{{ _('Proje Durum Değişimleri ve İşlemler') }}</h4>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" id="durum_degisim_modal_body">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn grey btn-outline-warning"
+                                                data-dismiss="modal">{{ _("Kapat") }}
+                                        </button>
+                                        <button type="button" class="btn btn-outline-success"
+                                                onclick="proje_islemleri_post();">
+                                            {{ _('Kaydet') }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            $(document).ready(function () {
+                                modalSelector = {
+                                    'modal_body': $('#durum_degisim_modal_body'),
+                                    'code': $('#action_code'),
+                                };
+
+                                function reset_modal() {
+                                    modalSelector.modal_body.empty();
+                                    modalSelector.code.val("");
+                                }
+
+                                proje_islemleri_get = function (btn_id) {
+                                    $.ajax({
+                                        url: "{{ url_for('proje.proje_durum_degistir', proje_id=proje_id ) }}",
+                                        type: "POST",
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        data: JSON.stringify({"kod": btn_id}),
+                                        success: function (response) {
+                                            reset_modal();
+                                            modalSelector.modal_body.append(response.template);
+                                            modalSelector.code.val(btn_id);
+                                            $('#durum-degistir-modal').modal('show');
+                                        },
+                                        error: function (err) {
+                                            $('#durum-degistir-modal').modal('hide');
+                                            swal({
+                                                title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                                icon: "error",
+                                                timer: 4000,
+                                                buttons: false
+                                            });
+                                        }
+                                    });
+                                };
+
+                                proje_islemleri_post = function () {
+                                    swal({
+                                        text: "{{ _("Değişiklikleri kaydetmek istedeğinize emin misiniz? ") }}",
+                                        icon: "warning",
+                                        buttons: {
+                                            cancel: {
+                                                text: "{{ _("Vazgeç") }}",
+                                                value: false,
+                                                visible: !0,
+                                                closeModal: !0
+                                            },
+                                            confirm: {
+                                                text: "{{ _("Kaydet") }}",
+                                                value: true,
+                                                visible: !0,
+                                                closeModal: false
+                                            }
+                                        }
+                                    }).then(function (willChange) {
+                                        if (willChange) {
+                                            $.ajax({
+                                                url: "{{ url_for('proje.proje_durum_kaydet', proje_id=proje_id ) }}",
+                                                type: "POST",
+                                                contentType: "application/json",
+                                                dataType: "json",
+                                                data: JSON.stringify({
+                                                    'form': $('#proje_durum_degistir').serializeArray(),
+                                                    'kod': modalSelector.code.val()
+                                                }),
+                                                success: function () {
+                                                    $('#durum-degistir-modal').modal('hide');
+                                                    swal({
+                                                        title: "{{ _("İşleminiz başarıyla gerçekleştirildi..!") }}",
+                                                        icon: "success",
+                                                        timer: 4000,
+                                                        buttons: false
+                                                    });
+                                                    window.location = "{{ url_for('proje.proje_dashboard', proje_id=proje_id)}}"
+                                                },
+                                                error: function (err) {
+                                                    if (err.responseJSON.template) {
+                                                        let errorMessage;
+                                                        errorMessage = err.responseJSON.hata_mesaji;
+                                                        swal({
+                                                            title: errorMessage || "{{ _("Lütfen doldurulması gereken alanları boş bırakmayınız.!") }}",
+                                                            icon: "error",
+                                                            timer: 4000,
+                                                            buttons: false
+                                                        });
+                                                        reset_modal();
+                                                        modalSelector.modal_body.append(err.responseJSON.template);
+                                                        modalSelector.code.val(err.responseJSON.code);
+                                                    } else {
+                                                        swal({
+                                                            title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                                                            icon: "error",
+                                                            timer: 4000,
+                                                            buttons: false
+                                                        });
+                                                    }
+                                                }
+
+                                            });
+                                        } else {
+                                            swal("{{ _("Proje bilgilerinizi kaydetmekten vazgeçtiniz.!") }}", {
+                                                    icon: "warning",
+                                                    timer: 4000,
+                                                    button: false
+
+
+                                                }
+                                            );
+                                        }
+
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="content-detached content-left">
+        <div class="content-body">
+            {{ panel_data_macro }}
+        </div>
+    </div>
+    <div class="sidebar-detached sidebar-right">
+        <div class="sidebar">
+            <div class="sidebar-content card d-none d-lg-block">
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% if (yetkili_mi or yurutucu_mu or atanmis_hakem_mi) and has_perm("ProjeDashboardView:proje_dashboard") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_dashboard", proje_id=proje_id),
+                                                           _("Proje Özeti")) }}
+                        {% endif %}
+                        {#                                {{ dashboard_menu_item("deneme",#}
+                        {#                                                       _("Kasalar ve Harcama Bilgileri")) }}#}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeIslemGecmisiListesiView:islem_gecmisi") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_islem_gecmisi_listele", proje_id=proje_id),
+                                                           _("İşlem Geçmişi")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeKararlariView:proje_kararlari") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_kararlari_listele", proje_id=proje_id),
+                                                       _("Yönetim Kurulu Kararları")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu or atanmis_hakem_mi) and has_perm("ProjeSablonEkDosyaView:sablon_ekdosya_listele") %}
+                            {{ dashboard_menu_item(url_for("proje.sablon_ekdosya_listele", proje_id=proje_id),
+                                                           _("Şablon/Diğer Ek Dosyalar")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeSatinalmaTalepleriView:satinalma_talepleri") %}
+                            {{ dashboard_menu_item(url_for("proje.satinalma_talepleri", proje_id=proje_id),
+                                                           _("Satınalma Talepleri")) }}
+                        {% endif %}
+
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeDegerlendirmeView:degerlendirme_listele") %}
+                            {{ dashboard_menu_item(url_for("proje.degerlendirme_listele", proje_id=proje_id),
+                                                           _("Proje Değerlendirmeleri")
+                                                     ) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeNotlariView:proje_notlari") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_notlari", proje_id=proje_id),
+                                                           _("Proje Notları")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu or atanmis_hakem_mi) and has_perm("ProjeRaporView:proje_rapor_get") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_rapor_index_get", proje_id=proje_id),
+                                                           _("Proje Raporları")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjePersonelView:proje_personelleri") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_personelleri", proje_id=proje_id),
+                                                           _("Proje Personelleri")) }}
+                        {% endif %}
+                        {% if (yetkili_mi or yurutucu_mu) and has_perm("ProjeMesajView:proje_mesajlari") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_mesajlari", proje_id=proje_id),
+                                                           _("Proje Mesajları")) }}
+                        {% endif %}
+                        {% if (yetkili_mi) and has_perm("ProjeHakemView:proje_hakem_get") %}
+                            {{ dashboard_menu_item(url_for("proje.proje_hakem_get", proje_id=proje_id),
+                                                           _("Proje Hakemleri")
+                                                          ) }}
+                        {% endif %}
+                        {% if (atanmis_hakem_mi) and has_perm("HakemDashboard:proje_listesi") %}
+                            {{ dashboard_menu_item(url_for("hakem_dashboard.HakemDashboard:proje_listesi"),
+                                                           _("Projeyi Değerlendir")) }}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    end proje dashboard panel#}
+
+{% endmacro %}
+

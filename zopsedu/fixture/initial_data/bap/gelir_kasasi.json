@@ -1,0 +1,27 @@
+{
+  "gelir_kasasi": [
+    {
+      "created_at": "2018-12-11 22:20:35.247574",
+      "updated_at": "2018-12-11 22:21:00.631848",
+      "id": 1,
+      "parent_id": null,
+      "adi": "Bap Ana Kasası",
+      "mali_yil": 2019,
+      "toplam_para": 10000000.00,
+      "harcanan_para": 0.00,
+      "rezerv_para": 0.00,
+      "devreden_para": 0.00,
+      "devredilen_para": 0.00
+    }
+  ],
+  "butce_girdi": [
+    {
+      "created_at": "2018-12-11 22:25:55.116351",
+      "updated_at": "2018-12-11 22:25:55.116360",
+      "id": 1,
+      "gelir_kasasi_id": 1,
+      "tutar": 10000000.00,
+      "aciklama": "Açılış"
+    }
+  ]
+}

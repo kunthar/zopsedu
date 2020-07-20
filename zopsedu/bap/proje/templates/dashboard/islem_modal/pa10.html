@@ -1,0 +1,60 @@
+{% from 'macros/durum_degisim.html' import proje_bilgileri,genel_islemler,email_checker %}
+{% from 'macros/form_helpers/error_fields.html' import error %}
+{% from 'macros/form_helpers/select_fields.html' import render_select_field %}
+
+
+<form id="proje_durum_degistir">
+    <div>
+        {{ proje_bilgileri(form,proje_numarasi,proje_adi,app_state_description) }}
+    </div>
+    <div class="card border-left-danger border-left-2">
+        {{ form.csrf_token }}
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a href="#default-tab-1" data-toggle="tab" class="nav-link active"
+                           role="tab">
+                            <span> {{ _('İşlemler') }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#default-tab-2" data-toggle="tab" class="nav-link"
+                           role="tab">
+                            <span> {{ _('Bildirimler') }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 form-group mt-2">
+                                <div class="mb-3">
+                                    {{ render_select_field(form.degerlendirmeler) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="default-tab-2" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ error(form.bap_admin_log) }}
+                                {{ form.bap_admin_log.label }}
+                                {{ form.bap_admin_log }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ error(form.yurutucu_log) }}
+                                {{ form.yurutucu_log.label }}
+                                {{ form.yurutucu_log }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ email_checker(form) }}
+</form>

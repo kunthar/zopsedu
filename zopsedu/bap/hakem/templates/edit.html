@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from 'macros/kaydet.html' import kurum_disi_hakem %}
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Hakem Düzenleme") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('hakem.HakemView:hakem_listele') }}">
+                    <button class="btn btn-success">
+                        {{ _("Hakem Arama Sayfasina Git") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="hakem-duzenleme" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ kurum_disi_hakem(kurum_disi_hakem_form, url=url_for('hakem.hakem_duzenle_post',hakem_id=hakem)) }}
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,1673 @@
+# Turkish translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-05-23 15:29+0300\n"
+"PO-Revision-Date: 2018-03-07 19:49+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: tr\n"
+"Language-Team: tr <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+
+#: zopsedu/auth/views.py:22 zopsedu/auth/views.py:34 zopsedu/auth/views.py:41
+#: zopsedu/auth/views.py:49 zopsedu/auth/views.py:55
+#: zopsedu/lib/form/forms.py:402 zopsedu/lib/form/forms.py:440
+#: zopsedu/lib/form/forms.py:447
+msgid "Bu alan boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/auth/views.py:23 zopsedu/auth/views.py:39
+msgid "Kullanıcı Adı"
+msgstr ""
+
+#: zopsedu/auth/views.py:32
+#: zopsedu/bap/proje/templates/proje_dashboard.html:160
+#: zopsedu/lib/form/forms.py:443
+msgid "E-posta"
+msgstr ""
+
+#: zopsedu/auth/views.py:35 zopsedu/lib/form/forms.py:441
+msgid "Geçersiz e-posta."
+msgstr ""
+
+#: zopsedu/auth/views.py:43
+msgid "Kullanıcı adı en az 3, en fazla 12 karakterden oluşmalı."
+msgstr ""
+
+#: zopsedu/auth/views.py:47 zopsedu/lib/form/forms.py:450
+msgid "Parola"
+msgstr ""
+
+#: zopsedu/auth/views.py:50 zopsedu/lib/form/forms.py:448
+msgid "Parola en az 3, en fazla 16 karakterden oluşmalı."
+msgstr ""
+
+#: zopsedu/auth/views.py:54
+msgid "Şartlar ve Koşulları kabul ediyorum."
+msgstr ""
+
+#: zopsedu/auth/views.py:75 zopsedu/auth/views.py:140
+msgid "Başarıyla kayıt oldunuz. Lütfen giriş yapınız."
+msgstr ""
+
+#: zopsedu/auth/views.py:78 zopsedu/auth/views.py:143
+#: zopsedu/lib/form/forms.py:452
+msgid "Giriş Yap"
+msgstr ""
+
+#: zopsedu/auth/views.py:79 zopsedu/auth/views.py:144 zopsedu/auth/views.py:174
+#: zopsedu/auth/views.py:195
+msgid "Bütün hakları saklıdır"
+msgstr ""
+
+#: zopsedu/auth/views.py:148
+msgid "Kullanıcı adı veya Parola yanlış."
+msgstr ""
+
+#: zopsedu/auth/views.py:173 zopsedu/auth/views.py:194
+#: zopsedu/lib/form/forms.py:453
+msgid "Kayıt Ol"
+msgstr ""
+
+#: zopsedu/auth/views.py:208
+msgid "Email zaten kayıtlı."
+msgstr ""
+
+#: zopsedu/auth/views.py:210
+msgid "Kullanıcı adı zaten var."
+msgstr ""
+
+#: zopsedu/auth/views.py:212 zopsedu/templates/macros/file_upload.html:303
+msgid "Bilinmeyen bir hata oluştu."
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:17
+#: zopsedu/bap/proje/templates/proje_dashboard.html:159
+msgid "Adı Soyadı"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:18 zopsedu/bap/hakem/forms.py:41
+msgid "Hakem Türü"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:20 zopsedu/bap/hakem/forms.py:43
+msgid "Branş"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:21 zopsedu/bap/hakem/forms.py:44
+#: zopsedu/lib/form/forms.py:469 zopsedu/yonetim/forms.py:12
+msgid "Kaydet"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:22 zopsedu/bap/hakem/forms.py:31
+#: zopsedu/bap/hakem/forms.py:45 zopsedu/bap/proje_raporlari/forms.py:12
+msgid "Temizle"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:27
+msgid "Adı"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:28
+msgid "Soyadı"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:29
+msgid "Kurum"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:30
+msgid "Bölüm"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:32 zopsedu/bap/proje_raporlari/forms.py:13
+#: zopsedu/lib/form/fields.py:90
+msgid "Ara"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:38
+msgid "Fakülte"
+msgstr ""
+
+#: zopsedu/bap/hakem/forms.py:39
+msgid "Ünvan"
+msgstr ""
+
+#: zopsedu/bap/hakem/views.py:64
+#: zopsedu/bap/proje/templates/proje_dashboard.html:145
+msgid "Hakemler"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:24
+msgid "Proje konusu özgün mü?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:26
+msgid "Proje amacı açık bir şekilde belirtilmiş mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:29
+msgid "Proje amacı bilimsel bakımdan anlamlı mı?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:31
+msgid ""
+"Tamamlandığında sonuçları ile alanında bilime evrensel ve ulusal "
+"ölçülerde katkı yapması ve ülkenin teknolojik, ekonomik ve sosyo-kültürel"
+" kalkınmasına yönelik katkıları var mı ve gerçekçi mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:36
+msgid ""
+"Projenin kuramsal temeli yeterli düzeyde literatür araştırılması "
+"yapılarak verilmiş mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:40
+msgid "Projede uygulanacak metotlar açık bir şekilde verilmiş mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:43
+msgid "Proje araştırma yöntemi amacı ile tutarlı mı?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:46
+msgid ""
+"Proje takviminde yer alan işler ve iş süreleri proje araştırma yönetimi "
+"ile uyumlu mu?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:49
+msgid ""
+"Talep edilen sarf ve teçhizat, araştırmanın amacı ve var olan alt yapı "
+"ile uyumlu mu?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:52
+msgid "Proje sanayide uygulanabilir mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:54
+msgid "Etik Kurul Kararı gerekli mi?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:59
+msgid ""
+"Değerlendirmeye ek olarak, bilgisayarımdan dosya seçerek yüklemek "
+"istiyorum"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:62
+msgid "Dosya Ekle"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:66
+msgid "Lütfen inceleme sonucunuzu işaretleyiniz?"
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/forms.py:69
+msgid "Proje değerlendirmesi tamamlandı."
+msgstr ""
+
+#: zopsedu/bap/hakem_proje_degerlendirme/views.py:27
+msgid "Atanmış Projeler"
+msgstr ""
+
+#: zopsedu/bap/lib/form/bilim_kurulu_degerlendirme.py:20
+#: zopsedu/bap/lib/form/hakem_ara_rapor.py:20
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:27
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:43
+#: zopsedu/bap/lib/form/hakem_sonuc_raporu.py:20
+#: zopsedu/bap/lib/form/komisyon_butce_degerlendirme.py:20
+#: zopsedu/bap/lib/form/oneri.py:28 zopsedu/bap/lib/form/raportor.py:20
+msgid "Boolean Field Ornegi"
+msgstr ""
+
+#: zopsedu/bap/lib/form/bilim_kurulu_degerlendirme.py:21
+#: zopsedu/bap/lib/form/hakem_ara_rapor.py:21
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:29
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:45
+#: zopsedu/bap/lib/form/hakem_sonuc_raporu.py:21
+#: zopsedu/bap/lib/form/komisyon_butce_degerlendirme.py:21
+#: zopsedu/bap/lib/form/oneri.py:27 zopsedu/bap/lib/form/raportor.py:21
+msgid "Text Field Ornegi"
+msgstr ""
+
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:28
+#: zopsedu/bap/lib/form/hakem_degerlendirme.py:44
+#: zopsedu/bap/lib/form/oneri.py:29
+msgid "Select Field Ornegi"
+msgstr ""
+
+#: zopsedu/bap/models/belge.py:48
+msgid ""
+"Dosya turleri tur1,tur2,tur3 formatında olmalıdır.Gecerli dosya turleri "
+"helper dosyasında PROJE_BELGE_TURLERI degişkeni içerisinde "
+"belirtilmiştir.Lütfen kontrol ediniz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:169
+msgid "Ek süre talep değeri alanı boş bırakılamaz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:172
+msgid ""
+"Ek süre talep tipi yüzde olduğu için ek süre talep degeri 100 den büyük "
+"olamaz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:177
+msgid "Ek süre talep değeri 0 dan büyük bir değer olmalıdır."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:194
+msgid "{} alani uyari mesajlari icerisinde yoktur. Lütfen kontrol ediniz."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:204
+msgid ""
+"Hakem önerilsin şeçeneği işaretlendiği için hakem öneri sayısı girmeniz "
+"gerekmektedir."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:215
+msgid "Başvuru Bitiş Tarihi, Başvuru başlama tarihinden önceki bir tarih olmaz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:226
+msgid "Basvuru baslama tarihi bügünden önceki bir tarih olamaz."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:237 zopsedu/bap/models/proje_turu.py:248
+msgid "Proje süre alt limiti değeri üst limit değerine eşit veya büyük olamaz."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:267 zopsedu/bap/models/proje_turu.py:284
+msgid "Lütfen Dosya Yükleyiniz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:345
+msgid "Ek bütçe talep değeri alanı boş bırakılamaz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:348
+msgid ""
+"Ek bütce talep tipi yüzde seçildiği için ek butce talep degeri 100 den "
+"büyük olamaz"
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:353
+msgid "Ek bütçe talep değeri 0 dan büyük bir değer olmalıdır."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:361
+msgid "Proje bütçe alt limiti değeri üst limit değerine eşit veya büyük olamaz."
+msgstr ""
+
+#: zopsedu/bap/models/proje_turu.py:413
+msgid "Yardımcı Araştırmacı Alt Limiti Üst Limitten Büyük Olamaz"
+msgstr ""
+
+#: zopsedu/bap/proje/forms.py:9
+msgid "Hakem Ara"
+msgstr ""
+
+#: zopsedu/bap/proje/views.py:178
+msgid "Hakem Ata"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:25
+msgid "Proje Numarası"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:26
+msgid "Proje Türü"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:27
+msgid "Bilim Dalı"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:28
+msgid "Ana Bilim Dalı"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:30
+msgid "Fakülte / Bölüm"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:34
+msgid "Proje Disiplinler Arası Mı?"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:36
+msgid "Teklif Edilen Başlama Tarihi"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:37
+msgid "Kabul Edilen Başlama Tarihi"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:38
+msgid "Bitiş Tarihi"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:39
+msgid "Proje Süresi"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:41
+msgid "Etik Kurulu İzin Belgesi Gerekli Mi?"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:50
+#: zopsedu/yonetim/templates/rol_listeleme.html:68
+msgid "İşlemler"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:93
+msgid "Görevliler"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:109
+msgid "Form ve Ekler"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:154
+msgid "Hakemleri Ekle"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:161
+#: zopsedu/yonetim/templates/rol_listeleme.html:124
+msgid "Sil"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:179
+#: zopsedu/bap/proje/templates/proje_dashboard.html:355
+msgid "Bu projeye atanmış hakem bulunmamaktadır."
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:192
+msgid "Bütce Özeti"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:198
+msgid "Önerilen:"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:204
+msgid "Kabul Edilen:"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:223
+msgid "Proje Özeti"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:232
+msgid "Önce hakem seçmelisiniz!"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:282
+msgid "Seçilen hakem/hakemler başarıyla projeye atandı!"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:290
+msgid "Seçilen hakem/hakemler projeye atanamadı!"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:291
+msgid "Hakem/hakemler zaten proje hakemleri arasında olabilir."
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:311
+msgid "adlı hakem projenin hakemleri arasından çıkarılacak."
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:312
+msgid ""
+"Yeni hakem eklemek için Hakemler menüsü altındaki arama çubuğunu "
+"kullanabilirsiniz."
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:316
+#: zopsedu/yonetim/templates/rol_listeleme.html:117
+msgid "Vazgeç"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:323
+msgid "Çıkar"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:338
+msgid "adlı hakem proje hakemleri arasından başarıyla çıkarıldı!"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:342
+#: zopsedu/bap/proje/templates/proje_dashboard.html:368
+#: zopsedu/yonetim/templates/rol_listeleme.html:144
+#: zopsedu/yonetim/templates/rol_listeleme.html:161
+#: zopsedu/yonetim/templates/rol_listeleme.html:176
+msgid "Tamam"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_dashboard.html:364
+msgid ""
+"adlı hakem proje hakemleri arasından çıkarılmaya çalışılırken bir hata "
+"oluştu!"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_personelleri.html:147
+msgid "Proje Personelleri"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_raporlari.html:11
+msgid "Başlık"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_raporlari.html:11
+#: zopsedu/bap/proje_turu/forms.py:36
+msgid "Açıklama"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_raporlari.html:11
+msgid "Rapor"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/proje_raporlari.html:26
+msgid "Proje Raporları"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/macros/proje_dashboard.html:26
+msgid "Proje Düzenle"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/macros/proje_dashboard.html:50
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:142
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:147
+msgid "Evet"
+msgstr ""
+
+#: zopsedu/bap/proje/templates/macros/proje_dashboard.html:52
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:142
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:147
+msgid "Hayır"
+msgstr ""
+
+#: zopsedu/bap/proje_arama/views.py:65
+msgid "Projeler"
+msgstr ""
+
+#: zopsedu/bap/proje_raporlari/forms.py:10
+msgid "Rapor Tipi"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:34
+msgid "Dosya Adı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:43
+msgid "Dosya"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:51
+msgid "Zorunlu Mu ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:53
+msgid "Proje içerik dosyası mı ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:55
+msgid "Belge çıktısı alınacak mı ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:84
+msgid "Proje Tür Adı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:85
+msgid "Proje Tür Adı Alanı Boş Olamaz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:86
+msgid "Kategori"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:88
+msgid "Araştırma Projesi"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:93
+msgid "Başvuru Başlama Tarihi Giriniz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:96
+msgid "Başvuru Bitiş Tarihi Giriniz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:107
+msgid "süre alt limiti alanı boş bırakılamaz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:110
+msgid "Süre Üst Limiti Alanı Boş Bırakılamaz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:120
+msgid "Ana Sürenin %'sini Geçemez"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:122
+msgid "Sınırsız Ek Süre"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:124
+msgid "Ek Süre Talep Değeri"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:126
+msgid "Ek Süre Proje Süre Limitine Dahil Mi?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:131
+msgid "Yüksek Lisans"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:132
+msgid "Doktora"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:133
+msgid "Belirtilmemiş"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:137
+msgid "Öneri Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:138
+msgid "Hakem Değerlendirme Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:139
+msgid "Bilim Kurulu Degerlendirme Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:141
+msgid "Raportör Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:142
+msgid "Hakem Ara Rapor Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:143
+msgid "Hakem Sonuc Rapor Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:144
+msgid "Komisyon Bütçe Değerlendirme Formu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:148
+msgid "Başvuru Aktif Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:151
+msgid "Proje Ek Talepleri İçin Rapor Kontrolü Yapılacak Mı ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:154
+msgid "Herkese Açık Proje Listesinde Yer Alacak Mı ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:156
+msgid "Sms Bildirimleri Aktif Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:160
+msgid "Ara Rapor Gerekli Mi?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:162
+msgid "Sonuç Raporu Gerekli Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:164
+msgid "Ara Rapor"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:166
+msgid "Sonuc Raporu"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:170
+msgid "Bütçe Tercihleri"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:172
+msgid "Projeyi Bütçe Yürütücüsü Önersin"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:175
+msgid "Sabit Bütçe Seçeneklerinden Birini Seçsin"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:179
+msgid "Proje Yürütücüsü Bütçe ile İlgili işlem Yapmasın"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:187
+msgid "Bütçe alt limiti"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:188
+msgid "Bütçe üst limiti"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:190
+msgid "Ek Bütçe Talep Tipi"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:191
+msgid "Ek Bütçe Yok"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:193
+msgid "En Fazla Şu Kadar:"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:196
+msgid "Ana Bütçenin %'sini Geçemez"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:198
+msgid "Sınırsız Ek Bütçe"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:201
+msgid "Ek Bütçe Talep Değeri"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:203
+msgid "Ek Butce Proje Butçe Limitine Dahil Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:213
+msgid "Kalemlere ait bütçe kodlari girilsin mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:218
+msgid "Proje Yürütücüsü Ek Dosyalar Ekleyebilir Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:221
+msgid "İş Zamanı Planı Otomasyon İçerisinde Doldurulsun Mu ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:223
+msgid "Ek Dosya Yüklenebilir Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:232
+msgid "Yardımcı Araştırmacı Seçenekleri"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:236
+msgid "Sadece Danışman ve Tez Öğrencisi"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:240
+msgid "Sadece Proje Yürütücüsü"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:244
+msgid "Sınırsız Yardımcı Araştırmacı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:247
+msgid "Belirli Sayıda Yardımcı Araştırmacı:"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:250
+msgid "Yardımcı Araştırmacı Alt Limiti"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:251
+msgid "Yardımcı Araştırmacı Üst Limiti"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:253
+msgid "Özgeçmiş Yüklemek Zorunlu Mu?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:256
+msgid "Dosya Olarak Özgeçmiş Yüklenebilir Mi ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:259
+msgid "Başvuru Sırasında Banka Bilgilerini Girmek Zorunlu Mu ?"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:263
+msgid "Personel Ekranı Bilgilendirme Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:264
+msgid "Proje Yürütücüsü İçin Yardım Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:265
+msgid "Basvuru Yapilmadan Gelecek Uyari Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:267
+msgid "Başvuru Tamamlandıktan Sonra Bilgilendirme Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:269
+msgid "Gönder İşlemi Yapılırken Yurutucuye Gösterilecek Uyarı Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:270
+msgid "Ek Dosyalar Ekranı Bilgilendirme Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:271
+msgid "Hakem Önerisi Bilgilendirme Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:272
+msgid "Ara Rapor İçin Uyarı Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:273
+msgid "Sonuc Raporu İçin Uyarı Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/forms.py:274
+msgid "Bütçe Ekranı Bilgilendirme Mesajı"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/views.py:230 zopsedu/bap/proje_turu/views.py:242
+#: zopsedu/bap/proje_turu/views.py:371
+msgid "Proje Türü Adı Kullanılmaktadır. Lütfen Başka Bir Ad ile Tekrar Deneyiniz"
+msgstr ""
+
+#: zopsedu/bap/proje_turu/views.py:636
+msgid "Proje Türleri"
+msgstr ""
+
+#: zopsedu/common/app/file/views.py:43
+msgid "Sadece 1 tane dosya yükleyebilirsiniz."
+msgstr ""
+
+#: zopsedu/common/app/file/views.py:52
+msgid "Dosya Yüklenemedi"
+msgstr ""
+
+#: zopsedu/common/app/file/views.py:76 zopsedu/common/app/file/views.py:131
+msgid "Dosya Bulunamadi"
+msgstr ""
+
+#: zopsedu/common/app/file/views.py:79 zopsedu/common/app/file/views.py:109
+#: zopsedu/common/app/file/views.py:134
+msgid "Bir Hata Olustu Daha Sonra Tekrar Deneyiniz"
+msgstr ""
+
+#: zopsedu/common/kullanici_profil/forms.py:15
+msgid "Avatar"
+msgstr ""
+
+#: zopsedu/common/kullanici_profil/forms.py:16
+msgid "Güncelle"
+msgstr ""
+
+#: zopsedu/common/kullanici_profil/forms.py:23
+msgid "Rolü Değiştir"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:11
+msgid "First Name"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:12
+msgid "First Name cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:13 zopsedu/mevlana/forms/ogrenci_basvuru.py:11
+msgid "Name"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:15
+msgid "Name cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:16
+msgid "Last Name"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:18
+msgid "Last Name cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:19
+msgid "Date of Birth"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:21
+msgid "Date of birth cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:22
+msgid "Nationality"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:24
+msgid "Nationality cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:25
+msgid "Sex"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:26 zopsedu/mevlana/forms/ogrenci_basvuru.py:38
+msgid "Male"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:26 zopsedu/mevlana/forms/ogrenci_basvuru.py:38
+msgid "Female"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:26
+msgid "Other"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:28
+msgid "Academic Year"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:29
+msgid "Study Cycle"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:30
+msgid "Bachelor or equivalent"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:31
+msgid "Master or equivalent"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:32
+msgid "Doctoral level"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:34
+msgid "Subject Area, Code"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:36
+msgid "Subject Area, Code cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:37
+msgid "Faculty"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:39
+msgid "Faculty cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:40
+msgid "Erasmus Code  (if applicable)"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:41
+msgid "Department"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:43
+msgid "Department cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:44 zopsedu/farabi/form.py:23
+msgid "Address"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:45
+msgid "Address cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:47
+msgid "Country, Country code"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:48
+msgid "Country, Country code cannot be emoty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:51
+msgid "Contact person name"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:53
+msgid "Contact person name cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:56
+msgid "Contact person e-posta/telefon"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:58
+msgid "Contact person e-posta/telefon cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:61
+msgid "Planned period of the mobility: from [month/year]"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:63 zopsedu/erasmus/form.py:68
+msgid "month/year cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:66
+msgid "to [month/year]"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:72
+msgid "A1"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:73
+msgid "A2"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:74
+msgid "B1"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:75
+msgid "B2"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:76
+msgid "C1"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:77
+msgid "C2"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:78
+msgid "Native speaker"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:79
+msgid "Function"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:81
+msgid "Function cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:82
+msgid "Phone Number"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:84
+msgid "Phone number cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:85
+msgid "Email"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:86
+msgid "Email cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/form.py:87
+msgid "Date"
+msgstr ""
+
+#: zopsedu/erasmus/form.py:88
+msgid "Date cannot be empty."
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:43
+msgid "Student"
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:57
+msgid "Sending Institution"
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:71
+msgid "Receiving Institution"
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:85
+msgid "Study Programmee at Receiving Institution"
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:104
+msgid "Recognition at Sending Institution"
+msgstr ""
+
+#: zopsedu/erasmus/templates/erasmus_form/form.html:113
+msgid "Finish"
+msgstr ""
+
+#: zopsedu/farabi/form.py:11
+msgid "Ad"
+msgstr ""
+
+#: zopsedu/farabi/form.py:12
+msgid "Ad boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:13
+msgid "Soyad"
+msgstr ""
+
+#: zopsedu/farabi/form.py:14
+msgid "Soyad boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:15
+msgid "T.C. Kimlik No"
+msgstr ""
+
+#: zopsedu/farabi/form.py:17
+msgid "T.C. Kimlik No boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:18
+msgid "Bölümü"
+msgstr ""
+
+#: zopsedu/farabi/form.py:19
+msgid "Bölüm boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:20
+msgid "Öğrenci No"
+msgstr ""
+
+#: zopsedu/farabi/form.py:22
+msgid "Öğrenci No boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:24
+msgid "Adres boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:25
+msgid "Fotoğraf Yükle"
+msgstr ""
+
+#: zopsedu/farabi/form.py:27
+msgid "Kurum Koordinatörü"
+msgstr ""
+
+#: zopsedu/farabi/form.py:30
+msgid "Kurum Koordinatörü boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:31
+msgid "Telefon No"
+msgstr ""
+
+#: zopsedu/farabi/form.py:33
+msgid "Telefon No boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:34
+msgid "Faks"
+msgstr ""
+
+#: zopsedu/farabi/form.py:35
+msgid "Faks boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:36
+msgid "E-Posta"
+msgstr ""
+
+#: zopsedu/farabi/form.py:37
+msgid "E-Posta boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:38
+msgid "Bölüm Koordinatörü"
+msgstr ""
+
+#: zopsedu/farabi/form.py:41
+msgid "Bölüm Koordinatörü boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:42
+msgid "Doğum Tarihi"
+msgstr ""
+
+#: zopsedu/farabi/form.py:44
+msgid "Doğum Tarihi boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:45
+msgid "Uyruk"
+msgstr ""
+
+#: zopsedu/farabi/form.py:47
+msgid "Uyruk boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:48 zopsedu/lib/form/forms.py:397
+msgid "Cinsiyet"
+msgstr ""
+
+#: zopsedu/farabi/form.py:49 zopsedu/lib/form/forms.py:398
+msgid "Erkek"
+msgstr ""
+
+#: zopsedu/farabi/form.py:49 zopsedu/lib/form/forms.py:398
+msgid "Kadın"
+msgstr ""
+
+#: zopsedu/farabi/form.py:49
+msgid "Diğer"
+msgstr ""
+
+#: zopsedu/farabi/form.py:51
+msgid "Devam Edilen Diploma Derecesi"
+msgstr ""
+
+#: zopsedu/farabi/form.py:53
+msgid "Devam Edilen Diploma Derecesi boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:54
+msgid "Sınıfı"
+msgstr ""
+
+#: zopsedu/farabi/form.py:55
+msgid "Sınıf boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:56
+msgid "Doğum Yeri"
+msgstr ""
+
+#: zopsedu/farabi/form.py:58
+msgid "Doğum yeri boş bırakılamaz."
+msgstr ""
+
+#: zopsedu/farabi/form.py:60
+msgid "Zayıf"
+msgstr ""
+
+#: zopsedu/farabi/form.py:61
+msgid "Orta"
+msgstr ""
+
+#: zopsedu/farabi/form.py:62
+msgid "İyi"
+msgstr ""
+
+#: zopsedu/farabi/form.py:63
+msgid "Mükemmel"
+msgstr ""
+
+#: zopsedu/lib/form/fields.py:41
+msgid "Dosya Yükle"
+msgstr ""
+
+#: zopsedu/lib/form/fields.py:110
+msgid "Mesaj Ekleyiniz"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:382
+msgid "Başlangıç günü"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:383
+msgid "Bitiş günü"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:384 zopsedu/lib/form/forms.py:403
+msgid "Gönder"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:399
+msgid "Dil"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:399
+msgid "İngilizce"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:400
+msgid "Türkçe"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:401
+msgid "Gerekli alan"
+msgstr ""
+
+#: zopsedu/lib/form/forms.py:433 zopsedu/mevlana/forms/ogrenci_basvuru.py:156
+msgid "Save"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:12
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:17
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:22
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:28
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:34
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:42
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:48
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:54
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:60
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:65
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:70
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:75
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:80
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:93
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:99
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:104
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:109
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:114
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:119
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:124
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:130
+msgid "This field can not be left blank."
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:16
+msgid "Surname"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:21
+msgid "Identification Number"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:27
+msgid "Registration Number"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:33
+msgid "Student Birth Day"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:38
+msgid "Gender"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:41
+msgid "Student Nationality"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:47
+msgid "Student Institution"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:53
+msgid "Field Code"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:59
+msgid "Period of Preceding Education (years)"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:64
+msgid "Total National Credits"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:69
+msgid "Total ECTS Credits (if applied)"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:74
+msgid "Instruction Language of Host Institution"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:79
+msgid "GPA"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:84
+msgid "Language Level"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:92
+msgid "Host Institution"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:98
+msgid "Student Contact Information"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:103
+msgid "Contact Information of Host Institution"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:108
+msgid "Total Amount of Scholarship"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:113
+msgid "Payment in Advance"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:118
+msgid "Final Payment"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:123
+msgid "Start Date of Study"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:129
+msgid "Final Date of Study"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:133
+msgid "Level of Degree (Associate Degree, Bachelor Degree, MA, PhD)"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:141
+msgid "Has the Student Ever Attended Mevlana Exchange Programme?"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:146
+msgid "Has the Student Ever Attended Erasmus Exchange Programme?"
+msgstr ""
+
+#: zopsedu/mevlana/forms/ogrenci_basvuru.py:151
+msgid "Notes"
+msgstr ""
+
+#: zopsedu/templates/macros/_formhelpers.html:321
+#: zopsedu/templates/macros/select2.html:84
+#: zopsedu/templates/macros/select2.html:128
+msgid "tr"
+msgstr ""
+
+#: zopsedu/templates/macros/file_upload.html:298
+msgid "Maksimum dosya sayısı aşıldı."
+msgstr ""
+
+#: zopsedu/templates/macros/file_upload.html:299
+msgid "Dosya türü desteklenmiyor."
+msgstr ""
+
+#: zopsedu/templates/macros/file_upload.html:300
+msgid "Dosya çok büyük."
+msgstr "File too large"
+
+#: zopsedu/templates/macros/file_upload.html:301
+msgid "Dosya çok küçük"
+msgstr "File too small"
+
+#: zopsedu/templates/macros/file_upload.html:302
+msgid "Yüklenen bayt dosya boyutunu aşıyor."
+msgstr ""
+
+#: zopsedu/templates/macros/form_wizard.html:83
+#: zopsedu/templates/macros/utils.html:104
+#: zopsedu/templates/macros/utils.html:172
+msgid "Sonraki"
+msgstr ""
+
+#: zopsedu/templates/macros/form_wizard.html:84
+#: zopsedu/templates/macros/utils.html:105
+#: zopsedu/templates/macros/utils.html:173
+msgid "Önceki"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:89
+#: zopsedu/templates/macros/utils.html:157
+msgid ","
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:90
+#: zopsedu/templates/macros/utils.html:158
+msgid "Tabloda herhangi bir veri mevcut değil"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:91
+#: zopsedu/templates/macros/utils.html:159
+msgid "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:92
+#: zopsedu/templates/macros/utils.html:160
+msgid "Kayıt yok"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:93
+#: zopsedu/templates/macros/utils.html:161
+msgid "(_MAX_ kayıt içerisinden bulunan)"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:95
+#: zopsedu/templates/macros/utils.html:163
+msgid "."
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:96
+#: zopsedu/templates/macros/utils.html:164
+msgid "Sayfada _MENU_ kayıt göster"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:97
+#: zopsedu/templates/macros/utils.html:165
+msgid "Yükleniyor..."
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:98
+#: zopsedu/templates/macros/utils.html:166
+msgid "İşleniyor..."
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:99
+#: zopsedu/templates/macros/utils.html:167
+msgid "Ara:"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:100
+#: zopsedu/templates/macros/utils.html:168
+msgid "Eşleşen kayıt bulunamadı"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:102
+#: zopsedu/templates/macros/utils.html:170
+msgid "İlk"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:103
+#: zopsedu/templates/macros/utils.html:171
+msgid "Son"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:108
+#: zopsedu/templates/macros/utils.html:176
+msgid ": artan sütun sıralamasını aktifleştir"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:109
+#: zopsedu/templates/macros/utils.html:177
+msgid ": azalan sütun sıralamasını aktifleştir"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:180
+msgid "Kopyala"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:181
+msgid "Panoya Kopyala"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:183
+#, python-format
+msgid "%d satır kopyalandı"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:184
+msgid "1 satır kopyalandı"
+msgstr ""
+
+#: zopsedu/templates/macros/utils.html:186
+msgid "Yazdır"
+msgstr ""
+
+#: zopsedu/yonetim/forms.py:9
+msgid "Rol Adı"
+msgstr ""
+
+#: zopsedu/yonetim/forms.py:11
+msgid "İptal"
+msgstr ""
+
+#: zopsedu/yonetim/views.py:24
+msgid "Roller"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_duzenleme.html:36
+#: zopsedu/yonetim/templates/rol_ekle.html:36
+msgid "Rol İzinleri"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_duzenleme.html:95
+msgid "Rol başarıyla güncellendi!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_duzenleme.html:106
+msgid "Rol güncellenemedi!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_ekle.html:27
+msgid "Yeni Rol"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_ekle.html:83
+msgid "Rol adi boş olamaz!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_ekle.html:101
+msgid "Rol başarıyla eklendi!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_ekle.html:111
+msgid "Rol eklenemedi!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:43
+msgid "Rol Ekle"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:46
+msgid "Rol Listesi"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:62
+msgid "Rol"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:82
+msgid "Düzenle"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:88
+msgid "Kaldır"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:112
+msgid "adlı rolü silmek istediğinize emin misiniz?"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:113
+msgid "Bu işlem geri alınamaz!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:140
+msgid "adlı rol başarıyla kaldırıldı!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:157
+msgid "adlı rol silinmeye çalışırken bir hata oluştu!"
+msgstr ""
+
+#: zopsedu/yonetim/templates/rol_listeleme.html:172
+msgid "adlı rol hala kullanımda olduğundan silinemedi!"
+msgstr ""
+
+#~ msgid "HOHOHOHO"
+#~ msgstr ""
+
+#~ msgid "No data available in table"
+#~ msgstr ""
+
+#~ msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+#~ msgstr ""
+
+#~ msgid "Showing 0 to 0 of 0 entries"
+#~ msgstr ""
+
+#~ msgid "(filtered from _MAX_ total entries)"
+#~ msgstr ""
+
+#~ msgid "),"
+#~ msgstr ""
+
+#~ msgid "Show _MENU_ entries"
+#~ msgstr ""
+
+#~ msgid "Loading..."
+#~ msgstr ""
+
+#~ msgid "Processing..."
+#~ msgstr ""
+
+#~ msgid "Search:"
+#~ msgstr ""
+
+#~ msgid "No matching records found"
+#~ msgstr ""
+
+#~ msgid "First"
+#~ msgstr ""
+
+#~ msgid "Last"
+#~ msgstr ""
+
+#~ msgid "Next"
+#~ msgstr ""
+
+#~ msgid "Previous"
+#~ msgstr ""
+
+#~ msgid ": activate to sort column ascending"
+#~ msgstr ""
+
+#~ msgid ": activate to sort column descending"
+#~ msgstr ""
+
+#~ msgid "Address boş bırakılamaz."
+#~ msgstr ""
+
+#~ msgid "Projeyi Bütçe Yütücüsü Önersin"
+#~ msgstr ""
+
+#~ msgid "Beni Hatırla"
+#~ msgstr ""
+

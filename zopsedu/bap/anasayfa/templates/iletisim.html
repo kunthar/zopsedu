@@ -1,0 +1,26 @@
+{% if is_role('anonymous') %}
+    {% extends "anasayfa_base.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block">  {{ _("İletişim") }} </h3>
+        </div>
+    </div>
+    <div class="content-body">
+        <div class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

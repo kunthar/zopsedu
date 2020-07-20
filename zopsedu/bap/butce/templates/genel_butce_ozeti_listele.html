@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Proje Kasaları") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <button class="btn btn-success" data-toggle="modal" data-target="#kasa-ekle-modal">
+                    {{ _("Yeni Kasa Ekle") }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section id="page-proje-kasalari" class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ proje_ana_kasa_listele(ana_kasalar) }}
+                    {{ yeni_kasa_ekle(kasa_formu) }}
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end #content -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init %}
+    {{ table_manage_buttons_init(id="data-table-1") }}
+{% endblock %}
+
+{% macro proje_ana_kasa_listele(ana_kasalar) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                   role="grid" style="width: 100%;">
+                <thead>
+                <tr role="row">
+                    <th>{{ _("#") }}</th>
+                    <th>{{ _("Kasa Adı") }}</th>
+                    <th>{{ _("Mali Yıl") }}</th>
+                    <th>{{ _("Toplam Bütçe") }}</th>
+                    <th>{{ _("Harcanan Bütçe") }}</th>
+                    <th>{{ _("Rezerv Bütçe") }}</th>
+                    <th>{{ _("Kullanabilir Bütçe") }}</th>
+                    <th>{{ _("Önceki Yıldan Devreden Bütçe") }}</th>
+                    <th>{{ _("Bir Sonraki Mali Yıla Devredilen Bütçe") }}</th>
+                    <th>{{ _("Devam Eden Proje Sayısı") }}</th>
+                    <th>{{ _("Biten Proje Sayısı") }}</th>
+                    <th class="all">{{ _("Bütçe Girdileri") }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for kasa in ana_kasalar %}
+                    <tr class="odd" role="row">
+                        <td class="sorting_1">{{ loop.index }}</td>
+                        <td class="sorting_1">{{ kasa.kasa_adi }}</td>
+                        <td class="sorting_1">{{ kasa.mali_yil }}</td>
+                        <td class="sorting_1">{{ kasa.toplam_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.harcanan_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.rezerv_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.kullanilabilir_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.devreden_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.devredilen_para | currency }}</td>
+                        <td class="sorting_1">{{ kasa.devam_eden_proje_sayisi }}</td>
+                        <td class="sorting_1">{{ kasa.sonuclanan_proje_sayisi }}</td>
+                        <td>
+                            <a href="{{ url_for('butce.GenelButceOzetiView:kasa_girdileri_listele', kasa_id=kasa.id) }}">
+                                <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+{% endmacro %}
+
+{% macro yeni_kasa_ekle(kasa_formu) %}
+
+    <div class="modal fade text-left" id="kasa-ekle-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ _("Yeni Kasa Ekle") }}</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body row">
+                        <div class="col-md-12 mb-2">
+                            {{ render_text_field_with_tooltip(kasa_formu.adi,
+                               title=_('Kasa adı giriniz')) }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button id="kasa-kaydet" type="button"
+                                class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        kasaEkleSelector = {
+            "adi": $('[name={{ kasa_formu.adi.name }}]'),
+            "modalSelector": $('#kasa-ekle-modal')
+        };
+
+        function getKasaData() {
+            return {
+                "adi": kasaEkleSelector.adi.val(),
+            }
+        }
+
+        $('#kasa-kaydet').click(function () {
+            let kaydetUrl, kasa_adi;
+
+            kaydetUrl = "{{ url_for('butce.GenelButceOzetiView:kasa_ekle') }}";
+            kasa_adi = getKasaData().adi;
+
+            if (typeof kasa_adi === 'undefined' || kasa_adi === null || kasa_adi === "") {
+                swal("{{ _("Kasa eklemek için formu doldurunuz") }}", {
+                    icon: "warning",
+                    timer: 4000,
+                    buttons: false
+                });
+            } else {
+                $.ajax({
+                    url: kaydetUrl,
+                    type: 'POST',
+                    data: JSON.stringify(getKasaData()),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    success: function (result) {
+                        swal("{{ _("Kasa başarıyla oluşturulmuştur") }}", {
+                            icon: "success",
+                            timer: 4000,
+                            buttons: false
+                        });
+                        window.location.reload(true);
+                    },
+                    error: function (result) {
+                        let errorMessage;
+                        errorMessage = result.responseJSON.error_message;
+                        swal({
+                            title: "{{ _("Kasa eklerken bir sorun oluştu") }}",
+                            text: errorMessage || "{{ _("Oluşan sorun en kısa zamanda çözülecektir. Lütfen daha sonra deneyiniz") }}",
+                            icon: "error",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+            }
+        });
+
+    </script>
+{% endmacro %}

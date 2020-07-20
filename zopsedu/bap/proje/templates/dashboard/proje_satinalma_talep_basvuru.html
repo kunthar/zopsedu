@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from 'macros/form_helpers/number_fields.html' import render_integer_field_without_label %}
+{% from 'macros/form_helpers/text_fields.html' import render_text_field_with_tooltip %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">    {{ _("Satınalma Talebi") }}</h3>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <h5 class="form-section"> {{ _('Lütfen dikkatlice okuyunuz') }} </h5>
+                    {{ big_flash_message() }}
+                    {{ render_alert_list(satinalma_talep_form.urun_secimi_information) }}
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item">
+                            <a href="#default-tab-1" data-toggle="tab" class="nav-link active"
+                               role="tab">
+                                <span> {{ _('Talep Formu') }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#default-tab-2" data-toggle="tab" class="nav-link"
+                               role="tab">
+                                <span> {{ _('Muayene Komisyonu') }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form id="satinalma-form" method="POST" enctype="multipart/form-data">
+                        {{ satinalma_talep_form.csrf_token }}
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="default-tab-1" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ render_text_field_with_tooltip(satinalma_talep_form.genel_teknik_sartname_belge,
+                                                                          title=_("Genel teknik şartname yükleme butonu şartnamesi yüklenmeyen proje kalemleri için geçerli olacak şartnamedir.")) }}
+                                    </div>
+                                </div>
+                                {{ satinalma_proje_kalemleri(satinalma_talep_form.talepler) }}
+                            </div>
+                            <div class="tab-pane" id="default-tab-2" role="tabpanel">
+                                {{ render_muayene_kabul_komisyonu(satinalma_talep_form) }}
+                            </div>
+                        </div>
+                    </form>
+                    <div class="text-center col-md-12">
+                        <button class="btn btn-success" onclick="submit_satinalma_talep_form();">
+                            {{ _("Talebi Tamamla") }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{ get_proje_butce_kalemleri_script() }}
+        {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+        {{ table_manage_buttons_init_without_search(id="data-table2") }}
+        <script>
+            $(document).ready(function () {
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    $($.fn.dataTable.tables(true)).DataTable()
+                        .columns.adjust();
+                });
+            });
+        </script>
+    </div>
+
+
+{% endblock %}
+
+{% macro satinalma_proje_kalemleri(proje_kalemleri) %}
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table2"
+                   class="table table-striped table-bordered dataTable no-footer dtr-inline"
+                   role="grid"
+                   aria-describedby="data-table_info">
+                <thead>
+                <tr role="row">
+                    <th class="all">{{ _("Seçiniz") }}</th>
+                    <th>{{ _("Proje Kalemi") }}</th>
+                    <th>{{ _("Toplam Miktar") }}</th>
+                    <th>{{ _("Kullanılan Miktar") }}</th>
+                    <th>{{ _("Rezerv Edilen Miktar") }}</th>
+                    <th>{{ _("Kullanılabilir Miktar") }}</th>
+                    <th>{{ _("Talep Edilen Miktar") }}</th>
+                    {#                <th class="all sorting_asc" tabindex="0"#}
+                    {#                    aria-controls="data-table"#}
+                    {#                    rowspan="1"#}
+                    {#                    colspan="1" aria-sort="ascending"#}
+                    {#                    aria-label="Rendering engine: activate to sort column descending">{{ _("Toplam Bütçe") }}#}
+                    {#                </th>#}
+                    {#                <th class="all sorting_asc" tabindex="0"#}
+                    {#                    aria-controls="data-table"#}
+                    {#                    rowspan="1"#}
+                    {#                    colspan="1" aria-sort="ascending"#}
+                    {#                    aria-label="Rendering engine: activate to sort column descending">{{ _("Kullanılan Bütçe") }}#}
+                    {#                </th>#}
+                    {#                <th class="all sorting_asc" tabindex="0"#}
+                    {#                    aria-controls="data-table"#}
+                    {#                    rowspan="1"#}
+                    {#                    colspan="1" aria-sort="ascending"#}
+                    {#                    aria-label="Rendering engine: activate to sort column descending">{{ _("Rezerv Bütçe") }}#}
+                    {#                </th>#}
+                    {#                <th class="all sorting_asc" tabindex="0"#}
+                    {#                    aria-controls="data-table"#}
+                    {#                    rowspan="1"#}
+                    {#                    colspan="1" aria-sort="ascending"#}
+                    {#                    aria-label="Rendering engine: activate to sort column descending">{{ _("Kullanılabilir Bütçe") }}#}
+                    {#                </th>#}
+                    <th class="all">{{ _("Teknik Şartname") }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for proje_kalemi in proje_kalemleri %}
+                    <tr class="odd" role="row">
+                        <td> {{ proje_kalemi.proje_kalemi_id }} {{ proje_kalemi.secili_mi }} </td>
+                        <td>
+                            {{ proje_kalemi.proje_kalemi_adi.data }}
+                            {{ proje_kalemi.proje_kalemi_adi }}
+                        </td>
+                        <td>
+                            {{ proje_kalemi.toplam_miktar.data }} {{ proje_kalemi.birim.data }}
+                            {{ proje_kalemi.toplam_miktar }} {{ proje_kalemi.birim }}
+                        </td>
+                        <td>
+                            {{ proje_kalemi.kullanilan_miktar.data }} {{ proje_kalemi.birim.data }}
+                            {{ proje_kalemi.kullanilan_miktar }}
+                        </td>
+                        <td>
+                            {{ proje_kalemi.rezerv_edilen_miktar.data }} {{ proje_kalemi.birim.data }}
+                            {{ proje_kalemi.rezerv_edilen_miktar }}
+                        </td>
+                        <td>
+                            {{ proje_kalemi.kullanilabilir_miktar.data }} {{ proje_kalemi.birim.data }}
+                            {{ proje_kalemi.kullanilabilir_miktar }}
+                            {{ error(proje_kalemi.kullanilabilir_miktar) }}
+                        </td>
+                        <td>
+                            {{ render_integer_field_without_label(proje_kalemi.talep_edilen_miktar) }} {{ proje_kalemi.birim.data }}
+                        </td>
+                        {#                    <td>#}
+                        {#                        {{ proje_kalemi.toplam_butce.data | tr_currency }}#}
+                        {#                        {{ proje_kalemi.toplam_butce }}#}
+                        {#                    </td>#}
+                        {#                    <td>#}
+                        {#                        {{ proje_kalemi.kullanilan_butce.data | tr_currency }}#}
+                        {#                        {{ proje_kalemi.kullanilan_butce }}#}
+                        {#                    </td>#}
+                        {#                    <td>#}
+                        {#                        {{ proje_kalemi.rezerv_edilen_butce.data | tr_currency }}#}
+                        {#                        {{ proje_kalemi.rezerv_edilen_butce }}#}
+                        {#                    </td>#}
+                        {#                    <td>#}
+                        {#                        {{ proje_kalemi.kullanilabilir_butce.data | tr_currency }}#}
+                        {#                        {{ proje_kalemi.kullanilabilir_butce }}#}
+                        {#                    </td>#}
+                        <td>
+                            {{ proje_kalemi.teknik_sartname_belge }}
+                            {{ error(proje_kalemi.teknik_sartname_belge) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_muayene_kabul_komisyonu(satinalma_talep_form) %}
+    <div class="card" id="muayene-komisyonu">
+        <table class="table table-striped">
+            <tr>
+                <th>{{ _('Asil Üyeler') }}</th>
+                <th>{{ _('Ad Soyad') }}</th>
+            </tr>
+            <tr>
+                <td>{{ _('Başkan') }}</td>
+                <td>{{ satinalma_talep_form.baskan }}
+                    {{ error(satinalma_talep_form.baskan) }}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ _('Üye') }}</td>
+                <td>{{ satinalma_talep_form.uye }}
+                    {{ error(satinalma_talep_form.uye) }}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ _('Üye') }}</td>
+                <td>{{ satinalma_talep_form.uye2 }}
+                    {{ error(satinalma_talep_form.uye2) }}
+                </td>
+            </tr>
+            <tr>
+                <th>{{ _('Yedek Üyeler') }}</th>
+                <th>{{ _('Ad Soyad') }}</th>
+            </tr>
+            <tr>
+                <td>{{ _('Yedek Başkan') }}</td>
+                <td>{{ satinalma_talep_form.yedek_baskan }}
+                    {{ error(satinalma_talep_form.yedek_baskan) }}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ _('Yedek Üye') }}</td>
+                <td>{{ satinalma_talep_form.yedek_uye }}
+                    {{ error(satinalma_talep_form.yedek_uye) }}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ _('Yedek Üye') }}</td>
+                <td>{{ satinalma_talep_form.yedek_uye2 }}
+                    {{ error(satinalma_talep_form.yedek_uye2) }}
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endmacro %}
+
+
+{% macro get_proje_butce_kalemleri_script() %}
+    <script>
+
+        $('#satinalma-form').on("submit", function (e) {
+            e.preventDefault();
+        });
+
+        function submit_satinalma_talep_form() {
+            swal({
+                title: "{{ _("Satınalma talebi oluşturmak istediğinize emin misiniz?") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        $('#satinalma-form').attr('action', "{{ url_for('proje.ProjeSatinalmaTalepleriView:satinalma_talebi_kaydet',
+                                                                proje_id=proje_id,
+                                                                butce_kalemi_id=butce_kalemi_id) }}"
+                        )[0].submit();
+                    } else {
+                        swal("{{ _("Satınalma talebi oluşturmaktan vazgeçtiniz!") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+        }
+    </script>
+{% endmacro %}

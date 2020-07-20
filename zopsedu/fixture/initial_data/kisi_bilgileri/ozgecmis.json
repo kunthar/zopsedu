@@ -1,0 +1,84 @@
+{
+  "ozgecmis": [
+    {
+      "created_at": "2018-12-11 21:09:44.611004",
+      "updated_at": "2018-12-11 21:09:44.611013",
+      "id": 10,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 10,
+      "user_id": 1
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.608859",
+      "updated_at": "2018-12-11 21:09:44.608867",
+      "id": 9,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 9,
+      "user_id": 2
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.606406",
+      "updated_at": "2018-12-11 21:09:44.606414",
+      "id": 8,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 8,
+      "user_id": 3
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.604088",
+      "updated_at": "2018-12-11 21:09:44.604096",
+      "id": 7,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 7,
+      "user_id": 4
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.601408",
+      "updated_at": "2018-12-11 21:09:44.601419",
+      "id": 6,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 6,
+      "user_id": 5
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.599058",
+      "updated_at": "2018-12-11 21:09:44.599066",
+      "id": 5,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 5,
+      "user_id": 6
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.596550",
+      "updated_at": "2018-12-11 21:09:44.596560",
+      "id": 4,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 4,
+      "user_id": 7
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.590327",
+      "updated_at": "2018-12-11 21:09:44.590407",
+      "id": 3,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 3,
+      "user_id": 8
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.566160",
+      "updated_at": "2018-12-11 21:09:44.566167",
+      "id": 2,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 2,
+      "user_id": 9
+    },
+    {
+      "created_at": "2018-12-11 21:09:44.562026",
+      "updated_at": "2018-12-11 21:09:44.562033",
+      "id": 1,
+      "tecrube": "Örnek iş tecrübesi",
+      "file_id": 1,
+      "user_id": 10
+    }
+  ]
+}

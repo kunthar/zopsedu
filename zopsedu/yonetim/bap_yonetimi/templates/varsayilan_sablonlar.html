@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/select2_fields.html" import render_select2field_with_tooltip %}
+{% from "macros/form_helpers/text_fields.html" import render_code_field_with_tooltip, render_text_field_with_tooltip %}
+{% from "macros/form_helpers/checkbox_fields.html" import render_checkbox_with_tooltip %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field_with_tooltip %}
+{% from "macros/form_helpers/file_upload_fields.html" import render_fileupload_field_with_tooltip %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+
+{% from "sablon_preview_modal.html" import render_sablon_preview_modal %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Şablon Düzenleme") }}</h3>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <section id="description" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ render_alert_list(sablon_form.form_description) }}
+                    {{ big_flash_message() }}
+                </div>
+            </div>
+        </section>
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form" action="{{ url_for('bap_yonetimi.SablonlarView:post_belge_sablonlari') }}"
+                          method="POST" enctype="multipart/form-data">
+                        {{ sablon_form.csrf_token() }}
+                        <div class="form-body">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    {{ render_select2field_with_tooltip(sablon_form.sablon_tipi_id, title=_("Yüklenecek şablonun tipi")) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ render_select2field_with_tooltip(sablon_form.query_helper_id, title=_("Şablon render edilirken kullanılacak query fonksiyonu")) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ render_select2field_with_tooltip(sablon_form.sablon_adi, title=_("Şablon ismi")) }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    {{ render_fileupload_field_with_tooltip(sablon_form.sablon_dosya, title=_("Şablon dosya yükleyiniz")) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ render_checkbox_with_tooltip(sablon_form.sablon_kullanilabilir_mi, title=_("İlgili şablon alanlarında bu şablonu kullanılır hale getirir")) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ render_checkbox_with_tooltip(sablon_form.sablon_ebys_icin_kullanibilir_mi, title=_("İlgili şablonu EBYS sisteminde kullanılır hale getirir")) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                {{ render_code_field_with_tooltip(sablon_form.sablon_text, title=_("Şablon Text Ekleyiniz")) }}
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-center col-md-12">
+                                <button class="btn btn-success"
+                                >{{ _("Yeni Şablon Kaydet") }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section id="sablon-arama-alani">
+        <div class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div id="aramaAlani">
+                        {% if sablon_search_form %}
+                            <form id="detayli-arama-form">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ sablon_search_form.csrf_token }}
+                                            <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ sablon_search_form.sablon_adi.label }}
+                                                </div>
+                                                <div class="col-md-5">
+                                                    {{ sablon_search_form.sablon_adi(class='form-control') }}
+                                                </div>
+                                            </div>
+                                              <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ sablon_search_form.sablon_tipi.label }}
+                                                </div>
+                                                <div class="col-md-5">
+                                                    {{ sablon_search_form.sablon_tipi(class='form-control') }}
+                                                </div>
+                                            </div>
+                                              <div class="form-group row">
+                                                <div class="col-md-3">
+                                                    {{ sablon_search_form.kullanilabilir_mi.label }}
+                                                </div>
+                                                <div class="col-md-5">
+                                                    {{ sablon_search_form.kullanilabilir_mi(class='form-control') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div>
+                                <button id="ara" class="btn btn-search btn-success m-r">Ara</button>
+                                <button id="temizle" class="btn btn-clear btn-warning">Temizle</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="data-table"
+                               class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                               role="grid" style="width: 100%">
+                            <thead>
+                            <tr role="row">
+                                <th width="8%">{{ _("#") }}</th>
+                                <th>{{ _("Şablon Tipi") }}</th>
+                                <th>{{ _("Şablon Adı") }}</th>
+                                <th>{{ _("Kullanılabilir mi?") }}</th>
+                                <th>{{ _("Tarih") }}</th>
+                                <th class="all">{{ _("Ön İzle") }}</th>
+                                <th class="all">{{ _("Güncelle") }}</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal modal-message fade" id="bap-sablon-modal" data-backdrop="static"
+             data-keyboard="false">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ _("Şablon Güncelle") }}</h4>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;
+                        </button>
+                        <input hidden id="modal-sablon-id" value="">
+
+                    </div>
+                    <div class="modal-body" id="gundem-modal-body">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                {{ render_text_field_with_tooltip(sablon_form.sablon_adi, title=_("Şablon ismi")) }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ render_text_field_with_tooltip(sablon_form.query_helper_id, title=_("Şablon render edilirken kullanılacak query fonksiyonu")) }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                {{ sablon_form.sablon_kullanilabilir_mi.label }}
+                                {{ sablon_form.sablon_kullanilabilir_mi }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ sablon_form.sablon_ebys_icin_kullanibilir_mi.label }}
+                                {{ sablon_form.sablon_ebys_icin_kullanibilir_mi }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                {{ render_text_field_with_tooltip(sablon_form.sablon_text, title=_("Şablon Text Ekleyiniz")) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn grey btn-outline-warning"
+                                data-dismiss="modal">{{ _("Kapat") }}
+                        </button>
+                        <button id="sablon-duzenle" type="button"
+                                class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- end sablon-modal -->
+    <script>
+        let sablonSelector = {
+            "sablonAdiSelector": $('#bap-sablon-modal #{{ sablon_form.sablon_adi.name }}'),
+            "sablonQueryFunctionSelector": $('#bap-sablon-modal #{{ sablon_form.query_helper_id.name }}'),
+            "sablonKullanilabilirMiSelector": $('#bap-sablon-modal #{{ sablon_form.sablon_kullanilabilir_mi.name }}'),
+            "sablonText": $('#bap-sablon-modal [name={{ sablon_form.sablon_text.name }}]'),
+            "modalSelector": $('#bap-sablon-modal')
+        };
+
+        function resetSablonModal() {
+            sablonSelector.sablonAdiSelector.val("");
+            sablonSelector.sablonKullanilabilirMiSelector.prop('checked', false);
+            sablonSelector.sablonText.val("");
+        }
+
+        function get_sablon_data() {
+            return {
+                "{{ sablon_form.sablon_adi.name }}": sablonSelector.sablonAdiSelector.val(),
+                "{{ sablon_form.query_helper_id.name }}": sablonSelector.sablonQueryFunctionSelector.val(),
+                "{{ sablon_form.sablon_kullanilabilir_mi.name }}": sablonSelector.sablonKullanilabilirMiSelector.is(":checked"),
+                "{{ sablon_form.sablon_text.name }}": sablonSelector.sablonText.val(),
+            }
+        }
+
+        {#ilgili sablonu duzenlemek icin modal acar. sablon datasini almak icin ajax call yapar.#}
+
+        function getSablonData(elem) {
+            let url, sablonId, sablonData;
+            resetSablonModal();
+
+            sablonId = $(elem).attr("data-sablon-id");
+
+            $('#modal-sablon-id').val(parseInt(sablonId));
+
+            url = "{{ url_for('bap_yonetimi.SablonlarView:get_bap_sablon', sablon_id=-1) }}";
+            url = url.replace("-1", sablonId);
+
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (result) {
+                    sablonData = result.sablon_data;
+                    sablonSelector.sablonAdiSelector.val(sablonData.sablon_adi);
+                    sablonSelector.sablonQueryFunctionSelector.val(sablonData.query_id);
+                    sablonSelector.sablonKullanilabilirMiSelector.prop("checked", sablonData.kullanilabilir_mi);
+                    sablonSelector.sablonText.val(sablonData.sablon_text);
+                    sablonSelector.modalSelector.modal("show");
+                },
+                error: function () {
+                    swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                        icon: "warning",
+                        timer: 2000,
+                        buttons: false
+                    });
+                }
+            });
+        }
+
+        $("#sablon-duzenle").on("click", function () {
+            let url, sablonId, modal;
+            modal = $("#bap-sablon-modal");
+            sablonId = $("#modal-sablon-id").val();
+            url = "{{ url_for('bap_yonetimi.SablonlarView:bap_sablon_guncelle', sablon_id=-1) }}";
+            url = url.replace("-1", sablonId);
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(get_sablon_data()),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function () {
+                    let redirectUrl;
+                    redirectUrl = "{{ url_for('bap_yonetimi.SablonlarView:belge_sablonlari') }}";
+
+                    swal("{{ _("Şablon Başarıyla güncellendi.") }}", {
+                        icon: "success",
+                        timer: 2000,
+                        buttons: false
+                    }).then(function () {
+                        window.location.replace(redirectUrl);
+                    });
+                },
+                error: function () {
+                    swal("{{ _("Şablon Güncellenirken Sorun Oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+            modal.modal('toggle');
+        });
+    </script>
+    {{ render_sablon_preview_modal(is_button_active=False) }}
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import custom_serverside_table %}
+    {{ custom_serverside_table(endpoint=url_for('bap_yonetimi.sablon_search'), id="data-table",ara_button_id="#ara",temizle_button_id="#temizle",search_form_id='#detayli-arama-form') }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $(document).ready(function () {
+            CodeMirror.fromTextArea($('.code_area')[0], {
+                lineNumbers: true,
+                mode: "jinja2",
+                theme: "monokai"
+            });
+        });
+    </script>
+{% endblock %}

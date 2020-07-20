@@ -1,0 +1,19 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+
+{#datetime field label solda olacak sekilde  yazar#}
+{% macro render_datetime_field(field, title) %}
+    {{ field.label(class="control-label") }}
+    {{ field(class="form-control", **kwargs)|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+{#datetime field label solda olacak sekilde ve tooltipli yazar#}
+{% macro render_datetime_field_with_tooltip(field,title) %}
+    {{ field.label(class="control-label") }}
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+       data-original-title="{{ title }}"></i>
+    {{ field(class="form-control", **kwargs)|safe }}
+
+    {{ error(field) }}
+{% endmacro %}

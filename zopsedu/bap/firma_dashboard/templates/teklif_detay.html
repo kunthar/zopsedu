@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">   {{ _("Firma Teklif Detayı") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a class="btn btn-success"
+                   href="{{ url_for('firma.BapFirmaIslemleriView:firma_dashboard') }}">
+                    <b>{{ _("Firma Anasayfa") }}</b>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ render_yapilan_teklifler(teklif_kalemleri_data) }}
+                    {{ render_teklif_dosya(teklif_dosyalari) }}
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search_without_buttons %}
+    {{ table_manage_buttons_init_without_search_without_buttons(id="data-table-1") }}
+    {{ table_manage_buttons_init_without_search_without_buttons(id="data-table-2") }}
+{% endblock %}
+
+{% macro render_yapilan_teklifler(teklif_kalemleri) %}
+    <h4 class="form-section"> {{ _("Teklife Eklenen Dosyalar") }}</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-1"
+                   class="table table-striped table-bordered"
+                   role="grid"
+                   aria-describedby="data-table_info"
+                   style="width: 100%;">
+                <thead>
+
+                <tr role="row">
+                    <th>{{ _("#") }}</th>
+                    <th>{{ _("Kalem Adı") }}</th>
+                    <th>{{ _("Miktar") }}</th>
+                    <th>{{ _("Marka Model") }}</th>
+                    <th>{{ _("Tutar") }}</th>
+                    <th>{{ _("KDV Oranı") }}</th>
+                    <th>{{ _("Teslim Süresi(Gün)") }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for teklif_kalemi in teklif_kalemleri_data %}
+                    <tr class="odd" role="row">
+                        <td class="sorting_1">
+                            {{ loop.index }}
+                        </td>
+                        <td>{{ teklif_kalemi.kalem_adi }}</td>
+                        <td>{{ teklif_kalemi.talep_miktari }} {{ teklif_kalemi.birimi }}</td>
+                        <td>{{ teklif_kalemi.marka_model }}</td>
+                        <td>{{ teklif_kalemi.teklif | currency }}</td>
+                        <td>{{ teklif_kalemi.kdv_orani }}</td>
+                        <td>{{ teklif_kalemi.teslimat_suresi }} {{ _("Gün") }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_teklif_dosya(teklif_dosyalari) %}
+    <h4 class="form-section"> {{ _("Teklife Eklenen Dosyalar") }}</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data-table-2"
+                   class="table table-striped table-bordered"
+                   role="grid"
+                   aria-describedby="data-table_info"
+                   style="width: 100%;">
+                <thead>
+
+                <tr role="row">
+                    <th>{{ _("#") }}</th>
+                    <th>{{ _("Yüklenen Dosya") }}</th>
+                    <th>{{ _("Kategorisi") }}</th>
+                    <th>{{ _("Açıklama") }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for teklif_dosya in teklif_dosyalari %}
+                    <tr class="odd" role="row">
+                        <td>
+                            {{ loop.index }}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('FileView:file_download', file_id=teklif_dosya.file_id) }}">
+                                <button class="btn btn-info">
+                                    {{ _("İndir") }}
+                                </button>
+                            </a>
+                        </td>
+                        <td>{{ teklif_dosya.dosya_kategori.value }}</td>
+                        <td>{{ teklif_dosya.aciklama }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+

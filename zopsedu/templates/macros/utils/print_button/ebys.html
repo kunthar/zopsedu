@@ -1,0 +1,106 @@
+{% macro ebys_button(selectorToExport, endpoint=url_for('ebys.EbysView:ebys_imzala'), as_attachment=True, sablon_type_id=None) %}
+    {% set form_uuid = uuid() %}
+    <div>
+        <script>
+            $(document).ready(function () {
+                findSignersOfDocument_{{ form_uuid }} = function () {
+                    let sablonTypeId = $("#sablon_type_id").val();
+                    let ebysQueryId = $("#ebys_query_id").val();
+                    $("#sablon_type_id_{{ form_uuid }}").val(sablonTypeId);
+                    $("#ebys_query_id_{{ form_uuid }}").val(ebysQueryId);
+                    let template = $("{{ selectorToExport }}").html();
+                    $("#exportPdf_form_template_input_{{ form_uuid }}").val(template);
+                    $.ajax({
+                        url: "{{ url_for('ebys.EbysView:find_signers_of_document') }}",
+                        type: "POST",
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        data: JSON.stringify({"sablon_type_id": sablonTypeId, 'ebys_query_id': ebysQueryId}),
+                        success: function (response) {
+                            var elem = document.createElement("div");
+                            elem.innerHTML = response.data.imzacilar;
+                            swal({
+                                content: elem,
+                                icon: "warning",
+                                buttons: {
+                                    cancel: {
+                                        text: "Vazgeç",
+                                        value: false,
+                                        visible: !0,
+                                        closeModal: !0
+                                    },
+                                    confirm: {
+                                        text: "Kabul Et",
+                                        value: true,
+                                        visible: true,
+                                        closeModal: false
+                                    }
+                                }
+                            }).then((willSave) => {
+                                if (willSave) {
+                                    $.ajax({
+                                        url: "{{ url_for('ebys.EbysView:ebys_imzala') }}",
+                                        type: "POST",
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        data: JSON.stringify({
+                                            'form': $("#exportPdf_form_{{ form_uuid }}").serializeArray()
+                                        }),
+                                        success: function (response) {
+                                            swal({
+                                                title: "{{ _("İşleminiz başarıyla gerçekleştirildi") }}",
+                                                icon: "success",
+                                                timer: 3000,
+                                                buttons: false
+                                            });
+                                        },
+                                        error: function (err) {
+                                            swal({
+                                                title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz") }}",
+                                                icon: "error",
+                                                timer: 3000,
+                                                buttons: false
+                                            });
+                                        }
+                                    });
+
+
+                                } else {
+                                    swal("{{ _("Belgeyi EBYS sistemine göndermekten vazgeçtiniz.!") }}",{
+                                        icon:"warning",
+                                        timer:4000,
+                                        button:false
+                                    });
+                                }
+                            });
+                        },
+                        error: function (result) {
+                            swal({
+                                title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz") }}",
+                                icon: "error",
+                                timer: 4000,
+                                buttons: false
+                            });
+                        }
+                    });
+                };
+            });
+        </script>
+
+        <button class="btn btn-info btn-block"
+                onclick="findSignersOfDocument_{{ form_uuid }}();">
+            <img src="{{ url_for('static', filename = 'assets/zopsedu/img/envision2.png') }}">
+            {{ _("EBYS evrak gönder") }}</button>
+        <form {% if not as_attachment %}target="_blank" {% endif %}style="display: none" action="{{ endpoint }}"
+              method="post" id="exportPdf_form_{{ form_uuid }}">
+            <input type="hidden" id="exportPdf_form_template_input_{{ form_uuid }}" name="template">
+            <input type="hidden" id="csrf_token_{{ form_uuid }}" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="hidden" id="sablon_type_id_{{ form_uuid }}" name="sablon_type_id" value=""/>
+            <input type="hidden" id="ebys_query_id_{{ form_uuid }}" name="ebys_query_id" value=""/>
+            {% if not as_attachment %}
+                <input id="attachment_{{ form_uuid }}" name="attachment" type="hidden" value="false"/>{% endif %}
+        </form>
+    </div>
+{% endmacro %}
+
+

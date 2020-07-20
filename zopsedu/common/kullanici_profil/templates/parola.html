@@ -1,0 +1,47 @@
+{% extends "profil_base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from "macros/form_helpers/error_fields.html" import error %}
+
+{% block profil %}
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        {{ big_flash_message() }}
+                        <form class="form" method="post">
+                            {{ parola_form.csrf_token }}
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <div class="text-center col-md-12">
+                                        {{ parola_form.old_password(**{'class':'form-control form-control-lg'}) }}
+                                        {{ error(parola_form.old_password ) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="text-center col-md-12">
+                                        {{ parola_form.new_password(**{'class':'form-control form-control-lg'}) }}
+                                         {{ error(parola_form.new_password) }}
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="text-center col-md-12">
+                                        {{ parola_form.re_password(**{'class':'form-control form-control-lg'}) }}
+                                        {{ error(parola_form.re_password) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="text-center col-md-12">
+                                    {{ parola_form.degistir(class='btn btn-success') }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

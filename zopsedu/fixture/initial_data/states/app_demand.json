@@ -1,0 +1,60 @@
+{
+  "app_demand": [
+    {
+      "id": 1,
+      "action_code": "PD0",
+      "description": "Talep taslak durumunda",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 2,
+      "action_code": "PD1",
+      "description": "Talep dilekçesinin BAP birimine teslimi bekleniyor",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 3,
+      "action_code": "PD2",
+      "description": "BAP birimi talebi değerlendiriyor",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 4,
+      "action_code": "PD3",
+      "description": "Talep koordinatörlük onayı için bekliyor",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 5,
+      "action_code": "PD4",
+      "description": "Talep denetleme kurulu görüşü için bekleniyor",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 6,
+      "action_code": "PD5",
+      "description": "Talep reddedildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    },
+    {
+      "id": 7,
+      "action_code": "PD6",
+      "description": "Talep kabul edildi",
+      "module_name": "bap",
+      "universite_id": 0,
+      "sub_module_name": "bap_proje"
+    }
+  ]
+}

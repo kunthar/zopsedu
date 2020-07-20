@@ -1,0 +1,1036 @@
+{
+  "app_state": [
+    {
+      "id": "1",
+      "state_code": "P1",
+      "description": "Başvuru yapıldı, ıslak/dijital imzalı belgelerin BAP Koordinatörlüğüne teslim edilmesi bekleniyor",
+      "possible_states": [
+        "P2",
+        "P3",
+        "P4",
+        "P7",
+        "P25",
+        "P30"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "2",
+      "state_code": "P2",
+      "description": "Projenin ait olduğu birim amirinin başvuruyu onaylaması bekleniyor",
+      "possible_states": [
+        "P3",
+        "P4",
+        "P7",
+        "P25",
+        "P30"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "3",
+      "state_code": "P3",
+      "description": "Başvurunun BAP Koordinatörlüğü tarafından incelemeye alınması bekleniyor",
+      "possible_states": [
+        "P2",
+        "P4",
+        "P23",
+        "P25",
+        "P30"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA19",
+        "PA20"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "4",
+      "state_code": "P4",
+      "description": "BAP Koordinatörlüğü başvuruyu değerlendirmek üzere belgeleri teslim aldı",
+      "possible_states": [
+        "P5",
+        "P6",
+        "P25",
+        "P30"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "5",
+      "state_code": "P5",
+      "description": "Başvuru, Hakem ya da Bilim Kurulu değerlendirmesinde",
+      "possible_states": [
+        "P6",
+        "P25"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA10",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "6",
+      "state_code": "P6",
+      "description": "BAP Koordinatörlüğü proje başvurusunu değerlendiriyor",
+      "possible_states": [
+        "P5",
+        "P7",
+        "P8",
+        "P9"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "7",
+      "state_code": "P7",
+      "description": "Proje başvurusu reddedildi",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "8",
+      "state_code": "P8",
+      "description": "Başvuru kabul edildi, sözleşme bekleniyor",
+      "possible_states": [
+        "P11",
+        "P23",
+        "P25"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "9",
+      "state_code": "P9",
+      "description": "Başvurunun onaylanması için yürütücü revizyonu bekleniyor",
+      "possible_states": [
+        "P10",
+        "P23",
+        "P25"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "10",
+      "state_code": "P10",
+      "description": "Yürütücü revizyonu tamamlandı, BAP Koordinatörlüğünün değerlendirmesi bekleniyor",
+      "possible_states": [
+        "P6",
+        "P23",
+        "P25"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA20",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "11",
+      "state_code": "P11",
+      "description": "Proje devam ediyor",
+      "possible_states": [
+        "P12",
+        "P16",
+        "P22",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6",
+        "PA12",
+        "PA14",
+        "PA16",
+        "PA19"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "12",
+      "state_code": "P12",
+      "description": "Ara rapor teslimi bekleniyor",
+      "possible_states": [
+        "P13",
+        "P14",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA3",
+        "PA7",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "13",
+      "state_code": "P13",
+      "description": "Ara rapor incelenmek üzere hakeme gonderildi",
+      "possible_states": [
+        "P14",
+        "P15",
+        "P20",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "14",
+      "state_code": "P14",
+      "description": "Ara rapor BAP Koordinatörlüğü tarafından inceleniyor",
+      "possible_states": [
+        "P13",
+        "P15",
+        "P20",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "15",
+      "state_code": "P15",
+      "description": "Ara rapor incelemesi tamamlandı.",
+      "possible_states": [
+        "P11",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "16",
+      "state_code": "P16",
+      "description": "Sonuç raporu teslimi bekleniyor",
+      "possible_states": [
+        "P17",
+        "P18",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "17",
+      "state_code": "P17",
+      "description": "Sonuç raporu BAP Koordinatörlüğü tarafından inceleniyor",
+      "possible_states": [
+        "P18",
+        "P19",
+        "P20",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "18",
+      "state_code": "P18",
+      "description": "Sonuç raporu hakeme gonderildi",
+      "possible_states": [
+        "P17",
+        "P19",
+        "P20",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "19",
+      "state_code": "P19",
+      "description": "Sonuç raporu kabul edildi",
+      "possible_states": [
+        "P22",
+        "P28",
+        "P29",
+        "P32"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "20",
+      "state_code": "P20",
+      "description": "Ara/sonuç raporu revizyonu bekleniyor",
+      "possible_states": [
+        "P21",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "21",
+      "state_code": "P21",
+      "description": "Ara/sonuç raporu revizyonu BAP Koordinatörlüğü tarafindan incelenmeyi bekliyor",
+      "possible_states": [
+        "P15",
+        "P19",
+        "P23",
+        "P24",
+        "P26",
+        "P27",
+        "P29",
+        "P31",
+        "P32",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA7",
+        "PA11",
+        "PA12",
+        "PA13",
+        "PA14",
+        "PA16"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "22",
+      "state_code": "P22",
+      "description": "Proje tamamlandı",
+      "possible_states": [],
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "current_app_state": "son",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "23",
+      "state_code": "P23",
+      "description": "Proje iptal edildi",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "24",
+      "state_code": "P24",
+      "description": "Proje donduruldu",
+      "possible_states": [
+        "P11",
+        "P23",
+        "P27",
+        "P33",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "25",
+      "state_code": "P25",
+      "description": "Proje başvurusu geri çekildi/yürürlükten kaldırıldı",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "26",
+      "state_code": "P26",
+      "description": "Projeye ait bütçe ve satın alma işlemleri donduruldu",
+      "possible_states": [
+        "P11",
+        "P23",
+        "P27",
+        "P33",
+        "P34"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "28",
+      "state_code": "P28",
+      "description": "Yayın bekleniyor",
+      "possible_states": [
+        "P11"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "29",
+      "state_code": "P29",
+      "description": "BAP Koordinatörlüğü bütçe değerlendirmesi bekleniyor",
+      "possible_states": [
+        "P11"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "30",
+      "state_code": "P30",
+      "description": "Proje işleme alınmadı, bekletiliyor",
+      "possible_states": [
+        "P11"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "32",
+      "state_code": "P32",
+      "description": "Etik kurulu raporu bekleniyor",
+      "possible_states": [
+        "P11"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3",
+        "PA6"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "33",
+      "state_code": "P33",
+      "description": "Projenin iptal edilmesi bekleniyor",
+      "possible_states": [],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_proje",
+      "state_type": "proje",
+      "possible_actions": [
+        "PA1",
+        "PA2",
+        "PA3"
+      ],
+      "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "34",
+      "state_code": "ST1",
+      "description": "Proje yürütücüsü satınalma talebi yaptı",
+      "possible_states": [
+        "ST2",
+        "ST11"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [],
+      "possible_template_types": [37],
+      "universite_id": "0"
+    },
+    {
+      "id": "35",
+      "state_code": "ST2",
+      "description": "Satınalma talebi BAP Yetkilisi tarafından değerlendiriliyor",
+      "possible_states": [
+        "ST3",
+        "ST11"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": ["STA1", "STA15"],
+       "possible_template_types": [37,39,40,38],
+
+      "universite_id": "0"
+    },
+    {
+      "id": "36",
+      "state_code": "ST3",
+      "description": "Satınalma talebi BAP Koordinatörlüğü tarafından değerlendiriliyor",
+      "possible_states": [
+        "ST4",
+        "ST11"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": ["STA1", "STA15"],
+       "possible_template_types": [37,39,40,38],
+      "universite_id": "0"
+    },
+    {
+      "id": "37",
+      "state_code": "ST4",
+      "description": "Satınalma talebi BAP Koordinatörlüğü tarafından onaylandı",
+      "possible_states": [
+        "ST5",
+        "ST12"
+      ],
+      "current_app_state": "basvuru_kabul",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1"
+      ],
+       "possible_template_types": [37,39,40,38],
+      "universite_id": "0"
+    },
+    {
+      "id": "38",
+      "state_code": "ST5",
+      "description": "Satınalma duyurusu yapıldı",
+      "possible_states": [
+        "ST6",
+        "ST12",
+        "ST13"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": ["STA1","STA3", "STA15"],
+       "possible_template_types": [37,39,40,38],
+      "universite_id": "0"
+    },
+    {
+      "id": "39",
+      "state_code": "ST6",
+      "description": "Satınalma duyurusu tamamlandı",
+      "possible_states": [
+        "ST7",
+        "ST12",
+        "ST13"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1"
+      ],
+       "possible_template_types": [37,39,40,38],
+      "universite_id": "0"
+    },
+    {
+      "id": "40",
+      "state_code": "ST7",
+      "description": "Sipariş verildi",
+      "possible_states": [
+        "ST8",
+        "ST12",
+        "ST13"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1",
+        "STA7",
+        "STA8",
+        "STA9",
+        "STA10",
+        "STA11",
+        "STA13"
+      ],
+       "possible_template_types": [37,39,40,38,44],
+      "universite_id": "0"
+    },
+    {
+      "id": "41",
+      "state_code": "ST8",
+      "description": "Teslim alınan ürünler muayene kabul komisyonu tarafından inceleniyor",
+      "possible_states": [
+        "ST9",
+        "ST10",
+        "ST12",
+        "ST13"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1",
+        "STA7",
+        "STA8",
+        "STA9",
+        "STA10",
+        "STA11",
+        "STA13"
+      ],
+       "possible_template_types": [37,39,40,38,42,44],
+      "universite_id": "0"
+    },
+    {
+      "id": "42",
+      "state_code": "ST9",
+      "description": "Satınalma işlemleri tamamlandı",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [],
+       "possible_template_types": [37,39,40,38,42,44],
+      "universite_id": "0"
+    },
+    {
+      "id": "43",
+      "state_code": "ST10",
+      "description": "Satınalma kısmen tamamlandı",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1"
+      ],
+       "possible_template_types": [37,39,40,38,42,44],
+      "universite_id": "0"
+    },
+    {
+      "id": "44",
+      "state_code": "ST11",
+      "description": "Satınalma talebi reddedildi",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [],
+       "possible_template_types": [37,39,40,38,42,44],
+      "universite_id": "0"
+    },
+    {
+      "id": "45",
+      "state_code": "ST12",
+      "description": "Satınalma iptal edildi",
+      "possible_states": [],
+      "current_app_state": "son",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [],
+       "possible_template_types": [],
+      "universite_id": "0"
+    },
+    {
+      "id": "46",
+      "state_code": "ST13",
+      "description": "Satınalma işlemleri devam ediyor",
+      "possible_states": [
+        "ST7",
+        "ST8",
+        "ST9",
+        "ST10"
+      ],
+      "current_app_state": "devam",
+      "module_name": "bap",
+      "sub_module_name": "bap_satinalma",
+      "state_type": "satinalma",
+      "possible_actions": [
+        "STA1"
+      ],
+       "possible_template_types": [],
+      "universite_id": "0"
+    }
+  ]
+}
+

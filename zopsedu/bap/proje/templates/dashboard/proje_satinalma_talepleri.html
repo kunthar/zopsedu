@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+{% from 'macros/form_helpers/checkbox_fields.html' import render_checkbox %}
+{% from 'macros/form_helpers/select2_fields.html' import render_select2field_with_label %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+
+{% set states_info = next_states_info %}
+{% set actions_info = actions_info %}
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+{% macro proje_dashboard_satinalma_talepleri() %}
+
+    {{ big_flash_message() }}
+    <section id="page-tabs" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="nav-item">
+                        <a href="#nav-tab-proje-kalemleri"
+                           data-toggle="tab"
+                           class="nav-link active">{{ _("Proje Kalemleri") }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#nav-tab-satinalma-talepleri" data-toggle="tab"
+                           class="nav-link">{{ _("Satınalma Talepleri") }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="page-tab-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="tab-content px-1">
+                    <div class="tab-pane fade active show" id="nav-tab-proje-kalemleri">
+                        {{ render_proje_kalemleri(proje_kalemleri_data) }}
+                    </div>
+                    <div class="tab-pane fade" id="nav-tab-satinalma-talepleri">
+                        {{ proje_satin_alma_talepleri_datatable() }}
+                        {{ duyuru_get_script() }}
+                        {{ duyuru_duzenle_modal() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search(id="data-table-satinalma-talepleri") }}
+    {% for index in proje_kalemleri_data.items() %}
+        {{ table_manage_buttons_init_without_search(id=loop.index) }}
+    {% endfor %}
+
+
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    </script>
+
+{% endmacro %}
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Satınalma Talepleri"),
+           proje_dashboard_satinalma_talepleri(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu) }}
+{% endblock %}
+
+
+{% macro proje_satin_alma_talepleri_datatable() %}
+    {% if satinalma_talepleri_uyari_mesajlari %}
+        {{ render_alert_list(satinalma_talepleri_uyari_mesajlari) }}
+    {% endif %}
+    <div class="card-content collapse show">
+        <div class="card-body card-dashboard">
+            <table id="data-table-satinalma-talepleri"
+                   class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                   role="grid"
+                   aria-describedby="data-table_info" style="width: 100%">
+                <thead>
+                <tr role="row">
+                    <th> {{ _("#") }}
+                    </th>
+                    <th>{{ _("Talep No") }}
+                    </th>
+                    <th>{{ _("Talep Tarihi") }}
+                    </th>
+                    <th>{{ _("Satınalma Durumu") }}
+                    </th>
+                    <th>{{ _("Satınalma Durum Açıklaması") }}
+                    </th>
+                    <th>{{ _("İşlemler") }}
+                    </th>
+                    {% if yetkili_mi %}
+                        <th class="all">{{ _("Detay") }}
+                        </th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for proje_satinalma_talebi in proje_satinalma_talepleri %}
+                    <tr role="row">
+                        <td>
+                            {{ loop.index }}
+                        </td>
+                        <td>
+                            {{ proje_satinalma_talebi.talep_numarasi }}
+                        </td>
+                        <td>
+                            {{ date_to_string(proje_satinalma_talebi.created_at) }}
+                        </td>
+                        <td>
+                            {{ proje_satinalma_talebi.state_code }}
+                        </td>
+                        <td>
+                            {{ proje_satinalma_talebi.state_description }}
+                        </td>
+                        {#                yetkili kisiyi satinalma dashboarda yonlendirmek icin link#}
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-info dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                        class="icon-settings mr-1"></i>{{ _("İşlemler") }}
+                                </button>
+                                <div class="dropdown-menu arrow">
+                                    {% if proje_satinalma_talebi.duyuru_duzenlensin_mi %}
+
+                                        <a class="dropdown-item" href="#duyuru-duzenle-modal"
+                                           data-toggle="modal"
+                                           onclick="duyuru_get_modal('{{ proje_satinalma_talebi.duyuru_id }}');">
+                                            {{ _('Duyuru Düzenle') }}
+                                        </a>
+                                    {% endif %}
+                                    {% if proje_satinalma_talebi.teknik_sartname_duzenlensin_mi %}
+                                        <li>
+                                            <a class="dropdown-item"
+                                               href="{{ url_for("proje.ProjeSatinalmaTalepleriView:satinalma_teknik_sartname_duzenle",
+                                                               proje_id=proje_id,
+                                                               satinalma_id=proje_satinalma_talebi.satinalma_id) }}">
+                                                {{ _('Teknik Şartname Düzenle') }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </td>
+                        {% if yetkili_mi %}
+                            <td>
+                                <a class="detail_arrow"
+                                   href="{{ url_for("satinalma.satinalma_dashboard", satinalma_id=proje_satinalma_talebi.satinalma_id) }}">
+                                    <span class="fa fa-arrow-circle-right fa-2x "></span>
+                                </a>
+                            </td>
+                        {% endif %}
+                        {#                satinalmanin durumuna gore yapilacak islemler(duyuru duzenlenmesi istenme durumu, teknik sartname duzenleme durumu)#}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro render_proje_kalemleri(proje_kalemleri) %}
+    {% for butce_kalemi_adi, proje_kalem_bilgisi in proje_kalemleri.items() %}
+        <section class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ butce_kalemi_adi }}</h4>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <table id="{{ loop.index }}"
+                           class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                           role="grid"
+                           aria-describedby="data-table_info" style="width: 100%">
+                        <thead>
+                        <tr role="row">
+                            <th>{{ _("#") }}</th>
+                            <th>{{ _("Proje Kalemi") }}</th>
+                            <th>{{ _("Toplam Miktar") }}</th>
+                            <th>{{ _("Kullanılan Miktar") }}</th>
+                            <th>{{ _("Rezerv Miktar") }}</th>
+                            <th>{{ _("Kullanılabilir Miktar") }}</th>
+                            <th>{{ _("Toplam Bütçe") }}</th>
+                            <th>{{ _("Harcanan Bütçe") }}</th>
+                            <th>{{ _("Rezerv Bütçe") }}</th>
+                            <th>{{ _("Kullanılabilir Bütçe") }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for proje_kalemi in proje_kalem_bilgisi.proje_kalemleri %}
+                            <tr class="gradeA odd" role="row">
+                                <td> {{ loop.index }} </td>
+                                <td> {{ proje_kalemi.proje_kalemi_ad }} </td>
+                                <td> {{ proje_kalemi.toplam_miktar }} {{ proje_kalemi.birim }}</td>
+                                <td> {{ proje_kalemi.kullanilan_miktar }} {{ proje_kalemi.birim }}</td>
+                                <td> {{ proje_kalemi.rezerv_edilen_miktar }} {{ proje_kalemi.birim }}</td>
+                                <td> {{ proje_kalemi.kullanilabilir_miktar }} {{ proje_kalemi.birim }}</td>
+                                <td> {{ proje_kalemi.toplam_butce | tr_currency }} </td>
+                                <td> {{ proje_kalemi.kullanilan_butce | tr_currency }} </td>
+                                <td> {{ proje_kalemi.rezerv_edilen_butce | tr_currency }} </td>
+                                <td> {{ proje_kalemi.kullanilabilir_butce | tr_currency }} </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% if proje_kalem_bilgisi.satinalma_talebi_yapilabilir_mi and proje_durum.current_app_state.name == "devam" %}
+                    <div class="text-center col-md-12">
+                        <a class="btn btn-success"
+                           href="{{ url_for('proje.ProjeSatinalmaTalepleriView:satinalma_talep_get',
+                                              proje_id=proje_id,
+                                              butce_kalemi_id=proje_kalem_bilgisi.butce_kalemi_id) }}">{{ _("Satınalma Talebi Yap") }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    {% endfor %}
+{% endmacro %}
+
+{% macro duyuru_duzenle_modal() %}
+    <div class="modal fade" id="duyuru-duzenle-modal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ _('Duyuru Düzenle') }}</h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;
+                    </button>
+                </div>
+                <div class="modal-body" id="duyuru_duzenle_modal_body">
+
+                </div>
+                <hr>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                    <button type="button" class="btn btn-outline-success"
+                            onclick="duyuru_kaydet();">{{ _('Kaydet') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        duyuru_kaydet = function () {
+            swal({
+                title: "{{ _("Duyuru içeriğini kaydetmek istedğinize emin misiniz?") }}",
+                icon: "warning",
+                buttons: {
+                    cancel: {
+                        text: "Vazgeç",
+                        value: false,
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Kabul Et",
+                        value: true,
+                        visible: true,
+                        closeModal: true
+                    }
+                }
+            })
+                .then((willSave) => {
+                    if (willSave) {
+                        $.ajax({
+                            url: "{{ url_for('proje.duyuru_kaydet', proje_id=proje_id) }}",
+                            type: "POST",
+                            contentType: "application/json",
+                            dataType: "json",
+                            data: JSON.stringify({'duyuru_form': $('#duyuru-duzenle-form').serializeArray()}),
+                            success: function (response) {
+                                $('#duyuru-duzenle-modal').modal('hide');
+                                swal({
+                                    title: "{{ _("Duyuru başarıyla kaydedildi!") }}",
+                                    icon: "success",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                window.location = "{{ url_for('proje.satinalma_talepleri', proje_id=proje_id)}}"
+                            },
+                            error: function (err) {
+                                swal({
+                                    title: err.responseJSON.message,
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                                if (err.responseJSON.data.duyuru_form) {
+                                    $('#duyuru_duzenle_modal_body').empty();
+                                    $('#duyuru_duzenle_modal_body').append(err.responseJSON.data.duyuru_form);
+                                }
+                            }
+                        });
+                    } else {
+                        swal("{{ _("Duyuru içeriğini kaydetmekten vazgeçtiniz!") }}", {
+                            icon: "warning",
+                            timer: 4000,
+                            buttons: false
+                        });
+                    }
+                });
+        };
+    </script>
+{% endmacro %}
+
+{% macro duyuru_get_script() %}
+    <script>
+        duyuru_get_modal = function (duyuru_id) {
+            $.ajax({
+                url: "{{ url_for('proje.duyuru_goster', proje_id=proje_id ) }}",
+                type: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify({"duyuru_id": duyuru_id}),
+                success: function (response) {
+                    $('#duyuru_duzenle_modal_body').empty();
+                    $('#duyuru_duzenle_modal_body').append(response.data.duyuru);
+                    $('#duyuru-duzenle-modal').modal('show');
+
+                },
+                error: function (err) {
+                    $('#duyuru-duzenle-modal').modal('hide');
+                    swal({
+                        title: "{{ _("Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.!") }}",
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+        }
+    </script>
+{% endmacro %}

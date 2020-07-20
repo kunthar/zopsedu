@@ -1,0 +1,111 @@
+{% if is_role('anonymous') %}
+    {% extends "anasayfa_base.html" %}
+{% else %}
+    {% extends "base.html" %}
+{% endif %}
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("BAP Duyurular") }} </h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('anasayfa.BapAnasayfaView:bap_anasayfa') }}">
+                    <button class="btn btn-success">
+                        {{ _("Anasayfa") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div id="data-table_wrapper"
+                         class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table id="data-table"
+                               class="table table-striped table-bordered dataTable no-footer dtr-inline"
+                               role="grid"
+                               aria-describedby="data-table_info">
+                            <thead>
+                            <tr role="row">
+                                <th class="all sorting_asc" tabindex="0"
+                                    aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 5%;">
+                                    {{ _("#") }}
+                                </th>
+
+                                <th class="all sorting_asc" tabindex="0"
+                                    aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 100px;">
+                                    {{ _("Konu") }}
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 100px;">
+                                    {{ _("Eklenme Tarihi") }}
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 100px;">
+                                    {{ _("Son Geçerlilik Tarihi") }}
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 100px;">
+                                    {{ _("Ekleyen") }}
+                                </th>
+                                <th class="all sorting_asc" tabindex="0"
+                                    aria-controls="data-table"
+                                    rowspan="1"
+                                    colspan="1" aria-sort="ascending"
+                                    aria-label="Rendering engine: activate to sort column descending"
+                                    style="width: 1px;">
+                                    {{ _("Detay") }}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for duyuru in duyurular %}
+                                <tr class="odd" role="row">
+                                    <td class="sorting_1">{{ loop.index }} </td>
+                                    <td class="sorting_1">{{ duyuru.baslik }}</td>
+                                    <td class="sorting_1">
+                                        {{ date_to_string(duyuru.baslangic_tarihi) }}
+                                    </td>
+                                    <td class="sorting_1">
+                                        {{ date_to_string(duyuru.bitis_tarihi) }}
+                                    </td>
+                                    <td class="sorting_1">{{ duyuru.ekleyen_ad + " " + duyuru.ekleyen_soyad }}</td>
+                                    <td><a class="detail_arrow"
+                                           href="{{ url_for(duyuru_detay_endpoint, duyuru_id=duyuru.id) }}"><span
+                                            class="fa fa-arrow-circle-right fa-2x "></span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search_without_buttons %}
+    {{ table_manage_buttons_init_without_search_without_buttons() }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}

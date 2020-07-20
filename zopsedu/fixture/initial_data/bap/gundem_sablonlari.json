@@ -1,0 +1,186 @@
+{
+  "gundem_sablon": [
+    {
+      "id": 1,
+      "sablon_tipi": "genel",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}' in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi} }\"</i> konulu projesine ilişkin olarak <b>../../.....</b> tarihli dilekçesine istinaden .............................................................. talebinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}' in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi} }\"</i> konulu projesine ilişkin olarak <b>../../.....</b> tarihli dilekçesine istinaden .............................................................. talebinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 2,
+      "sablon_tipi": "projenin_desteklenmesi",
+      "aciklama": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{ proje.fakulte_ad  }}(<b>{{ proje.bolum_ad }}</b>) ilgili yazıları ekinde gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad  }} {{  proje.yurutucu_ad  }} {{ proje.yurutucu_soyad }}'in {{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesinin hakem görüşleri doğrultusunda <b>{{ proje.teklif_edilen_butce }}-TL ile {{ proje.teklif_edilen_baslama_tarihi}}'nden itibaren {{proje.proje_suresi}} {{proje.proje_suresi_birimi.value}} süre</b> ile desteklenmesi",
+      "karar": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{ proje.fakulte_ad  }}(<b>{{ proje.bolum_ad }}</b>) ilgili yazıları ekinde gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad  }} {{  proje.yurutucu_ad  }} {{ proje.yurutucu_soyad }}'in <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesinin hakem görüşleri doğrultusunda <b>{{ proje.teklif_edilen_butce }}-TL ile {{ proje.teklif_edilen_baslama_tarihi}}'nden itibaren {{proje.proje_suresi}} {{proje.proje_suresi_birimi.value}} süre</b> ile desteklenmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 3,
+      "sablon_tipi": "nitelik_gelistirme_ust_projesi",
+      "aciklama": "Araştırmacılığını <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}' in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu proje kapsamındaki {{ proje.kabul_edilen_baslama_tarihi }} tarihinden geçerli olmak üzere kongre/yayın/aka.görevlendirme destek başvurularına ilişkin",
+      "karar": "Araştırmacılığını <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}' in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu proje kapsamındaki {{ proje.kabul_edilen_baslama_tarihi }} tarihinden geçerli olmak üzere kongre/yayın/aka.görevlendirme destek başvurularına ilişkin",
+      "kategori": "genel"
+    },
+    {
+      "id": 4,
+      "sablon_tipi": "projenin_hakeme_gonderilmesi",
+      "aciklama": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{ proje.fakulte_ad }} (<b>{{proje.bolum_ad }}</b>) ... / ... / ....... tarihli <b>{{ proje.proje_no }}</b> nolu gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b><b>{{proje.proje_turu_ad}}</b> türündeki <i>\"{{proje.proje_basligi}}\"</i> konulu projesinin hakem görüşü alınmak üzere ...................",
+      "karar": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{ proje.fakulte_ad }} (<b>{{proje.bolum_ad }}</b>) ... / ... / ....... tarihli <b>{{ proje.proje_no }}</b> nolu gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b><b>{{proje.proje_turu_ad}}</b> türündeki <i>\"{{proje.proje_basligi}}\"</i> konulu projesinin hakem görüşü alınmak üzere ...................",
+      "kategori": "genel"
+    },
+    {
+      "id": 5,
+      "sablon_tipi": "projenin_sonuc_raporunun_degerlendirilmesi",
+      "aciklama": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{proje.fakulte_ad }} (<b>{{proje.bolum_ad }}</b>) ... / ... / ....... tarihli <b>{{ proje.proje_no }}</b> nolu gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b><b>{{ proje.proje_turu_ad }} </b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin sonuç raporunun incelenip, <b>projenin amacı doğrultusunda bitirilmesi</b>",
+      "karar": "Araştırma Projeleri Yönetim Birimince desteklenmesi istemiyle {{proje.fakulte_ad }} (<b>{{proje.bolum_ad }}</b>) ... / ... / ....... tarihli <b>{{ proje.proje_no }}</b> nolu gönderilen <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b><b>{{ proje.proje_turu_ad }} </b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin sonuç raporunun incelenip, <b>projenin amacı doğrultusunda bitirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 6,
+      "sablon_tipi": "projenin_ara_raporunun_degerlendirilmesi",
+      "aciklama": "Yürütücülüğünü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in yaptığı {{ proje.proje_no }} numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin. Ara raporunun incelenip, <b>projenin amacı doğrultusunda devam ettiğine</b>",
+      "karar": "Yürütücülüğünü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in yaptığı {{ proje.proje_no }} numaralı ve <b>{{ proje.prpoje_turu }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin. Ara raporunun incelenip,<b>projenin amacı doğrultusunda devam ettiğine</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 7,
+      "sablon_tipi": "ara_raporunun_hakem_deg_birlikte_degerlendirilmesi",
+      "aciklama": "Yürütücülüğünü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in yaptığı {{ proje.proje_no }} numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin. Ara raporunun hakem görüşleri teslim alınmış olup, <b>projenin amacı doğrultusunda devam edip etmediğine karar verilmesi</b>",
+      "karar": "Yürütücülüğünü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in yaptığı {{ proje.proje_no }} numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin. Ara raporunun hakem görüşleri teslim alınmış olup, <b>projenin amacı doğrultusunda devam edip etmediğine karar verilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 8,
+      "sablon_tipi": "sonuc_raporunun_hakem_deg_birlikte_degerlendirilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b> yaptığı <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin sonuç raporunun hakem görüşleri teslim alınmış olup, <b>projenin amacı doğrultusunda bitirilmesi</b> konusunda karar verilmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in </b> yaptığı <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin sonuç raporunun hakem görüşleri teslim alınmış olup, <b>projenin amacı doğrultusunda bitirilmesi</b> konusunda karar verilmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 9,
+      "sablon_tipi": "proje_yurutucu_degisikligi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b> ../../.... </b> tarihli dilekçesine istinaden  üniversiteden ayrılması nedeniyle söz konusu projenin yürütücülüğüne ........  atanması isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'in</b> yapmış olduğu <b>{{proje.proje_no}}</b> numaralı <b>{{proje.proje_turu_ad}}</b> türündeki <i>\"{{proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../..../b> tarihli dilekçesine istinaden üniversiteden ayrılması nedeniyle söz konusu projenin yürütücülüğüne .......... atanması isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 10,
+      "sablon_tipi": "projenin_butce_kalemleri_arasinda_aktarim_yapilmasi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden bütçesinde ...... isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'in</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden bütçesinde ...... isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 11,
+      "sablon_tipi": "projeye_ek_sure_verilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no}}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje süresinin <b>...... ay </b> süre ile uzatılması isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no}}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje süresinin <b>...... ay </b> süre ile uzatılması isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 12,
+      "sablon_tipi": "projeye_ek_malzeme_verilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesinde kalan <b>............ TL</b>'nin dilekçesinde belirtilen malzemelerin alımı için kullanılması isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesinde kalan <b>............ TL</b>'nin dilekçesinde belirtilen malzemelerin alımı için kullanılması isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 13,
+      "sablon_tipi": "projeye_ek_butce_ve_ek_malzeme_verilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesine <b>............ TL</b> ek ödenek ve dilekçesinde belirtilen malzemelerin alımı isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesine <b>............ TL</b> ek ödenek ve dilekçesinde belirtilen malzemelerin alımı isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 14,
+      "sablon_tipi": "projeye_ek_odenek_verilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesine <b>............ TL</b> ek ödenek isteminin <b>değerlendirilmesi</b>",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje bütçesine <b>............ TL</b> ek ödenek isteminin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 15,
+      "sablon_tipi": "proje_baslik_degistirme_talebi",
+      "aciklama": "Proje yürütücüsü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje başlığının <b>......</b> olacak şekilde değiştirilme isteğinin <b>değerlendirilmesi</b>",
+      "karar": " Proje yürütücüsü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje başlığının <b>......</b> olacak şekilde değiştirilme isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 16,
+      "sablon_tipi": "proje_turu_degistirme_talebi",
+      "aciklama": "Proje yürütücüsü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje türünün <b>......</b> türüne taşınma isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Proje yürütücüsü<b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden proje türünün <b>......</b> türüne taşınma isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 17,
+      "sablon_tipi": "projenin_kapatilmasi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b>projenin kapatılması</b> konusunda karar verilmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b>projenin kapatılması</b> konusunda karar verilmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 18,
+      "sablon_tipi": "projenin_iptal_edilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b>projenin kapatılması</b> konusunda karar verilmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b>projenin kapatılması</b> konusunda karar verilmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 19,
+      "sablon_tipi": "projeye_personel_ekleme_ve_cikarma",
+      "aciklama": "Proje yürütücüsü<b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden <b>......</b> isteğinin <b>değerlendirilmesi</b>",
+      "karar": "Proje yürütücüsü<b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}</b> tarafından yürütülen {{ proje.proje_no }} numaralı ve \"{{ proje.proje_basligi }}\" konulu <b>{{ proje.proje_turu_ad }}</b> projesine ilişkin olarak <b>../../....</b> tarihli dilekçesine istinaden <b>......</b> isteğinin <b>değerlendirilmesi</b>",
+      "kategori": "genel"
+    },
+    {
+      "id": 20,
+      "sablon_tipi": "hizli_destek_butce_talebi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}' nin</b> üstlendiği <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> ......... projenin hızlı destek bütçesinden yararlanması </b> konusunun görüşülmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}' nin</b> üstlendiği <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> ............projenin hızlı destek bütçesinden yararlanması </b> konusunun görüşülmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 21,
+      "sablon_tipi": "proje_dondurma_talebi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> üstlendiği <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> projenin dondurulma </b> konusunun görüşülmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> üstlendiği <b>{{proje.proje_no}}</b> numaralı ve <b>{{proje.proje_turu_ad}}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> ............projenin dondurulma </b> konusunun görüşülmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 22,
+      "sablon_tipi": "proje_malzeme_degistirilmesi",
+      "aciklama": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{proje.proje_no}}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> projenin ............malzemelerinde değişiklik yapılması </b> konusunda karar verilmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }}'nin</b> yapmış olduğu <b>{{proje.proje_no}}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu <b> projenin ............malzemelerinde değişiklik yapılması </b> konusunda karar verilmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 23,
+      "sablon_tipi": "diger_taleplerin_gorusulmesi",
+      "aciklama": "İçerik değiştirilebilir",
+      "karar": "İçerik değiştirilebilir",
+      "kategori": "genel"
+    },
+    {
+      "id": 24,
+      "sablon_tipi": "avans_kredi_taleplerinin_gorulmesi",
+      "aciklama": "ürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> üstlendiği <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin <b> ............projenin avans/kredi taleplerinin </b> görüşülmesi",
+      "karar": "Yürütücülüğünü <b>{{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{ proje.yurutucu_soyad }}'nin</b> üstlendiği <b>{{ proje.proje_no }}</b> numaralı ve <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> konulu projenin <b> ............projenin avans/kredi taleplerinin </b> görüşülmesi",
+      "kategori": "genel"
+    },
+    {
+      "id": 25,
+      "sablon_tipi": "proje_yayin_degerlendirilmesi",
+      "aciklama": "Yürütücülüğü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }} tarafından yapılan, {{ proje.proje_no }} numaralı, <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> isimli projede <b>......</b> adlı yayının değerlendirilmesi, ",
+      "karar": "Yürütücülüğü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }} tarafından yapılan, {{ proje.proje_no }} numaralı, <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> isimli projede <b>......</b> adlı yayının değerlendirilmesi, ",
+      "kategori": "genel"
+    },
+    {
+      "id": 26,
+      "sablon_tipi": "projenin_geri_cekilmesi_yururlukten_kaldirilmasi",
+      "aciklama": "Yürütücülüğü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }} tarafından yapılan, {{ proje.proje_no }} numaralı, <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> adlı  <b>../../....</b> tarihli dilekçeye istinaden <b>projenin geri çekilmesi-yürürlükten kaldırılması talebinin</b> görüşülmesi,",
+      "karar": "Yürütücülüğü {{ proje.yurutucu_hitap_unvan_ad }} {{ proje.yurutucu_ad }} {{proje.yurutucu_soyad }} tarafından yapılan, {{ proje.proje_no }} numaralı, <b>{{ proje.proje_turu_ad }}</b> türündeki <i>\"{{ proje.proje_basligi }}\"</i> adlı  <b>../../....</b> tarihli dilekçeye istinaden <b>projenin geri çekilmesi-yürürlükten kaldırılması talebinin</b> görüşülmesi,",
+      "kategori": "genel"
+    }
+  ]
+}

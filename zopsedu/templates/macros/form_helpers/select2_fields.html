@@ -1,0 +1,69 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+{#select2fieldi label solda olacak sekilde yazar#}
+{% macro render_select2field_with_label(field) %}
+    <div class="form-group row">
+        <div class="col-md-6">
+            {{ field.label }}
+        </div>
+        <div class="col-md-6">
+            {{ field(class="form-control")|safe }}
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{#select2fieldi label üstte olacak sekilde yazar#}
+{% macro render_select2field(field) %}
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ field.label }}
+        </div>
+        <div class="col-md-12">
+            {{ field(class="form-control")|safe }}
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{#select2fieldi labelsızolacak sekilde yazar#}
+{% macro render_select2field_without_label(field) %}
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ field(class="form-control")|safe }}
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{#select2fieldi label üstte ve tooltipli olacak sekilde yazar#}
+{% macro render_select2field_with_tooltip(field, title) %}
+    {{ field.label(class="control-label") }}
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+       data-original-title="{{ title }}"></i>
+    {{ field(class="form-control")|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+
+{#select2fieldi label solda ve tooltipli olacak sekilde yazar#}
+{% macro render_select2field_with_label_and_tooltip(field, title) %}
+    <div class="form-group row">
+        <div class="col-md-6">
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+               data-original-title="{{ title }}"></i>
+            {{ field.label(class="control-label") }}
+        </div>
+        <div class="col-md-6">
+            {{ field(class="form-control")|safe }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ error(field) }}
+        </div>
+    </div>
+
+{% endmacro %}

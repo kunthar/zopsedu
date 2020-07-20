@@ -1,0 +1,299 @@
+<!--{#
+    Parameters should be like this:
+        headers=['title1','title2',...]
+        contents=[
+            filed1,
+            field2,
+            ...
+        ]
+#}-->
+
+{% macro dynamic_field_list(headers, contents, initial_data=None, width_perc = 0, button_name = "Ekle", tooltip_titles=None) %}
+    {% set g_id = uuid() %}
+    <div style="overflow-y: scroll !important;">
+        <table class="table table-bordered table-striped fixed-table">
+            <thead>
+            <tr>
+                {% for header in headers %}
+                    {% if width_perc %}
+                        <th style="min-width:  {{ header[1] }}px">{{ header[0] }}</th>
+                    {% endif %}
+                    {% if width_perc == 0 %}
+                    <th style="min-width: {{ header[1] }}px">{{ header[0] }}</th>
+                    {% endif %}
+                {% endfor %}
+                <th width="1%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if initial_data %} {# todo: gerekli mi? #}
+                {% for data in initial_data %}
+                    <tr>
+                        {% for e in data %}
+                            <td>
+                                {{ e }}
+                                {% if e.errors %}
+                                    <ul class="parsley-errors-list filled">
+                                        {% for error in e.errors %}
+                                            <li class="parsley-required">{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+                                {% if e.type == 'CustomFileField' and e.data %}
+                                    <script>
+                                        $.ajax({
+                                            url: '/file/information/' + {{ e.data }}
+                                        }).done(function (data) {
+
+                                            $('#{{ e.name }}').after("<div>Dosya Ismi: <strong>"
+                                                + data['name'] + "</strong>" +
+                                                "<br> Yükleme Zamanı: <strong>" + data['uploadedAt'] + "</strong>"
+                                                + "</div>")
+
+                                        });
+                                    </script>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+
+                        <td width="1%">
+                            <button type="button"
+                                    class="btn btn-icon btn-danger fa fa-trash-o height-30 width-30"
+                                    onclick="deleteItem_{{ g_id }}($(this).parent().parent())"></button>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+
+        <button type='button' class="btn btn-secondary btn-min-width mr-1 mb-1"
+                onclick="addItem_{{ g_id }}($(this));">
+            <i class="fa fa-plus-circle"></i> {{ button_name }}
+        </button>
+    </div>
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+            const runScriptTypes_{{ g_id }} = [
+                'application/javascript',
+                'application/ecmascript',
+                'application/x-ecmascript',
+                'application/x-javascript',
+                'text/ecmascript',
+                'text/javascript',
+                'text/javascript1.0',
+                'text/javascript1.1',
+                'text/javascript1.2',
+                'text/javascript1.3',
+                'text/javascript1.4',
+                'text/javascript1.5',
+                'text/jscript',
+                'text/livescript',
+                'text/x-ecmascript',
+                'text/x-javascript'
+            ];
+        });
+
+        function addItem_{{ g_id }}(that) {
+            let tBody = that.prev().find("> tbody")[0];
+            let row = document.createElement('tr');
+            let row_number = tBody.childElementCount;
+            row.id = 'row-' + row_number;
+            let td_el, parsed_test;
+            {% for item in contents %}
+                td_el = document.createElement('td');
+                td_el.className = "col-auto";
+                parsed_test = $.parseHTML({{ item | tojson }}, document, true);
+                parsed_test.forEach(function (element) {
+                    $.each($(element).find('*'), function (index, elem) {
+                        if (elem.nodeName === 'SCRIPT') {
+                            let matches = elem.text.match(/\$\(['"]#\S+?(?=['"])/g);
+                            let matches2 = elem.text.match(/function\s\w+/g);
+                            let matches3 = elem.text.match(/(\[id="\w+)/g);
+                            {#let matches4 = elem.text.match(/(id:\s'\w+)/g);#}
+                            if (matches) {
+                                matches = uniq_fast(matches);
+                                matches.forEach(function (value) {
+                                    elem.text = elem.text.replace(new RegExp(escapeRegExp(value), 'g'), value + '_' + row_number.toString());
+                                });
+                            }
+                            if (matches2) {
+                                matches2 = uniq_fast(matches2);
+                                matches2.forEach(function (value) {
+                                    elem.text = elem.text.replace(new RegExp(escapeRegExp(value), 'g'), value + '_' + row_number.toString());
+                                });
+                            }
+                            if (matches3) {
+                                matches3 = uniq_fast(matches3);
+                                matches3.forEach(function (value) {
+                                    elem.text = elem.text.replace(new RegExp(escapeRegExp(value), 'g'), value + '_' + row_number.toString());
+                                });
+                            }
+                            {#if (matches4) {
+                               matches4 = uniq_fast(matches4);
+                               matches4.forEach(function (value) {
+                                   elem.text = elem.text.replace(new RegExp(escapeRegExp(value), 'g'), value + '_' + row_number.toString());
+                               });
+                               console.log(elem.text);
+                           }#}
+                        }
+                    });
+                    td_el.appendChild(element);
+                });
+                row.appendChild(td_el);
+            {% endfor %}
+
+            let nodes = $(row).find('*');
+            $.each(nodes, function (index, value) {
+                if (value.id) {
+                    value.id += '_' + row_number.toString();
+                }
+                if (value.onclick) {
+                    let tmp = value.attributes['onclick'].textContent.match(/\w+/g);
+                    let splitted = value.attributes['onclick'].textContent.split(tmp[0]);
+                    tmp[0] += '_' + row_number.toString();
+                    value.attributes['onclick'].textContent = splitted[0] + tmp[0] + splitted[1];
+                }
+                if (value.hash) {
+                    value.hash += '_' + row_number.toString();
+                    value.href = value.hash;
+                }
+                if (value.name) {
+                    {#value.name += '_' + row_number.toString();#}
+                    let tmp = value.name.match(/-\d-/g);
+                    if (tmp) {
+                        let splitted = value.name.split(tmp);
+                        tmp = '-' + row_number.toString() + '-';
+                        value.name = splitted[0] + tmp + splitted[1];
+                    }
+                }
+                if (value.nodeName === "INPUT" && value.value) {
+                    $(value).attr("value", null);
+                    if (value.checked) {
+                        $(value).attr("checked", null);
+                    }
+                }
+                if (value.data) {
+                    value.data = null
+                }
+            });
+
+            row.innerHTML += '<td width="1%">\n' +
+                '                <button type="button" class="btn btn-icon btn-danger fa fa-trash-o height-30 width-30"\n' +
+                '                        onclick="deleteItem_{{ g_id }}($(this).parent().parent())"></button>\n' +
+                '            </td>';
+
+            tBody.appendChild(row);
+            runScripts(tBody);
+            // todo: dynamic olarak eklenen satirda "money(para ile ilgili alanlari formatlamak icin kullaniliyor)" classi islevsiz oluyordu o yuzden eklendi.
+            $('.money').mask('000.000.000.000,00', {reverse: true});
+        }
+
+        {#https://stackoverflow.com/a/9229821#}
+
+        function uniq_fast(a) {
+            let seen = {};
+            let out = [];
+            let len = a.length;
+            let j = 0;
+            for (let i = 0; i < len; i++) {
+                let item = a[i];
+                if (seen[item] !== 1) {
+                    seen[item] = 1;
+                    out[j++] = item;
+                }
+            }
+            return out;
+        }
+
+        {#https://stackoverflow.com/a/1144788#}
+
+        function escapeRegExp(str) {
+            return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        }
+
+        {#<!-- source: ghinda.net/article/script-tags/ -->#}
+
+        function scriptsDone() {
+            let DOMContentLoadedEvent = document.createEvent('Event');
+            DOMContentLoadedEvent.initEvent('DOMContentLoaded', true, true);
+            document.dispatchEvent(DOMContentLoadedEvent)
+        }
+
+        // runs an array of async functions in sequential order
+        function seq(arr, callback, index) {
+            // first call, without an index
+            if (typeof index === 'undefined') {
+                index = 0
+            }
+            arr[index](function () {
+                index++;
+                if (index === arr.length) {
+                    callback()
+                } else {
+                    seq(arr, callback, index)
+                }
+            })
+        }
+
+        function insertScript($script, callback) {
+            let s = document.createElement('script');
+            s.type = 'text/javascript';
+            if ($script.src) {
+                s.onload = callback;
+                s.onerror = callback;
+                s.src = $script.src
+            } else {
+                s.textContent = $script.innerText
+            }
+
+            // re-insert the script tag so it executes.
+            document.head.appendChild(s);
+
+            // clean-up
+            $script.parentNode.removeChild($script);
+
+            // run the callback immediately for inline scripts
+            if (!$script.src) {
+                callback()
+            }
+        }
+
+        {#// https://html.spec.whatwg.org/multipage/scripting.html#}
+
+        function runScripts($container) {
+            // get scripts tags from a node
+            let $scripts = $container.querySelectorAll('script');
+            if ($scripts.length === 0) {
+                return;
+            }
+            let runList = [];
+            let typeAttr;
+
+            [].forEach.call($scripts, function ($script) {
+                typeAttr = $script.getAttribute('type');
+
+                // only run script tags without the type attribute
+                // or with a javascript mime attribute value
+                if (!typeAttr || runScriptTypes_{{ g_id }}.indexOf(typeAttr) !== -1) {
+                    runList.push(function (callback) {
+                        insertScript($script, callback)
+                    })
+                }
+            });
+
+            // insert the script tags sequentially
+            // to preserve execution order
+            seq(runList, scriptsDone)
+        }
+
+        function deleteItem_{{ g_id }}(row) {
+            row.remove();
+        }
+
+        {#<!-- ----------------------------------------------------- -->#}
+    </script>
+{% endmacro %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+{% from 'macros/dynamic_field_list.html' import dynamic_field_list %}
+{% from 'macros/form_helpers/currency_fields.html' import  render_text_field_without_label %}
+{% from 'macros/form_helpers/text_fields.html' import render_currency_field_without_label %}
+{% from 'macros/form_helpers/_formhelpers.html' import render_alert_list %}
+
+{% from "sablon_preview_modal.html" import render_sablon_with_values_modal %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block">   {{ _("Firma Teklif") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a class="btn btn-success"
+                   href="#render-sablon-modal"
+                   onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', sablon_id=teklif_mektubu_sablon_id, teklif_id=firma_teklif_id) }}');"
+                >
+                    {{ _("Teklif Mektubu") }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    {{ big_flash_message() }}
+                    {{ render_alert_list(teklif_dosya_formu.uyarilar) }}
+                    {% if hata_mesajlari %}
+                        {{ render_alert_list(hata_mesajlari) }}
+                    {% endif %}
+                    {{ render_yapilan_teklifler(teklif_kalemleri_data) }}
+                    <form method="POST" enctype="multipart/form-data"
+                          action="{{ url_for("firma.BapFirmaIslemleriView:post_satinalma_teklif_dosya_yukle", firma_id=firma_id, satinalma_id=satinalma_id) }}">
+                        <div class="form-body">
+                            {{ teklif_dosya_formu.csrf_token }}
+                            {{ render_teklif_dosya(teklif_dosya_formu) }}
+                        </div>
+                        <div class="form-actions">
+                            <div class="text-center col-md-12">
+                                <button class="btn btn-success">{{ _("Kaydet") }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    {{ render_sablon_with_values_modal() }}
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search_without_buttons %}
+        {{ table_manage_buttons_init_without_search_without_buttons(id="data-table-1") }}
+    </div>
+
+{% endblock %}
+
+{% macro render_yapilan_teklifler(teklif_kalemleri) %}
+    <div>
+        <table id="data-table-1"
+               class="table table-striped table-bordered"
+               role="grid"
+               aria-describedby="data-table_info"
+               style="width: 100%;">
+            <thead>
+
+            <tr role="row">
+                <th>{{ _("#") }}</th>
+                <th>{{ _("Kalem Adı") }}</th>
+                <th>{{ _("Miktar") }}</th>
+                <th>{{ _("Marka Model") }}</th>
+                <th>{{ _("Tutar") }}</th>
+                <th>{{ _("KDV Oranı") }}</th>
+                <th>{{ _("Teslim Süresi(Gün)") }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for teklif_kalemi in teklif_kalemleri_data %}
+                <tr class="odd" role="row">
+                    <td class="sorting_1">
+                        {{ loop.index }}
+                    </td>
+                    <td>{{ teklif_kalemi.kalem_adi }}</td>
+                    <td>{{ teklif_kalemi.talep_miktari }} {{ teklif_kalemi.birimi }}</td>
+                    <td>{{ teklif_kalemi.marka_model }}</td>
+                    <td>{{ teklif_kalemi.teklif | currency }}</td>
+                    <td>{{ teklif_kalemi.kdv_orani }}</td>
+                    <td>{{ teklif_kalemi.teslimat_suresi }} {{ _("Gün") }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endmacro %}
+
+{% macro render_teklif_dosya(teklif_dosya_formu) %}
+    {% set tooltip_titles = [
+                        "",
+                        _("Dosya yükleyiniz"),
+                        _("Dosya türü seçiniz"),
+                        _("Yüklediğiniz dosya için açıklama ekleyiniz"),
+    ] %}
+    {% set headers = [  (teklif_dosya_formu.dosyalar[0].dosya.label.text,200),
+                        (teklif_dosya_formu.dosyalar[0].kategori.label.text,200),
+                        (teklif_dosya_formu.dosyalar[0].aciklama.label.text,200)
+                        ] %}
+
+    {% set initial_data = [] %}
+    {% set contents = [] %}
+    {% for field_list in teklif_dosya_formu.dosyalar %}
+        {% set data = [
+                       field_list.dosya,
+                       field_list.kategori,
+                       field_list.aciklama] %}
+        {% do initial_data.append(data) %}
+        {% if loop.index == loop.length %}
+            {% do contents.extend( [
+                                teklif_dosya_formu.dosyalar[loop.index - 1].dosya,
+                                teklif_dosya_formu.dosyalar[loop.index - 1].kategori,
+                                teklif_dosya_formu.dosyalar[loop.index - 1].aciklama]) %}
+        {% endif %}
+    {% endfor %}
+
+    {{ dynamic_field_list(headers, contents, initial_data, button_name = _("Dosya Ekle"), tooltip_titles = tooltip_titles) }}
+{% endmacro %}
+

@@ -1,0 +1,563 @@
+{% extends "base.html" %}
+{% from "macros/form_helpers/select_fields.html" import render_select_field_without_label %}
+{% from "macros/form_helpers/text_fields.html" import render_text_field %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+
+
+{% block context %}
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Gündem Listesi") }}</h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a class="btn btn-success"
+                   href="{{ url_for('toplanti.GundemView:toplu_gundem_olustur_get') }}">
+                    <b>{{ _("Gündem Oluştur") }}</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+     {{ big_flash_message() }}
+        <section id="gundem-arama-alani">
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard">
+                        <div id="aramaAlani">
+                            {% if gundem_filtrele_form %}
+                                <form id="detayli-arama-form">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                {{ gundem_filtrele_form.csrf_token }}
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ gundem_filtrele_form.gundem_tipi.label }}
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        {{ gundem_filtrele_form.gundem_tipi(class='form-control') }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ gundem_filtrele_form.gundem_durumu.label }}
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        {{ gundem_filtrele_form.gundem_durumu(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ gundem_filtrele_form.proje_numarasi.label }}
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        {{ gundem_filtrele_form.proje_numarasi(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-md-3">
+                                                        {{ gundem_filtrele_form.date.toplanti_tarihi.label }}
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        {{ gundem_filtrele_form.date.toplanti_tarihi(class="form-control") }}
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        {{ gundem_filtrele_form.date.toplanti_tarihi_option(class="form-control") }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <button id="ara" class="btn btn-search btn-success m-r">Ara</button>
+                                    <button id="temizle" class="btn btn-clear btn-warning">Temizle</button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    {{ render_gundem_listesi_data_table() }}
+                </div>
+            </div>
+        </section>
+    </div>
+    {{ render_gundem_duzenle_modal() }}
+    {{ render_script() }}
+    <!-- end #content -->
+     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/custom_serverside.html' import custom_serverside_table %}
+    {{ custom_serverside_table(endpoint=url_for('toplanti.gundem_search'), id="data-table-1",ara_button_id="#ara",temizle_button_id="#temizle",search_form_id='#detayli-arama-form') }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+{% endblock %}
+
+{% macro render_gundem_filtrele_form() %}
+    <form method="POST" id="gundem_filtreleme_formu">
+        {{ gundem_filtrele_form.csrf_token }}
+        <div class="row">
+            <div class="col-md-3">
+                {{ render_select_field_without_label(gundem_filtrele_form.gundem_tipi) }}
+            </div>
+            <div class="col-md-3">
+                {{ render_select_field_without_label(gundem_filtrele_form.gundem_durumu) }}
+            </div>
+            <div class="col-md-3">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ gundem_filtrele_form.submit(**{'class':'btn btn-success btn-primary m-r-10'}) | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </form>
+{% endmacro %}
+
+{% macro render_gundem_listesi_data_table() %}
+        <div class="row">
+            <div class="col-md-12">
+                <table id="data-table-1"
+                       class="table table-striped table-bordered dataex-visibility-selector dataTable"
+                       role="grid" style="width: 100%;">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ _("#") }} </th>
+                        <th> {{ _("Proje No") }}</th>
+                        <th>{{ _("Proje Başlığı") }}</th>
+                        <th>{{ _("Gündem Tipi") }}</th>
+                        <th>{{ _("Toplantı Tarihi") }}</th>
+                        <th>{{ _("Gündem Açıklaması") }}</th>
+                        <th>{{ _("Karar") }}</th>
+                        <th class="all">{{ _("Gündeme Ait Ek Dosya") }}</th>
+                        <th class="all"> {{ _("Düzenle") }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for gundem_data in degerlendirilmemis_gundemler %}
+                        <tr role="row">
+                            <td>{{ loop.index }}</td>
+                            <td>{{ gundem_data.proje.proje_no }}</td>
+                            <td>{{ gundem_data.proje.proje_basligi }}</td>
+                            <td>{{ gundem_data.tipi.value }}</td>
+                            <input type="hidden" id="gundem-id"
+                                   value="{{ gundem_data.id }}">
+                            <td>
+                                {% if gundem_data.toplanti %}
+                                    {{ "{:%d.%m.%Y}".format(gundem_data.toplanti.toplanti_tarihi) }}
+                                {% else %}
+                                    {{ _('Toplantı eklenmedi') }}
+                                {% endif %}
+                            </td>
+                            <td>{{ is_data_exist(gundem_data.aciklama) | safe }}</td>
+                            <td>{{ is_data_exist(gundem_data.karar) | safe }}</td>
+                            <td>
+                                {% if gundem_data.ek_dosya_id %}
+                                    <div class="document-name attached-document clearfix">
+                                        <form method="post">
+                                            <input type="hidden" name="csrf_token"
+                                                   value="{{ csrf_token() }}"/>
+                                            <button class="btn btn-link"
+                                                    id="ek_{{ gundem_data.ek_dosya_id }}"
+                                                    name="ek_{{ gundem_data.ek_dosya_id }}"
+                                                    value="{{ gundem_data.ek_dosya_id }}"
+                                                    style="white-space: normal;"
+                                                    formaction="{{ url_for('toplanti.ek_dosya_indir',
+                                                                 belge_id= gundem_data.ek_dosya_id ) }}">
+                                                {{ gundem_data.ek_dosya_r.content.file.filename }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    {{ _('Ek Belge Eklenmedi') }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="#gundem-toplanti-degistir"
+                                   data-toggle="modal"
+                                   data-target="#gundem-toplanti-degistir"
+                                   data-toplanti-id="{{ gundem_data.toplanti_id if gundem_data }}"
+                                   data-gundem-id="{{ gundem_data.id }}">
+                                    <span class="float-left detail_edit fa ft-edit fa-2x m-l-10"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endmacro %}
+
+{% macro render_gundem_duzenle_modal() %}
+    <!-- gündem düzenle modal  -->
+    <div class="modal fade text-left" id="gundem-toplanti-degistir" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">
+                        ×
+                    </button>
+                    <input hidden id="modal-gundem-id" value="">
+                </div>
+                <div class="modal-body" id="gundem-modal-body">
+                    <section id="tab-section" class="card">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="active-tab" data-toggle="tab"
+                                   href="#toplanti-sec-tab"
+                                   aria-controls="active"
+                                   aria-expanded="true">{{ _('Toplantı Seç') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="link-tab" data-toggle="tab"
+                                   href="#genel-tab"
+                                   aria-controls="link"
+                                   aria-expanded="false">{{ _('Genel') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="link-tab" data-toggle="tab"
+                                   href="#karar-tab"
+                                   aria-controls="link"
+                                   aria-expanded="false">
+                                    {{ gundem_form.karar.label.text }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="link-tab" data-toggle="tab"
+                                   href="#aciklama-tab"
+                                   aria-controls="link"
+                                   aria-expanded="false">
+                                    {{ gundem_form.aciklama.label.text }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="link-tab" data-toggle="tab"
+                                   href="#yonetim-not-tab" aria-controls="link"
+                                   aria-expanded="false">
+                                    {{ gundem_form.yonetime_bilgi_notu.label.text }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="link-tab" data-toggle="tab"
+                                   href="#ozel-not-tab"
+                                   aria-controls="link"
+                                   aria-expanded="false">
+                                    {{ gundem_form.kisiye_ozel_not.label.text }}
+                                </a>
+                            </li>
+                            <li class="nav-items">
+                                {{ gundem_form.ek_dosya_id }}
+                                {{ gundem_form.toplanti_id }}
+                            </li>
+                        </ul>
+                    </section>
+                    <section id="tab-element-section" class="card">
+                        <div class="tab-content px-1 pt-1">
+                            <!-- begin tab-pane -->
+                            <div role="tabpanel" class="tab-pane fade show active"
+                                 id="toplanti-sec-tab"
+                                 aria-labelledby="active-tab"
+                                 aria-expanded="true">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ _("Seç") }}</th>
+                                                <th>{{ _("Ekleyen") }}</th>
+                                                <th>{{ _("Toplantı Tarihi") }}</th>
+                                                <th>{{ _("Toplantı Durumu") }}</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="toplantilar-tablo-body">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="genel-tab" role="tabpanel"
+                                 aria-labelledby="link-tab"
+                                 aria-expanded="false">
+                                <div class="row">
+                                    <div class="col-md-6 m-b-10">
+                                        {{ render_text_field(gundem_form.tipi) }}
+                                    </div>
+                                    <div class="col-md-6 m-b-10">
+                                        {{ render_text_field(gundem_form.karar_durum) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- begin tab-pane -->
+                            <div class="tab-pane fade" id="karar-tab" role="tabpanel"
+                                 aria-labelledby="link-tab"
+                                 aria-expanded="false">
+                                <div class="col-md-12">
+                                    {{ gundem_form.karar }}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="aciklama-tab" role="tabpanel"
+                                 aria-labelledby="link-tab"
+                                 aria-expanded="false">
+                                <div class="col-md-12">
+                                    {{ gundem_form.aciklama }}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="yonetim-not-tab" role="tabpanel"
+                                 aria-labelledby="link-tab"
+                                 aria-expanded="false">
+                                <div class="col-md-12">
+                                    {{ gundem_form.yonetime_bilgi_notu }}
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="ozel-not-tab" role="tabpanel"
+                                 aria-labelledby="link-tab"
+                                 aria-expanded="false">
+                                <div class="col-md-12">
+                                    {{ gundem_form.kisiye_ozel_not }}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn grey btn-outline-warning"
+                            data-dismiss="modal">{{ _("Kapat") }}
+                    </button>
+                    <button id="gundem-duzenle" type="button" class="btn btn-outline-success">{{ _('Kaydet') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end gündem düzenle modal --->
+
+{% endmacro %}
+
+{% macro render_script() %}
+
+    <script>
+     $(document).ready(function () {
+
+        gundemSelector = {
+            "karar": $('[name={{ gundem_form.karar.name }}]'),
+            "aciklama": $('[name={{ gundem_form.aciklama.name }}]'),
+            "yonetimeBilgiNotu": $('[name={{ gundem_form.yonetime_bilgi_notu.name }}]'),
+            "kisiyeOzelNot": $('[name={{ gundem_form.kisiye_ozel_not.name }}]'),
+            "tipi": $('#{{ gundem_form.tipi.name }}'),
+            "kararDurumu": $('#{{ gundem_form.karar_durum.name }}'),
+            "gundemSiraNo": $('#{{ gundem_form.gundem_sira_no.name }}'),
+            "ekDosyaId": $('[name={{ gundem_form.ek_dosya_id.name }}'),
+            "projeBasligi": $('#{{ gundem_form.proje_basligi.name }}'),
+            "projeId": $('#{{ gundem_form.proje_id.name }}'),
+            "gundemId": $('#{{ gundem_form.gundem_id.name }}'),
+            "toplantiListesi": $('#toplantilar-tablo-body'),
+            "modalSelector": $('#gundem-toplanti-degistir')
+        };
+
+        function resetGundemModal() {
+            gundemSelector.karar.summernote("code", "");
+            gundemSelector.aciklama.summernote("code", "");
+            gundemSelector.yonetimeBilgiNotu.summernote("code", "");
+            gundemSelector.kisiyeOzelNot.summernote("code", "");
+            gundemSelector.tipi.val("");
+            gundemSelector.kararDurumu.val("");
+            gundemSelector.gundemSiraNo.val("0");
+            gundemSelector.projeBasligi.val("");
+            gundemSelector.ekDosyaId.val("");
+            gundemSelector.projeId.val("");
+            gundemSelector.gundemId.val("");
+            gundemSelector.toplantiListesi.empty();
+        }
+
+        function getGundemData() {
+            return {
+                "karar": gundemSelector.karar.val(),
+                "aciklama": gundemSelector.aciklama.val(),
+                "yonetime_bilgi_notu": gundemSelector.yonetimeBilgiNotu.val(),
+                "kisiye_ozel_not": gundemSelector.kisiyeOzelNot.val(),
+                "tipi": gundemSelector.tipi.val(),
+                "karar_durum": gundemSelector.kararDurumu.val(),
+                "gundem_sira_no": gundemSelector.gundemSiraNo.val(),
+                "ek_dosya_id": gundemSelector.ekDosyaId.val(),
+            }
+        }
+
+        let tableBodySelector;
+        tableBodySelector = gundemSelector.toplantiListesi;
+
+        gundem_modal_open = function (gundem_id,toplanti_id ){
+            let url, getGundemUrl, sonuclanmamisToplantilar, toplantiId, modal, gundemId,
+                secilimi = "False";
+            gundemId= gundem_id;
+            toplantiId = toplanti_id;
+            resetGundemModal();
+            modal = $("#gundem-toplanti-degistir");
+            modal_gundem_id =  $('#modal-gundem-id');
+            modal_gundem_id.val();
+            modal_gundem_id.val(gundemId);
+            url = "{{ url_for("toplanti.degerlendirilmemis_toplantilar") }}";
+            getGundemUrl = "{{ url_for('toplanti.get_gundem', gundem_id=-1) }}";
+            getGundemUrl = getGundemUrl.replace("-1", gundemId);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (result) {
+                    sonuclanmamisToplantilar = result.sonuclanmamis_toplantilar;
+                    sonuclanmamisToplantilar.forEach(function (toplanti) {
+                        if (toplanti.id.toString() === toplantiId) {
+                            secilimi = "checked";
+                        } else {
+                            secilimi = "";
+                        }
+                        tableBodySelector.append('<tr>' +
+                            '<td id="secilimi">' + '<input type="checkbox" ' + secilimi + '>' + '</td>' +
+                            '<td id="ekleyen">' + toplanti.ekleyen + '</td>' +
+                            '<td id="toplanti-tarihi">' + toplanti.toplanti_tarihi + '</td>' +
+                            '<td id="toplanti-durumu">' + '<input type="hidden" value="' + toplanti.id + '" >' +
+                            toplanti.toplanti_durumu +
+                            '</td>' +
+                            '</tr>');
+                    });
+                    modal.find("input[type='checkbox']").on("change", function () {
+                        modal.find("input[type='checkbox']").not(this).prop('checked', false)
+                    });
+
+                },
+                error: function () {
+                    swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+
+            $.ajax({
+                url: getGundemUrl,
+                type: 'GET',
+                success: function (result) {
+                    gundemData = result.gundemData;
+
+                    gundemSelector.karar.summernote("code", gundemData.karar);
+                    gundemSelector.aciklama.summernote("code", gundemData.aciklama);
+                    gundemSelector.yonetimeBilgiNotu.summernote("code", gundemData.yonetimeBilgiNotu);
+                    gundemSelector.kisiyeOzelNot.summernote("code", gundemData.kisiyeOzelNot);
+                    gundemSelector.tipi.val(gundemData.tipi);
+                    gundemSelector.kararDurumu.val(gundemData.kararDurumu);
+                    gundemSelector.gundemSiraNo.val(gundemData.gundemSiraNo);
+                    gundemSelector.projeBasligi.val(gundemData.projeBasligi);
+                    gundemSelector.ekDosyaId.val(gundemData.ekDosyaId);
+                    gundemSelector.projeId.val(gundemData.projeId);
+                    gundemSelector.gundemId.val(gundemData.gundemId);
+                    modal.find('.modal-title').text('Proje: ' + gundemData.projeBasligi + ' - ' + 'Proje No: ' + gundemData.projeNo);
+                    gundemSelector.modalSelector.modal("show");
+                },
+                error: function () {
+                    swal("{{ _("Düzenleme işlemi yapılamıyor. Lütfen daha sonra tekrar deneyiniz.") }}", {
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+
+        };
+
+
+        $("#gundem-duzenle").on("click", function () {
+            {#todo: guncelledikten sonra sayfaya geri don #}
+            let url, gundemId, duzenleButtonSelector, gundemData, modal, gundemRowSelector,
+                toplantiId;
+            modal = $("#gundem-toplanti-degistir");
+            gundemId = $("#modal-gundem-id").val();
+            url = "{{ url_for('toplanti.gundem_guncelle', gundem_id=-1) }}";
+            url = url.replace("-1", gundemId);
+            gundemData = getGundemData();
+            gundemData.toplanti_id = $("#toplantilar-tablo-body input:checkbox:checked").parents().eq(1).find("input[type='hidden']").val();
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(gundemData),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    gundemData = result.gundem_data;
+                    swal("{{ _("Gündem Başarıyla güncellendi.") }}", {
+                        icon: "success",
+                        timer: 4000,
+                        buttons: false
+                    });
+
+                    duzenleButtonSelector = $('[data-gundem-id=' + gundemId + ']');
+                    toplantiId = duzenleButtonSelector.attr("data-toplanti-id", gundemData.toplanti_id);
+                    gundemRowSelector = duzenleButtonSelector.parent().parent();
+                    gundemRowSelector.find("#toplanti-tarihi").text(gundemData.toplanti_tarihi);
+                    gundemRowSelector.find("#gundem-tipi").text(gundemData.gundem_tipi);
+                    gundemRowSelector.find("#gundem-aciklama").text(gundemData.gundem_aciklama);
+                    gundemRowSelector.find("#gundem-karar").text(gundemData.gundem_karar);
+
+                    window.location = "{{ url_for('toplanti.GundemView:degerlendirilmemis_gundem_listele') }}"
+
+                },
+                error: function () {
+                    swal("{{ _("Gündem Güncellenirken Sorun Oluştu.Lütfen Daha Sonra Tekrar Deneyiniz.") }}", {
+                        icon: "error",
+                        timer: 4000,
+                        buttons: false
+                    });
+                }
+            });
+            modal.modal('toggle');
+            resetGundemModal();
+        });
+
+            gundemSelector.tipi.on('change', function () {
+                if (gundemSelector.modalSelector.hasClass("show")) {
+                    let gundemId, sablonTipi;
+                    sablonTipi = $('#{{ gundem_form.tipi.name }} option:selected').val();
+                    gundemId = parseInt($("#modal-gundem-id").val());
+                    if (gundemId) {
+                        $.ajax({
+                            url: "{{ url_for('toplanti.GundemView:render_gundem_sablonu') }}",
+                            type: 'POST',
+                            data: JSON.stringify({
+                                "gundem_id": gundemId,
+                                "sablon_tipi": sablonTipi
+                            }),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: 'json',
+                            success: function (result) {
+                                gundemSelector.karar.summernote("code", "");
+                                gundemSelector.aciklama.summernote("code", "");
+                                gundemSelector.karar.summernote("code", result.data.karar);
+                                gundemSelector.aciklama.summernote("code", result.data.aciklama);
+                            },
+                            error: function () {
+                                swal("{{ _("Gündem şablonu metni getirilirken bir sorun yaşandı. Lütfen daha sonra tekrar deneyiniz") }}", {
+                                    icon: "error",
+                                    timer: 4000,
+                                    buttons: false
+                                });
+                            }
+                        });
+                    }
+                } else {
+
+                }
+            });
+        });
+    </script>
+{% endmacro %}

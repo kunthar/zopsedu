@@ -1,0 +1,28 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+{% macro render_radio_button(field) %}
+    <div class="radio">
+        {{ field.label(class="control-label") }}
+        {{ field(**kwargs)|safe }}
+        {{ error(field) }}
+    </div>
+{% endmacro %}
+
+{% macro render_radio_group(field) %}
+    <div class="form-group">
+        <label class="col-md-3 col-form-label"> {{ field.label }} </label>
+        <div class="col-md-9">
+            {% for subfield in field %}
+                <div class="radio radio-css">
+                    {{ subfield }}
+                    {{ subfield.label }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}

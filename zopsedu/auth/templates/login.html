@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+{% from "macros/utils/flask_messages/flask_messages.html" import big_flash_message %}
+
+{% block body %}
+
+    <body class="vertical-layout vertical-menu 1-column  bg-full-screen-image menu-expanded blank-page blank-page"
+          data-open="click" data-menu="vertical-menu" data-col="1-column"
+          style="background:url({{ url_for('static', filename = 'assets/img/login-bg-10.jpg') }}) center center no-repeat fixed; background-size: cover;">
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <section class="flexbox-container">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <div class="col-md-4 col-10 box-shadow-2 p-0">
+                            <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                                <div class="card-header border-0">
+                                    <div class="card-title text-center">
+                                        {% set logo = get_logo_url() %}
+                                        {% if not logo %}
+                                            {% set logo = url_for('static', filename = 'assets/img/brand-logo2.png') %}
+                                        {% endif %}
+                                        <img src="{{ logo }}" alt="Zopsedu">
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form id="loginForm" method="POST" class="margin-bottom-0">
+                                            {% if args['unknown_error'] %}
+                                                <div class="parsley-errors-list filled">
+                                                    {{ args['unknown_error'] }}
+                                                </div>
+                                            {% endif %}
+                                            {{ big_flash_message() }}
+                                            {{ form.csrf_token(**{'id':'csrf_token_login'}) }}
+                                            <div class="form-group m-b-15">
+                                                {{ form.username(**{'class':'form-control form-control-lg'}) | safe }}
+                                                {% if form.username.errors %}
+                                                    <ul class="parsley-errors-list filled">
+                                                        {% for error in form.username.errors %}
+                                                            <li class="parsley-required">{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                            <div class="form-group m-b-15">
+                                                {{ form.password(**{'class':'form-control form-control-lg'}) | safe }}
+                                                {% if form.password.errors %}
+                                                    <ul class="parsley-errors-list filled">
+                                                        {% for error in form.password.errors %}
+                                                            <li class="parsley-required">{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                            {{ form.submit(**{'class':'btn btn-success btn-block btn-lg', 'id': 'submit_login'}) | safe }}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,261 @@
+{% macro parent_child_table(endpoint, id="data-table") %} {# Must be called after initiating a table object #}
+    <script>
+        {#
+            a th element must be added to table header in html so that show/hide button can appear
+            '<th class="all" data-class="details-control" data-sortable="false"></th>'
+
+            Expected data per row is like:
+            [
+                1,
+                2,
+                "W*ndoz !!!",
+                4,
+                5,
+                '<i class="fa fa-plus-square" aria-hidden="true"></i>',  <<< show/hide button of child table
+                ["A", "B", "C", "D"],  <<<<< Header values of child table
+                [[1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]]  <<<<< values of child rows
+            ]
+         #}
+        $(document).ready(
+            function () {
+                let table = $("#{{ id }}").dataTable().api();
+
+                $('#{{ id }} tbody').on('click', 'td.details-control', function () {
+                    let tr = $(this).closest('tr');
+                    let row = table.row(tr);
+                    if (row.child.isShown()) {
+                        // This row is already open - close it
+                        hideChild(row)
+                    }
+                    else {
+                        showChild(row)
+                    }
+                });
+
+                function addDelButtonsToRows(table$) {
+                    let table = table$.dataTable().api();
+                    let header = table$.find('thead tr');
+                    if (header.find('th.delHead').length === 0) {
+                        let removeHead = $('<th class="all delHead" data-sortable="false" style="width:30px;"></th>');
+                        header.append(removeHead);
+                    }
+                    table.rows().every(function () {
+                        let row$ = $(this.node());
+                        if (row$.find('button.rowDelete').length === 0) {
+                            row$.append('<td><button type="button" class="btn btn-xs btn-danger rowDelete"><i class="fas fa-expand fa-trash mr-2"></i><span>{{ _("Sil") }}</span></button></td>');
+                        }
+                    });
+                }
+
+                addDelButtonsToRows($("#{{ id }}"));
+                table.on('click', 'button.rowDelete', deleteRow);
+
+                function showChild(row) {
+                    let tr = $(row.node());
+                    row.child(format(row.data()));
+                    // Open this row
+                    row.child.show();
+
+                    tr.find('i:first').removeClass("fa-plus-square").addClass("fa-minus-square");  // FontAwesome 5
+                }
+
+                function hideChild(row) {
+                    row.child.hide();
+                    let tr = $(row.node());
+                    tr.find('i:first').addClass("fa-plus-square").removeClass("fa-minus-square"); // FontAwesome 5
+
+                }
+
+                function deleteRow() {
+                    let childTr = $(this).closest('tr'); // Child tr
+                    let childTable = childTr.closest('table').dataTable().api();
+                    let parentTr = childTr.parents('tr').prev(); // Parent row
+                    let parentRow = table.row(parentTr);
+                    let childRow = childTable.row(childTr);
+                    let data = {'parentData': parentRow.data(), 'targetData': childRow.data()};
+                    swal({
+                        title: "Veriyi silmek istediğinize emin misiniz ?",
+                        text: "Silinen veriler tamamiyle kaldılır!",
+                        icon: "warning",
+                        buttons: {
+                            cancel: {
+                                text: "Vazgeç",
+                                value: false,
+                                visible: true,
+                                closeModal: true,
+                            },
+                            confirm: {
+                                text: "Sil",
+                                value: true,
+                                visible: true,
+                                closeModal: true
+                            }
+                        }
+                    }).then((willDelete) => {
+                        if (willDelete) {
+
+                            $.ajax({
+                                url: "{{ endpoint }}",
+                                type: "DELETE",
+                                dataType: 'json',
+                                contentType: 'application/json',
+                                data: JSON.stringify(data),
+                                success: function (response) {
+                                    swal("{{ _("Seçilen veri başarıyla silindi!") }}", {
+                                        icon: "success",
+                                        timer: 4000,
+                                        buttons: false
+                                    });
+                                    childRow.remove();
+                                    if (parentTr.length === 0) {
+                                        table.draw();
+                                    } else {
+                                        childTable.draw()
+                                    }
+                                },
+                                error: function (err) {
+                                    swal({
+                                        title: "{{ _("Seçilen veri silinemedi!") }}",
+                                        icon: "error",
+                                        timer: 4000,
+                                        buttons: false
+                                    });
+                                }
+                            });
+                        } else {
+                            swal({
+                                title: "{{ _("Veriyi silmekten vazgectiniz!") }}",
+                                icon: "error",
+                                timer: 1000,
+                                buttons: false
+                            });
+                        }
+                    });
+                }
+
+                function format(d) {
+                    // `d` is the original data object for the row
+                    let headRow = $('#{{ id }} thead tr:first');
+                    let headLength = headRow.children().length - 1;
+                    let child_table = $('<table class="table table-striped ' +
+                        'table-bordered dataTable no-footer dtr-inline" role="grid");></table>');
+                    let childHeadValues = d[headLength];
+                    let childValues = d[headLength + 1];
+                    let head = $('<thead></thead>');
+                    child_table.append(head);
+                    let head_tr = $('<tr></tr>');
+                    head.append(head_tr);
+
+
+                    for (let i = 0; i < childHeadValues.length; i++) {
+                        let th = $('<th>' + childHeadValues[i] + '</th>');
+                        head_tr.append(th)
+                    }
+
+
+                    let body = $('<tbody></tbody>');
+                    child_table.append(body);
+                    let child_table_api = child_table.DataTable();
+
+                    child_table_api.rows.add(childValues).draw();
+
+                    for (let i = 0; i < childValues.length; i++) {
+                        let row = child_table_api.row(i).node();
+                        let row$ = $(row);
+                        row$.append('<td><button type="button" class="btn btn-xs btn-danger rowDelete"><i class="fas fa-expand fa-trash mr-2"></i><span>{{ _("Sil") }}</span></button></td>');
+                        row$.prepend('<td></td>');
+                    }
+                    child_table.on('click', 'button.rowDelete', deleteRow);
+
+                    let removeHead = $('<th class="all delHead" data-sortable="false" style="width:30px;"></th>');
+                    head_tr.append(removeHead);
+
+                    let btnHead = $('<th class="all saveHead" data-sortable="false" style="width:30px;"></th>');
+                    let addBtn = $('<button type="button" class="btn btn-xs btn-success"><i class="fas fa-expand fa-plus mr-2"></i><span>{{ _("Ekle") }}</span></button>');
+                    btnHead.append(addBtn);
+                    addBtn.on('click', showAddRow);
+                    head_tr.prepend(btnHead);
+
+                    return child_table;
+                }
+
+                function showAddRow() {
+                    let childTr = $(this).closest('tr'); // Child tr
+                    if (childTr.parent('thead').parent('table').children('tbody').children('tr.addRow').length === 0) {
+                        let childTable = childTr.closest('table').dataTable().api();
+                        let newRow = $('<tr class="addRow"></tr>');
+                        childTable.columns().every(function () {
+                            if (!($(this.header()).hasClass('saveHead') || $(this.header()).hasClass('delHead'))) {
+
+                                let inputElement = $('<td><input type="text" class="form-control form-control-sm"></td>');
+                                newRow.append(inputElement);
+
+                            }
+                        });
+
+                        let buttonSave = $('<button type="button" class="btn btn-xs btn-success rowSaveSubmit"><i class="fas fa-lg fa-save mr-2"></i><span>{{ _("Kaydet") }}</span></button>');
+                        buttonSave.on('click', saveAddRow);
+
+                        let saveElement = $('<td></td>');
+                        saveElement.append(buttonSave);
+                        newRow.prepend(saveElement);
+
+
+                        let buttonCancel = $('<button type="button" class="btn btn-xs btn-danger rowSaveCancel"><i class="fas fa-lg fa-trash mr-2"></i><span>{{ _("Vazgeç") }}</span></button>');
+                        buttonCancel.on('click', cancelAddRow);
+
+                        let cancelElement = $('<td></td>');
+                        cancelElement.append(buttonCancel);
+                        newRow.append(cancelElement);
+
+                        childTr.parent('thead').parent('table').children('tbody').append(newRow);
+                    }
+                }
+
+                function cancelAddRow() {
+                    let childTr = $(this).closest('tr'); // Child tr
+                    childTr.remove();
+
+                }
+
+                function saveAddRow() {
+                    let childTr = $(this).closest('tr'); // Child tr
+                    let parent = childTr.parents('tr').prev(); // Parent row
+                    if (parent === undefined) {
+                        parent = childTr.parents('table');
+                    }
+                    let parentApi = table.row(parent);
+                    let newData = [];
+                    childTr.find('input').each(function () {
+                        newData.push($(this).val())
+                    });
+                    let data = {'parentData': parentApi.data(), 'newData': newData};
+                    $.ajax({
+                        url: "{{ endpoint }}",
+                        type: "PUT",
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: JSON.stringify(data),
+                        success: function (response) {
+                            swal("{{ _("Yeni veri başarıyla eklendi!") }}", {
+                                icon: "success",
+                                timer: 4000,
+                                buttons: false
+                            });
+                            parentApi.data(response);
+                            showChild(parentApi);
+                        },
+                        error: function (err) {
+                            swal({
+                                title: "{{ _("Yeni veri eklenemedi!") }}",
+                                icon: "error",
+                                timer: 4000,
+                                buttons: false
+                            });
+                        }
+                    });
+                }
+            }
+        )
+    </script>
+{% endmacro %}

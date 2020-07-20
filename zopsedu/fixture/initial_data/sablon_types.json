@@ -1,0 +1,259 @@
+{
+  "sablon_tipi": [
+    {
+      "id": 1,
+      "adi": "Sunum Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 2,
+      "adi": "Özgeçmiş Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 3,
+      "adi": "Sözleşme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 4,
+      "adi": "Öneri Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 5,
+      "adi": "Hakem Proje Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 6,
+      "adi": "Bilim Kurulu Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 7,
+      "adi": "Raportör Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 8,
+      "adi": "Hakem Sonuç Raporu Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 9,
+      "adi": "Hakem Ara Raporu Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 10,
+      "adi": "Komisyon Bütçe Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 11,
+      "adi": "Bilgi Fişi Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 13,
+      "adi": "Proje Ön Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 14,
+      "adi": "Sonuç Raporu Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 15,
+      "adi": "Ara Rapor Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 16,
+      "adi": "Ek Süre Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 17,
+      "adi": "Ek Ödenek Talebi",
+      "module_name": "BAP"
+    },
+    {
+      "id": 18,
+      "adi": "Ek Malzeme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 19,
+      "adi": "Ek Ödenek ve Malzeme Talebi Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 20,
+      "adi": "Bütçe Kalemleri Arası Aktarım Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 21,
+      "adi": "Proje Başlığı Degiştirme Talebi Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 22,
+      "adi": "Proje Yürütücüsü Degiştirme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 23,
+      "adi": "Avans/Kredi Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 24,
+      "adi": "Avans/Kredi Geri Ödeme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 25,
+      "adi": "Proje Personeli Ekleme/Çıkarma Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 26,
+      "adi": "Proje Geri Çekme/Yürürlüktek Kaldırma Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 27,
+      "adi": "Hızlı Destek Bütçe Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 28,
+      "adi": "Melzeme Çıkartma/Miktar Degistirme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 29,
+      "adi": "Proje Aktifleştirme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 30,
+      "adi": "Değer Talepler Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 31,
+      "adi": "Proje İptal Etme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 32,
+      "adi": "Yayın Değerlendirme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 33,
+      "adi": "Bursiyer Çalıştırma Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 34,
+      "adi": "Bursiyer Ödeme Talep Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 35,
+      "adi": "İş Zamanı Çizelgesi Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 36,
+      "adi": "Alt Komisyon Değerlendirme Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 37,
+      "adi": "Satınalma Malzeme Dilekçesi Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 38,
+      "adi": "Onay Belgesi Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 39,
+      "adi": "Olur Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 40,
+      "adi": "Yaklaşık Maaliyet İcmal Tablosu Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 41,
+      "adi": "Piyasa Fiyat Araştırması Teklif Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 42,
+      "adi": "Satınalma Komisyon Tutanağı Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 43,
+      "adi": "Teknik Şartname Değerlendirme Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 44,
+      "adi": "Sipariş Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 45,
+      "adi": "Muayene ve Kabul Komisyonu Tutanak Formu (Ürünler Uygun)",
+      "module_name": "BAP"
+    },
+    {
+      "id": 46,
+      "adi": "Muayene ve Kabul Komisyonu Tutanak Formu (Ürünler uygun değil",
+      "module_name": "BAP"
+    },
+    {
+      "id": 47,
+      "adi": "Satınalma Genel Bilgiler Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 48,
+      "adi": "Teklif Mektubu Formu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 49,
+      "adi": "Ödeme Emri Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 50,
+      "adi": "Satınalma Duyuru Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 51,
+      "adi": "Yönetim Kurulu Tutanak Şablonu",
+      "module_name": "BAP"
+    },
+    {
+      "id": 52,
+      "adi": "Email Şablonu",
+      "module_name": "BAP"
+    }
+  ]
+}

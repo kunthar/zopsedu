@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block context %}
+    <div class="content-header row">
+    </div>
+
+    <div class="content-body">
+        <div id="user-profile">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card profile-with-cover">
+                        <div class="card-img-top img-fluid bg-cover height-300"
+                             style="background: url({{ url_for('static', filename = 'assets/img/login-bg-10.jpg') }}) 50%;"></div>
+                        <div class="media profil-cover-details w-100">
+                            <div class="media-left pl-2 pt-2">
+                                <a href="#" class="profile-image">
+                                    <img src="{{ avatar_url | default(url_for('static', filename = 'assets/img/user-13.jpg'), true) }}"
+                                         class="rounded-circle img-border height-100" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="media-body pt-3 px-2">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="card-title">{{ session['user_ad_soyad'] }}</h3>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a href="{{ url_for('kullanici_profil.avatar') }}">
+                                            <button type="button" class="btn btn-success">
+                                                {{ _('Avatarı Güncelle') }}
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="navbar navbar-light navbar-profile align-self-end">
+                            <button class="navbar-toggler d-sm-none" type="button" data-toggle="collapse"
+                                    aria-expanded="false" aria-label="Toggle navigation"></button>
+                            <nav class="navbar navbar-expand-lg">
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+
+                                        <li class="nav-item active">
+                                            <a class="nav-link"
+                                               href="{{ url_for('kullanici_profil.profil_goruntule') }}">
+                                                {{ _('Profili Görüntüle') }}
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('mesaj.MesajView:gelen_kutusu') }}">
+                                                {{ _('Gelen Kutusu') }}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"
+                                               href="{{ url_for('kullanici_profil.KullaniciProfilView:ozgecmis_goruntule') }}">
+                                               {{ _('Özgeçmişi Görüntüle') }}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('kullanici_profil.rol_degistir') }}">
+                                                 {{ _('Rol Değiştir') }} </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"
+                                               href="{{ url_for('kullanici_profil.parola_degistir') }}">
+                                                {{ _('Parola Değiştir') }} </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <section>
+                {% block profil %}
+                {% endblock %}
+            </section>
+        </div>
+    </div>
+
+
+{% endblock %}

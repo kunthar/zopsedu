@@ -1,0 +1,639 @@
+{
+  "kurumsal_siniflandirma": [
+    {
+      "id": 1,
+      "kodu": "38.01",
+      "aciklama": "Yükseköğretim Kurulu"
+    },
+    {
+      "id": 2,
+      "kodu": "38.02",
+      "aciklama": "Ankara Üniversitesi "
+    },
+    {
+      "id": 3,
+      "kodu": "38.03",
+      "aciklama": "Orta Doğu Teknik Üniversitesi "
+    },
+    {
+      "id": 4,
+      "kodu": "38.04",
+      "aciklama": "Hacettepe Üniversitesi"
+    },
+    {
+      "id": 5,
+      "kodu": "38.05",
+      "aciklama": "Gazi Üniversitesi "
+    },
+    {
+      "id": 6,
+      "kodu": "38.06",
+      "aciklama": "İstanbul Üniversitesi"
+    },
+    {
+      "id": 7,
+      "kodu": "38.07",
+      "aciklama": "İstanbul Teknik Üniversitesi"
+    },
+    {
+      "id": 8,
+      "kodu": "38.08",
+      "aciklama": "Boğaziçi Üniversitesi "
+    },
+    {
+      "id": 9,
+      "kodu": "38.09",
+      "aciklama": "Marmara Üniversitesi "
+    },
+    {
+      "id": 10,
+      "kodu": "38.10",
+      "aciklama": "Yıldız Teknik Üniversitesi"
+    },
+    {
+      "id": 11,
+      "kodu": "38.11",
+      "aciklama": "Mimar Sinan Güzel Sanatlar Üniversitesi "
+    },
+    {
+      "id": 12,
+      "kodu": "38.12",
+      "aciklama": "Ege Üniversitesi "
+    },
+    {
+      "id": 13,
+      "kodu": "38.13",
+      "aciklama": "Dokuz Eylül Üniversitesi "
+    },
+    {
+      "id": 14,
+      "kodu": "38.14",
+      "aciklama": "Trakya Üniversitesi "
+    },
+    {
+      "id": 15,
+      "kodu": "38.15",
+      "aciklama": "Bursa Uludağ Üniversitesi "
+    },
+    {
+      "id": 16,
+      "kodu": "38.16",
+      "aciklama": "Anadolu Üniversitesi"
+    },
+    {
+      "id": 17,
+      "kodu": "38.17",
+      "aciklama": "Selçuk Üniversitesi "
+    },
+    {
+      "id": 18,
+      "kodu": "38.18",
+      "aciklama": "Akdeniz Üniversitesi "
+    },
+    {
+      "id": 19,
+      "kodu": "38.19",
+      "aciklama": "Erciyes Üniversitesi"
+    },
+    {
+      "id": 20,
+      "kodu": "38.20",
+      "aciklama": "Sivas Cumhuriyet Üniversitesi "
+    },
+    {
+      "id": 21,
+      "kodu": "38.21",
+      "aciklama": "Çukurova Üniversitesi "
+    },
+    {
+      "id": 22,
+      "kodu": "38.22",
+      "aciklama": "Ondokuz Mayıs Üniversitesi "
+    },
+    {
+      "id": 23,
+      "kodu": "38.23",
+      "aciklama": "Karadeniz Teknik Üniversitesi "
+    },
+    {
+      "id": 24,
+      "kodu": "38.24",
+      "aciklama": "Atatürk Üniversitesi "
+    },
+    {
+      "id": 25,
+      "kodu": "38.25",
+      "aciklama": "İnönü Üniversitesi "
+    },
+    {
+      "id": 26,
+      "kodu": "38.26",
+      "aciklama": "Fırat Üniversitesi "
+    },
+    {
+      "id": 27,
+      "kodu": "38.27",
+      "aciklama": "Dicle Üniversitesi "
+    },
+    {
+      "id": 28,
+      "kodu": "38.28",
+      "aciklama": "Van Yüzüncü Yıl Üniversitesi"
+    },
+    {
+      "id": 29,
+      "kodu": "38.29",
+      "aciklama": "Gaziantep Üniversitesi "
+    },
+    {
+      "id": 30,
+      "kodu": "38.30",
+      "aciklama": "İzmir Yüksek Teknoloji Enstitüsü"
+    },
+    {
+      "id": 31,
+      "kodu": "38.31",
+      "aciklama": "Gebze Teknik Üniversitesi "
+    },
+    {
+      "id": 32,
+      "kodu": "38.32",
+      "aciklama": "Harran Üniversitesi "
+    },
+    {
+      "id": 33,
+      "kodu": "38.33",
+      "aciklama": "Süleyman Demirel Üniversitesi "
+    },
+    {
+      "id": 34,
+      "kodu": "38.34",
+      "aciklama": "Aydın Adnan Menderes Üniversitesi "
+    },
+    {
+      "id": 35,
+      "kodu": "38.35",
+      "aciklama": "Zonguldak Bülent Ecevit Üniversitesi "
+    },
+    {
+      "id": 36,
+      "kodu": "38.36",
+      "aciklama": "Mersin Üniversitesi "
+    },
+    {
+      "id": 37,
+      "kodu": "38.37",
+      "aciklama": "Pamukkale Üniversitesi "
+    },
+    {
+      "id": 38,
+      "kodu": "38.38",
+      "aciklama": "Balıkesir Üniversitesi"
+    },
+    {
+      "id": 39,
+      "kodu": "38.39",
+      "aciklama": "Kocaeli Üniversitesi"
+    },
+    {
+      "id": 40,
+      "kodu": "38.40",
+      "aciklama": "Sakarya Üniversitesi "
+    },
+    {
+      "id": 41,
+      "kodu": "38.41",
+      "aciklama": "Manisa Celal Bayar Üniversitesi "
+    },
+    {
+      "id": 42,
+      "kodu": "38.42",
+      "aciklama": "Bolu Abant İzzet Baysal Üniversitesi "
+    },
+    {
+      "id": 43,
+      "kodu": "38.43",
+      "aciklama": "Hatay Mustafa Kemal Üniversitesi "
+    },
+    {
+      "id": 44,
+      "kodu": "38.44",
+      "aciklama": "Afyon Kocatepe Üniversitesi "
+    },
+    {
+      "id": 45,
+      "kodu": "38.45",
+      "aciklama": "Kafkas Üniversitesi "
+    },
+    {
+      "id": 46,
+      "kodu": "38.46",
+      "aciklama": "Çanakkale 18 Mart Üniversitesi "
+    },
+    {
+      "id": 47,
+      "kodu": "38.47",
+      "aciklama": "Niğde Ömer Halisdemir Üniversitesi"
+    },
+    {
+      "id": 48,
+      "kodu": "38.48",
+      "aciklama": "Kütahya Dumlupınar Üniversitesi "
+    },
+    {
+      "id": 49,
+      "kodu": "38.49",
+      "aciklama": "Tokat Gaziosmanpaşa Üniversitesi"
+    },
+    {
+      "id": 50,
+      "kodu": "38.50",
+      "aciklama": "Muğla Sıtkı Koçman Üniversitesi"
+    },
+    {
+      "id": 51,
+      "kodu": "38.51",
+      "aciklama": "Kahramanmaraş Sütçü İmam Üniversitesi "
+    },
+    {
+      "id": 52,
+      "kodu": "38.52",
+      "aciklama": "Kırıkkale Üniversitesi "
+    },
+    {
+      "id": 53,
+      "kodu": "38.53",
+      "aciklama": "Eskişehir Osmangazi Üniversitesi "
+    },
+    {
+      "id": 54,
+      "kodu": "38.54",
+      "aciklama": "Galatasaray Üniversitesi"
+    },
+    {
+      "id": 55,
+      "kodu": "38.55",
+      "aciklama": "Kırşehir Ahi Evran Üniversitesi"
+    },
+    {
+      "id": 56,
+      "kodu": "38.56",
+      "aciklama": "Kastamonu Üniversitesi"
+    },
+    {
+      "id": 57,
+      "kodu": "38.57",
+      "aciklama": "Düzce Üniversitesi"
+    },
+    {
+      "id": 58,
+      "kodu": "38.58",
+      "aciklama": "Burdur Mehmet Akif Ersoy Üniversitesi"
+    },
+    {
+      "id": 59,
+      "kodu": "38.59",
+      "aciklama": "Uşak Üniversitesi"
+    },
+    {
+      "id": 60,
+      "kodu": "38.60",
+      "aciklama": "Recep Tayyip Erdoğan Üniversitesi "
+    },
+    {
+      "id": 61,
+      "kodu": "38.61",
+      "aciklama": "Tekirdağ Namık Kemal Üniversitesi"
+    },
+    {
+      "id": 62,
+      "kodu": "38.62",
+      "aciklama": "Erzincan Binali Yıldırım Üniversitesi"
+    },
+    {
+      "id": 63,
+      "kodu": "38.63",
+      "aciklama": "Aksaray Üniversitesi"
+    },
+    {
+      "id": 64,
+      "kodu": "38.64",
+      "aciklama": "Giresun Üniversitesi"
+    },
+    {
+      "id": 65,
+      "kodu": "38.65",
+      "aciklama": "Hitit Üniversitesi"
+    },
+    {
+      "id": 66,
+      "kodu": "38.66",
+      "aciklama": "Yozgat Bozok Üniversitesi"
+    },
+    {
+      "id": 67,
+      "kodu": "38.67",
+      "aciklama": "Adıyaman Üniversitesi"
+    },
+    {
+      "id": 68,
+      "kodu": "38.68",
+      "aciklama": "Ordu Üniversitesi"
+    },
+    {
+      "id": 69,
+      "kodu": "38.69",
+      "aciklama": "Amasya Üniversitesi"
+    },
+    {
+      "id": 70,
+      "kodu": "38.70",
+      "aciklama": "Karamanoğlu Mehmetbey Üniversitesi"
+    },
+    {
+      "id": 71,
+      "kodu": "38.71",
+      "aciklama": "Ağrı İbrahim Çeçen Üniversitesi "
+    },
+    {
+      "id": 72,
+      "kodu": "38.72",
+      "aciklama": "Sinop Üniversitesi"
+    },
+    {
+      "id": 73,
+      "kodu": "38.73",
+      "aciklama": "Siirt Üniversitesi"
+    },
+    {
+      "id": 74,
+      "kodu": "38.74",
+      "aciklama": "Nevşehir Hacı Bektaş Veli Üniversitesi"
+    },
+    {
+      "id": 75,
+      "kodu": "38.75",
+      "aciklama": "Karabük Üniversitesi"
+    },
+    {
+      "id": 76,
+      "kodu": "38.76",
+      "aciklama": "Kilis 7 Aralık Üniversitesi"
+    },
+    {
+      "id": 77,
+      "kodu": "38.77",
+      "aciklama": "Çankırı Karatekin Üniversitesi"
+    },
+    {
+      "id": 78,
+      "kodu": "38.78",
+      "aciklama": "Artvin Çoruh Üniversitesi"
+    },
+    {
+      "id": 79,
+      "kodu": "38.79",
+      "aciklama": "Bilecik Şeyh Edebali Üniversitesi"
+    },
+    {
+      "id": 80,
+      "kodu": "38.80",
+      "aciklama": "Bitlis Eren Üniversitesi"
+    },
+    {
+      "id": 81,
+      "kodu": "38.81",
+      "aciklama": "Kırklareli Üniversitesi"
+    },
+    {
+      "id": 82,
+      "kodu": "38.82",
+      "aciklama": "Osmaniye Korkut Ata Üniversitesi"
+    },
+    {
+      "id": 83,
+      "kodu": "38.83",
+      "aciklama": "Bingöl Üniversitesi"
+    },
+    {
+      "id": 84,
+      "kodu": "38.84",
+      "aciklama": "Muş Alparslan Üniversitesi"
+    },
+    {
+      "id": 85,
+      "kodu": "38.85",
+      "aciklama": "Mardin Artuklu Üniversitesi"
+    },
+    {
+      "id": 86,
+      "kodu": "38.86",
+      "aciklama": "Batman Üniversitesi"
+    },
+    {
+      "id": 87,
+      "kodu": "38.87",
+      "aciklama": "Ardahan Üniversitesi"
+    },
+    {
+      "id": 88,
+      "kodu": "38.88",
+      "aciklama": "Bartın Üniversitesi"
+    },
+    {
+      "id": 89,
+      "kodu": "38.89",
+      "aciklama": "Bayburt Üniversitesi"
+    },
+    {
+      "id": 90,
+      "kodu": "38.90",
+      "aciklama": "Gümüşhane Üniversitesi"
+    },
+    {
+      "id": 91,
+      "kodu": "38.91",
+      "aciklama": "Hakkari Üniversitesi"
+    },
+    {
+      "id": 92,
+      "kodu": "38.92",
+      "aciklama": "Iğdır Üniversitesi"
+    },
+    {
+      "id": 93,
+      "kodu": "38.93",
+      "aciklama": "Şırnak Üniversitesi"
+    },
+    {
+      "id": 94,
+      "kodu": "38.94",
+      "aciklama": "Munzur Üniversitesi"
+    },
+    {
+      "id": 95,
+      "kodu": "38.95",
+      "aciklama": "Yalova Üniversitesi"
+    },
+    {
+      "id": 96,
+      "kodu": "38.96",
+      "aciklama": "Türk-Alman Üniversitesi"
+    },
+    {
+      "id": 97,
+      "kodu": "38.97",
+      "aciklama": "Ankara Yıldırım Beyazıt Üniversitesi"
+    },
+    {
+      "id": 98,
+      "kodu": "38.98",
+      "aciklama": "Bursa Teknik Üniversitesi"
+    },
+    {
+      "id": 99,
+      "kodu": "38.99",
+      "aciklama": "İstanbul Medeniyet Üniversitesi"
+    },
+    {
+      "id": 100,
+      "kodu": "39.01",
+      "aciklama": "İzmir Katip Çelebi Üniversitesi"
+    },
+    {
+      "id": 101,
+      "kodu": "39.02",
+      "aciklama": "Necmettin Erbakan Üniversitesi"
+    },
+    {
+      "id": 102,
+      "kodu": "39.03",
+      "aciklama": "Abdullah Gül Üniversitesi"
+    },
+    {
+      "id": 103,
+      "kodu": "39.04",
+      "aciklama": "Erzurum Teknik Üniversitesi"
+    },
+    {
+      "id": 104,
+      "kodu": "39.05",
+      "aciklama": "Adana Bilim ve Teknoloji Üniversitesi"
+    },
+    {
+      "id": 105,
+      "kodu": "39.06",
+      "aciklama": "Ankara Sosyal Bilimler Üniversitesi "
+    },
+    {
+      "id": 106,
+      "kodu": "39.07",
+      "aciklama": "Sağlık Bilimleri Üniversitesi"
+    },
+    {
+      "id": 107,
+      "kodu": "39.08",
+      "aciklama": "Bandırma Onyedi Eylül Üniversitesi"
+    },
+    {
+      "id": 108,
+      "kodu": "39.09",
+      "aciklama": "İskenderun Teknik Üniversitesi"
+    },
+    {
+      "id": 109,
+      "kodu": "39.10",
+      "aciklama": "Alanya Alaaddin Keykubat Üniversitesi"
+    },
+    {
+      "id": 110,
+      "kodu": "39.12",
+      "aciklama": "İzmir Bakırçay Üniversitesi"
+    },
+    {
+      "id": 111,
+      "kodu": "39.13",
+      "aciklama": "İzmir Demokrasi Üniversitesi"
+    },
+    {
+      "id": 112,
+      "kodu": "39.14",
+      "aciklama": "Yükseköğretim Kalite Kurulu"
+    },
+    {
+      "id": 113,
+      "kodu": "39.15",
+      "aciklama": "Ankara Müzik ve Güzel Sanatlar Üniversitesi"
+    },
+    {
+      "id": 114,
+      "kodu": "39.17",
+      "aciklama": "Konya Teknik Üniversitesi"
+    },
+    {
+      "id": 115,
+      "kodu": "39.18",
+      "aciklama": "Kütahya Sağlık Bilimleri Üniversitesi "
+    },
+    {
+      "id": 116,
+      "kodu": "39.19",
+      "aciklama": "Malatya Turgut Özal Üniversitesi"
+    },
+    {
+      "id": 117,
+      "kodu": "39.20",
+      "aciklama": "İstanbul Üniversitesi-Cerrahpaşa "
+    },
+    {
+      "id": 118,
+      "kodu": "39.21",
+      "aciklama": "Ankara Hacı Bayram Veli Üniversitesi"
+    },
+    {
+      "id": 119,
+      "kodu": "39.22",
+      "aciklama": "Sakarya Uygulamalı Bilimler Üniversitesi"
+    },
+    {
+      "id": 120,
+      "kodu": "39.23",
+      "aciklama": "Samsun Üniversitesi"
+    },
+    {
+      "id": 121,
+      "kodu": "39.25",
+      "aciklama": "Tarsus Üniversitesi"
+    },
+    {
+      "id": 122,
+      "kodu": "39.26",
+      "aciklama": "Trabzon Üniversitesi"
+    },
+    {
+      "id": 123,
+      "kodu": "39.27",
+      "aciklama": "Kayseri Üniversitesi"
+    },
+    {
+      "id": 124,
+      "kodu": "39.28",
+      "aciklama": "Kahramanmaraş İstiklal Üniversitesi"
+    },
+    {
+      "id": 125,
+      "kodu": "39.29",
+      "aciklama": "Eskişehir Teknik Üniversitesi"
+    },
+    {
+      "id": 126,
+      "kodu": "39.30",
+      "aciklama": "Isparta Uygulamalı Bilimler Üniversitesi"
+    },
+    {
+      "id": 127,
+      "kodu": "39.31",
+      "aciklama": "Afyonkarahisar Sağlık Bilimleri Üniversitesi"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{% from 'macros/form_helpers/error_fields.html' import error %}
+
+{% macro render_select_field(field) %}
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label class="col-form-label">
+                {{ field.label }}
+            </label>
+        </div>
+        <div class="col-md-6">
+            {{ field(class="form-control")|safe }}
+        </div>
+        {{ error(field) }}
+    </div>
+{% endmacro %}
+
+{#select fieldi label üstte olacak sekilde yazar#}
+{% macro render_select_field_upper_label(field) %}
+    <div title="{{ title }}">
+        {{ field.label(class="control-label") }}
+        {{ field(class="form-control", **kwargs)|safe }}
+        {{ error(field) }}
+    </div>
+{% endmacro %}
+
+
+{% macro render_select_field_without_label(field) %}
+    {{ field(class="form-control", **kwargs)|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+
+{% macro render_text_select_field_for_units(field_text, field_select) %}
+    <div class="form-group row">
+        <div class="col-md-4">
+            <label class="col-form-label"> {{ field_text.label }} </label>
+        </div>
+        <div class="col-md-4">
+            {{ render_text_field_without_label(field_text, type="number", min=0) }}
+        </div>
+        <div class="col-md-4">
+            {{ field_select(class="form-control")|safe }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_text_select_field_for_units_with_tooltip(field_text, field_select, title) %}
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ field_text.label(class="control-label") }}
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+               data-original-title="{{ title }}"></i></div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ render_text_field_without_label(field_text, type="number", min=0) }}
+                </div>
+                <div class="col-md-6">
+                    {{ render_select_field_without_label(field_select) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}
+
+
+{% macro render_select_tag(field, title) %}
+    {{ field.label(class="control-label") }}
+    <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+       data-original-title="{{ title }}"></i>    {{ field(class="form-control width-full", **kwargs)|safe }}
+    {{ error(field) }}
+{% endmacro %}
+
+{% macro render_select_field_with_tooltip(field, title) %}
+    <div class="form-group row">
+        <div class="col-md-6">
+            {{ field.label(class="control-label") }}
+            <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title
+               data-original-title="{{ title }}"></i></div>
+        <div class="col-md-6">
+            {{ field(class="form-control")|safe }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-12">
+            {{ error(field) }}
+        </div>
+    </div>
+{% endmacro %}

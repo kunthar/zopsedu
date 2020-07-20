@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% from 'satinalma_dashboard/satinalma_dashboard_genel.html' import satinalma_dashboard_genel %}
+{% from "sablon_preview_modal.html" import render_sablon_with_values_modal %}
+{% macro satinalma_dashboard_belgeler() %}
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">{{ _('#') }}</th>
+            <th scope="col">{{ _('Belge') }}</th>
+            <th class="all" scope="col">{{ _('Yazdır') }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for template in templates %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ template.adi }}</td>
+                <td><a class="btn btn-success btn-xs"
+                       href="#render-sablon-modal"
+                       onclick="renderSablon('{{ url_for('SablonView:render_sablon_with_values', satinalma_id=satinalma_id, sablon_id=template.id) }}');"
+                >
+                    <b>{{ _("Önizle ve Yazdır") }}</b>
+                </a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {{ render_sablon_with_values_modal() }}
+    </table>
+
+{% endmacro %}
+
+{% block context %}
+    {{ satinalma_dashboard_genel(_("Satınalma Belgeleri"),
+           satinalma_dashboard_belgeler(),
+           satinalma,
+           proje,
+           satinalma_id,
+           states_info,
+           actions_info) }}
+{% endblock %}

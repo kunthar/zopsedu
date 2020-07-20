@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% from 'macros/_formhelpers.html' import render_thank_you %}
+{% block context %}
+    <div class="content">
+        {{ render_thank_you("Kaydınız Alınmıştır. Teşekkür Ederiz.") }}
+    </div>
+{% endblock %}

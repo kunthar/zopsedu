@@ -1,0 +1,196 @@
+{% macro table_manage_buttons_init(id="data-table") %}
+    <script>
+    $(document).ready(function () {
+        TableManageButtons.init({
+            id: "{{ id }}",
+            language: {
+                decimal: "{% trans %},{% endtrans %}",
+                emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                info: "{% trans %}_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                infoPostFix: "",
+                thousands: "{% trans %}.{% endtrans %}",
+                lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                processing: "{% trans %}İşleniyor...{% endtrans %}",
+                search: "{% trans %}Ara:{% endtrans %}",
+                zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                paginate: {
+                    first: "{% trans %}İlk{% endtrans %}",
+                    last: "{% trans %}Son{% endtrans %}",
+                    next: "{% trans %}Sonraki{% endtrans %}",
+                    previous: "{% trans %}Önceki{% endtrans %}"
+                },
+                aria: {
+                    sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                    sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                },
+                buttons: {
+                    copy: "{% trans %}Kopyala{% endtrans %}",
+                    copyTitle: "{% trans %}Panoya Kopyala{% endtrans %}",
+                    copySuccess: {
+                        _: "{% trans %}%d satır kopyalandı{% endtrans %}",
+                        1: "{% trans %}1 satır kopyalandı{% endtrans %}"
+                    },
+                    print: "{% trans %}Yazdır{% endtrans %}",
+                    colvis: "{% trans %}Alan Seç{% endtrans %}"
+                }
+            },
+            buttons: [{
+                extend: "copy",
+                className: "btn btn-secondary buttons-copy buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "csv",
+                className: "btn btn-secondary buttons-csv buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "excel",
+                className: "btn btn-secondary buttons-excel buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "pdf",
+                className: "btn btn-secondary buttons-pdf buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "print",
+                className: "btn btn-secondary buttons-print buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, "colvis"]
+        });
+    });
+    </script>
+{% endmacro %}
+
+
+{% macro table_manage_buttons_init_without_search(id="data-table") %}
+    <script>
+    $(document).ready(function () {
+        TableManageButtonsWithoutSearch.init({
+            id: "{{ id }}",
+            language: {
+                decimal: "{% trans %},{% endtrans %}",
+                emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                info: "{% trans %}_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                infoPostFix: "",
+                thousands: "{% trans %}.{% endtrans %}",
+                lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                processing: "{% trans %}İşleniyor...{% endtrans %}",
+                search: "{% trans %}Ara:{% endtrans %}",
+                zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                paginate: {
+                    first: "{% trans %}İlk{% endtrans %}",
+                    last: "{% trans %}Son{% endtrans %}",
+                    next: "{% trans %}Sonraki{% endtrans %}",
+                    previous: "{% trans %}Önceki{% endtrans %}"
+                },
+                aria: {
+                    sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                    sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                },
+                buttons: {
+                    copy: "{% trans %}Kopyala{% endtrans %}",
+                    copyTitle: "{% trans %}Panoya Kopyala{% endtrans %}",
+                    copySuccess: {
+                        _: "{% trans %}%d satır kopyalandı{% endtrans %}",
+                        1: "{% trans %}1 satır kopyalandı{% endtrans %}"
+                    },
+                    print: "{% trans %}Yazdır{% endtrans %}",
+                    colvis: "{% trans %}Alan Seç{% endtrans %}"
+                }
+            },
+            buttons: [{
+                extend: "copy",
+                className: "btn btn-secondary buttons-copy buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "csv",
+                className: "btn btn-secondary buttons-csv buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "excel",
+                className: "btn btn-secondary buttons-excel buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "pdf",
+                className: "btn btn-secondary buttons-pdf buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, {
+                extend: "print",
+                className: "btn btn-secondary buttons-print buttons-html5",
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }, "colvis"]
+        });
+    });
+    </script>
+{% endmacro %}
+
+
+{% macro table_manage_buttons_init_without_search_without_buttons(id="data-table") %}
+    <script>
+    $(document).ready(function () {
+        TableManageButtonsWithoutSearch.init({
+            id: "{{ id }}",
+            language: {
+                decimal: "{% trans %},{% endtrans %}",
+                emptyTable: "{% trans %}Tabloda herhangi bir veri mevcut değil{% endtrans %}",
+                info: "{% trans %}_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor{% endtrans %}",
+                infoEmpty: "{% trans %}Kayıt yok{% endtrans %}",
+                infoFiltered: "{% trans %}(_MAX_ kayıt içerisinden bulunan){% endtrans %}",
+                infoPostFix: "",
+                thousands: "{% trans %}.{% endtrans %}",
+                lengthMenu: "{% trans %}Sayfada _MENU_ kayıt göster{% endtrans %}",
+                loadingRecords: "{% trans %}Yükleniyor...{% endtrans %}",
+                processing: "{% trans %}İşleniyor...{% endtrans %}",
+                search: "{% trans %}Ara:{% endtrans %}",
+                zeroRecords: "{% trans %}Eşleşen kayıt bulunamadı{% endtrans %}",
+                paginate: {
+                    first: "{% trans %}İlk{% endtrans %}",
+                    last: "{% trans %}Son{% endtrans %}",
+                    next: "{% trans %}Sonraki{% endtrans %}",
+                    previous: "{% trans %}Önceki{% endtrans %}"
+                },
+                aria: {
+                    sortAscending: "{% trans %}: artan sütun sıralamasını aktifleştir{% endtrans %}",
+                    sortDescending: "{% trans %}: azalan sütun sıralamasını aktifleştir{% endtrans %}"
+                },
+                buttons: {
+                    copy: "{% trans %}Kopyala{% endtrans %}",
+                    copyTitle: "{% trans %}Panoya Kopyala{% endtrans %}",
+                    copySuccess: {
+                        _: "{% trans %}%d satır kopyalandı{% endtrans %}",
+                        1: "{% trans %}1 satır kopyalandı{% endtrans %}"
+                    },
+                    print: "{% trans %}Yazdır{% endtrans %}",
+                    colvis: "{% trans %}Alan Seç{% endtrans %}"
+                }
+            },
+            buttons: []
+        });
+    });
+    </script>
+{% endmacro %}

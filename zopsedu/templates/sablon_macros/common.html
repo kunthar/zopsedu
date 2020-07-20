@@ -1,0 +1,19 @@
+{% macro render_sablon_header(sablon_name) %}
+    <div class="sablon-space">
+        <table class="header-style">
+            <tr>
+                <td class="zopsedu-header">
+                    <img class="image-size"
+                         src="{{ logo_url | default(get_logo_url()) | default(url_for('static', filename = 'assets/img/brand-logo2.png'), true) }}"
+                         name="Image1" align="center" border="0"/>
+                </td>
+                <td class="zopsedu-header-middle">
+                    <p align="center">
+                        {{ sablon_name }}
+                    </p>
+                </td>
+                <td class="zopsedu-header" width="20%" valign="top"></td>
+            </tr>
+        </table>
+    </div>
+{% endmacro %}

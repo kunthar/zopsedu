@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% from 'satinalma_dashboard/satinalma_dashboard_genel.html' import satinalma_dashboard_genel %}
+
+{% macro satinalma_dashboard_urunler() %}
+    <section id="satinalma-urunler-content" class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="data-table"
+                               class="table table-striped table-bordered dataex-html5-selectors dataTable"
+                               role="grid"
+                               aria-describedby="data-table_info" style="width: 100%">
+                            <thead>
+                            <tr role="row">
+                                <th>{{ _("Kalem adı") }}</th>
+                                <th>{{ _("Gerekçe") }}</th>
+                                <th>{{ _("Talep Tutarı") }}</th>
+                                <th>{{ _("Miktar") }}</th>
+                                <th>{{ _("Teknik Şartname") }}</th>
+                                <th>{{ _("Firma") }}</th>
+                                <th>{{ _("Sipariş Tutarı") }}</th>
+                                <th>{{ _("Sipariş No") }}</th>
+                                <th>{{ _("Sipariş Durumu") }}</th>
+                                <th>{{ _("Teslimat Süresi(Gün)") }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for talep_kalemi in talep_kalemleri_with_siparis_info %}
+                                <tr class="odd" role="row">
+                                    <td>{{ talep_kalemi.kalem_adi }} </td>
+                                    <td>{{ talep_kalemi.kalem_gerekce }} </td>
+                                    <td>{{ talep_kalemi.tutar | currency }} </td>
+                                    <td>{{ talep_kalemi.miktar }} {{ talep_kalemi.birim }}</td>
+                                    <td>
+                                        <a href="{{ url_for('FileView:file_download', file_id=talep_kalemi.teknik_sartname_id) }}"
+                                           class="btn  btn-info">    {{ _("İndir") }}</a>
+                                        </a>
+                                    </td>
+                                    <td>{{ talep_kalemi.firma_adi }} </td>
+                                    <td>{{ talep_kalemi.kdv_dahil_teklif | currency }} </td>
+                                    <td>{{ talep_kalemi.siparis_takip_no }} </td>
+                                    <td>{{ talep_kalemi.siparis_durumu }} </td>
+                                    <td>{{ talep_kalemi.teslimat_suresi }} </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    {% from 'macros/utils/dataTables/table_manage.html' import table_manage_buttons_init_without_search %}
+    {{ table_manage_buttons_init_without_search() }}
+    <!-- ================== END PAGE LEVEL JS ================== -->
+
+{% endmacro %}
+
+{% block context %}
+    {{ satinalma_dashboard_genel(_("Talep Edilen Ürünler"),
+           satinalma_dashboard_urunler(),
+           satinalma,
+           proje,
+           satinalma_id,
+           states_info,
+           actions_info) }}
+{% endblock %}

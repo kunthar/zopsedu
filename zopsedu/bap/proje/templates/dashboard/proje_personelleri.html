@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% from 'dashboard/proje_dashboard_genel.html' import proje_dashboard_genel %}
+{% from 'macros/durum_degisim.html' import  print_column_data %}
+
+
+{% set states_info = next_states_info %}
+{% set actions_info = actions_info %}
+
+{% set yetkili_mi = is_role("BAP Admin") or is_role("BAP Yetkilisi") %}
+{# fullfills(proje_yurutucu) proje yurutucusu olma durumunu belirtir. proje_yurutucu = ProjeYurutucusu() requirementidir#}
+{% set yurutucu_mu = proje_yurutucusu_mu if proje_yurutucusu_mu else False %}
+
+
+
+{% macro proje_calisani_yaz(ad=None,
+                            soyad=None,
+                            birim=None,
+                            eposta=None,
+                            is_telefonu=None,
+                            cep_telefonu=None,
+                            projedeki_gorevi=None,
+                            projeye_katkisi=None,
+                            hitap_unvan=None,
+                            ozgecmis_file_id=None) %}
+    <div class="col-md-6">
+        <div class="card">
+            <div class="text-center">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename = 'assets/img/user-13.jpg') }}"
+                         class="rounded-circle  height-150" alt="Card image">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ ad }} {{ soyad }}</h4>
+                    <h6 class="card-subtitle text-muted">{{ kurum_ici_mi }}</h6>
+                </div>
+                <div class="card-body">
+                    {% if ozgecmis_file_id %}
+                        <a href="{{ url_for("FileView:file_download", file_id=ozgecmis_file_id) }}"
+                           class="btn  btn-info">{{ _("Özgeçmiş İndir") }}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="list-group list-group-flush">
+                {{ print_column_data(birim, _("Birim")) }}
+                {{ print_column_data(eposta, _("E-posta")) }}
+                {{ print_column_data(hitap_unvan, _("Hitap Ünvan")) }}
+                {{ print_column_data(is_telefonu, _("İş Telefonu")) }}
+                {{ print_column_data(cep_telefonu, _("Cep Telefonu")) }}
+
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro proje_personelleri() %}
+    <div class="row">
+        <!-- begin card -->
+        {% for calisan in proje.proje_calisanlari %}
+            {% if proje.proje_yurutucu.personel.id == calisan.personel.id %}
+                {#                {% set unvan = proje.proje_yurutucu.unvan %}#}
+                {{ proje_calisani_yaz(proje.proje_yurutucu.personel.person.ad,
+                                      proje.proje_yurutucu.personel.person.soyad,
+                                      proje.proje_yurutucu.personel.birimi.ad,
+                                      proje.proje_yurutucu.personel.person.birincil_eposta,
+                                      proje.proje_yurutucu.personel.oda_tel_no,
+                                      proje.proje_yurutucu.personel.person.cep_telefonu,
+                                      calisan.projedeki_gorevi,
+                                      calisan.projeye_katkisi,
+                                      proje.proje_yurutucu.personel.hitap_unvan.ad,
+                                      calisan.ozgecmis.file_id) }}
+            {% endif %}
+        {% endfor %}
+        {% for calisan in proje.proje_calisanlari %}
+            {% if proje.proje_yurutucu.personel.id == calisan.personel.id %}
+            {% else %}
+                {% if calisan.personel_id %}
+                    {#                proje calısanı personel ise#}
+                    {{ proje_calisani_yaz(calisan.personel.person.ad,
+                                          calisan.personel.person.soyad,
+                                          calisan.personel.birimi.ad,
+                                          calisan.personel.person.birincil_eposta,
+                                          calisan.personel.oda_tel_no,
+                                          calisan.personel.person.cep_telefonu,
+                                          calisan.projedeki_gorevi,
+                                          calisan.projeye_katkisi,
+                                          calisan.personel.hitap_unvan.ad) }}
+
+                {% elif calisan.ogrenci_id %}
+                    {{ proje_calisani_yaz(calisan.ogrenci.person.ad,
+                                          calisan.ogrenci.person.soyad,
+                                          calisan.ogrenci.person.birincil_eposta,
+                                          calisan.ogrenci.person.cep_telefonu,
+                                          calisan.projedeki_gorevi,
+                                          calisan.projeye_katkisi) }}
+
+                {% else %}
+                    {#                    proje calişanı harici bir kişi ise#}
+                    {{ proje_calisani_yaz(calisan.person.ad,
+                                          calisan.person.soyad,
+                                          calisan.fakulte + " / " + calisan.bolum,
+                                          calisan.person.birincil_eposta,
+                                          calisan.is_telefonu,
+                                          calisan.person.cep_telefonu,
+                                          calisan.projedeki_gorevi,
+                                          calisan.projeye_katkisi) }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- end card -->
+    </div>
+{% endmacro %}
+
+
+{% block context %}
+    {{ proje_dashboard_genel(_("Proje Personelleri"),
+           proje_personelleri(),
+           proje,
+           states_info,
+           actions_info,
+           yetkili_mi=yetkili_mi,
+           yurutucu_mu=yurutucu_mu) }}
+{% endblock %}
+

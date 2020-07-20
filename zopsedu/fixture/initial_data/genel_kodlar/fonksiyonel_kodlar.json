@@ -1,0 +1,1276 @@
+{
+  "fonksiyonel_kodlar": [
+    {
+      "id": 1,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": "GENEL KAMU HİZMETLERİ"
+    },
+    {
+      "id": 2,
+      "parent_id": 1,
+      "kodu": "1.1",
+      "aciklama": "Yasama ve Yürütme Organları,  Finansal ve Mali işler, Dışişleri Hizmetleri"
+    },
+    {
+      "id": 3,
+      "parent_id": 2,
+      "kodu": "1.1.1",
+      "aciklama": "Yasama ve yürütme organları hizmetleri"
+    },
+    {
+      "id": 4,
+      "parent_id": 2,
+      "kodu": "1.1.2",
+      "aciklama": "Finansal ve mali işler ve hizmetler"
+    },
+    {
+      "id": 5,
+      "parent_id": 2,
+      "kodu": "1.1.3",
+      "aciklama": "Dışişleri hizmetleri"
+    },
+    {
+      "id": 6,
+      "parent_id": 2,
+      "kodu": "1.1.9",
+      "aciklama": "Sınıflandırmaya girmeyen yasama ve yürütme organları, finansal ve mali işler, dışişleri hizmetleri"
+    },
+    {
+      "id": 7,
+      "parent_id": 1,
+      "kodu": "1.2",
+      "aciklama": "Dış Ekonomik Yardım Hizmetleri"
+    },
+    {
+      "id": 8,
+      "parent_id": 7,
+      "kodu": "1.2.1",
+      "aciklama": "Gelişmekte olan ülkelere yapılan ekonomik yardım hizmetleri"
+    },
+    {
+      "id": 9,
+      "parent_id": 7,
+      "kodu": "1.2.2",
+      "aciklama": "Uluslararası kuruluşlar aracılığı ile yapılan ekonomik yardım hizmetleri"
+    },
+    {
+      "id": 10,
+      "parent_id": 7,
+      "kodu": "1.2.9",
+      "aciklama": "Sınıflandırmaya girmeyen dış ekonomik yardım hizmetleri"
+    },
+    {
+      "id": 11,
+      "parent_id": 1,
+      "kodu": "1.3",
+      "aciklama": "Genel Hizmetler"
+    },
+    {
+      "id": 12,
+      "parent_id": 11,
+      "kodu": "1.3.1",
+      "aciklama": "Genel personel hizmetleri"
+    },
+    {
+      "id": 13,
+      "parent_id": 11,
+      "kodu": "1.3.2",
+      "aciklama": "Genel planlama ve istatistik hizmetleri"
+    },
+    {
+      "id": 14,
+      "parent_id": 11,
+      "kodu": "1.3.9",
+      "aciklama": "Diğer genel hizmetler"
+    },
+    {
+      "id": 15,
+      "parent_id": 1,
+      "kodu": "1.4",
+      "aciklama": "Temel Araştırma Hizmetleri"
+    },
+    {
+      "id": 16,
+      "parent_id": 15,
+      "kodu": "1.4.1",
+      "aciklama": "Doğal bilimler, mühendislik ve teknoloji konusundaki temel araştırma hizmetleri"
+    },
+    {
+      "id": 17,
+      "parent_id": 15,
+      "kodu": "1.4.2",
+      "aciklama": "Sosyal  ve beşeri bilimler konusundaki temel araştırma hizmetleri"
+    },
+    {
+      "id": 18,
+      "parent_id": 15,
+      "kodu": "1.4.3",
+      "aciklama": "Çok branşlı temel araştırma hizmetleri"
+    },
+    {
+      "id": 19,
+      "parent_id": 15,
+      "kodu": "1.4.9",
+      "aciklama": "Sınıflandırmaya girmeyen temel araştırma hizmetleri"
+    },
+    {
+      "id": 20,
+      "parent_id": 1,
+      "kodu": "1.5",
+      "aciklama": "Borç Yönetimi Hizmetleri"
+    },
+    {
+      "id": 21,
+      "parent_id": 20,
+      "kodu": "1.5.0",
+      "aciklama": "Borç yönetimi hizmetleri"
+    },
+    {
+      "id": 22,
+      "parent_id": 1,
+      "kodu": "1.6",
+      "aciklama": "Genel Nitelikli Transferlere İlişkin Hizmetler"
+    },
+    {
+      "id": 23,
+      "parent_id": 22,
+      "kodu": "1.6.0",
+      "aciklama": "Genel nitelikli transferlere ilişkin hizmetler"
+    },
+    {
+      "id": 24,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": " Yüksek Öğretim Kurulu, Üniversiteler ve Yüksek Teknoloji Enstitüleri"
+    },
+    {
+      "id": 25,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": "Özel Bütçeli Diğer İdareler"
+    },
+    {
+      "id": 26,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": "Düzenleyici ve Denetleyici Kurumlar"
+    },
+    {
+      "id": 27,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": "Sosyal Güvenlik Kurumları"
+    },
+    {
+      "id": 28,
+      "parent_id": 0,
+      "kodu": "1",
+      "aciklama": "Üniversiteler ve Yüksek Teknoloji Enstitüleri"
+    },
+    {
+      "id": 29,
+      "parent_id": 28,
+      "kodu": "1.8",
+      "aciklama": "Genel Kamu Hizmetlerine İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 30,
+      "parent_id": 29,
+      "kodu": "1.8.8",
+      "aciklama": "Genel Kamu Hizmetlerine İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 31,
+      "parent_id": 28,
+      "kodu": "1.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Genel Kamu Hizmetleri"
+    },
+    {
+      "id": 32,
+      "parent_id": 31,
+      "kodu": "1.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen genel kamu hizmetleri"
+    },
+    {
+      "id": 33,
+      "parent_id": 0,
+      "kodu": "2",
+      "aciklama": "SAVUNMA HİZMETLERİ"
+    },
+    {
+      "id": 34,
+      "parent_id": 33,
+      "kodu": "2.1",
+      "aciklama": "Askeri  Savunma Hizmetleri"
+    },
+    {
+      "id": 35,
+      "parent_id": 34,
+      "kodu": "2.1.0",
+      "aciklama": "Askeri  savunma hizmetleri"
+    },
+    {
+      "id": 36,
+      "parent_id": 33,
+      "kodu": "2.2",
+      "aciklama": "Sivil Savunma Hizmetleri"
+    },
+    {
+      "id": 37,
+      "parent_id": 36,
+      "kodu": "2.2.0",
+      "aciklama": "Sivil savunma hizmetleri"
+    },
+    {
+      "id": 38,
+      "parent_id": 33,
+      "kodu": "2.3",
+      "aciklama": "Dış Askeri Yardım Hizmetleri"
+    },
+    {
+      "id": 39,
+      "parent_id": 38,
+      "kodu": "2.3.0",
+      "aciklama": "Dış askeri yardım hizmetleri"
+    },
+    {
+      "id": 40,
+      "parent_id": 33,
+      "kodu": "2.8",
+      "aciklama": "Savunmaya İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 41,
+      "parent_id": 40,
+      "kodu": "2.8.8",
+      "aciklama": "Savunmaya ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 42,
+      "parent_id": 33,
+      "kodu": "2.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Savunma Hizmetleri"
+    },
+    {
+      "id": 43,
+      "parent_id": 42,
+      "kodu": "2.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen savunma hizmetleri"
+    },
+    {
+      "id": 44,
+      "parent_id": 0,
+      "kodu": "3",
+      "aciklama": "KAMU DÜZENİ VE GÜVENLİK HİZMETLERİ"
+    },
+    {
+      "id": 45,
+      "parent_id": 44,
+      "kodu": "3.1",
+      "aciklama": "Güvenlik Hizmetleri"
+    },
+    {
+      "id": 46,
+      "parent_id": 45,
+      "kodu": "3.1.1",
+      "aciklama": "Genel güvenlik hizmetleri"
+    },
+    {
+      "id": 47,
+      "parent_id": 45,
+      "kodu": "3.1.2",
+      "aciklama": "Adli güvenlik hizmetleri"
+    },
+    {
+      "id": 48,
+      "parent_id": 45,
+      "kodu": "3.1.3",
+      "aciklama": "Trafik güvenliği hizmetleri"
+    },
+    {
+      "id": 49,
+      "parent_id": 45,
+      "kodu": "3.1.4",
+      "aciklama": "Kurumsal güvenlik hizmetleri"
+    },
+    {
+      "id": 50,
+      "parent_id": 45,
+      "kodu": "3.1.9",
+      "aciklama": "Sınıflandırmaya girmeyen güvenlik hizmetleri"
+    },
+    {
+      "id": 51,
+      "parent_id": 44,
+      "kodu": "3.2",
+      "aciklama": "Yangından Korunma Hizmetleri"
+    },
+    {
+      "id": 52,
+      "parent_id": 51,
+      "kodu": "3.2.0",
+      "aciklama": "Yangından korunma hizmetleri"
+    },
+    {
+      "id": 53,
+      "parent_id": 44,
+      "kodu": "3.3",
+      "aciklama": "Mahkeme Hizmetleri"
+    },
+    {
+      "id": 54,
+      "parent_id": 53,
+      "kodu": "3.3.1",
+      "aciklama": "Yüksek mahkeme hizmetleri"
+    },
+    {
+      "id": 55,
+      "parent_id": 53,
+      "kodu": "3.3.2",
+      "aciklama": "Adli mahkeme hizmetleri"
+    },
+    {
+      "id": 56,
+      "parent_id": 53,
+      "kodu": "3.3.3",
+      "aciklama": "İdare mahkeme hizmetleri"
+    },
+    {
+      "id": 57,
+      "parent_id": 53,
+      "kodu": "3.3.4",
+      "aciklama": "Tahkim kurulları ve ombudsmanlık vb. hizmetleri"
+    },
+    {
+      "id": 58,
+      "parent_id": 53,
+      "kodu": "3.3.9",
+      "aciklama": "Diğer mahkeme hizmetleri"
+    },
+    {
+      "id": 59,
+      "parent_id": 44,
+      "kodu": "3.4",
+      "aciklama": "Cezaevi İdaresi Hizmetleri"
+    },
+    {
+      "id": 60,
+      "parent_id": 59,
+      "kodu": "3.4.0",
+      "aciklama": "Cezaevi idaresi hizmetleri"
+    },
+    {
+      "id": 61,
+      "parent_id": 44,
+      "kodu": "3.8",
+      "aciklama": "Kamu Düzeni ve Güvenliğe İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 62,
+      "parent_id": 61,
+      "kodu": "3.8.8",
+      "aciklama": "Kamu düzeni ve güvenliğe ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 63,
+      "parent_id": 44,
+      "kodu": "3.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Kamu Düzeni ve Güvenlik Hizmetleri"
+    },
+    {
+      "id": 64,
+      "parent_id": 63,
+      "kodu": "3.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen kamu düzeni ve güvenlik hizmetleri"
+    },
+    {
+      "id": 65,
+      "parent_id": 0,
+      "kodu": "4",
+      "aciklama": "EKONOMİK İŞLER VE HİZMETLER"
+    },
+    {
+      "id": 66,
+      "parent_id": 65,
+      "kodu": "4.1",
+      "aciklama": "Genel Ekonomik İşler ve Hizmetler"
+    },
+    {
+      "id": 67,
+      "parent_id": 66,
+      "kodu": "4.1.1",
+      "aciklama": "Genel ekonomik ve ticari  işler ve hizmetler"
+    },
+    {
+      "id": 68,
+      "parent_id": 66,
+      "kodu": "4.1.2",
+      "aciklama": "İşgücü işleri ve hizmetleri"
+    },
+    {
+      "id": 69,
+      "parent_id": 65,
+      "kodu": "4.2",
+      "aciklama": "Tarım, Ormancılık, Balıkçılık ve Avcılık Hizmetleri"
+    },
+    {
+      "id": 70,
+      "parent_id": 69,
+      "kodu": "4.2.1",
+      "aciklama": "Tarım hizmetleri"
+    },
+    {
+      "id": 71,
+      "parent_id": 69,
+      "kodu": "4.2.2",
+      "aciklama": "Ormancılık hizmetleri"
+    },
+    {
+      "id": 72,
+      "parent_id": 69,
+      "kodu": "4.2.3",
+      "aciklama": "Balıkçılık ve avcılık hizmetleri"
+    },
+    {
+      "id": 73,
+      "parent_id": 65,
+      "kodu": "4.3",
+      "aciklama": "Yakıt ve Enerji Hizmetleri"
+    },
+    {
+      "id": 74,
+      "parent_id": 73,
+      "kodu": "4.3.1",
+      "aciklama": "Kömür ve diğer katı yakıt hizmetleri"
+    },
+    {
+      "id": 75,
+      "parent_id": 73,
+      "kodu": "4.3.2",
+      "aciklama": "Petrol ve gaz işleri ve hizmetleri"
+    },
+    {
+      "id": 76,
+      "parent_id": 73,
+      "kodu": "4.3.3",
+      "aciklama": "Nükleer yakıt işleri ve hizmetleri"
+    },
+    {
+      "id": 77,
+      "parent_id": 73,
+      "kodu": "4.3.4",
+      "aciklama": "Elektrik işleri ve hizmetleri"
+    },
+    {
+      "id": 78,
+      "parent_id": 73,
+      "kodu": "4.3.5",
+      "aciklama": "Elektrik dışındaki enerji işleri ve hizmetleri"
+    },
+    {
+      "id": 79,
+      "parent_id": 73,
+      "kodu": "4.3.9",
+      "aciklama": "Sınıflandırmaya girmeyen yakıt işleri ve hizmetleri"
+    },
+    {
+      "id": 80,
+      "parent_id": 65,
+      "kodu": "4.4",
+      "aciklama": "Madencilik, İmalat ve İnşaat Hizmetleri"
+    },
+    {
+      "id": 81,
+      "parent_id": 80,
+      "kodu": "4.4.1",
+      "aciklama": "Yakıt dışındaki madencilik, İmalat ve inşaat hizmetleri"
+    },
+    {
+      "id": 82,
+      "parent_id": 80,
+      "kodu": "4.4.2",
+      "aciklama": "İmalat işleri hizmetleri"
+    },
+    {
+      "id": 83,
+      "parent_id": 80,
+      "kodu": "4.4.3",
+      "aciklama": "İnşaat işleri hizmetleri"
+    },
+    {
+      "id": 84,
+      "parent_id": 65,
+      "kodu": "4.5",
+      "aciklama": "Ulaştırma Hizmetleri"
+    },
+    {
+      "id": 85,
+      "parent_id": 84,
+      "kodu": "4.5.1",
+      "aciklama": "Karayolu inşaat işleri ve hizmetleri"
+    },
+    {
+      "id": 86,
+      "parent_id": 84,
+      "kodu": "4.5.2",
+      "aciklama": "Karayolu sistemi işletme işleri ve hizmetleri"
+    },
+    {
+      "id": 87,
+      "parent_id": 84,
+      "kodu": "4.5.3",
+      "aciklama": "Suyolu taşımacılığı tesisleri inşaat işleri ve hizmetleri"
+    },
+    {
+      "id": 88,
+      "parent_id": 84,
+      "kodu": "4.5.4",
+      "aciklama": "Suyolu taşımacılığı işletme işleri ve hizmetleri"
+    },
+    {
+      "id": 89,
+      "parent_id": 84,
+      "kodu": "4.5.5",
+      "aciklama": "Demiryolu inşaatı ve işletme işleri ve hizmetleri"
+    },
+    {
+      "id": 90,
+      "parent_id": 84,
+      "kodu": "4.5.6",
+      "aciklama": "Havayolu taşımacılığı tesisleri inşaat ve işletme işleri ve hizmetleri"
+    },
+    {
+      "id": 91,
+      "parent_id": 84,
+      "kodu": "4.5.7",
+      "aciklama": "Boru hattı ve diğer nakil tesislerinin inşaat işleri ve hizmetleri"
+    },
+    {
+      "id": 92,
+      "parent_id": 84,
+      "kodu": "4.5.8",
+      "aciklama": "Boru hattı ile nakletme ve diğer taşımacılık sistemi işletme işleri ve hizmetleri"
+    },
+    {
+      "id": 93,
+      "parent_id": 84,
+      "kodu": "4.5.9",
+      "aciklama": "Sınıflandırmaya girmeyen ulaştırma hizmetleri"
+    },
+    {
+      "id": 94,
+      "parent_id": 65,
+      "kodu": "4.6",
+      "aciklama": "İletişim Hizmetleri"
+    },
+    {
+      "id": 95,
+      "parent_id": 94,
+      "kodu": "4.6.0",
+      "aciklama": "İletişim hizmetleri"
+    },
+    {
+      "id": 96,
+      "parent_id": 65,
+      "kodu": "4.7",
+      "aciklama": "Diğer Endüstriler"
+    },
+    {
+      "id": 97,
+      "parent_id": 96,
+      "kodu": "4.7.1",
+      "aciklama": "Dağıtım ticareti, ambar ve depolama hizmetleri"
+    },
+    {
+      "id": 98,
+      "parent_id": 96,
+      "kodu": "4.7.2",
+      "aciklama": "Otel ve lokanta hizmetleri"
+    },
+    {
+      "id": 99,
+      "parent_id": 96,
+      "kodu": "4.7.3",
+      "aciklama": "Turizm hizmetleri"
+    },
+    {
+      "id": 100,
+      "parent_id": 96,
+      "kodu": "4.7.4",
+      "aciklama": "Çok amaçlı geliştirme projeleri işleri ve hizmetleri"
+    },
+    {
+      "id": 101,
+      "parent_id": 65,
+      "kodu": "4.8",
+      "aciklama": "Ekonomik Faaliyetlere İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 102,
+      "parent_id": 101,
+      "kodu": "4.8.1",
+      "aciklama": "Genel ekonomik,ticari ve işgücü araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 103,
+      "parent_id": 101,
+      "kodu": "4.8.2",
+      "aciklama": "Tarım, ormancılık ,balıkçılık ve  avcılık araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 104,
+      "parent_id": 101,
+      "kodu": "4.8.3",
+      "aciklama": "Yakıt ve enerji araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 105,
+      "parent_id": 101,
+      "kodu": "4.8.4",
+      "aciklama": "Madencilik, imalat ve inşaat  araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 106,
+      "parent_id": 101,
+      "kodu": "4.8.5",
+      "aciklama": "Ulaştırma araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 107,
+      "parent_id": 101,
+      "kodu": "4.8.6",
+      "aciklama": "İletişim araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 108,
+      "parent_id": 101,
+      "kodu": "4.8.7",
+      "aciklama": "Diğer endüstriler araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 109,
+      "parent_id": 65,
+      "kodu": "4.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Ekonomik İşler ve Hizmetler"
+    },
+    {
+      "id": 110,
+      "parent_id": 109,
+      "kodu": "4.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen ekonomik işler ve hizmetler"
+    },
+    {
+      "id": 111,
+      "parent_id": 0,
+      "kodu": "5",
+      "aciklama": "ÇEVRE KORUMA HİZMETLERİ"
+    },
+    {
+      "id": 112,
+      "parent_id": 111,
+      "kodu": "5.1",
+      "aciklama": "Atık Yönetimi Hizmetleri"
+    },
+    {
+      "id": 113,
+      "parent_id": 112,
+      "kodu": "5.1.0",
+      "aciklama": "Atık yönetimi hizmetleri"
+    },
+    {
+      "id": 114,
+      "parent_id": 111,
+      "kodu": "5.2",
+      "aciklama": "Atık Su Yönetimi Hizmetleri"
+    },
+    {
+      "id": 115,
+      "parent_id": 114,
+      "kodu": "5.2.0",
+      "aciklama": "Atık su yönetimi hizmetleri"
+    },
+    {
+      "id": 116,
+      "parent_id": 111,
+      "kodu": "5.3",
+      "aciklama": "Kirliliğin Azaltılması Hizmetleri"
+    },
+    {
+      "id": 117,
+      "parent_id": 116,
+      "kodu": "5.3.0",
+      "aciklama": "Kirliliğin azaltılması hizmetleri"
+    },
+    {
+      "id": 118,
+      "parent_id": 111,
+      "kodu": "5.4",
+      "aciklama": "Doğal Ortamın ve Bio Çeşitliliğin Korunması"
+    },
+    {
+      "id": 119,
+      "parent_id": 118,
+      "kodu": "5.4.0",
+      "aciklama": "Doğal ortamın ve bio çeşitliliğin korunması"
+    },
+    {
+      "id": 120,
+      "parent_id": 111,
+      "kodu": "5.8",
+      "aciklama": "Çevre Korumaya İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 121,
+      "parent_id": 120,
+      "kodu": "5.8.8",
+      "aciklama": "Çevre korumaya ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 122,
+      "parent_id": 111,
+      "kodu": "5.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Çevre Koruma Hizmetleri"
+    },
+    {
+      "id": 123,
+      "parent_id": 122,
+      "kodu": "5.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen çevre koruma hizmetleri"
+    },
+    {
+      "id": 124,
+      "parent_id": 0,
+      "kodu": "6",
+      "aciklama": "İSKAN VE TOPLUM REFAHI HİZMETLERİ"
+    },
+    {
+      "id": 125,
+      "parent_id": 124,
+      "kodu": "6.1",
+      "aciklama": "İskan İşleri ve Hizmetleri"
+    },
+    {
+      "id": 126,
+      "parent_id": 125,
+      "kodu": "6.1.0",
+      "aciklama": "İskan işleri ve hizmetleri"
+    },
+    {
+      "id": 127,
+      "parent_id": 124,
+      "kodu": "6.2",
+      "aciklama": "Toplum Refahı Hizmetleri"
+    },
+    {
+      "id": 128,
+      "parent_id": 127,
+      "kodu": "6.2.0",
+      "aciklama": "Toplum refahı hizmetleri"
+    },
+    {
+      "id": 129,
+      "parent_id": 124,
+      "kodu": "6.3",
+      "aciklama": "Su Temini İşleri ve Hizmetleri"
+    },
+    {
+      "id": 130,
+      "parent_id": 129,
+      "kodu": "6.3.0",
+      "aciklama": "Su temini işleri ve hizmetleri"
+    },
+    {
+      "id": 131,
+      "parent_id": 124,
+      "kodu": "6.4",
+      "aciklama": "Sokak ve Caddelerin Aydınlatılması Hizmetleri"
+    },
+    {
+      "id": 132,
+      "parent_id": 131,
+      "kodu": "6.4.0",
+      "aciklama": "Sokak ve caddelerin aydınlatılması hizmetleri"
+    },
+    {
+      "id": 133,
+      "parent_id": 124,
+      "kodu": "6.8",
+      "aciklama": "İskan ve Toplum Refahına İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 134,
+      "parent_id": 133,
+      "kodu": "6.8.8",
+      "aciklama": "İskan ve toplum refahına ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 135,
+      "parent_id": 124,
+      "kodu": "6.9",
+      "aciklama": "Sınıflandırmaya Girmeyen İskan ve Toplum Refahı Hizmetleri"
+    },
+    {
+      "id": 136,
+      "parent_id": 135,
+      "kodu": "6.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen iskan ve toplum refahı hizmetleri"
+    },
+    {
+      "id": 137,
+      "parent_id": 0,
+      "kodu": "7",
+      "aciklama": "SAĞLIK HİZMETLERİ"
+    },
+    {
+      "id": 138,
+      "parent_id": 137,
+      "kodu": "7.1",
+      "aciklama": "Tıbbi Ürünler, Cihaz ve Ekipmanlara İlişkin  İşler ve Hizmetler"
+    },
+    {
+      "id": 139,
+      "parent_id": 138,
+      "kodu": "7.1.1",
+      "aciklama": "İlaç ve ilaç benzeri ürünlerin temini hizmetleri"
+    },
+    {
+      "id": 140,
+      "parent_id": 138,
+      "kodu": "7.1.2",
+      "aciklama": "Diğer tıbbi ürünler"
+    },
+    {
+      "id": 141,
+      "parent_id": 138,
+      "kodu": "7.1.3",
+      "aciklama": "Terapik alet ve araç hizmetleri"
+    },
+    {
+      "id": 142,
+      "parent_id": 137,
+      "kodu": "7.2",
+      "aciklama": "Ayakta Yürütülen Tedavi Hizmetleri"
+    },
+    {
+      "id": 143,
+      "parent_id": 142,
+      "kodu": "7.2.1",
+      "aciklama": "Genel poliklinikler"
+    },
+    {
+      "id": 144,
+      "parent_id": 142,
+      "kodu": "7.2.2",
+      "aciklama": "İhtisaslaşmış poliklinikler"
+    },
+    {
+      "id": 145,
+      "parent_id": 142,
+      "kodu": "7.2.3",
+      "aciklama": "Ağız ve diş sağlığı hizmetleri"
+    },
+    {
+      "id": 146,
+      "parent_id": 142,
+      "kodu": "7.2.4",
+      "aciklama": "Yardımcı sağlık hizmetleri"
+    },
+    {
+      "id": 147,
+      "parent_id": 137,
+      "kodu": "7.3",
+      "aciklama": "Hastane İşleri ve Hizmetleri"
+    },
+    {
+      "id": 148,
+      "parent_id": 147,
+      "kodu": "7.3.1",
+      "aciklama": "Genel hastane hizmetleri"
+    },
+    {
+      "id": 149,
+      "parent_id": 147,
+      "kodu": "7.3.2",
+      "aciklama": "İhtisas hastaneleri tarafından verilen hizmetler"
+    },
+    {
+      "id": 150,
+      "parent_id": 147,
+      "kodu": "7.3.3",
+      "aciklama": "Tıp merkezi ve doğumevlerinde verilen hizmetler"
+    },
+    {
+      "id": 151,
+      "parent_id": 147,
+      "kodu": "7.3.4",
+      "aciklama": "Hastane bakım ve nekahat merkezlerinde verilen hizmetler"
+    },
+    {
+      "id": 152,
+      "parent_id": 147,
+      "kodu": "7.3.9",
+      "aciklama": "Sınıflandırmaya girmeyen hastane işleri ve hizmetleri"
+    },
+    {
+      "id": 153,
+      "parent_id": 137,
+      "kodu": "7.4",
+      "aciklama": "Halk Sağlığı Hizmetleri"
+    },
+    {
+      "id": 154,
+      "parent_id": 153,
+      "kodu": "7.4.0",
+      "aciklama": "Halk sağlığı hizmetleri"
+    },
+    {
+      "id": 155,
+      "parent_id": 137,
+      "kodu": "7.8",
+      "aciklama": "Sağlık Hizmetlerine İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 156,
+      "parent_id": 155,
+      "kodu": "7.8.8",
+      "aciklama": "Sağlık hizmetlerine ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 157,
+      "parent_id": 137,
+      "kodu": "7.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Sağlık Hizmetleri"
+    },
+    {
+      "id": 158,
+      "parent_id": 157,
+      "kodu": "7.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen sağlık hizmetleri"
+    },
+    {
+      "id": 159,
+      "parent_id": 0,
+      "kodu": "8",
+      "aciklama": "DİNLENME, KÜLTÜR VE DİN HİZMETLERİ"
+    },
+    {
+      "id": 160,
+      "parent_id": 159,
+      "kodu": "8.1",
+      "aciklama": "Dinlenme ve Spor Hizmetleri"
+    },
+    {
+      "id": 161,
+      "parent_id": 160,
+      "kodu": "8.1.0",
+      "aciklama": "Dinlenme ve spor hizmetleri"
+    },
+    {
+      "id": 162,
+      "parent_id": 159,
+      "kodu": "8.2",
+      "aciklama": "Kültür Hizmetleri"
+    },
+    {
+      "id": 163,
+      "parent_id": 162,
+      "kodu": "8.2.0",
+      "aciklama": "Kültür hizmetleri"
+    },
+    {
+      "id": 164,
+      "parent_id": 159,
+      "kodu": "8.3",
+      "aciklama": "Yayın ve Yayım Hizmetleri"
+    },
+    {
+      "id": 165,
+      "parent_id": 164,
+      "kodu": "8.3.0",
+      "aciklama": "Yayın ve yayım hizmetleri"
+    },
+    {
+      "id": 166,
+      "parent_id": 159,
+      "kodu": "8.4",
+      "aciklama": "Din Hizmetleri"
+    },
+    {
+      "id": 167,
+      "parent_id": 166,
+      "kodu": "8.4.0",
+      "aciklama": "Din hizmetleri"
+    },
+    {
+      "id": 168,
+      "parent_id": 159,
+      "kodu": "8.8",
+      "aciklama": "Dinlenme Kültür ve Din Hizmetlerine İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 169,
+      "parent_id": 168,
+      "kodu": "8.8.8",
+      "aciklama": "Dinlenme kültür ve din hizmetlerine ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 170,
+      "parent_id": 159,
+      "kodu": "8.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Dinlenme, Kültür ve Din Hizmetleri"
+    },
+    {
+      "id": 171,
+      "parent_id": 170,
+      "kodu": "8.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen dinlenme, kültür ve din hizmetleri"
+    },
+    {
+      "id": 172,
+      "parent_id": 0,
+      "kodu": "9",
+      "aciklama": "EĞİTİM HİZMETLERİ"
+    },
+    {
+      "id": 173,
+      "parent_id": 172,
+      "kodu": "9.1",
+      "aciklama": "Okul Öncesi ve İlköğretim Hizmetleri"
+    },
+    {
+      "id": 174,
+      "parent_id": 173,
+      "kodu": "9.1.1",
+      "aciklama": "Okul öncesi eğitim hizmetleri"
+    },
+    {
+      "id": 175,
+      "parent_id": 173,
+      "kodu": "9.1.2",
+      "aciklama": "İlköğretim hizmetleri"
+    },
+    {
+      "id": 176,
+      "parent_id": 172,
+      "kodu": "9.2",
+      "aciklama": "Ortaöğretim Hizmetleri"
+    },
+    {
+      "id": 177,
+      "parent_id": 176,
+      "kodu": "9.2.1",
+      "aciklama": "Ortaöğretim genel programlar"
+    },
+    {
+      "id": 178,
+      "parent_id": 176,
+      "kodu": "9.2.2",
+      "aciklama": "Mesleki ve teknik ortaöğretim "
+    },
+    {
+      "id": 179,
+      "parent_id": 176,
+      "kodu": "9.2.9",
+      "aciklama": "Sınıflandırmaya girmeyen ortaöğretim hizmetleri"
+    },
+    {
+      "id": 180,
+      "parent_id": 172,
+      "kodu": "9.3",
+      "aciklama": "Ortaöğretim Sonrası Mesleki Eğitim Hizmetleri"
+    },
+    {
+      "id": 181,
+      "parent_id": 180,
+      "kodu": "9.3.0",
+      "aciklama": "Ortaöğretim sonrası mesleki eğitim hizmetleri"
+    },
+    {
+      "id": 182,
+      "parent_id": 172,
+      "kodu": "9.4",
+      "aciklama": "Yükseköğretim Hizmetleri"
+    },
+    {
+      "id": 183,
+      "parent_id": 182,
+      "kodu": "9.4.1",
+      "aciklama": "Üniversiteler ve yükseköğretim hizmeti veren  kurumlar "
+    },
+    {
+      "id": 184,
+      "parent_id": 182,
+      "kodu": "9.4.2",
+      "aciklama": "Doktora eğitimi veren yükseköğretim hizmetleri"
+    },
+    {
+      "id": 185,
+      "parent_id": 172,
+      "kodu": "9.5",
+      "aciklama": "Seviyeye Göre Sınıflandırılamayan Eğitim Hizmetleri"
+    },
+    {
+      "id": 186,
+      "parent_id": 185,
+      "kodu": "9.5.0",
+      "aciklama": "Seviyeye göre sınıflandırılamayan eğitim hizmetleri"
+    },
+    {
+      "id": 187,
+      "parent_id": 172,
+      "kodu": "9.6",
+      "aciklama": "Eğitime yardımcı hizmetler"
+    },
+    {
+      "id": 188,
+      "parent_id": 187,
+      "kodu": "9.6.0",
+      "aciklama": "Eğitime yardımcı hizmetler"
+    },
+    {
+      "id": 189,
+      "parent_id": 172,
+      "kodu": "9.8",
+      "aciklama": "Eğitime İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 190,
+      "parent_id": 189,
+      "kodu": "9.8.8",
+      "aciklama": "Eğitime ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 191,
+      "parent_id": 172,
+      "kodu": "9.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Eğitim Hizmetleri"
+    },
+    {
+      "id": 192,
+      "parent_id": 191,
+      "kodu": "9.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen eğitim hizmetleri"
+    },
+    {
+      "id": 193,
+      "parent_id": 0,
+      "kodu": "10",
+      "aciklama": "SOSYAL GÜVENLİK VE SOSYAL YARDIM HİZMETLERİ"
+    },
+    {
+      "id": 194,
+      "parent_id": 193,
+      "kodu": "10.1",
+      "aciklama": "Hastalık ve Malullük Yardım Hizmetleri"
+    },
+    {
+      "id": 195,
+      "parent_id": 194,
+      "kodu": "10.1.1",
+      "aciklama": "Hastalık yardım hizmetleri"
+    },
+    {
+      "id": 196,
+      "parent_id": 194,
+      "kodu": "10.1.2",
+      "aciklama": "Malullük yardım hizmetleri"
+    },
+    {
+      "id": 197,
+      "parent_id": 193,
+      "kodu": "10.2",
+      "aciklama": "Yaşlılık Yardımı Hizmetleri"
+    },
+    {
+      "id": 198,
+      "parent_id": 197,
+      "kodu": "10.2.0",
+      "aciklama": "Yaşlılık yardımı hizmetleri"
+    },
+    {
+      "id": 199,
+      "parent_id": 193,
+      "kodu": "10.3",
+      "aciklama": "Dul ve Yetim Aylığı Hizmetleri"
+    },
+    {
+      "id": 200,
+      "parent_id": 199,
+      "kodu": "10.3.0",
+      "aciklama": "Dul ve yetim aylığı hizmetleri"
+    },
+    {
+      "id": 201,
+      "parent_id": 193,
+      "kodu": "10.4",
+      "aciklama": "Aile ve Çocuk Yardımı Hizmetleri"
+    },
+    {
+      "id": 202,
+      "parent_id": 201,
+      "kodu": "10.4.0",
+      "aciklama": "Aile ve çocuk yardımı hizmetleri"
+    },
+    {
+      "id": 203,
+      "parent_id": 193,
+      "kodu": "10.5",
+      "aciklama": "İşsizlik Yardımı Hizmetleri"
+    },
+    {
+      "id": 204,
+      "parent_id": 203,
+      "kodu": "10.5.0",
+      "aciklama": "İşsizlik yardımları hizmetleri"
+    },
+    {
+      "id": 205,
+      "parent_id": 193,
+      "kodu": "10.6",
+      "aciklama": "İskan Yardımı Hizmetleri"
+    },
+    {
+      "id": 206,
+      "parent_id": 205,
+      "kodu": "10.6.0",
+      "aciklama": "İskan yardımı hizmetleri"
+    },
+    {
+      "id": 207,
+      "parent_id": 193,
+      "kodu": "10.7",
+      "aciklama": "Sosyal Güvenliği Bulunmayanlara Sağlanan Hizmetler"
+    },
+    {
+      "id": 208,
+      "parent_id": 207,
+      "kodu": "10.7.0",
+      "aciklama": "Sosyal güvenliği bulunmayanlara sağlanan hizmetler"
+    },
+    {
+      "id": 209,
+      "parent_id": 193,
+      "kodu": "10.8",
+      "aciklama": "Sosyal Güvenlik ve Sosyal Yardımlara İlişkin Araştırma ve Geliştirme Hizmetleri"
+    },
+    {
+      "id": 210,
+      "parent_id": 209,
+      "kodu": "10.8.8",
+      "aciklama": "Sosyal güvenlik ve sosyal yardımlara ilişkin araştırma ve geliştirme hizmetleri"
+    },
+    {
+      "id": 211,
+      "parent_id": 193,
+      "kodu": "10.9",
+      "aciklama": "Sınıflandırmaya Girmeyen Sosyal Güvenlik ve Sosyal Yardım Hizmetleri"
+    },
+    {
+      "id": 212,
+      "parent_id": 211,
+      "kodu": "10.9.9",
+      "aciklama": "Sınıflandırmaya girmeyen sosyal güvenlik ve sosyal yardım hizmetleri"
+    }
+  ]
+}

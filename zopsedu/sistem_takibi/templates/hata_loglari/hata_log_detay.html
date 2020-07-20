@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block context %}
+
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+            <h3 class="content-header-title mb-0 d-inline-block"> {{ _("Log Detay") }} </h3>
+        </div>
+        <div class="content-header-right col-md-4 col-12">
+            <div class="btn-group float-md-right">
+                <a href="{{ url_for('sistem_takibi.HataLoglariView:hata_loglari') }}">
+                    <button class="btn btn-success">
+                        {{ _("Log Sayfasina Dön") }}
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-bordered m-b-0" id="log-elemanlari">
+                            <thead>
+                            <tr class="text-black f-s-12">
+                                <th>{{ _("User id") }}</th>
+                                <th>{{ _("Log id") }}</th>
+                                <th>{{ _("Log Tarihi") }}</th>
+                                <th>{{ _("Ip") }}</th>
+                                <th>{{ _("Url") }}</th>
+                                <th>{{ _("Method") }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ log["user_id"] if log["user_id"] else "" }}</td>
+                                <td>{{ log["id"] }}</td>
+                                <td>{{ timestamp_to_strftime(log["created_at"]) }}</td>
+                                <td>{{ log["remote_addr"] if log["remote_addr"] else "-" }}</td>
+                                <td>{{ log["url"] }}</td>
+                                <td>{{ log["method"] }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <section class="card">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <h6 class="form-section">  {{ _("Hata Mesajı/Traceback") }} </h6>
+                                    <p>  {{ traceback }} </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    {% if request_details["form_data"] %}
+                        <div class="row">
+                            <h6 class="form-section"> {{ _("Form Data") }} </h6>
+
+                            <section class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <table class="table table-bordered m-b-0"
+                                               id="log-elemanlari">
+                                            <tbody>
+                                            {% for key, value in request_details["form_data"] | dictsort %}
+                                                {% if value %}
+                                                    <tr>
+                                                        <td>{{ key }}</td>
+                                                        <td>{{ value }}</td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    {% endif %}
+                    {% if request_details["args"] %}
+                        <div class="row">
+                            <h6 class="form-section">   {{ _("Args") }} </h6>
+                            <section class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <table class="table table-bordered m-b-0"
+                                               id="log-elemanlari">
+                                            <tbody>
+                                            {% for key, value in request_details["args"] | dictsort %}
+                                                {% if value %}
+                                                    <tr>
+                                                        <td>{{ key }}</td>
+                                                        <td>{{ value }}</td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
