@@ -102,4 +102,4 @@ Bu depo ikili lisansa sahiptir.
 konularında destek almak için Zetaops info[youknow]zetaops.io eposta adresine ya da @zetaops twitter hesabina ulaşabilirsiniz.
 
 
-![Made in URLA with Love and Enginar](https://zetaops.io/static/assets/images/enginar-small.png)
+![Made in URLA with Love and Enginar](https://zarupa.com/static/assets/img/enginar.png)
